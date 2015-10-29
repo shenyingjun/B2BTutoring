@@ -8,9 +8,8 @@
 
 import UIKit
 import Eureka
-import RSKImageCropper
 
-class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, RSKImageCropViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // text field
     @IBOutlet weak var firstname: HoshiTextField! {
