@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -762,3 +763,7 @@
   </body>
 </html>
 
+=======
+# B2BTutoring
+An iOS app for UCLA students to find tutors for extracurricular skills.
+>>>>>>> abfa0ec0eb3dfbd32703c7ed8ff6504a38521c31
