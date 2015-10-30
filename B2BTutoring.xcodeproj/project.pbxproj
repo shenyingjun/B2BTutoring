@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39FD36A81BE311A9008C08A0 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FD36A71BE311A9008C08A0 /* InfoTableViewCell.swift */; };
+		39FD36AC1BE3147C008C08A0 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FD36AB1BE3147C008C08A0 /* ProfileTableViewController.swift */; };
+		39FD36B21BE31796008C08A0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FD36B11BE31796008C08A0 /* Profile.swift */; };
+		39FD36B41BE326B2008C08A0 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FD36B31BE326B2008C08A0 /* SessionTableViewCell.swift */; };
+		39FD36B61BE32C75008C08A0 /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FD36B51BE32C75008C08A0 /* SessionTableViewController.swift */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
 		7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */; };
 		7E2C70C81BDDA834000F7F0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C70C61BDDA834000F7F0F /* Main.storyboard */; };
@@ -44,6 +49,11 @@
 /* Begin PBXFileReference section */
 		10570C705A72F66E008AD80B /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.debug.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
 		1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39FD36A71BE311A9008C08A0 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		39FD36AB1BE3147C008C08A0 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		39FD36B11BE31796008C08A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		39FD36B31BE326B2008C08A0 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		39FD36B51BE32C75008C08A0 /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
 		479FD915146CC99E76693270 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.release.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
 		7E2C70BF1BDDA834000F7F0F /* B2BTutoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B2BTutoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +187,8 @@
 				7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */,
 				7E2C70F21BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift */,
 				7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */,
+				39FD36AB1BE3147C008C08A0 /* ProfileTableViewController.swift */,
+				39FD36B51BE32C75008C08A0 /* SessionTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */,
+				39FD36A71BE311A9008C08A0 /* InfoTableViewCell.swift */,
+				39FD36B31BE326B2008C08A0 /* SessionTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -192,6 +206,7 @@
 		7E4BEC9E1BE1A6BD00D74DEB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				39FD36B11BE31796008C08A0 /* Profile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -352,20 +367,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39FD36AC1BE3147C008C08A0 /* ProfileTableViewController.swift in Sources */,
 				7E2C70F31BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift in Sources */,
 				7EFEB6B21BDF393D00D644A9 /* JiroTextField.swift in Sources */,
 				7EFEB6B31BDF393D00D644A9 /* KaedeTextField.swift in Sources */,
 				7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */,
 				7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */,
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
+				39FD36A81BE311A9008C08A0 /* InfoTableViewCell.swift in Sources */,
+				39FD36B61BE32C75008C08A0 /* SessionTableViewController.swift in Sources */,
 				7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
 				7EFEB6B41BDF393D00D644A9 /* MadokaTextField.swift in Sources */,
+				39FD36B41BE326B2008C08A0 /* SessionTableViewCell.swift in Sources */,
 				7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */,
 				7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */,
 				7EFEB6B61BDF393D00D644A9 /* TextFieldsEffects.swift in Sources */,
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
+				39FD36B21BE31796008C08A0 /* Profile.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
 				7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */,
 			);
