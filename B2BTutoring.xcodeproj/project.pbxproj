@@ -28,6 +28,11 @@
 		7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */; };
 		7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */; };
 		7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */; };
+		7E5D04271BE3550700285761 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D04251BE3550700285761 /* InfoTableViewCell.swift */; };
+		7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D04261BE3550700285761 /* SessionTableViewCell.swift */; };
+		7E5D042A1BE3591300285761 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D04291BE3591300285761 /* ProfileTableViewController.swift */; };
+		7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */; };
+		7E5D042E1BE3598700285761 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D042D1BE3598700285761 /* Profile.swift */; };
 		7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */; };
 		7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */; };
 		7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */; };
@@ -69,6 +74,11 @@
 		7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
+		7E5D04251BE3550700285761 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		7E5D04261BE3550700285761 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		7E5D04291BE3591300285761 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
+		7E5D042D1BE3598700285761 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberButtonView.swift; sourceTree = "<group>"; };
 		7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileViewController.swift; sourceTree = "<group>"; };
 		7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
@@ -174,6 +184,8 @@
 		7E4BEC9C1BE1A68C00D74DEB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */,
+				7E5D04291BE3591300285761 /* ProfileTableViewController.swift */,
 				7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */,
 				7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */,
 				7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */,
@@ -187,6 +199,8 @@
 		7E4BEC9D1BE1A6AC00D74DEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E5D04251BE3550700285761 /* InfoTableViewCell.swift */,
+				7E5D04261BE3550700285761 /* SessionTableViewCell.swift */,
 				7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */,
 			);
 			name = Views;
@@ -195,6 +209,7 @@
 		7E4BEC9E1BE1A6BD00D74DEB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7E5D042D1BE3598700285761 /* Profile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -358,18 +373,23 @@
 				7E2C70F31BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift in Sources */,
 				7EFEB6B21BDF393D00D644A9 /* JiroTextField.swift in Sources */,
 				7EFEB6B31BDF393D00D644A9 /* KaedeTextField.swift in Sources */,
+				7E5D04271BE3550700285761 /* InfoTableViewCell.swift in Sources */,
 				7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */,
 				7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */,
+				7E5D042A1BE3591300285761 /* ProfileTableViewController.swift in Sources */,
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
+				7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */,
 				7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
+				7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */,
 				7EFEB6B41BDF393D00D644A9 /* MadokaTextField.swift in Sources */,
 				7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */,
 				7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */,
 				7EFEB6B61BDF393D00D644A9 /* TextFieldsEffects.swift in Sources */,
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
+				7E5D042E1BE3598700285761 /* Profile.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
 				7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */,
 			);
