@@ -20,6 +20,7 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = profile.info[0].value
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,6 +34,24 @@ class ProfileTableViewController: UITableViewController {
     }
 
     @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch profileSegmentedControl.selectedSegmentIndex {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell") as! InfoTableViewCell
+            self.tableView.rowHeight = cell.bounds.height
+            break
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
+            self.tableView.rowHeight = cell.bounds.height
+            break
+        case 2:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
+            self.tableView.rowHeight = cell.bounds.height
+            break
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
+            self.tableView.rowHeight = cell.bounds.height
+            break
+        }
         self.tableView.reloadData()
     }
 
@@ -98,7 +117,7 @@ class ProfileTableViewController: UITableViewController {
             return cell
         }
     }
-    
+    /*
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         switch profileSegmentedControl.selectedSegmentIndex {
@@ -112,6 +131,7 @@ class ProfileTableViewController: UITableViewController {
             return 120
         }
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
