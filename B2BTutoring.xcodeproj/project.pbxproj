@@ -27,6 +27,7 @@
 		7E2C70F31BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70F21BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift */; };
 		7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */; };
 		7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */; };
+		7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */; };
 		7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */; };
 		7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */; };
 		7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */; };
@@ -38,7 +39,7 @@
 		7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6AA1BDF393D00D644A9 /* MinoruTextField.swift */; };
 		7EFEB6B61BDF393D00D644A9 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6AC1BDF393D00D644A9 /* TextFieldsEffects.swift */; };
 		7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6AD1BDF393D00D644A9 /* YokoTextField.swift */; };
-		8818C0B25706653B02723567 /* Pods_B2BTutoring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8818C0B25706653B02723567 /* Pods_B2BTutoring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		7E2C70F21BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginConfirmationViewController.swift; sourceTree = "<group>"; };
+		7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberButtonView.swift; sourceTree = "<group>"; };
 		7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileViewController.swift; sourceTree = "<group>"; };
 		7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */,
 				7E2C70F21BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift */,
 				7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */,
+				7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
 				7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
+				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
 				7EFEB6B41BDF393D00D644A9 /* MadokaTextField.swift in Sources */,
 				7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */,

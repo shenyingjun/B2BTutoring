@@ -7,301 +7,413 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00D7CE3CD3EDBBFC5B9D8310 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7761E765E1355AC1E5F852BF /* Helpers.swift */; };
-		14AA77B2C13F01F740A2FC1F /* Pods-B2BTutoring-Eureka-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 171CA9FEDF3F28BCD43DF564 /* Pods-B2BTutoring-Eureka-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58A4674F07D5603E1D1D551B /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C0FBD1E73EC26DDA98458 /* Rows.swift */; };
-		612CFED4AE51E981445250D3 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFCF12B934CCC3096450EC6 /* Core.swift */; };
-		6D2ECD91FECD11082D001F4A /* Pods-B2BTutoring-Eureka-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C43367FFCA5E8FBF1E51DC75 /* Pods-B2BTutoring-Eureka-dummy.m */; };
-		7B38D75560084BF4B5DFB885 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE359C46CCEC1B9832EC8608 /* UIKit.framework */; };
-		7F61BBAEE9A0DA104F949389 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FCF7E6F3052AE6A949623C /* Foundation.framework */; };
-		8988BACC46ED704F39C685C9 /* Pods-B2BTutoring-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BAEB6F160034E07EC9C1BA90 /* Pods-B2BTutoring-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B389851CC9C2DE0FFB2E3AB /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41A9C9D9D38A5E4643E3E07 /* Cells.swift */; };
-		A230D9E584DEC955ED26ADD1 /* Pods-B2BTutoring-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B8C9962BB6B42E64F39C3F /* Pods-B2BTutoring-dummy.m */; };
-		B068D9908B17240936AA0D67 /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A37B0E1A4620DBFCF8443 /* Controllers.swift */; };
-		C0FAC447520AA0E4C940C66B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FCF7E6F3052AE6A949623C /* Foundation.framework */; };
+		0A4C3AF992366C9799D067099925EF77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
+		175D391A619A9C0519A53B4E84554593 /* Pods-B2BTutoring-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 423667FD7ADEA0CAA95D2AFDE276A88E /* Pods-B2BTutoring-dummy.m */; };
+		32BC28F2D8F762BB77955237D0B1733A /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA831DBB586943DB75AA7840ACB2597 /* Controllers.swift */; };
+		376DCCF04020C1BF909E1C9434160EC9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB61740B9FE41D16B90B9D80DA26CEB /* Helpers.swift */; };
+		37E573C3F6AE3AF91A6DF6B629EC57F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */; };
+		4CC8D349E1F05E10C3FBEB82314971FE /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3272DFC9E199A21DD773A03979919F3 /* Cells.swift */; };
+		810D71172FF158DE2AFD3B93B9CD2E2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
+		94026EE895026B940FB818A7E6538B50 /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98559305A60D72E00F9051C6DB8C6CF7 /* Rows.swift */; };
+		9F55540302E9D0F8DBE8C934DCF64838 /* Eureka-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 981CDE9D1D28098344394CD2A72C19FA /* Eureka-dummy.m */; };
+		E52D5180B8080C290DB1BE94C2B97172 /* Eureka-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A30E6368F07D062C2FB80C069272185D /* Eureka-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4549889D2DD51FD242EF19E8DE29A7A /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2345C17EB881906B6A73059DC0F8B /* Core.swift */; };
+		FE866CD6C8C439F30451197FEBA62E24 /* Pods-B2BTutoring-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6604FE54594C2DE43BB1063E19D428A /* Pods-B2BTutoring-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DB4BF39AA937F38291A4E701 /* PBXContainerItemProxy */ = {
+		4C1406EC32BBFD2DC23D49E2A44D7834 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9DBBFEEE9F438E887474FC53 /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4535E8DACBAAC98B0B97AC3E;
-			remoteInfo = "Pods-B2BTutoring-Eureka";
+			remoteGlobalIDString = 31EF08F3444DCD2B169D92269C5BCD3D;
+			remoteInfo = Eureka;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		019432FEFF3EF25F993ED32B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07B8C9962BB6B42E64F39C3F /* Pods-B2BTutoring-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-B2BTutoring-dummy.m"; sourceTree = "<group>"; };
-		171CA9FEDF3F28BCD43DF564 /* Pods-B2BTutoring-Eureka-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-B2BTutoring-Eureka-umbrella.h"; sourceTree = "<group>"; };
-		1997B2C930C7AAAD4F439547 /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
-		2423C6F12D9EEBB20792181F /* Pods-B2BTutoring-Eureka.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-B2BTutoring-Eureka.xcconfig"; sourceTree = "<group>"; };
-		665A37B0E1A4620DBFCF8443 /* Controllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Controllers.swift; path = Source/Controllers.swift; sourceTree = "<group>"; };
-		677E401EF1C23BF5C573F494 /* Pods-B2BTutoring.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-B2BTutoring.modulemap"; sourceTree = "<group>"; };
-		6966E635BC3217D4D005A8A9 /* Pods-B2BTutoring-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-B2BTutoring-frameworks.sh"; sourceTree = "<group>"; };
-		69FB7B66B2A49CDF740156F5 /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C116CBFA87C7EA73E64B6B9 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
-		7761E765E1355AC1E5F852BF /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = Source/Helpers.swift; sourceTree = "<group>"; };
-		857C0FBD1E73EC26DDA98458 /* Rows.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rows.swift; path = Source/Rows.swift; sourceTree = "<group>"; };
-		8AB59B85A6C58BEC3E05D814 /* Pods-B2BTutoring-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-B2BTutoring-acknowledgements.markdown"; sourceTree = "<group>"; };
-		91C2E6878EDBA50F18F2424C /* Pods-B2BTutoring-Eureka-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-B2BTutoring-Eureka-prefix.pch"; sourceTree = "<group>"; };
-		920681A4283B30E751DCA847 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BD42BFC85679FC6A6732472 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A61D677F72074CC3E3694A02 /* Pods-B2BTutoring-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-B2BTutoring-resources.sh"; sourceTree = "<group>"; };
-		AB659F9E8700F13B55201D94 /* Pods-B2BTutoring-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-B2BTutoring-acknowledgements.plist"; sourceTree = "<group>"; };
-		B44F48B9211B3CF4AB65117C /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BAEB6F160034E07EC9C1BA90 /* Pods-B2BTutoring-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-B2BTutoring-umbrella.h"; sourceTree = "<group>"; };
-		C1FCF7E6F3052AE6A949623C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		C408616BA3D2BC3BBD28CCD3 /* Pods-B2BTutoring-Eureka-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-B2BTutoring-Eureka-Private.xcconfig"; sourceTree = "<group>"; };
-		C43367FFCA5E8FBF1E51DC75 /* Pods-B2BTutoring-Eureka-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-B2BTutoring-Eureka-dummy.m"; sourceTree = "<group>"; };
-		D41A9C9D9D38A5E4643E3E07 /* Cells.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cells.swift; path = Source/Cells.swift; sourceTree = "<group>"; };
-		D841C4471BEA1E916A1531E7 /* Pods-B2BTutoring-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-B2BTutoring-environment.h"; sourceTree = "<group>"; };
-		DDFCF12B934CCC3096450EC6 /* Core.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Core.swift; path = Source/Core.swift; sourceTree = "<group>"; };
-		E99316218BBA2D4265E3104E /* Pods-B2BTutoring-Eureka.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-B2BTutoring-Eureka.modulemap"; sourceTree = "<group>"; };
-		EE359C46CCEC1B9832EC8608 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		0FB61740B9FE41D16B90B9D80DA26CEB /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = Source/Helpers.swift; sourceTree = "<group>"; };
+		10FD71F32CCDC1B9E7B1E4C9C9A11612 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		263F6FBC167A01D12F748A811160090D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		423667FD7ADEA0CAA95D2AFDE276A88E /* Pods-B2BTutoring-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-B2BTutoring-dummy.m"; sourceTree = "<group>"; };
+		5817EA0CDA92927C610A4308792B964F /* Pods-B2BTutoring-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-B2BTutoring-acknowledgements.markdown"; sourceTree = "<group>"; };
+		68A0B0D6A1ED647E20F26D46CB7F3206 /* Eureka-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-prefix.pch"; sourceTree = "<group>"; };
+		6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7278AE57FFC544966EDEB78E40AF4390 /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A2345C17EB881906B6A73059DC0F8B /* Core.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Core.swift; path = Source/Core.swift; sourceTree = "<group>"; };
+		8E7D3FCB0DEAFCD3D40F3D19744B9FE9 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
+		91B9250FE6E2563F5ECFDCD6C1248CB2 /* Pods-B2BTutoring-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-B2BTutoring-frameworks.sh"; sourceTree = "<group>"; };
+		981CDE9D1D28098344394CD2A72C19FA /* Eureka-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Eureka-dummy.m"; sourceTree = "<group>"; };
+		98559305A60D72E00F9051C6DB8C6CF7 /* Rows.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rows.swift; path = Source/Rows.swift; sourceTree = "<group>"; };
+		9A8B16AE28863BE949FECDF6D9DE5BCC /* Pods-B2BTutoring-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-B2BTutoring-acknowledgements.plist"; sourceTree = "<group>"; };
+		A30E6368F07D062C2FB80C069272185D /* Eureka-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-umbrella.h"; sourceTree = "<group>"; };
+		A63780400505B27ED7CB3FC84591D7F0 /* Eureka.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Eureka.modulemap; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		CD237EA22BF05C14613B378AA38FFC43 /* Eureka.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Eureka.xcconfig; sourceTree = "<group>"; };
+		D2236F241AF8C37FFC2F38140C7FABA9 /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4EAFC8203059C7D3F56755033EC34BF /* Pods-B2BTutoring.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-B2BTutoring.modulemap"; sourceTree = "<group>"; };
+		D6604FE54594C2DE43BB1063E19D428A /* Pods-B2BTutoring-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-B2BTutoring-umbrella.h"; sourceTree = "<group>"; };
+		DB952CE5F67A4F378A0AAF34C6A9E785 /* Pods-B2BTutoring-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-B2BTutoring-resources.sh"; sourceTree = "<group>"; };
+		EBA831DBB586943DB75AA7840ACB2597 /* Controllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Controllers.swift; path = Source/Controllers.swift; sourceTree = "<group>"; };
+		EEC8929D6B2B20720175BB012590B0CC /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
+		F3272DFC9E199A21DD773A03979919F3 /* Cells.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cells.swift; path = Source/Cells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		06F8BBB607AA8BE87CDC6BE9 /* Frameworks */ = {
+		BD02C174EF4E9DFDD57459A0C1F42C14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F61BBAEE9A0DA104F949389 /* Foundation.framework in Frameworks */,
-				7B38D75560084BF4B5DFB885 /* UIKit.framework in Frameworks */,
+				0A4C3AF992366C9799D067099925EF77 /* Foundation.framework in Frameworks */,
+				37E573C3F6AE3AF91A6DF6B629EC57F2 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		68C1FA17669CD2259D398128 /* Frameworks */ = {
+		CDA9DC66440E6F8CFA2621295A29B2C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0FAC447520AA0E4C940C66B /* Foundation.framework in Frameworks */,
+				810D71172FF158DE2AFD3B93B9CD2E2B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C81ED017A4BDB566798128F /* Eureka */ = {
+		18340F12838DEE43507667CC74401EB1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D41A9C9D9D38A5E4643E3E07 /* Cells.swift */,
-				665A37B0E1A4620DBFCF8443 /* Controllers.swift */,
-				DDFCF12B934CCC3096450EC6 /* Core.swift */,
-				7761E765E1355AC1E5F852BF /* Helpers.swift */,
-				857C0FBD1E73EC26DDA98458 /* Rows.swift */,
-				BED5AFEC2EA4E23E5C7C5B72 /* Support Files */,
+				6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */,
+				C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		2D03D975C6D6BF75833B3ACB057BBE01 /* Eureka */ = {
+			isa = PBXGroup;
+			children = (
+				F3272DFC9E199A21DD773A03979919F3 /* Cells.swift */,
+				EBA831DBB586943DB75AA7840ACB2597 /* Controllers.swift */,
+				80A2345C17EB881906B6A73059DC0F8B /* Core.swift */,
+				0FB61740B9FE41D16B90B9D80DA26CEB /* Helpers.swift */,
+				98559305A60D72E00F9051C6DB8C6CF7 /* Rows.swift */,
+				A84FEA66FD0B20FB16BDF72F8EE8D76D /* Support Files */,
 			);
 			path = Eureka;
 			sourceTree = "<group>";
 		};
-		2812B909D1285FFE0DEC602C = {
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9BD42BFC85679FC6A6732472 /* Podfile */,
-				5B5504D37E65C2BD9189C093 /* Frameworks */,
-				9BD8D1F22D98B5FE040D4C21 /* Pods */,
-				41C95CBE2647AA3AC722038A /* Products */,
-				63408854405D5765007F56B9 /* Targets Support Files */,
+				18340F12838DEE43507667CC74401EB1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6CAAFD360481B9D3F9590DF8376ECF1A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D03D975C6D6BF75833B3ACB057BBE01 /* Eureka */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		75626C8072A9A5F4C6DFD209AD8D4C36 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B3FB850B2E0970E9B6DD9DFD88E4DFE /* Pods-B2BTutoring */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				6CAAFD360481B9D3F9590DF8376ECF1A /* Pods */,
+				B9C6DDE2C035ED93DFA8225F037B600A /* Products */,
+				75626C8072A9A5F4C6DFD209AD8D4C36 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		41C95CBE2647AA3AC722038A /* Products */ = {
+		9B3FB850B2E0970E9B6DD9DFD88E4DFE /* Pods-B2BTutoring */ = {
 			isa = PBXGroup;
 			children = (
-				69FB7B66B2A49CDF740156F5 /* Eureka.framework */,
-				B44F48B9211B3CF4AB65117C /* Pods_B2BTutoring.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		4EF85491D69F70A782483F69 /* Pods-B2BTutoring */ = {
-			isa = PBXGroup;
-			children = (
-				920681A4283B30E751DCA847 /* Info.plist */,
-				677E401EF1C23BF5C573F494 /* Pods-B2BTutoring.modulemap */,
-				8AB59B85A6C58BEC3E05D814 /* Pods-B2BTutoring-acknowledgements.markdown */,
-				AB659F9E8700F13B55201D94 /* Pods-B2BTutoring-acknowledgements.plist */,
-				07B8C9962BB6B42E64F39C3F /* Pods-B2BTutoring-dummy.m */,
-				D841C4471BEA1E916A1531E7 /* Pods-B2BTutoring-environment.h */,
-				6966E635BC3217D4D005A8A9 /* Pods-B2BTutoring-frameworks.sh */,
-				A61D677F72074CC3E3694A02 /* Pods-B2BTutoring-resources.sh */,
-				BAEB6F160034E07EC9C1BA90 /* Pods-B2BTutoring-umbrella.h */,
-				1997B2C930C7AAAD4F439547 /* Pods-B2BTutoring.debug.xcconfig */,
-				6C116CBFA87C7EA73E64B6B9 /* Pods-B2BTutoring.release.xcconfig */,
+				10FD71F32CCDC1B9E7B1E4C9C9A11612 /* Info.plist */,
+				D4EAFC8203059C7D3F56755033EC34BF /* Pods-B2BTutoring.modulemap */,
+				5817EA0CDA92927C610A4308792B964F /* Pods-B2BTutoring-acknowledgements.markdown */,
+				9A8B16AE28863BE949FECDF6D9DE5BCC /* Pods-B2BTutoring-acknowledgements.plist */,
+				423667FD7ADEA0CAA95D2AFDE276A88E /* Pods-B2BTutoring-dummy.m */,
+				91B9250FE6E2563F5ECFDCD6C1248CB2 /* Pods-B2BTutoring-frameworks.sh */,
+				DB952CE5F67A4F378A0AAF34C6A9E785 /* Pods-B2BTutoring-resources.sh */,
+				D6604FE54594C2DE43BB1063E19D428A /* Pods-B2BTutoring-umbrella.h */,
+				EEC8929D6B2B20720175BB012590B0CC /* Pods-B2BTutoring.debug.xcconfig */,
+				8E7D3FCB0DEAFCD3D40F3D19744B9FE9 /* Pods-B2BTutoring.release.xcconfig */,
 			);
 			name = "Pods-B2BTutoring";
 			path = "Target Support Files/Pods-B2BTutoring";
 			sourceTree = "<group>";
 		};
-		5B5504D37E65C2BD9189C093 /* Frameworks */ = {
+		A84FEA66FD0B20FB16BDF72F8EE8D76D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C621B6676EE1531978E291DD /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		63408854405D5765007F56B9 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				4EF85491D69F70A782483F69 /* Pods-B2BTutoring */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		9BD8D1F22D98B5FE040D4C21 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0C81ED017A4BDB566798128F /* Eureka */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		BED5AFEC2EA4E23E5C7C5B72 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				019432FEFF3EF25F993ED32B /* Info.plist */,
-				E99316218BBA2D4265E3104E /* Pods-B2BTutoring-Eureka.modulemap */,
-				2423C6F12D9EEBB20792181F /* Pods-B2BTutoring-Eureka.xcconfig */,
-				C408616BA3D2BC3BBD28CCD3 /* Pods-B2BTutoring-Eureka-Private.xcconfig */,
-				C43367FFCA5E8FBF1E51DC75 /* Pods-B2BTutoring-Eureka-dummy.m */,
-				91C2E6878EDBA50F18F2424C /* Pods-B2BTutoring-Eureka-prefix.pch */,
-				171CA9FEDF3F28BCD43DF564 /* Pods-B2BTutoring-Eureka-umbrella.h */,
+				A63780400505B27ED7CB3FC84591D7F0 /* Eureka.modulemap */,
+				CD237EA22BF05C14613B378AA38FFC43 /* Eureka.xcconfig */,
+				981CDE9D1D28098344394CD2A72C19FA /* Eureka-dummy.m */,
+				68A0B0D6A1ED647E20F26D46CB7F3206 /* Eureka-prefix.pch */,
+				A30E6368F07D062C2FB80C069272185D /* Eureka-umbrella.h */,
+				263F6FBC167A01D12F748A811160090D /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Pods-B2BTutoring-Eureka";
+			path = "../Target Support Files/Eureka";
 			sourceTree = "<group>";
 		};
-		C621B6676EE1531978E291DD /* iOS */ = {
+		B9C6DDE2C035ED93DFA8225F037B600A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C1FCF7E6F3052AE6A949623C /* Foundation.framework */,
-				EE359C46CCEC1B9832EC8608 /* UIKit.framework */,
+				D2236F241AF8C37FFC2F38140C7FABA9 /* Eureka.framework */,
+				7278AE57FFC544966EDEB78E40AF4390 /* Pods_B2BTutoring.framework */,
 			);
-			name = iOS;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3194FB35981973BF232F2C26 /* Headers */ = {
+		5FB112168864BA19C30E52BFA64ECA6B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14AA77B2C13F01F740A2FC1F /* Pods-B2BTutoring-Eureka-umbrella.h in Headers */,
+				FE866CD6C8C439F30451197FEBA62E24 /* Pods-B2BTutoring-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EBA145C56FF8FF18CA1C25A2 /* Headers */ = {
+		AA218788F353BDC541978D137295281A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8988BACC46ED704F39C685C9 /* Pods-B2BTutoring-umbrella.h in Headers */,
+				E52D5180B8080C290DB1BE94C2B97172 /* Eureka-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4535E8DACBAAC98B0B97AC3E /* Pods-B2BTutoring-Eureka */ = {
+		31EF08F3444DCD2B169D92269C5BCD3D /* Eureka */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9E5CC8322A396D882611BDE /* Build configuration list for PBXNativeTarget "Pods-B2BTutoring-Eureka" */;
+			buildConfigurationList = BE81CBA7FE9E61766B15466DE5A60C88 /* Build configuration list for PBXNativeTarget "Eureka" */;
 			buildPhases = (
-				414B7F78104FE81AA5676C2E /* Sources */,
-				06F8BBB607AA8BE87CDC6BE9 /* Frameworks */,
-				3194FB35981973BF232F2C26 /* Headers */,
+				A06E40ECE695337D407598D813197C72 /* Sources */,
+				BD02C174EF4E9DFDD57459A0C1F42C14 /* Frameworks */,
+				AA218788F353BDC541978D137295281A /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-B2BTutoring-Eureka";
-			productName = "Pods-B2BTutoring-Eureka";
-			productReference = 69FB7B66B2A49CDF740156F5 /* Eureka.framework */;
+			name = Eureka;
+			productName = Eureka;
+			productReference = D2236F241AF8C37FFC2F38140C7FABA9 /* Eureka.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4E580406BA93507EF73EA61B /* Pods-B2BTutoring */ = {
+		D5A7F511000E02611D88B290D78DBC73 /* Pods-B2BTutoring */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3203FD1B09BAB1E743D4CFD8 /* Build configuration list for PBXNativeTarget "Pods-B2BTutoring" */;
+			buildConfigurationList = AE8B6256F9B83076D4B0B61DD26D907F /* Build configuration list for PBXNativeTarget "Pods-B2BTutoring" */;
 			buildPhases = (
-				892FC4E8A39B658F975FF150 /* Sources */,
-				68C1FA17669CD2259D398128 /* Frameworks */,
-				EBA145C56FF8FF18CA1C25A2 /* Headers */,
+				26119C18F2383C398456CB3DD80ACAE9 /* Sources */,
+				CDA9DC66440E6F8CFA2621295A29B2C8 /* Frameworks */,
+				5FB112168864BA19C30E52BFA64ECA6B /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5170707952495052DBE95EAF /* PBXTargetDependency */,
+				002961FD6A48AF275BEE6C06302A2726 /* PBXTargetDependency */,
 			);
 			name = "Pods-B2BTutoring";
 			productName = "Pods-B2BTutoring";
-			productReference = B44F48B9211B3CF4AB65117C /* Pods_B2BTutoring.framework */;
+			productReference = 7278AE57FFC544966EDEB78E40AF4390 /* Pods_B2BTutoring.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9DBBFEEE9F438E887474FC53 /* Project object */ = {
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0510;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 			};
-			buildConfigurationList = 92434F512AEB54FDED1F85B9 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 2812B909D1285FFE0DEC602C;
-			productRefGroup = 41C95CBE2647AA3AC722038A /* Products */;
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = B9C6DDE2C035ED93DFA8225F037B600A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4E580406BA93507EF73EA61B /* Pods-B2BTutoring */,
-				4535E8DACBAAC98B0B97AC3E /* Pods-B2BTutoring-Eureka */,
+				31EF08F3444DCD2B169D92269C5BCD3D /* Eureka */,
+				D5A7F511000E02611D88B290D78DBC73 /* Pods-B2BTutoring */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		414B7F78104FE81AA5676C2E /* Sources */ = {
+		26119C18F2383C398456CB3DD80ACAE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B389851CC9C2DE0FFB2E3AB /* Cells.swift in Sources */,
-				B068D9908B17240936AA0D67 /* Controllers.swift in Sources */,
-				612CFED4AE51E981445250D3 /* Core.swift in Sources */,
-				00D7CE3CD3EDBBFC5B9D8310 /* Helpers.swift in Sources */,
-				6D2ECD91FECD11082D001F4A /* Pods-B2BTutoring-Eureka-dummy.m in Sources */,
-				58A4674F07D5603E1D1D551B /* Rows.swift in Sources */,
+				175D391A619A9C0519A53B4E84554593 /* Pods-B2BTutoring-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		892FC4E8A39B658F975FF150 /* Sources */ = {
+		A06E40ECE695337D407598D813197C72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A230D9E584DEC955ED26ADD1 /* Pods-B2BTutoring-dummy.m in Sources */,
+				4CC8D349E1F05E10C3FBEB82314971FE /* Cells.swift in Sources */,
+				32BC28F2D8F762BB77955237D0B1733A /* Controllers.swift in Sources */,
+				F4549889D2DD51FD242EF19E8DE29A7A /* Core.swift in Sources */,
+				9F55540302E9D0F8DBE8C934DCF64838 /* Eureka-dummy.m in Sources */,
+				376DCCF04020C1BF909E1C9434160EC9 /* Helpers.swift in Sources */,
+				94026EE895026B940FB818A7E6538B50 /* Rows.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5170707952495052DBE95EAF /* PBXTargetDependency */ = {
+		002961FD6A48AF275BEE6C06302A2726 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-B2BTutoring-Eureka";
-			target = 4535E8DACBAAC98B0B97AC3E /* Pods-B2BTutoring-Eureka */;
-			targetProxy = DB4BF39AA937F38291A4E701 /* PBXContainerItemProxy */;
+			name = Eureka;
+			target = 31EF08F3444DCD2B169D92269C5BCD3D /* Eureka */;
+			targetProxy = 4C1406EC32BBFD2DC23D49E2A44D7834 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		097E766018C0BB4B61CDF7D1 /* Release */ = {
+		3BB3BBCBC5BC1CCDC20DE8E8A30283D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEC8929D6B2B20720175BB012590B0CC /* Pods-B2BTutoring.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-B2BTutoring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_B2BTutoring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6D007073E7663AB21ED8AE7A7EA68080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD237EA22BF05C14613B378AA38FFC43 /* Eureka.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Eureka/Eureka-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Eureka/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Eureka/Eureka.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Eureka;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		73466AA04B9C1500D6AE2099E92FF37C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD237EA22BF05C14613B378AA38FFC43 /* Eureka.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Eureka/Eureka-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Eureka/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Eureka/Eureka.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Eureka;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9B2D68F423A4E96F51D642B7EC2CEE40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E7D3FCB0DEAFCD3D40F3D19744B9FE9 /* Pods-B2BTutoring.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-B2BTutoring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_B2BTutoring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -319,95 +431,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		4DDA5AE5D8552B46595D7570 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1997B2C930C7AAAD4F439547 /* Pods-B2BTutoring.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-B2BTutoring/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_B2BTutoring;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6F62EF5CF23D005B1EF36BD7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C408616BA3D2BC3BBD28CCD3 /* Pods-B2BTutoring-Eureka-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-B2BTutoring-Eureka/Pods-B2BTutoring-Eureka-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-B2BTutoring-Eureka/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-B2BTutoring-Eureka/Pods-B2BTutoring-Eureka.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Eureka;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A904290958485E343F5C9F16 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -425,96 +448,75 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		C6B48EE573B52B9F81AF8C96 /* Release */ = {
+		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C116CBFA87C7EA73E64B6B9 /* Pods-B2BTutoring.release.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-B2BTutoring/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_B2BTutoring;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CB39F4070BEF97B1B5D7F377 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C408616BA3D2BC3BBD28CCD3 /* Pods-B2BTutoring-Eureka-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-B2BTutoring-Eureka/Pods-B2BTutoring-Eureka-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-B2BTutoring-Eureka/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-B2BTutoring-Eureka/Pods-B2BTutoring-Eureka.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Eureka;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3203FD1B09BAB1E743D4CFD8 /* Build configuration list for PBXNativeTarget "Pods-B2BTutoring" */ = {
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DDA5AE5D8552B46595D7570 /* Debug */,
-				C6B48EE573B52B9F81AF8C96 /* Release */,
+				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
+				FB45FFD90572718D82AB9092B750F0CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92434F512AEB54FDED1F85B9 /* Build configuration list for PBXProject "Pods" */ = {
+		AE8B6256F9B83076D4B0B61DD26D907F /* Build configuration list for PBXNativeTarget "Pods-B2BTutoring" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A904290958485E343F5C9F16 /* Debug */,
-				097E766018C0BB4B61CDF7D1 /* Release */,
+				3BB3BBCBC5BC1CCDC20DE8E8A30283D7 /* Debug */,
+				9B2D68F423A4E96F51D642B7EC2CEE40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9E5CC8322A396D882611BDE /* Build configuration list for PBXNativeTarget "Pods-B2BTutoring-Eureka" */ = {
+		BE81CBA7FE9E61766B15466DE5A60C88 /* Build configuration list for PBXNativeTarget "Eureka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6F62EF5CF23D005B1EF36BD7 /* Debug */,
-				CB39F4070BEF97B1B5D7F377 /* Release */,
+				73466AA04B9C1500D6AE2099E92FF37C /* Debug */,
+				6D007073E7663AB21ED8AE7A7EA68080 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9DBBFEEE9F438E887474FC53 /* Project object */;
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 }
