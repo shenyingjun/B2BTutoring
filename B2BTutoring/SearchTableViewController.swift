@@ -20,6 +20,12 @@ class SearchTableViewController: UITableViewController {
         let leftNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         
+        let nibName = UINib(nibName: "sessionCell", bundle:nil)
+        self.tableView.registerNib(nibName, forCellReuseIdentifier: "cell")
+        
+        let cellPrototype = tableView.dequeueReusableCellWithIdentifier("cell")
+        self.tableView.rowHeight = (cellPrototype?.bounds.height)!
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,25 +41,27 @@ class SearchTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 4
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SessionTableViewCell
+        cell.tutorImageView.image = UIImage(named:"starwar")
+        cell.titleLabel.text = "Introductory Jazz Guitar"
+        cell.categoryLabel.text = "Music"
+        cell.tagLabel.text = "#guitar #jazz"
+        cell.locationLabel.text = "0.5m"
+        cell.timeLabel.text = "June 12, 3pm"
+        cell.capacityLabel.text = "2/10"
+        cell.ratingLabel.text = "☆4.7"
+        
         return cell
     }
-    */
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

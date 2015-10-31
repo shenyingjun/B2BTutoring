@@ -84,7 +84,7 @@ public protocol InputTypeInitiable {
 }
 
 extension Int: InputTypeInitiable {
-
+    
     public init?(string stringValue: String){
         self.init(stringValue, radix: 10)
     }
@@ -114,7 +114,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
         textLabel?.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
         return textLabel
     }
-
+    
     private var dynamicConstraints = [NSLayoutConstraint]()
     
     public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -131,7 +131,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
         selectionStyle = .None
         contentView.addSubview(titleLabel!)
         contentView.addSubview(textField)
-
+        
         titleLabel?.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.Old.union(.New), context: nil)
         imageView?.addObserver(self, forKeyPath: "image", options: NSKeyValueObservingOptions.Old.union(.New), context: nil)
         textField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
@@ -191,8 +191,8 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
         dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-11-[textField]-11-|", options: .AlignAllBaseline, metrics: nil, views: ["textField": textField])
         
         if let label = titleLabel, let text = label.text where !text.isEmpty {
-                dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-11-[titleLabel]-11-|", options: .AlignAllBaseline, metrics: nil, views: ["titleLabel": label])
-                dynamicConstraints.append(NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: textField, attribute: .CenterY, multiplier: 1, constant: 0))
+            dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-11-[titleLabel]-11-|", options: .AlignAllBaseline, metrics: nil, views: ["titleLabel": label])
+            dynamicConstraints.append(NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: textField, attribute: .CenterY, multiplier: 1, constant: 0))
         }
         if let imageView = imageView, let _ = imageView.image {
             views["imageView"] = imageView
@@ -256,7 +256,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
     public func textFieldDidBeginEditing(textField: UITextField) {
         formViewController()?.beginEditing(self)
         if let fieldRowConformance = (row as? FieldRowConformance), let _ = fieldRowConformance.formatter where !fieldRowConformance.useFormatterDuringInput {
-                textField.text = row.displayValueFor?(row.value)
+            textField.text = row.displayValueFor?(row.value)
         }
     }
     
@@ -274,8 +274,8 @@ public class TextCell : _FieldCell<String>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.autocorrectionType = .Default
         textField.autocapitalizationType = .Sentences
         textField.keyboardType = .Default
@@ -289,8 +289,8 @@ public class IntCell : _FieldCell<Int>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.autocorrectionType = .Default
         textField.autocapitalizationType = .None
         textField.keyboardType = .NumberPad
@@ -303,8 +303,8 @@ public class PhoneCell : _FieldCell<String>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.keyboardType = .PhonePad
     }
 }
@@ -315,8 +315,8 @@ public class NameCell : _FieldCell<String>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.autocorrectionType = .No
         textField.autocapitalizationType = .Words
         textField.keyboardType = .NamePhonePad
@@ -329,8 +329,8 @@ public class EmailCell : _FieldCell<String>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.autocorrectionType = .No
         textField.autocapitalizationType = .None
         textField.keyboardType = .EmailAddress
@@ -343,8 +343,8 @@ public class PasswordCell : _FieldCell<String>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.autocorrectionType = .No
         textField.autocapitalizationType = .None
         textField.keyboardType = .ASCIICapable
@@ -358,8 +358,8 @@ public class DecimalCell : _FieldCell<Float>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.keyboardType = .DecimalPad
     }
 }
@@ -370,20 +370,20 @@ public class URLCell : _FieldCell<NSURL>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    public override func update() {
-        super.update()
+    public override func setup() {
+        super.setup()
         textField.keyboardType = .URL
     }
 }
 
 public class TwitterCell : _FieldCell<String>, CellType {
-
+    
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-
-    public override func update() {
-        super.update()
+    
+    public override func setup() {
+        super.setup()
         textField.autocorrectionType = .No
         textField.autocapitalizationType = .None
         textField.keyboardType = .Twitter
@@ -396,10 +396,24 @@ public class AccountCell : _FieldCell<String>, CellType {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
+    public override func setup() {
+        super.setup()
+        textField.autocorrectionType = .No
+        textField.autocapitalizationType = .None
+        textField.keyboardType = .ASCIICapable
+    }
+}
+
+public class ZipCodeCell : _FieldCell<String>, CellType {
+    
+    required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
     public override func update() {
         super.update()
         textField.autocorrectionType = .No
-        textField.autocapitalizationType = .None
+        textField.autocapitalizationType = .AllCharacters
         textField.keyboardType = .ASCIICapable
     }
 }
@@ -548,13 +562,66 @@ public class DatePickerCell : Cell<NSDate>, CellType {
         case is TimePickerRow:
             return .Time
         case is DateTimePickerRow:
-           return .DateAndTime
+            return .DateAndTime
         case is CountDownPickerRow:
             return .CountDownTimer
         default:
             return .Date
         }
     }
+}
+
+public class PickerCell<T where T: Equatable> : Cell<T>, CellType, UIPickerViewDataSource, UIPickerViewDelegate{
+    
+    public lazy var picker: UIPickerView = { [unowned self] in
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(picker)
+        self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[picker]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["picker": picker]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[picker]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["picker": picker]))
+        return picker
+        }()
+    
+    private var pickerRow : _PickerRow<T> { return row as! _PickerRow<T> }
+    
+    public required init(style: UITableViewCellStyle, reuseIdentifier: String?){
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    public override func setup() {
+        super.setup()
+        height = { 213 }
+        accessoryType = .None
+        editingAccessoryType = .None
+        picker.delegate = self
+        picker.dataSource = self
+    }
+    
+    public override func update(){
+        super.update()
+        textLabel?.text = nil
+        detailTextLabel?.text = nil
+        if let selectedValue = pickerRow.value, let index = pickerRow.options.indexOf(selectedValue){
+            picker.selectRow(index, inComponent: 0, animated: true)
+        }
+    }
+    
+    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return pickerRow.options.count
+    }
+    
+    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return pickerRow.displayValueFor?(pickerRow.options[row])
+    }
+    
+    public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerRow.value = pickerRow.options[row]
+    }
+    
 }
 
 public class _TextAreaCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, UITextViewDelegate, AreaCell {
@@ -700,7 +767,7 @@ public class CheckCell : Cell<Bool>, CellType {
             tintColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
         }
     }
-
+    
     public override func setup() {
         super.setup()
         accessoryType =  .Checkmark
@@ -780,7 +847,7 @@ public class SegmentedCell<T: Equatable> : Cell<T>, CellType {
     public override func update() {
         super.update()
         detailTextLabel?.text = nil
-
+        
         updateSegmentedControl()
         segmentedControl.selectedSegmentIndex = selectedIndex() ?? UISegmentedControlNoSegment
         segmentedControl.enabled = !row.isDisabled
@@ -838,7 +905,7 @@ public class AlertSelectorCell<T: Equatable> : Cell<T>, CellType {
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-
+    
     public override func update() {
         super.update()
         accessoryType = .None

@@ -49,20 +49,20 @@ public class SelectorViewController<T:Equatable> : FormViewController, TypedRowC
         form +++= Section()
         for o in options {
             form.first! <<< CheckRow(){ [weak self] in
-                                $0.title = self?.row.displayValueFor?(o)
-                                $0.value = self?.row.value == o
-                            }
-                            .onCellSelection { [weak self] _, _ in
-                                self?.row.value = o
-                                self?.completionCallback?(self!)
-                            }
+                $0.title = self?.row.displayValueFor?(o)
+                $0.value = self?.row.value == o
+                }
+                .onCellSelection { [weak self] _, _ in
+                    self?.row.value = o
+                    self?.completionCallback?(self!)
+            }
         }
         form.first?.header = HeaderFooterView<UITableViewHeaderFooterView>(title: row.title)
     }
 }
 
 public class MultipleSelectorViewController<T:Hashable> : FormViewController, TypedRowControllerType {
-
+    
     public var row: RowOf<Set<T>>!
     public var completionCallback : ((UIViewController) -> ())?
     
@@ -78,28 +78,28 @@ public class MultipleSelectorViewController<T:Hashable> : FormViewController, Ty
         self.init()
         completionCallback = callback
     }
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         guard let options = row.dataProvider?.arrayData else { return }
         form +++= Section()
         for o in options {
             form.first! <<< CheckRow() { [weak self] in
-                                $0.title = String(o.first!)
-                                $0.value = self?.row.value?.contains(o.first!) ?? false
-                            }
-                            .onCellSelection { [weak self] _, _ in
-                                guard let set = self?.row.value else {
-                                    self?.row.value = [o.first!]
-                                    return
-                                }
-                                if set.contains(o.first!) {
-                                    self?.row.value!.remove(o.first!)
-                                }
-                                else{
-                                    self?.row.value!.insert(o.first!)
-                                }
-                            }
+                $0.title = String(o.first!)
+                $0.value = self?.row.value?.contains(o.first!) ?? false
+                }
+                .onCellSelection { [weak self] _, _ in
+                    guard let set = self?.row.value else {
+                        self?.row.value = [o.first!]
+                        return
+                    }
+                    if set.contains(o.first!) {
+                        self?.row.value!.remove(o.first!)
+                    }
+                    else{
+                        self?.row.value!.insert(o.first!)
+                    }
+            }
         }
         form.first?.header = HeaderFooterView<UITableViewHeaderFooterView>(title: row.title)
     }
@@ -133,7 +133,7 @@ public class SelectorAlertController<T: Equatable> : UIAlertController, TypedRow
             addAction(UIAlertAction(title: row.displayValueFor?(option), style: .Default, handler: { [weak self] _ in
                 self?.row.value = option
                 self?.completionCallback?(self!)
-            }))
+                }))
         }
     }
     

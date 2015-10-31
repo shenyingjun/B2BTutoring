@@ -43,7 +43,7 @@ public protocol FormDelegate : class {
     func rowsHaveBeenAdded(rows: [BaseRow], atIndexPaths:[NSIndexPath])
     func rowsHaveBeenRemoved(rows: [BaseRow], atIndexPaths:[NSIndexPath])
     func rowsHaveBeenReplaced(oldRows oldRows:[BaseRow], newRows: [BaseRow], atIndexPaths: [NSIndexPath])
-    func rowValueHasBeenChanged(row: BaseRow, oldValue: Any, newValue: Any)
+    func rowValueHasBeenChanged(row: BaseRow, oldValue: Any?, newValue: Any?)
 }
 
 //MARK: Header Footer Protocols
@@ -61,7 +61,7 @@ public protocol Taggable : AnyObject {
 }
 
 public protocol BaseRowType : Taggable {
-
+    
     var baseCell: BaseCell! { get }
     var section: Section? { get }
     
@@ -91,6 +91,8 @@ public protocol BaseInlineRowType {
 
 public protocol InlineRowType: TypedRowType, BaseInlineRowType {
     typealias InlineRow: RowType
+    
+    var onPresentInlineRow : (InlineRow -> Void)? { get set }
 }
 
 extension InlineRowType where Self: BaseRow, Self.InlineRow : BaseRow, Self.Cell : TypedCellType, Self.Cell.Value == Self.Value, Self.InlineRow.Cell.Value == Self.InlineRow.Value, Self.InlineRow.Value == Self.Value {
@@ -106,6 +108,7 @@ extension InlineRowType where Self: BaseRow, Self.InlineRow : BaseRow, Self.Cell
                 self?.value = $0.value
                 self?.updateCell()
             }
+            onPresentInlineRow?(inline)
             if (form.inlineRowHideOptions ?? Form.defaultInlineRowHideOptions).contains(.AnotherInlineRowIsShown) {
                 for row in form.allRows {
                     if let inlineRow = row as? BaseInlineRowType {
@@ -195,13 +198,13 @@ public protocol CellType: TypedCellType {}
 //MARK: Form
 
 public final class Form {
-
+    
     public static var defaultNavigationOptions = RowNavigationOptions.Enabled.union(.SkipCanNotBecomeFirstResponderRow)
     public static var defaultInlineRowHideOptions = InlineRowHideOptions.FirstResponderChanges.union(.AnotherInlineRowIsShown)
     public var inlineRowHideOptions : InlineRowHideOptions?
     
     public weak var delegate: FormDelegate?
-
+    
     public init(){}
     
     public subscript(indexPath: NSIndexPath) -> BaseRow {
@@ -229,21 +232,21 @@ public final class Form {
     public func values(includeHidden includeHidden: Bool = false) -> [String: Any?]{
         if includeHidden {
             return allRows.filter({ $0.tag != nil })
-                          .reduce([String: Any?]()) {
-                               var result = $0
-                               result[$1.tag!] = $1.baseValue
-                               return result
-                          }
+                .reduce([String: Any?]()) {
+                    var result = $0
+                    result[$1.tag!] = $1.baseValue
+                    return result
+            }
         }
         return rows.filter({ $0.tag != nil })
-                   .reduce([String: Any?]()) {
-                        var result = $0
-                        result[$1.tag!] = $1.baseValue
-                        return result
-                    }
+            .reduce([String: Any?]()) {
+                var result = $0
+                result[$1.tag!] = $1.baseValue
+                return result
+        }
     }
     
-    public func setValues(values: [String: Any]){
+    public func setValues(values: [String: Any?]){
         for (key, value) in values{
             let row: BaseRow? = rowByTag(key)
             row?.baseValue = value
@@ -289,7 +292,7 @@ extension Form : RangeReplaceableCollectionType {
         kvoWrapper._allSections.append(formSection)
         formSection.wasAddedToForm(self)
     }
-
+    
     public func appendContentsOf<S : SequenceType where S.Generator.Element == Section>(newElements: S) {
         kvoWrapper.sections.addObjectsFromArray(newElements.map { $0 })
         kvoWrapper._allSections.appendContentsOf(newElements)
@@ -299,7 +302,7 @@ extension Form : RangeReplaceableCollectionType {
     }
     
     public func reserveCapacity(n: Int){}
-
+    
     public func replaceRange<C : CollectionType where C.Generator.Element == Section>(subRange: Range<Int>, with newElements: C) {
         for (var i = subRange.startIndex; i < subRange.endIndex; i++) {
             if let section = kvoWrapper.sections.objectAtIndex(i) as? Section {
@@ -308,6 +311,8 @@ extension Form : RangeReplaceableCollectionType {
             }
         }
         kvoWrapper.sections.replaceObjectsInRange(NSMakeRange(subRange.startIndex, subRange.endIndex - subRange.startIndex), withObjectsFromArray: newElements.map { $0 })
+        kvoWrapper._allSections.insertContentsOf(newElements, at: indexForInsertionAtIndex(subRange.startIndex))
+        
         for section in newElements{
             section.wasAddedToForm(self)
         }
@@ -320,6 +325,16 @@ extension Form : RangeReplaceableCollectionType {
         }
         kvoWrapper.sections.removeAllObjects()
         kvoWrapper._allSections.removeAll()
+    }
+    
+    private func indexForInsertionAtIndex(index: Int) -> Int {
+        guard index != 0 else { return 0 }
+        
+        let row = kvoWrapper.sections[index-1]
+        if let i = kvoWrapper._allSections.indexOf(row as! Section){
+            return i + 1
+        }
+        return kvoWrapper._allSections.count
     }
 }
 
@@ -348,20 +363,20 @@ extension Form {
             guard let delegateValue = form?.delegate, let keyPathValue = keyPath, let changeType = change?[NSKeyValueChangeKindKey] else { return }
             guard keyPathValue == "_sections" else { return }
             switch changeType.unsignedLongValue {
-                case NSKeyValueChange.Setting.rawValue:
-                    let indexSet = change![NSKeyValueChangeIndexesKey] as? NSIndexSet ?? NSIndexSet(index: 0)
-                    delegateValue.sectionsHaveBeenAdded(newSections, atIndexes: indexSet)
-                case NSKeyValueChange.Insertion.rawValue:
-                    let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
-                    delegateValue.sectionsHaveBeenAdded(newSections, atIndexes: indexSet)
-                case NSKeyValueChange.Removal.rawValue:
-                    let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
-                    delegateValue.sectionsHaveBeenRemoved(oldSections, atIndexes: indexSet)
-                case NSKeyValueChange.Replacement.rawValue:
-                    let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
-                    delegateValue.sectionsHaveBeenReplaced(oldSections: oldSections, newSections: newSections, atIndexes: indexSet)
-                default:
-                    assertionFailure()
+            case NSKeyValueChange.Setting.rawValue:
+                let indexSet = change![NSKeyValueChangeIndexesKey] as? NSIndexSet ?? NSIndexSet(index: 0)
+                delegateValue.sectionsHaveBeenAdded(newSections, atIndexes: indexSet)
+            case NSKeyValueChange.Insertion.rawValue:
+                let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
+                delegateValue.sectionsHaveBeenAdded(newSections, atIndexes: indexSet)
+            case NSKeyValueChange.Removal.rawValue:
+                let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
+                delegateValue.sectionsHaveBeenRemoved(oldSections, atIndexes: indexSet)
+            case NSKeyValueChange.Replacement.rawValue:
+                let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
+                delegateValue.sectionsHaveBeenReplaced(oldSections: oldSections, newSections: newSections, atIndexes: indexSet)
+            default:
+                assertionFailure()
             }
         }
     }
@@ -437,7 +452,7 @@ public func ==(lhs: Section, rhs: Section) -> Bool{
 extension Section : Hidable {}
 
 public class Section {
-
+    
     public var tag: String?
     public private(set) weak var form: Form?
     public var header: HeaderFooterViewRepresentable?
@@ -457,7 +472,7 @@ public class Section {
     public init(_ initializer: Section -> ()){
         initializer(self)
     }
-
+    
     public init(_ header: HeaderFooterView<UIView>, _ initializer: Section -> () = { _ in }){
         self.header = header
         initializer(self)
@@ -496,7 +511,7 @@ public class Section {
 
 extension Section : MutableCollectionType {
     
-//MARK: MutableCollectionType
+    //MARK: MutableCollectionType
     
     public var startIndex: Int { return 0 }
     public var endIndex: Int { return kvoWrapper.rows.count }
@@ -512,8 +527,8 @@ extension Section : MutableCollectionType {
 }
 
 extension Section : RangeReplaceableCollectionType {
-
-// MARK: RangeReplaceableCollectionType
+    
+    // MARK: RangeReplaceableCollectionType
     
     public func append(formRow: BaseRow){
         kvoWrapper.rows.insertObject(formRow, atIndex: kvoWrapper.rows.count)
@@ -539,7 +554,8 @@ extension Section : RangeReplaceableCollectionType {
             }
         }
         kvoWrapper.rows.replaceObjectsInRange(NSMakeRange(subRange.startIndex, subRange.endIndex - subRange.startIndex), withObjectsFromArray: newElements.map { $0 })
-        kvoWrapper._allRows.appendContentsOf(newElements)
+        
+        kvoWrapper._allRows.insertContentsOf(newElements, at: indexForInsertionAtIndex(subRange.startIndex))
         for row in newElements{
             row.wasAddedToFormInSection(self)
         }
@@ -553,6 +569,16 @@ extension Section : RangeReplaceableCollectionType {
         kvoWrapper.rows.removeAllObjects()
         kvoWrapper._allRows.removeAll()
     }
+    
+    private func indexForInsertionAtIndex(index: Int) -> Int {
+        guard index != 0 else { return 0 }
+        
+        let row = kvoWrapper.rows[index-1]
+        if let i = kvoWrapper._allRows.indexOf(row as! BaseRow){
+            return i + 1
+        }
+        return kvoWrapper._allRows.count
+    }
 }
 
 public enum HeaderFooterProvider<ViewType: UIView> {
@@ -562,12 +588,12 @@ public enum HeaderFooterProvider<ViewType: UIView> {
     
     internal func createView() -> ViewType {
         switch self {
-            case .Class:
-                return ViewType.init()
-            case .Callback(let builder):
-                return builder()
-            case .NibFile(let nibName, let bundle):
-                return (bundle ?? NSBundle(forClass: ViewType.self)).loadNibNamed(nibName, owner: nil, options: nil)[0] as! ViewType
+        case .Class:
+            return ViewType.init()
+        case .Callback(let builder):
+            return builder()
+        case .NibFile(let nibName, let bundle):
+            return (bundle ?? NSBundle(forClass: ViewType.self)).loadNibNamed(nibName, owner: nil, options: nil)[0] as! ViewType
         }
     }
 }
@@ -582,7 +608,7 @@ public struct HeaderFooterView<ViewType: UIView> : StringLiteralConvertible, Hea
     public var viewProvider: HeaderFooterProvider<ViewType>?
     public var onSetupView: ((view: ViewType, section: Section, form: FormViewController) -> ())?
     public var height: (()->CGFloat)?
-
+    
     lazy internal var staticView : ViewType? = {
         guard let view = self.viewProvider?.createView() else { return nil }
         return view;
@@ -625,11 +651,11 @@ public struct HeaderFooterView<ViewType: UIView> : StringLiteralConvertible, Hea
     public init(unicodeScalarLiteral value: String) {
         self.title  = value
     }
-
+    
     public init(extendedGraphemeClusterLiteral value: String) {
         self.title = value
     }
-
+    
     public init(stringLiteral value: String) {
         self.title = value
     }
@@ -666,19 +692,25 @@ extension Section {
             guard let delegateValue = section?.form?.delegate, let keyPathValue = keyPath, let changeType = change?[NSKeyValueChangeKindKey] else{ return }
             guard keyPathValue == "_rows" else { return }
             switch changeType.unsignedLongValue {
-                case NSKeyValueChange.Setting.rawValue:
-                    delegateValue.rowsHaveBeenAdded(newRows, atIndexPaths:[NSIndexPath(index: 0)])
-                case NSKeyValueChange.Insertion.rawValue:
-                    let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
-                    delegateValue.rowsHaveBeenAdded(newRows, atIndexPaths: indexSet.map { NSIndexPath(forRow: $0, inSection: section!.index! ) } )
-                case NSKeyValueChange.Removal.rawValue:
-                    let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
-                    delegateValue.rowsHaveBeenRemoved(oldRows, atIndexPaths: indexSet.map { NSIndexPath(forRow: $0, inSection: section!.index! ) } )
-                case NSKeyValueChange.Replacement.rawValue:
-                    let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
-                    delegateValue.rowsHaveBeenReplaced(oldRows: oldRows, newRows: newRows, atIndexPaths: indexSet.map { NSIndexPath(forRow: $0, inSection: section!.index!)})
-                default:
-                    assertionFailure()
+            case NSKeyValueChange.Setting.rawValue:
+                delegateValue.rowsHaveBeenAdded(newRows, atIndexPaths:[NSIndexPath(index: 0)])
+            case NSKeyValueChange.Insertion.rawValue:
+                let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
+                if let _index = section?.index {
+                    delegateValue.rowsHaveBeenAdded(newRows, atIndexPaths: indexSet.map { NSIndexPath(forRow: $0, inSection: _index ) } )
+                }
+            case NSKeyValueChange.Removal.rawValue:
+                let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
+                if let _index = section?.index {
+                    delegateValue.rowsHaveBeenRemoved(oldRows, atIndexPaths: indexSet.map { NSIndexPath(forRow: $0, inSection: _index ) } )
+                }
+            case NSKeyValueChange.Replacement.rawValue:
+                let indexSet = change![NSKeyValueChangeIndexesKey] as! NSIndexSet
+                if let _index = section?.index {
+                    delegateValue.rowsHaveBeenReplaced(oldRows: oldRows, newRows: newRows, atIndexPaths: indexSet.map { NSIndexPath(forRow: $0, inSection: _index)})
+                }
+            default:
+                assertionFailure()
             }
         }
     }
@@ -696,10 +728,10 @@ extension Section /* Condition */{
     public func evaluateHidden(){
         if let h = hidden, let f = form {
             switch h {
-                case .Function(_ , let callback):
-                    hiddenCache = callback(f)
-                case .Predicate(let predicate):
-                    hiddenCache = predicate.evaluateWithObject(self, substitutionVariables: f.dictionaryValuesToEvaluatePredicate())
+            case .Function(_ , let callback):
+                hiddenCache = callback(f)
+            case .Predicate(let predicate):
+                hiddenCache = predicate.evaluateWithObject(self, substitutionVariables: f.dictionaryValuesToEvaluatePredicate())
             }
             if hiddenCache {
                 form?.hideSection(self)
@@ -722,10 +754,10 @@ extension Section /* Condition */{
     func addToRowObservers(){
         guard let h = hidden else { return }
         switch h {
-            case .Function(let tags, _):
-                form?.addRowObservers(self, rowTags: tags, type: .Hidden)
-            case .Predicate(let predicate):
-                form?.addRowObservers(self, rowTags: predicate.predicateVars, type: .Hidden)
+        case .Function(let tags, _):
+            form?.addRowObservers(self, rowTags: tags, type: .Hidden)
+        case .Predicate(let predicate):
+            form?.addRowObservers(self, rowTags: predicate.predicateVars, type: .Hidden)
         }
     }
     
@@ -740,10 +772,10 @@ extension Section /* Condition */{
     func removeFromRowObservers(){
         guard let h = hidden else { return }
         switch h {
-            case .Function(let tags, _):
-                form?.removeRowObservers(self, rows: tags, type: .Hidden)
-            case .Predicate(let predicate):
-                form?.removeRowObservers(self, rows: predicate.predicateVars, type: .Hidden)
+        case .Function(let tags, _):
+            form?.removeRowObservers(self, rows: tags, type: .Hidden)
+        case .Predicate(let predicate):
+            form?.removeRowObservers(self, rows: predicate.predicateVars, type: .Hidden)
         }
     }
     
@@ -813,85 +845,85 @@ extension RowType where Self : BaseRow, Cell : TypedCellType, Cell.Value == Valu
     
     public static var defaultCellUpdate:((Cell, Self) -> ())? {
         set {
-            if let newValue = newValue {
-                let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
-                newValue(baseCell as! Cell, baseRow as! Self)
-                }
-                RowDefaults.cellUpdate["\(self)"] = wrapper
-                RowDefaults.rawCellUpdate["\(self)"] = newValue
-            }
-            else {
-                RowDefaults.cellUpdate["\(self)"] = nil
-                RowDefaults.rawCellUpdate["\(self)"] = nil
-            }
+        if let newValue = newValue {
+        let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+        newValue(baseCell as! Cell, baseRow as! Self)
+        }
+        RowDefaults.cellUpdate["\(self)"] = wrapper
+        RowDefaults.rawCellUpdate["\(self)"] = newValue
+    }
+        else {
+        RowDefaults.cellUpdate["\(self)"] = nil
+        RowDefaults.rawCellUpdate["\(self)"] = nil
+        }
         }
         get{ return RowDefaults.rawCellUpdate["\(self)"] as? ((Cell, Self) -> ()) }
     }
     
     public static var defaultCellSetup:((Cell, Self) -> ())? {
         set {
-            if let newValue = newValue {
-                let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
-                newValue(baseCell as! Cell, baseRow as! Self)
-                }
-                RowDefaults.cellSetup["\(self)"] = wrapper
-                RowDefaults.rawCellSetup["\(self)"] = newValue
+        if let newValue = newValue {
+        let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+        newValue(baseCell as! Cell, baseRow as! Self)
         }
+        RowDefaults.cellSetup["\(self)"] = wrapper
+        RowDefaults.rawCellSetup["\(self)"] = newValue
+    }
         else {
-                RowDefaults.cellSetup["\(self)"] = nil
-                RowDefaults.rawCellSetup["\(self)"] = nil
-            }
+        RowDefaults.cellSetup["\(self)"] = nil
+        RowDefaults.rawCellSetup["\(self)"] = nil
+        }
         }
         get{ return RowDefaults.rawCellSetup["\(self)"] as? ((Cell, Self) -> ()) }
     }
     
     public static var defaultOnCellHighlight:((Cell, Self) -> ())? {
         set {
-            if let newValue = newValue {
-                let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
-                    newValue(baseCell as! Cell, baseRow as! Self)
-                }
-                RowDefaults.onCellHighlight["\(self)"] = wrapper
-                RowDefaults.rawOnCellHighlight["\(self)"] = newValue
-            }
-            else {
-                RowDefaults.onCellHighlight["\(self)"] = nil
-                RowDefaults.rawOnCellHighlight["\(self)"] = nil
-            }
+        if let newValue = newValue {
+        let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+        newValue(baseCell as! Cell, baseRow as! Self)
+        }
+        RowDefaults.onCellHighlight["\(self)"] = wrapper
+        RowDefaults.rawOnCellHighlight["\(self)"] = newValue
+    }
+        else {
+        RowDefaults.onCellHighlight["\(self)"] = nil
+        RowDefaults.rawOnCellHighlight["\(self)"] = nil
+        }
         }
         get{ return RowDefaults.rawOnCellHighlight["\(self)"] as? ((Cell, Self) -> ()) }
     }
     
     public static var defaultOnCellUnHighlight:((Cell, Self) -> ())? {
         set {
-            if let newValue = newValue {
-            let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
-                newValue(baseCell as! Cell, baseRow as! Self)
-            }
-                RowDefaults.onCellUnHighlight ["\(self)"] = wrapper
-                RowDefaults.rawOnCellUnHighlight["\(self)"] = newValue
-            }
-            else {
-                RowDefaults.onCellUnHighlight["\(self)"] = nil
-                RowDefaults.rawOnCellUnHighlight["\(self)"] = nil
-            }
+        if let newValue = newValue {
+        let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+        newValue(baseCell as! Cell, baseRow as! Self)
+        }
+        RowDefaults.onCellUnHighlight ["\(self)"] = wrapper
+        RowDefaults.rawOnCellUnHighlight["\(self)"] = newValue
+    }
+        else {
+        RowDefaults.onCellUnHighlight["\(self)"] = nil
+        RowDefaults.rawOnCellUnHighlight["\(self)"] = nil
+        }
         }
         get { return RowDefaults.rawOnCellUnHighlight["\(self)"] as? ((Cell, Self) -> ()) }
     }
     
     public static var defaultRowInitializer:(Self -> ())? {
         set {
-            if let newValue = newValue {
-                let wrapper : (BaseRow) -> Void = { (baseRow: BaseRow) in
-                    newValue(baseRow as! Self)
-                }
-                RowDefaults.rowInitialization["\(self)"] = wrapper
-                RowDefaults.rawRowInitialization["\(self)"] = newValue
-            }
-            else {
-                RowDefaults.rowInitialization["\(self)"] = nil
-                RowDefaults.rawRowInitialization["\(self)"] = nil
-            }
+        if let newValue = newValue {
+        let wrapper : (BaseRow) -> Void = { (baseRow: BaseRow) in
+        newValue(baseRow as! Self)
+        }
+        RowDefaults.rowInitialization["\(self)"] = wrapper
+        RowDefaults.rawRowInitialization["\(self)"] = newValue
+    }
+        else {
+        RowDefaults.rowInitialization["\(self)"] = nil
+        RowDefaults.rawRowInitialization["\(self)"] = nil
+        }
         }
         get { return RowDefaults.rawRowInitialization["\(self)"] as? (Self -> ()) }
     }
@@ -929,7 +961,7 @@ extension RowType where Self : BaseRow, Cell : TypedCellType, Cell.Value == Valu
 
 
 public class BaseRow : BaseRowType {
-
+    
     private var callbackOnChange: (()->Void)?
     private var callbackCellUpdate: (()->Void)?
     private var callbackCellSetup: Any?
@@ -960,7 +992,7 @@ public class BaseRow : BaseRowType {
     public var isHidden : Bool { return hiddenCache }
     
     public weak var section: Section?
-
+    
     public required init(tag: String? = nil){
         self.tag = tag
     }
@@ -998,10 +1030,10 @@ extension BaseRow {
     public final func evaluateHidden() {
         guard let h = hidden, let form = section?.form else { return }
         switch h {
-            case .Function(_ , let callback):
-                hiddenCache = callback(form)
-            case .Predicate(let predicate):
-                hiddenCache = predicate.evaluateWithObject(self, substitutionVariables: form.dictionaryValuesToEvaluatePredicate())
+        case .Function(_ , let callback):
+            hiddenCache = callback(form)
+        case .Predicate(let predicate):
+            hiddenCache = predicate.evaluateWithObject(self, substitutionVariables: form.dictionaryValuesToEvaluatePredicate())
         }
         if hiddenCache {
             section?.hideRow(self)
@@ -1014,10 +1046,10 @@ extension BaseRow {
     public final func evaluateDisabled() {
         guard let d = disabled, form = section?.form else { return }
         switch d {
-            case .Function(_ , let callback):
-                disabledCache = callback(form)
-            case .Predicate(let predicate):
-                disabledCache = predicate.evaluateWithObject(self, substitutionVariables: form.dictionaryValuesToEvaluatePredicate())
+        case .Function(_ , let callback):
+            disabledCache = callback(form)
+        case .Predicate(let predicate):
+            disabledCache = predicate.evaluateWithObject(self, substitutionVariables: form.dictionaryValuesToEvaluatePredicate())
         }
         updateCell()
     }
@@ -1036,20 +1068,20 @@ extension BaseRow {
     private final func addToHiddenRowObservers() {
         guard let h = hidden else { return }
         switch h {
-            case .Function(let tags, _):
-                section?.form?.addRowObservers(self, rowTags: tags, type: .Hidden)
-            case .Predicate(let predicate):
-                section?.form?.addRowObservers(self, rowTags: predicate.predicateVars, type: .Hidden)
+        case .Function(let tags, _):
+            section?.form?.addRowObservers(self, rowTags: tags, type: .Hidden)
+        case .Predicate(let predicate):
+            section?.form?.addRowObservers(self, rowTags: predicate.predicateVars, type: .Hidden)
         }
     }
     
     private final func addToDisabledRowObservers() {
         guard let d = disabled else { return }
         switch d {
-            case .Function(let tags, _):
-                section?.form?.addRowObservers(self, rowTags: tags, type: .Disabled)
-            case .Predicate(let predicate):
-                section?.form?.addRowObservers(self, rowTags: predicate.predicateVars, type: .Disabled)
+        case .Function(let tags, _):
+            section?.form?.addRowObservers(self, rowTags: tags, type: .Disabled)
+        case .Predicate(let predicate):
+            section?.form?.addRowObservers(self, rowTags: predicate.predicateVars, type: .Disabled)
         }
     }
     
@@ -1070,20 +1102,20 @@ extension BaseRow {
     private final func removeFromHiddenRowObservers() {
         guard let h = hidden else { return }
         switch h {
-            case .Function(let tags, _):
-                section?.form?.removeRowObservers(self, rows: tags, type: .Hidden)
-            case .Predicate(let predicate):
-                section?.form?.removeRowObservers(self, rows: predicate.predicateVars, type: .Hidden)
+        case .Function(let tags, _):
+            section?.form?.removeRowObservers(self, rows: tags, type: .Hidden)
+        case .Predicate(let predicate):
+            section?.form?.removeRowObservers(self, rows: predicate.predicateVars, type: .Hidden)
         }
     }
     
     private final func removeFromDisabledRowObservers() {
         guard let d = disabled else { return }
         switch d {
-            case .Function(let tags, _):
-                section?.form?.removeRowObservers(self, rows: tags, type: .Disabled)
-            case .Predicate(let predicate):
-                section?.form?.removeRowObservers(self, rows: predicate.predicateVars, type: .Disabled)
+        case .Function(let tags, _):
+            section?.form?.removeRowObservers(self, rows: tags, type: .Disabled)
+        case .Predicate(let predicate):
+            section?.form?.removeRowObservers(self, rows: predicate.predicateVars, type: .Disabled)
         }
     }
     
@@ -1124,7 +1156,7 @@ public class RowOf<T: Equatable>: BaseRow {
     }
     
     public var dataProvider: DataProvider<T>?
-        
+    
     public var displayValueFor : (T? -> String?)? = {
         if let t = $0 {
             return String(t)
@@ -1162,11 +1194,11 @@ public class Row<T: Equatable, Cell: CellType where Cell: BaseCell, Cell.Value =
     }
     
     public override var baseCell: BaseCell { return cell }
-
+    
     public required init(tag: String?) {
         super.init(tag: tag)
     }
-
+    
     override public func updateCell() {
         super.updateCell()
         cell.update()
@@ -1489,7 +1521,7 @@ public struct CellProvider<Cell: BaseCell where Cell: CellType> {
     
     public private (set) var nibName: String?
     public private(set) var bundle: NSBundle!
-
+    
     
     public init(){}
     
@@ -1513,13 +1545,13 @@ public enum ControllerProvider<VCType: UIViewController>{
     
     func createController() -> VCType {
         switch self {
-            case .Callback(let builder):
-                return builder()
-            case .NibFile(let nibName, let bundle):
-                return VCType.init(nibName: nibName, bundle:bundle ?? NSBundle(forClass: VCType.self))
-            case .StoryBoard(let storyboardId, let storyboardName, let bundle):
-                let sb = UIStoryboard(name: storyboardName, bundle: bundle ?? NSBundle(forClass: VCType.self))
-                return sb.instantiateViewControllerWithIdentifier(storyboardId) as! VCType
+        case .Callback(let builder):
+            return builder()
+        case .NibFile(let nibName, let bundle):
+            return VCType.init(nibName: nibName, bundle:bundle ?? NSBundle(forClass: VCType.self))
+        case .StoryBoard(let storyboardId, let storyboardName, let bundle):
+            let sb = UIStoryboard(name: storyboardName, bundle: bundle ?? NSBundle(forClass: VCType.self))
+            return sb.instantiateViewControllerWithIdentifier(storyboardId) as! VCType
         }
     }
 }
@@ -1543,51 +1575,51 @@ public enum PresentationMode<VCType: UIViewController> {
     
     var completionHandler: (UIViewController ->())? {
         switch self{
-            case .Show(_, let completionCallback):
-                return completionCallback
-            case .PresentModally(_, let completionCallback):
-                return completionCallback
-            case .SegueName(_, let completionCallback):
-                return completionCallback
-            case .SegueClass(_, let completionCallback):
-                return completionCallback
+        case .Show(_, let completionCallback):
+            return completionCallback
+        case .PresentModally(_, let completionCallback):
+            return completionCallback
+        case .SegueName(_, let completionCallback):
+            return completionCallback
+        case .SegueClass(_, let completionCallback):
+            return completionCallback
         }
     }
     
     func presentViewController(viewController: VCType!, row: BaseRow, presentingViewController:FormViewController){
         switch self {
-            case .Show(_, _):
-                presentingViewController.showViewController(viewController, sender: row)
-            case .PresentModally:
-                presentingViewController.presentViewController(viewController, animated: true, completion: nil)
-            case .SegueName(let segueName, _):
-                presentingViewController.performSegueWithIdentifier(segueName, sender: row)
-            case .SegueClass(let segueClass, _):
-                let segue = segueClass.init(identifier: row.tag, source: presentingViewController, destination: viewController)
-                presentingViewController.prepareForSegue(segue, sender: row)
-                segue.perform()
+        case .Show(_, _):
+            presentingViewController.showViewController(viewController, sender: row)
+        case .PresentModally:
+            presentingViewController.presentViewController(viewController, animated: true, completion: nil)
+        case .SegueName(let segueName, _):
+            presentingViewController.performSegueWithIdentifier(segueName, sender: row)
+        case .SegueClass(let segueClass, _):
+            let segue = segueClass.init(identifier: row.tag, source: presentingViewController, destination: viewController)
+            presentingViewController.prepareForSegue(segue, sender: row)
+            segue.perform()
         }
         
     }
     
     func createController() -> VCType? {
         switch self {
-            case .Show(let controllerProvider, let completionCallback):
-                let controller = controllerProvider.createController()
-                let completionController = controller as? RowControllerType
-                if let callback = completionCallback {
-                    completionController?.completionCallback = callback
-                }
-                return controller
-            case .PresentModally(let controllerProvider, let completionCallback):
-                let controller = controllerProvider.createController()
-                let completionController = controller as? RowControllerType
-                if let callback = completionCallback {
-                    completionController?.completionCallback = callback
-                }
-                return controller
-            default:
-                return nil;
+        case .Show(let controllerProvider, let completionCallback):
+            let controller = controllerProvider.createController()
+            let completionController = controller as? RowControllerType
+            if let callback = completionCallback {
+                completionController?.completionCallback = callback
+            }
+            return controller
+        case .PresentModally(let controllerProvider, let completionCallback):
+            let controller = controllerProvider.createController()
+            let completionController = controller as? RowControllerType
+            if let callback = completionCallback {
+                completionController?.completionCallback = callback
+            }
+            return controller
+        default:
+            return nil;
         }
     }
 }
@@ -1769,7 +1801,7 @@ public class FormViewController : UIViewController, FormViewControllerProtocol {
     
     //MARK: FormDelegate
     
-    public func rowValueHasBeenChanged(row: BaseRow, oldValue: Any, newValue: Any) {}
+    public func rowValueHasBeenChanged(row: BaseRow, oldValue: Any?, newValue: Any?) {}
     
     //MARK: FormViewControllerProtocol
     
@@ -1815,7 +1847,7 @@ public class FormViewController : UIViewController, FormViewControllerProtocol {
     
     //MARK: Private
     
-    private var oldBottomInset : CGFloat = 0.0
+    private var oldBottomInset : CGFloat?
 }
 
 extension FormViewController : UITableViewDelegate {
@@ -1944,7 +1976,7 @@ extension FormViewController : FormDelegate {
         tableView?.deleteRowsAtIndexPaths(atIndexPaths, withRowAnimation: deleteAnimationForRows(rows))
         tableView?.endUpdates()
     }
-
+    
     public func rowsHaveBeenReplaced(oldRows oldRows:[BaseRow], newRows: [BaseRow], atIndexPaths: [NSIndexPath]){
         tableView?.beginUpdates()
         tableView?.reloadRowsAtIndexPaths(atIndexPaths, withRowAnimation: reloadAnimationOldRows(oldRows, newRows: newRows))
@@ -1972,7 +2004,7 @@ extension FormViewController {
         let newBottomInset = table.frame.origin.y + table.frame.size.height - keyBoardFrame.origin.y
         var tableInsets = table.contentInset
         var scrollIndicatorInsets = table.scrollIndicatorInsets
-        oldBottomInset = oldBottomInset != 0.0 ? oldBottomInset : tableInsets.bottom
+        oldBottomInset = oldBottomInset ?? tableInsets.bottom
         if newBottomInset > oldBottomInset {
             tableInsets.bottom = newBottomInset
             scrollIndicatorInsets.bottom = tableInsets.bottom
@@ -1993,9 +2025,11 @@ extension FormViewController {
         let keyBoardInfo = notification.userInfo!
         var tableInsets = table.contentInset
         var scrollIndicatorInsets = table.scrollIndicatorInsets
-        tableInsets.bottom = oldBottomInset
-        scrollIndicatorInsets.bottom = oldBottomInset
-        oldBottomInset = 0.0
+        if let oldBottomInset = oldBottomInset {
+            tableInsets.bottom = oldBottomInset
+            scrollIndicatorInsets.bottom = tableInsets.bottom
+        }
+        oldBottomInset = nil
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(keyBoardInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue)
         UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: keyBoardInfo[UIKeyboardAnimationCurveUserInfoKey]!.integerValue)!)

@@ -66,16 +66,16 @@ extension NSExpression {
     
     internal var expressionVars: [String] {
         switch expressionType{
-            case .FunctionExpressionType, .VariableExpressionType:
-                let str = "\(self)"
-                if let range = str.rangeOfString("."){
-                    return [str.substringWithRange(Range(start: str.startIndex.advancedBy(1), end:range.startIndex))]
-                }
-                else{
-                    return [str.substringFromIndex(str.startIndex.advancedBy(1))]
-                }
-            default:
-                return []
+        case .FunctionExpressionType, .VariableExpressionType:
+            let str = "\(self)"
+            if let range = str.rangeOfString("."){
+                return [str.substringWithRange(Range(start: str.startIndex.advancedBy(1), end:range.startIndex))]
+            }
+            else{
+                return [str.substringFromIndex(str.startIndex.advancedBy(1))]
+            }
+        default:
+            return []
         }
     }
 }

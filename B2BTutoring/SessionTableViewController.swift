@@ -49,6 +49,16 @@ class SessionTableViewController: UITableViewController {
         return cell
     }
 
+    @IBAction func cancelSessionCreation(segue: UIStoryboardSegue) {
+        print("Tutor canceled creating a session.")
+    }
+    
+    @IBAction func postNewSession(segue: UIStoryboardSegue) {
+        // Upload new session to parse
+        // Reload data
+        print("Tutor created a new session.")
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

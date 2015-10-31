@@ -22,67 +22,76 @@ class CreateSessionViewController: FormViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    private func initializeForm() {
-//    
-//    }
+    enum Category : String, CustomStringConvertible {
+        case Art = "Art"
+        case Cars_and_motorcycles = "Cars and motorcycles"
+        case Cooking = "Cooking"
+        case Design = "Design"
+        case DIY_and_crafts = "DIY_and_crafts"
+        case Film = "Film"
+        case Health = "Health"
+        case Music = "Music"
+        case Photography = "Photography"
+        case Sports = "Sports"
+        
+        var description : String { return rawValue }
+        
+        static let allValues = [Art, Cars_and_motorcycles, Cooking, Design, DIY_and_crafts, Film, Health, Music, Photography, Sports]
+    }
+
+    
     private func initializeForm() {
+        let font = UIFont(name: "Avenir-Medium", size: 16.0)
+        
         TextRow.defaultCellUpdate = { cell, row in
-            cell.textLabel?.font = UIFont(name: "Avenir-Medium", size: 16.0)
-            cell.textField.font = UIFont(name: "Avenir-Medium", size: 16.0)
+            cell.textLabel?.font = font
+            cell.textField.font = font
         }
+        
         DateTimeInlineRow.defaultCellUpdate = { cell, row in
-            cell.textLabel?.font = UIFont(name: "Avenir-Medium", size: 16.0)
-            cell.detailTextLabel?.font = UIFont(name: "Avenir-Medium", size: 16.0)
-           // cell.datePicker = nil
-            
+            cell.textLabel?.font = font
+            cell.detailTextLabel?.font = font
         }
     
+        PickerInlineRow<Category>.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.detailTextLabel?.font = font
+        }
+        
+        TextAreaRow.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.detailTextLabel?.font = font
+        }
+        
         form =
-            TextRow() {
-                $0.title = "Which is your favourite soccer player?"
-                //$0.cell.textField.placeholder = "I am your father."
-            }
             
-            <<< TextRow() {
-                //$0.title = "Which is your favourite soccer player?"
-                $0.cell.textField.placeholder = "I am your father."
-            }
-            
-            <<< TextRow("Title").cellSetup { cell, row in
-                cell.textField.placeholder = row.tag
+            TextRow("Title").cellSetup {
+                $0.cell.textField.placeholder = $0.row.tag
             }
             
             <<< TextRow("Location").cellSetup {
                 $0.cell.textField.placeholder = $0.row.tag
             }
+        
+//            <<< PickerRow<Category>("Category") { (row : PickerRow<Category>) -> Void in
+//                row.options = Category.allValues
+//                row.title = "Category"
+//                row.value = row.options[0]
+//            }
+            
+            <<< PickerInlineRow<Category>("Category") { (row : PickerInlineRow<Category>) -> Void in
+                row.title = row.tag
+                row.options = Category.allValues
+                row.value = row.options[0]
+            }
+            
+            <<< TextRow("Tags").cellSetup {
+                $0.cell.textField.placeholder = $0.row.tag
+            }
             
             +++
             
-            SwitchRow("All-day") {
-                $0.title = $0.tag
-                }.onChange { [weak self] row in
-                    let startDate: DateTimeInlineRow! = self?.form.rowByTag("Starts")
-                    let endDate: DateTimeInlineRow! = self?.form.rowByTag("Ends")
-                    
-                    if row.value ?? false {
-                        startDate.dateFormatter?.dateStyle = .MediumStyle
-                        startDate.dateFormatter?.timeStyle = .NoStyle
-                        endDate.dateFormatter?.dateStyle = .MediumStyle
-                        endDate.dateFormatter?.timeStyle = .NoStyle
-                    }
-                    else {
-                        startDate.dateFormatter?.dateStyle = .ShortStyle
-                        startDate.dateFormatter?.timeStyle = .ShortStyle
-                        endDate.dateFormatter?.dateStyle = .ShortStyle
-                        endDate.dateFormatter?.timeStyle = .ShortStyle
-                    }
-                    startDate.updateCell()
-                    endDate.updateCell()
-                    startDate.inlineRow?.updateCell()
-                    endDate.inlineRow?.updateCell()
-            }
-            
-            <<< DateTimeInlineRow("Starts") {
+            DateTimeInlineRow("Starts") {
                 $0.title = $0.tag
                 $0.value = NSDate().dateByAddingTimeInterval(60*60*24)
                 }
@@ -96,14 +105,7 @@ class CreateSessionViewController: FormViewController {
                 }
                 .onExpandInlineRow { cell, row, inlineRow in
                     inlineRow.cellUpdate { [weak self] cell, dateRow in
-                        let allRow: SwitchRow! = self?.form.rowByTag("All-day")
-                        cell.textLabel?.font = UIFont(name: "Avenir-Medium", size: 16.0)
-                        if allRow.value ?? false {
-                            cell.datePicker.datePickerMode = .Date
-                        }
-                        else {
-                            cell.datePicker.datePickerMode = .DateAndTime
-                        }
+                        cell.datePicker.datePickerMode = .DateAndTime
                     }
                     let color = cell.detailTextLabel?.textColor
                     row.onCollapseInlineRow { cell, _, _ in
@@ -128,34 +130,23 @@ class CreateSessionViewController: FormViewController {
                 }
                 .onExpandInlineRow { cell, row, inlineRow in
                     inlineRow.cellUpdate { [weak self] cell, dateRow in
-                        let allRow: SwitchRow! = self?.form.rowByTag("All-day")
-                        if allRow.value ?? false {
-                            cell.datePicker.datePickerMode = .Date
-                        }
-                        else {
-                            cell.datePicker.datePickerMode = .DateAndTime
-                        }
+                        cell.datePicker.datePickerMode = .DateAndTime
                     }
                     let color = cell.detailTextLabel?.textColor
                     row.onCollapseInlineRow { cell, _, _ in
                         cell.detailTextLabel?.textColor = color
                     }
                     cell.detailTextLabel?.textColor = cell.tintColor
-        }
+                }
         
-        
-        form +++=
+            form +++=
             
-            URLRow("URL") {
-                $0.placeholder = "URL"
+            TextAreaRow("Description") {
+                $0.placeholder = "Description"
+                $0.cell.textView.font = font
             }
-            
-            <<< TextAreaRow("notes") {
-                $0.placeholder = "Notes"
-        }
-        
     }
-
+    
     /*
     // MARK: - Navigation
 
