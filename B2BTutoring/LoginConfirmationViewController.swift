@@ -11,15 +11,22 @@ import UIKit
 class LoginConfirmationViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var info: UILabel!
     
     @IBAction func appendDigit(sender: UIButton) {
-        enteredCode += sender.currentTitle!
-        if enteredCode.characters.count == 4 {
-            print("Entered Code = " + enteredCode)
-            // segue to LoginProfileViewController
-            performSegueWithIdentifier("Show Create Profile", sender: self)
+        if enteredCode.characters.count < 4 {
+          enteredCode += sender.currentTitle!
         }
-
+    }
+    
+    @IBAction func confirmCode(sender: UIButton) {
+        if enteredCode.characters.count == 4 {
+            print ("Entered Code = " + enteredCode)
+            performSegueWithIdentifier("Show Create Profile", sender: self)
+        } else {
+            info.text = "WRONG CODE"
+            info.textAlignment = NSTextAlignment.Center
+        }
     }
     
     @IBAction func deleteDigit(sender: UIButton) {

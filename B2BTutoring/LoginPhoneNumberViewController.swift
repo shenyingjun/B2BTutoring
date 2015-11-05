@@ -11,15 +11,27 @@ import UIKit
 class LoginPhoneNumberViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var info: UILabel!
     
     @IBAction func appendDigit(sender: UIButton) {
-        enteredDigits += sender.currentTitle!
+        if enteredDigits.characters.count < 10 {
+            enteredDigits += sender.currentTitle!
+        }
+
+    }
+    
+    func sendConfirmationCode() {
+        print("TODO: send confirmation code.")
+    }
+    
+    @IBAction func confirmNumber(sender: UIButton) {
         if enteredDigits.characters.count == 10 {
             print("Phone Number = " + enteredDigits)
-            print("TODO: send confirmation code.")
-            // send confirmation code
-            // segue to next LoginConfirmationViewController
+            sendConfirmationCode()
             performSegueWithIdentifier("Show Confirmation", sender: self)
+        } else {
+            info.text = "INVALID PHONE NUMBER"
+            info.textAlignment = NSTextAlignment.Center
         }
     }
     
