@@ -117,21 +117,6 @@ class ProfileTableViewController: UITableViewController {
             return cell
         }
     }
-    /*
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        switch profileSegmentedControl.selectedSegmentIndex {
-        case 0:
-            return 44
-        case 1:
-            return 120
-        case 2:
-            return 120
-        default:
-            return 120
-        }
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -168,14 +153,16 @@ class ProfileTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "sessionInfo" {
+            let dstController = segue.destinationViewController as! SessionInfoViewController;
+            //dstController.xxx = xxx
+        }
     }
-    */
 
 }
