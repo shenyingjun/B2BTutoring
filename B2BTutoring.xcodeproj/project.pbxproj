@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */; };
+		390937FC1BEC0B59008043B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390937FB1BEC0B59008043B4 /* MapKit.framework */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
 		7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */; };
 		7E2C70C81BDDA834000F7F0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C70C61BDDA834000F7F0F /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 /* Begin PBXFileReference section */
 		10570C705A72F66E008AD80B /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.debug.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
 		1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionInfoViewController.swift; sourceTree = "<group>"; };
+		390937FB1BEC0B59008043B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		479FD915146CC99E76693270 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.release.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
 		7E2C70BF1BDDA834000F7F0F /* B2BTutoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B2BTutoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				7E2C70EF1BDDAA27000F7F0F /* libz.tbd in Frameworks */,
 				7E2C70ED1BDDAA1F000F7F0F /* SystemConfiguration.framework in Frameworks */,
 				7E2C70EB1BDDAA18000F7F0F /* StoreKit.framework in Frameworks */,
+				390937FC1BEC0B59008043B4 /* MapKit.framework in Frameworks */,
 				7E2C70E91BDDAA10000F7F0F /* Security.framework in Frameworks */,
 				7E2C70E71BDDAA07000F7F0F /* QuartzCore.framework in Frameworks */,
 				7E2C70E51BDDA9FF000F7F0F /* CoreLocation.framework in Frameworks */,
@@ -171,6 +176,7 @@
 		7E2C70D91BDDA8FB000F7F0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				390937FB1BEC0B59008043B4 /* MapKit.framework */,
 				7E2C70F01BDDAA30000F7F0F /* libsqlite3.tbd */,
 				7E2C70EE1BDDAA27000F7F0F /* libz.tbd */,
 				7E2C70EC1BDDAA1F000F7F0F /* SystemConfiguration.framework */,
@@ -199,6 +205,7 @@
 				7E2C70F21BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift */,
 				7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */,
 				7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */,
+				390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -292,6 +299,11 @@
 					7E2C70BE1BDDA834000F7F0F = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 4DC67968G8;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -387,6 +399,7 @@
 				7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */,
 				7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */,
 				7E5D042A1BE3591300285761 /* ProfileTableViewController.swift in Sources */,
+				390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */,
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
 				7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */,
 				7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */,
