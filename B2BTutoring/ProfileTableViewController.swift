@@ -13,13 +13,12 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileSegmentedControl: UISegmentedControl!
     
-    let profile = Profile()
     let tuteeSession = TuteeSession()
     let tutorSession = TutorSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = profile.info[0].value
+            //profile.info[0].value
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -65,7 +64,7 @@ class ProfileTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         switch profileSegmentedControl.selectedSegmentIndex {
         case 0:
-            return profile.info.count-1
+            return 0//profile.info.count-1
         case 1:
             return tuteeSession.info.count
         case 2:
@@ -80,9 +79,9 @@ class ProfileTableViewController: UITableViewController {
         switch profileSegmentedControl.selectedSegmentIndex {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell", forIndexPath: indexPath) as! InfoTableViewCell
-            let entry = profile.info[indexPath.row+1]
-            cell.keyLabel.text = entry.key
-            cell.valueLabel.text = entry.value
+//            let entry = profile.info[indexPath.row+1]
+//            cell.keyLabel.text = entry.key
+//            cell.valueLabel.text = entry.value
             
             return cell
         case 1:

@@ -15,19 +15,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        // White status bar
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        // [Optional] Power your app with Local Datastore. For more info, go to
+        // https://parse.com/docs/ios_guide#localdatastore/iOS
+        Parse.enableLocalDatastore()
         
         // Initialize Parse.
-        Parse.setApplicationId("LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr",
-            clientKey: "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG")
+        Parse.setApplicationId("2IHHhgfHS9TbTsHcgzvisVNFXG9IzKtGRCO4Wm80",
+            clientKey: "QaM0mgeFN2PpFsXDH2tpC1V7iKjPcYRn6U8jkz1B")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         return true
     }
+
+//    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+//        // Override point for customization after application launch.
+//        
+//        // White status bar
+//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+//        
+//        // Initialize Parse.
+//        Parse.setApplicationId("LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr",
+//            clientKey: "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG")
+//        
+//        
+//        
+//        return true
+//    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

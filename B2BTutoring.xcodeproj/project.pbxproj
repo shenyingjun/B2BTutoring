@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02CA3DB41BEE8BF9004E68BC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA3DB31BEE8BF9004E68BC /* Session.swift */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
 		7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */; };
 		7E2C70C81BDDA834000F7F0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C70C61BDDA834000F7F0F /* Main.storyboard */; };
@@ -32,7 +33,7 @@
 		7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D04261BE3550700285761 /* SessionTableViewCell.swift */; };
 		7E5D042A1BE3591300285761 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D04291BE3591300285761 /* ProfileTableViewController.swift */; };
 		7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */; };
-		7E5D042E1BE3598700285761 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D042D1BE3598700285761 /* Profile.swift */; };
+		7E5D042E1BE3598700285761 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D042D1BE3598700285761 /* User.swift */; };
 		7E5D04301BE35F3C00285761 /* sessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5D042F1BE35F3C00285761 /* sessionCell.xib */; };
 		7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */; };
 		7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */; };
@@ -51,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02CA3DB21BEE811E004E68BC /* B2B-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "B2B-Bridging-Header.h"; sourceTree = "<group>"; };
+		02CA3DB31BEE8BF9004E68BC /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		10570C705A72F66E008AD80B /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.debug.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
 		1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		479FD915146CC99E76693270 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.release.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,7 +84,7 @@
 		7E5D04261BE3550700285761 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		7E5D04291BE3591300285761 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
-		7E5D042D1BE3598700285761 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		7E5D042D1BE3598700285761 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7E5D042F1BE35F3C00285761 /* sessionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessionCell.xib; sourceTree = "<group>"; };
 		7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberButtonView.swift; sourceTree = "<group>"; };
 		7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeSession.swift; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 		7E2C70C11BDDA834000F7F0F /* B2BTutoring */ = {
 			isa = PBXGroup;
 			children = (
+				02CA3DB21BEE811E004E68BC /* B2B-Bridging-Header.h */,
 				7E4BEC9E1BE1A6BD00D74DEB /* Models */,
 				7E4BEC9D1BE1A6AC00D74DEB /* Views */,
 				7E4BEC9C1BE1A68C00D74DEB /* Controllers */,
@@ -216,7 +220,8 @@
 		7E4BEC9E1BE1A6BD00D74DEB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7E5D042D1BE3598700285761 /* Profile.swift */,
+				02CA3DB31BEE8BF9004E68BC /* Session.swift */,
+				7E5D042D1BE3598700285761 /* User.swift */,
 				7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */,
 				7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */,
 			);
@@ -390,6 +395,7 @@
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
 				7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */,
 				7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */,
+				02CA3DB41BEE8BF9004E68BC /* Session.swift in Sources */,
 				7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
@@ -400,7 +406,7 @@
 				7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */,
 				7EFEB6B61BDF393D00D644A9 /* TextFieldsEffects.swift in Sources */,
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
-				7E5D042E1BE3598700285761 /* Profile.swift in Sources */,
+				7E5D042E1BE3598700285761 /* User.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
 				7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */,
 				7EB7F0341BE3F13700CCDAB4 /* TutorSession.swift in Sources */,
@@ -527,7 +533,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucla.cs130.B2BTutoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "B2BTutoring/B2B-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -548,7 +554,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucla.cs130.B2BTutoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "B2BTutoring/B2B-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import Parse
 
 class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -38,6 +39,31 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
     // profile picture
     @IBOutlet weak var photoButton: UIButton!
     var photo: UIImage!
+    
+    @IBAction func saveProfile(sender: UIButton) {
+        let user = User()
+        user.username = "myPhoneNumber"
+        user.password = "myPassword"
+        user.lastName = "lastname"
+        user.firstName = "firstname"
+        user.phone = "1231231231"
+        user.intro = "this is my intro"
+        
+        user.signUpInBackgroundWithBlock {
+            (succeeded: Bool, error: NSError?) -> Void in
+            if succeeded {
+                print("succeeded")
+                var currentUser = User.currentUser()
+                if (currentUser != nil) {
+                    print(currentUser!.intro)
+                } else {
+                    print("current user is nil")
+                }
+            } else {
+                print("error")
+            }
+        }
+    }
     
     @IBAction func addPhoto(sender: UIButton) {
         // setup action sheet
@@ -92,6 +118,18 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var newSession = Session()
+        
+        newSession.date = Date.parse("2014-05-20")
+        
+        newSession.tutee = "Mike and John"
+        
+        newSession.tutor = "Mary"
+        
+        newSession.descrip = "let play soccer"
+        
+        print(newSession.expired())
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
