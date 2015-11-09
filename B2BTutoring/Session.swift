@@ -85,9 +85,6 @@ class Session : PFObject, PFSubclassing {
         {
             isGreater = true
         }
-            
-        
-            return isGreater
-
+        return isGreater
     }
 }

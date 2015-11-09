@@ -49,6 +49,24 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         user.phone = "1231231231"
         user.intro = "this is my intro"
         
+        var query = PFQuery(className: Session.parseClassName())
+        query.whereKey("tutor", equalTo:"Mary")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("Success on retrieving \(objects!.count)")
+                if let objects = objects as [PFObject]! {
+                    for object in objects {
+                        if let object = object as? Session {
+                            print(object.tutee)
+                        }
+                    }
+                }
+            } else {
+                print("Error: \(error!)")
+            }
+        }
+        
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             if succeeded {
@@ -129,7 +147,14 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         
         newSession.descrip = "let play soccer"
         
-        print(newSession.expired())
+        newSession.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                print("saved")
+            } else {
+                print("error")
+            }
+        }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
