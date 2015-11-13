@@ -10,5 +10,6 @@
 #define B2B_Bridging_Header_h
 
 #import <Parse/PFObject+Subclass.h>
+#import <Parse/Parse.h>
 
 #endif /* B2B_Bridging_Header_h */

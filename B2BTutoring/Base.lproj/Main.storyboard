@@ -1166,13 +1166,13 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="sFV-Zh-kWi">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="iWS-zB-TSS" kind="unwind" unwindAction="cancelSessionCreation:" id="YvR-X4-6FG"/>
+                                <segue destination="iWS-zB-TSS" kind="unwind" identifier="UnwindToSchedule" unwindAction="exitSessionCreation:" id="YvR-X4-6FG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Post" id="bqp-jT-2mU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="iWS-zB-TSS" kind="unwind" unwindAction="postNewSession:" id="6dQ-RQ-7hd"/>
+                                <action selector="createSession:" destination="MsA-SO-9ne" id="3hP-s2-HPT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

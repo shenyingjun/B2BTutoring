@@ -49,7 +49,8 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         user.phone = "1231231231"
         user.intro = "this is my intro"
         
-        var query = PFQuery(className: Session.parseClassName())
+        user.tutorSessions = [Session]()
+        let query = PFQuery(className: Session.parseClassName())
         query.whereKey("tutor", equalTo:"Mary")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -58,8 +59,28 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
                 if let objects = objects as [PFObject]! {
                     for object in objects {
                         if let object = object as? Session {
-                            print(object.tutee)
+                            user.tutorSessions!.append(object)
                         }
+                    }
+                }
+                
+                let currentSessions = user.getOngoingTutorSessions()
+                for session in currentSessions {
+                    print(session.tutor + " " + session.tutee)
+                }
+                
+                user.signUpInBackgroundWithBlock {
+                    (succeeded: Bool, error: NSError?) -> Void in
+                    if succeeded {
+                        print("succeeded")
+                        let currentUser = User.currentUser()
+                        if (currentUser != nil) {
+                            print(currentUser!.intro)
+                        } else {
+                            print("current user is nil")
+                        }
+                    } else {
+                        print("error")
                     }
                 }
             } else {
@@ -67,20 +88,6 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
             }
         }
         
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
-            if succeeded {
-                print("succeeded")
-                var currentUser = User.currentUser()
-                if (currentUser != nil) {
-                    print(currentUser!.intro)
-                } else {
-                    print("current user is nil")
-                }
-            } else {
-                print("error")
-            }
-        }
     }
     
     @IBAction func addPhoto(sender: UIButton) {
@@ -135,27 +142,7 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
     }
         
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        var newSession = Session()
-        
-        newSession.date = Date.parse("2014-05-20")
-        
-        newSession.tutee = "Mike and John"
-        
-        newSession.tutor = "Mary"
-        
-        newSession.descrip = "let play soccer"
-        
-        newSession.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                print("saved")
-            } else {
-                print("error")
-            }
-        }
-        
+        super.viewDidLoad()        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
     }

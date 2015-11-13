@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Parse
 
 class User : PFUser {
     
@@ -28,5 +27,29 @@ class User : PFUser {
     @NSManaged var firstName: String
     @NSManaged var phone: String
     @NSManaged var intro: String
-    @NSManaged var history: String
+    @NSManaged var tutorSessions: [Session]?
+    
+    func getOngoingTutorSessions() -> [Session] {
+        var ongoingSessions = [Session]()
+        if self.tutorSessions != nil {
+            for session in self.tutorSessions! {
+                if !session.expired() {
+                    ongoingSessions.append(session)
+                }
+            }
+        }
+        return ongoingSessions
+    }
+
+    func getPassedTutorSessions() -> [Session] {
+        var passedSessions = [Session]()
+        if self.tutorSessions != nil {
+            for session in self.tutorSessions! {
+                if session.expired() {
+                    passedSessions.append(session)
+                }
+            }
+        }
+        return passedSessions
+    }
 }

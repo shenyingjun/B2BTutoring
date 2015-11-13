@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02452F251BF2B7B400309001 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02452F241BF2B7B400309001 /* Date.swift */; };
 		02CA3DB41BEE8BF9004E68BC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA3DB31BEE8BF9004E68BC /* Session.swift */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
 		7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02452F241BF2B7B400309001 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		02CA3DB21BEE811E004E68BC /* B2B-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "B2B-Bridging-Header.h"; sourceTree = "<group>"; };
 		02CA3DB31BEE8BF9004E68BC /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		10570C705A72F66E008AD80B /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.debug.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				02CA3DB31BEE8BF9004E68BC /* Session.swift */,
+				02452F241BF2B7B400309001 /* Date.swift */,
 				7E5D042D1BE3598700285761 /* User.swift */,
 				7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */,
 				7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */,
@@ -396,6 +399,7 @@
 				7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */,
 				7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */,
 				02CA3DB41BEE8BF9004E68BC /* Session.swift in Sources */,
+				02452F251BF2B7B400309001 /* Date.swift in Sources */,
 				7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
