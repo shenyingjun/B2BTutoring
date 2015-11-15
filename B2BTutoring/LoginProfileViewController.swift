@@ -11,6 +11,8 @@ import Eureka
 
 class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var message: UILabel!
+    
     // text field
     @IBOutlet weak var firstname: HoshiTextField! {
         didSet {
@@ -30,6 +32,12 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         }
     }
     
+    @IBOutlet weak var password: HoshiTextField! {
+        didSet {
+            password.delegate = self
+        }
+    }
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var slidingView: UIView!
@@ -39,6 +47,21 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
     @IBOutlet weak var photoButton: UIButton!
     var photo: UIImage!
     
+    // confirm & create user
+    @IBAction func createUser(sender: UIButton) {
+        // Q: existing user?
+        if firstname.text == "" || lastname.text == "" || email.text == "" || password.text == "" || photo == nil {
+            message.text = "PLEASE FILL OUT ALL FIELDS"
+        } else {
+            
+        }
+    }
+    
+    func signUp() {
+        
+    }
+    
+    // photo picker
     @IBAction func addPhoto(sender: UIButton) {
         // setup action sheet
         let alert: UIAlertController = UIAlertController(title: "Add Photo", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)

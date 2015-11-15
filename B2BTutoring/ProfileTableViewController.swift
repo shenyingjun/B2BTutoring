@@ -161,6 +161,7 @@ class ProfileTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "sessionInfo" {
             let dstController = segue.destinationViewController as! SessionInfoViewController;
+            //dstController.timeLabel.text = "hgh";
             //dstController.xxx = xxx
         }
     }

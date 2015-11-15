@@ -10,22 +10,27 @@ import UIKit
 
 class LoginPhoneNumberViewController: UIViewController {
     
+    @IBOutlet weak var message: UILabel!
+    
     @IBOutlet weak var display: UILabel!
     
     @IBAction func appendDigit(sender: UIButton) {
-        enteredDigits += sender.currentTitle!
-        if enteredDigits.characters.count == 10 {
-            print("Phone Number = " + enteredDigits)
-            print("TODO: send confirmation code.")
-            // send confirmation code
-            // segue to next LoginConfirmationViewController
-            performSegueWithIdentifier("Show Confirmation", sender: self)
+        if enteredDigits.characters.count < 10 {
+            enteredDigits += sender.currentTitle!
         }
     }
     
     @IBAction func deleteDigit(sender: UIButton) {
         if enteredDigits.characters.count > 0 {
             enteredDigits = String(enteredDigits.characters.dropLast())
+        }
+    }
+    
+    @IBAction func confirmNumber(sender: UIButton) {
+        if enteredDigits.characters.count == 10 {
+            performSegueWithIdentifier("Show Confirmation", sender: self)
+        } else {
+            animateOnError()
         }
     }
     
@@ -59,14 +64,31 @@ class LoginPhoneNumberViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func animateOnError() {
+        // shake label to indicate error
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(0.07)
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 3
+        animation.autoreverses = true
+        animation.fromValue = NSValue(CGPoint: CGPointMake(display.center.x - 10, display.center.y))
+        animation.toValue = NSValue(CGPoint: CGPointMake(display.center.x + 10, display.center.y))
+        CATransaction.setCompletionBlock { () -> Void in
+            self.enteredDigits = ""  // clear label
+            self.message.text = "PLEASE ENTER A VALID PHONE NUMBER"
+        }
+        display.layer.addAnimation(animation, forKey: "position")
+        CATransaction.commit()
     }
-    */
+    
+    //MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Show Confirmation" {
+            if let destinationViewController = segue.destinationViewController as? LoginConfirmationViewController {
+                destinationViewController.phoneNumber = "+1" + enteredDigits
+            }
+        }
+    }
 
 }
