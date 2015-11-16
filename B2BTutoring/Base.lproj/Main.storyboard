@@ -1184,11 +1184,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="Gvl-hR-4Wl" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="Gvl-hR-4Wl" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvl-hR-4Wl" id="ViH-Zy-v8Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="hcg-8U-mOm">
@@ -1231,7 +1231,7 @@
                                             <color key="textColor" red="0.68888300660000001" green="0.71366006140000005" blue="0.73448425530000006" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-ga-bsR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-ga-bsR">
                                             <rect key="frame" x="536" y="8" width="55" height="20"/>
                                             <animations/>
                                             <constraints>
@@ -1241,7 +1241,7 @@
                                             <color key="textColor" red="0.68888300660000001" green="0.71366006140000005" blue="0.73448425530000006" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Capacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvJ-BD-Am8">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Capacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvJ-BD-Am8">
                                             <rect key="frame" x="535" y="81" width="56" height="20"/>
                                             <animations/>
                                             <constraints>
@@ -1251,7 +1251,7 @@
                                             <color key="textColor" red="0.68888300660000001" green="0.71366006140000005" blue="0.73448425530000006" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="stormtrooper" translatesAutoresizingMaskIntoConstraints="NO" id="e2y-F2-eZM">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" misplaced="YES" image="stormtrooper" translatesAutoresizingMaskIntoConstraints="NO" id="e2y-F2-eZM">
                                             <rect key="frame" x="459" y="78" width="30" height="30"/>
                                             <animations/>
                                             <constraints>
@@ -1284,7 +1284,7 @@
                                             <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" image="stormtrooper" translatesAutoresizingMaskIntoConstraints="NO" id="YcL-3x-omA">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" misplaced="YES" image="stormtrooper" translatesAutoresizingMaskIntoConstraints="NO" id="YcL-3x-omA">
                                             <rect key="frame" x="497" y="78" width="30" height="30"/>
                                             <animations/>
                                             <constraints>
@@ -1298,7 +1298,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-mn-t8P">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-mn-t8P">
                                             <rect key="frame" x="559" y="31" width="32" height="20"/>
                                             <animations/>
                                             <constraints>
@@ -1378,6 +1378,7 @@
                                     <outlet property="timeLabel" destination="RgX-mn-t8P" id="N2V-YA-L0g"/>
                                     <outlet property="titleLabel" destination="wcB-P9-SWa" id="KHK-Lq-Fp9"/>
                                     <outlet property="tutorImageView" destination="hcg-8U-mOm" id="pb0-wY-FNW"/>
+                                    <segue destination="izc-dw-cJc" kind="push" identifier="sessionInfo" id="eqU-jr-J0h"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1390,14 +1391,18 @@
                     <navigationItem key="navigationItem" id="p6K-NU-mtY">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hyh-87-Hdn">
-                            <rect key="frame" x="220" y="7" width="160" height="30"/>
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <segments>
                                 <segment title="Tutee"/>
                                 <segment title="Tutor"/>
+                                <segment title="Follow"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="indexChanged:" destination="PWV-Az-HWn" eventType="valueChanged" id="mQz-eu-9BU"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" image="add_session" id="EIO-8l-OBd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1406,6 +1411,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sessionSegmentedControl" destination="hyh-87-Hdn" id="zXw-yh-e5E"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zWr-v3-59N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2037,7 +2045,7 @@ Blah</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Og8-kp-Qaf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2922" y="2324"/>
+            <point key="canvasLocation" x="2928" y="2450.5"/>
         </scene>
     </scenes>
     <resources>
@@ -2053,5 +2061,6 @@ Blah</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="myA-4j-d4r"/>
+        <segue reference="eqU-jr-J0h"/>
     </inferredMetricsTieBreakers>
 </document>
