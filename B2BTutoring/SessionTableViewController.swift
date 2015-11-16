@@ -9,6 +9,7 @@
 import UIKit
 
 class SessionTableViewController: UITableViewController {
+    @IBOutlet weak var sessionSegmentedControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,23 @@ class SessionTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch sessionSegmentedControl.selectedSegmentIndex {
+        case 0:
+            //TODO: get data of sessions which user attends as a tutee
+            break
+        case 1:
+            //TODO: get data of sessions which user attends as a tutor
+            break
+        case 2:
+            //TODO: get data of sessions which user follows
+            break
+        default:
+            //TODO: avoid error
+            break
+        }
+        self.tableView.reloadData()
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -32,10 +50,12 @@ class SessionTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //TODO: return number of rows
         return 4
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //TODO: set cell's data
         let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
         cell.tutorImageView.image = UIImage(named:"starwar")
         cell.titleLabel.text = "Introductory Jazz Guitar"
@@ -94,14 +114,14 @@ class SessionTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "sessionInfo" {
+            let dstController = segue.destinationViewController as! SessionInfoViewController;
+            //dstController.xxx = xxx
+        }
     }
-    */
 
 }
