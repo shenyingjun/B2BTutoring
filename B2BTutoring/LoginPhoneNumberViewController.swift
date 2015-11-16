@@ -9,23 +9,23 @@
 import UIKit
 
 class LoginPhoneNumberViewController: UIViewController {
-    
+
     @IBOutlet weak var message: UILabel!
-    
+
     @IBOutlet weak var display: UILabel!
-    
+
     @IBAction func appendDigit(sender: UIButton) {
         if enteredDigits.characters.count < 10 {
             enteredDigits += sender.currentTitle!
         }
     }
-    
+
     @IBAction func deleteDigit(sender: UIButton) {
         if enteredDigits.characters.count > 0 {
             enteredDigits = String(enteredDigits.characters.dropLast())
         }
     }
-    
+
     @IBAction func confirmNumber(sender: UIButton) {
         if enteredDigits.characters.count == 10 {
             performSegueWithIdentifier("Show Confirmation", sender: self)
@@ -33,7 +33,7 @@ class LoginPhoneNumberViewController: UIViewController {
             animateOnError()
         }
     }
-    
+
     var enteredDigits: String {
         get {
             return display.text!.stringByReplacingOccurrencesOfString(" ", withString: "")
@@ -52,7 +52,7 @@ class LoginPhoneNumberViewController: UIViewController {
             }
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +81,7 @@ class LoginPhoneNumberViewController: UIViewController {
         display.layer.addAnimation(animation, forKey: "position")
         CATransaction.commit()
     }
-    
+
     //MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Show Confirmation" {

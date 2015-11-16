@@ -12,13 +12,18 @@ import Parse
 class LoginConfirmationViewController: UIViewController {
     var phoneNumber: String?
     var verificationCode: String?
-    
+
     @IBOutlet weak var message: UILabel!
-    
+
     @IBOutlet weak var display: UILabel!
-    
+
     @IBAction func appendDigit(sender: UIButton) {
-        enteredCode += sender.currentTitle!
+        if enteredCode.characters.count < 4 {
+          enteredCode += sender.currentTitle!
+        }
+    }
+
+    @IBAction func confirmCode(sender: UIButton) {
         if enteredCode.characters.count == 4 {
             if enteredCode == verificationCode! {
                 handleLogin(enteredCode)
@@ -28,7 +33,7 @@ class LoginConfirmationViewController: UIViewController {
             }
         }
     }
-    
+
     @IBAction func deleteDigit(sender: UIButton) {
         if enteredCode.characters.count > 0 {
             display.text = String(enteredCode.characters.dropLast())
@@ -37,11 +42,11 @@ class LoginConfirmationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // compute verification code
         verificationCode = String(Int(arc4random()) % 10000)
         print("Computed verification code: " + verificationCode!)
-        
+
         // send verification code
         print("Phone number to verify: " + phoneNumber!)
         PFCloud.callFunctionInBackground("sendVerificationCode", withParameters: ["number": phoneNumber!, "verificationCode": verificationCode!]) {
@@ -50,14 +55,13 @@ class LoginConfirmationViewController: UIViewController {
                 // TODO: handle error
             }
         }
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     var enteredCode: String {
         get {
             return display.text!
@@ -66,17 +70,17 @@ class LoginConfirmationViewController: UIViewController {
             display.text = newValue
         }
     }
-    
+
     func handleLogin(enteredCode: String) {
         let query = PFUser.query()?.whereKey("phoneNumber", equalTo: phoneNumber!)
         query?.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
             if object != nil {  // user already exists
                 // login
-                
+
             }
         }
     }
-    
+
     func animateOnError() {
         // shake label to indicate error
         CATransaction.begin()
@@ -94,7 +98,7 @@ class LoginConfirmationViewController: UIViewController {
         display.layer.addAnimation(animation, forKey: "position")
         CATransaction.commit()
     }
-    
+
     /*
     // MARK: - Navigation
 

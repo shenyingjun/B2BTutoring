@@ -147,6 +147,69 @@ class CreateSessionViewController: FormViewController {
             }
     }
     
+    func validate(fields: [String: Any?]) -> String? {
+        if fields["Title"] as? String == nil {
+            return "Title can't be empty!"
+        }
+        if fields["Location"] as? String == nil {
+            return "Location can't be empty!"
+        }
+        if fields["Description"] as? String == nil {
+            return "Description can't be empty!"
+        }
+        if let start_date = fields["Starts"] as? NSDate {
+            if start_date.compare(NSDate()) == .OrderedAscending {
+                return "Starts date must be in the future!"
+            }
+        } else {
+            return "Starts date can't be empty!"
+        }
+        if let end_date = fields["Ends"] as? NSDate {
+            if end_date.compare(NSDate()) == .OrderedAscending {
+                return "Ends date must be in the future!"
+            }
+        } else {
+            return "Ends date can't be empty!"
+        }
+        return nil
+    }
+    
+    func alertHandler(alert: UIAlertAction!) -> Void {
+        performSegueWithIdentifier("UnwindToSchedule", sender: self)
+    }
+    
+    func createAlert(message: String, unwind: Bool) -> Void {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: unwind ? alertHandler : nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func createSession(sender: UIBarButtonItem) {
+        let session = Session()
+        let values = self.form.values()
+        let errorMsg = validate(values)
+        if errorMsg == nil {
+            session.title = values["Title"] as! String
+            session.location = values["Location"] as! String
+            session.tags = values["Tags"] as? String
+            session.descrip = values["Description"] as! String
+            session.starts = values["Starts"] as! NSDate
+            session.ends = values["Ends"] as! NSDate
+            let c = values["Category"] as! Category
+            session.category =  c.description
+            session.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        self.createAlert("Successfully created session!", unwind: true)
+                    } else {
+                        self.createAlert("Unable to create session due to server error.", unwind: true)
+                    }
+            }
+        } else {
+            createAlert(errorMsg!, unwind: false)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

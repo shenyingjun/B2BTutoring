@@ -49,14 +49,9 @@ class SessionTableViewController: UITableViewController {
         return cell
     }
 
-    @IBAction func cancelSessionCreation(segue: UIStoryboardSegue) {
-        print("Tutor canceled creating a session.")
-    }
-    
-    @IBAction func postNewSession(segue: UIStoryboardSegue) {
-        // Upload new session to parse
-        // Reload data
-        print("Tutor created a new session.")
+    @IBAction func exitSessionCreation(segue: UIStoryboardSegue) {
+        // reload data
+        print("Exit session creation.")
     }
     
     /*
