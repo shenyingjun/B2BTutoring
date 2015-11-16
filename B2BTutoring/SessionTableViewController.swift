@@ -10,10 +10,14 @@ import UIKit
 
 class SessionTableViewController: UITableViewController {
     @IBOutlet weak var sessionSegmentedControl: UISegmentedControl!
+    var sessions = [Session]()
+    enum Source {
+        case Tutor, Tutee, Follow
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadData(Source.Tutee)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,54 +33,81 @@ class SessionTableViewController: UITableViewController {
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch sessionSegmentedControl.selectedSegmentIndex {
         case 0:
-            //TODO: get data of sessions which user attends as a tutee
+            loadData(Source.Tutee)
             break
         case 1:
-            //TODO: get data of sessions which user attends as a tutor
+            loadData(Source.Tutor)
             break
         case 2:
-            //TODO: get data of sessions which user follows
+            loadData(Source.Follow)
             break
         default:
             //TODO: avoid error
             break
         }
-        self.tableView.reloadData()
     }
     // MARK: - Table view data source
+    
+    func loadData(forTutor: Source) -> Void {
+        switch forTutor {
+            case Source.Tutor:
+                if let currentUser = User.currentUser() {
+                    User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock {
+                        (object: PFObject?, error: NSError?) -> Void in
+                        if error == nil {
+                            if let user = object as? User {
+                                self.sessions = user.getOngoingTutorSessions()
+                                print(self.sessions.count)
+                                self.tableView.reloadData()
+                            } else {
+                                print("22")
+                            }
+                        } else {
+                            print("Error retrieving user sessions")
+                        }
+                    }
+                } else {
+                    print("no current user")
+                }
+                break
+            case Source.Tutee:
+                self.sessions = [Session]()
+                self.tableView.reloadData()
+                break
+            case Source.Follow:
+                self.sessions = [Session]()
+                self.tableView.reloadData()
+                break
+        }
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: return number of rows
-        return 4
+        return sessions.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //TODO: set cell's data
         let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
         cell.tutorImageView.image = UIImage(named:"starwar")
-        cell.titleLabel.text = "Introductory Jazz Guitar"
-        cell.categoryLabel.text = "Music"
-        cell.tagLabel.text = "#guitar #jazz"
-        cell.locationLabel.text = "0.5m"
-        cell.timeLabel.text = "June 12, 3pm"
+        cell.titleLabel.text = sessions[indexPath.row].title
+        cell.categoryLabel.text = sessions[indexPath.row].category
+        cell.tagLabel.text = sessions[indexPath.row].tags
+        cell.locationLabel.text = sessions[indexPath.row].location
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        cell.timeLabel.text = dateFormatter.stringFromDate(sessions[indexPath.row].starts)
         cell.capacityLabel.text = "2/10"
         cell.ratingLabel.text = "☆4.7"
         
         return cell
     }
 
-    @IBAction func cancelSessionCreation(segue: UIStoryboardSegue) {
-        print("Tutor canceled creating a session.")
-    }
-    
-    @IBAction func postNewSession(segue: UIStoryboardSegue) {
-        // Upload new session to parse
-        // Reload data
-        print("Tutor created a new session.")
+    @IBAction func exitSessionCreation(segue: UIStoryboardSegue) {
+        loadData(Source.Tutor)
+        print("Exit session creation.")
     }
     
     /*

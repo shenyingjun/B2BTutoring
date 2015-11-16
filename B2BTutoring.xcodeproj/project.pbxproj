@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026043F51BFA8F87000A9BFF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043F41BFA8F87000A9BFF /* Date.swift */; };
+		02AE3FDC1BFA7EF9003156F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDB1BFA7EF9003156F0 /* User.swift */; };
+		02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDD1BFA7F5F003156F0 /* Session.swift */; };
 		390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */; };
 		390937FC1BEC0B59008043B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390937FB1BEC0B59008043B4 /* MapKit.framework */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
@@ -53,6 +56,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		026043F41BFA8F87000A9BFF /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		02AE3FDB1BFA7EF9003156F0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		02AE3FDD1BFA7F5F003156F0 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		02AE3FDF1BFA7FBA003156F0 /* B2B-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "B2B-Bridging-Header.h"; sourceTree = "<group>"; };
 		10570C705A72F66E008AD80B /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.debug.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
 		1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionInfoViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +158,7 @@
 		7E2C70C11BDDA834000F7F0F /* B2BTutoring */ = {
 			isa = PBXGroup;
 			children = (
+				02AE3FDF1BFA7FBA003156F0 /* B2B-Bridging-Header.h */,
 				7E4BEC9E1BE1A6BD00D74DEB /* Models */,
 				7E4BEC9D1BE1A6AC00D74DEB /* Views */,
 				7E4BEC9C1BE1A68C00D74DEB /* Controllers */,
@@ -223,6 +231,9 @@
 		7E4BEC9E1BE1A6BD00D74DEB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				026043F41BFA8F87000A9BFF /* Date.swift */,
+				02AE3FDB1BFA7EF9003156F0 /* User.swift */,
+				02AE3FDD1BFA7F5F003156F0 /* Session.swift */,
 				7E5D042D1BE3598700285761 /* Profile.swift */,
 				7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */,
 				7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */,
@@ -392,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02AE3FDC1BFA7EF9003156F0 /* User.swift in Sources */,
 				7E2C70F31BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift in Sources */,
 				7EFEB6B21BDF393D00D644A9 /* JiroTextField.swift in Sources */,
 				7EFEB6B31BDF393D00D644A9 /* KaedeTextField.swift in Sources */,
@@ -408,11 +420,13 @@
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
 				7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */,
+				02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */,
 				7EFEB6B41BDF393D00D644A9 /* MadokaTextField.swift in Sources */,
 				7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */,
 				7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */,
 				7EFEB6B61BDF393D00D644A9 /* TextFieldsEffects.swift in Sources */,
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
+				026043F51BFA8F87000A9BFF /* Date.swift in Sources */,
 				7E5D042E1BE3598700285761 /* Profile.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
 				7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */,
@@ -540,7 +554,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucla.cs130.B2BTutoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "B2BTutoring/B2B-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -561,7 +575,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucla.cs130.B2BTutoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "B2BTutoring/B2B-Bridging-Header.h";
 			};
 			name = Release;
 		};

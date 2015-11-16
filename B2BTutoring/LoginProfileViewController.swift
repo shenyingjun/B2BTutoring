@@ -39,6 +39,60 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
     @IBOutlet weak var photoButton: UIButton!
     var photo: UIImage!
     
+    func signup() {
+        let alert = UIAlertController(title: "Alert", message: "Signing Up...", preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        let user = User()
+        user.username = "myPhoneNumber"
+        user.password = "myPassword"
+        user.lastName = "lastname"
+        user.firstName = "firstname"
+        user.phone = "1231231231"
+        user.intro = "this is my intro"
+        
+        user.tutorSessions = [Session]()
+        let query = PFQuery(className: Session.parseClassName())
+        query.whereKey("tutor", equalTo:"Mary")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects as [PFObject]! {
+                    for object in objects {
+                        if let object = object as? Session {
+                            user.tutorSessions!.append(object)
+                        }
+                    }
+                }
+                
+                user.signUpInBackgroundWithBlock {
+                    (succeeded: Bool, error: NSError?) -> Void in
+                    if succeeded {
+                        self.performSegueWithIdentifier("showTabBarControllerSegue", sender: self)
+                    } else {
+                        print("Error: \(error!)")
+                    }
+                }
+            } else {
+                print("Error: \(error!)")
+            }
+        }
+    }
+    
+    @IBAction func saveProfile(sender: UIButton) {
+        let alert = UIAlertController(title: "Alert", message: "trying logging in...", preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        User.logInWithUsernameInBackground("myPhoneNumber", password:"myPassword") {
+            (user: PFUser?, error: NSError?) -> Void in
+            if user != nil {
+                self.performSegueWithIdentifier("showTabBarControllerSegue", sender: self)
+            } else {
+                self.signup()
+            }
+        }
+    }
+    
     @IBAction func addPhoto(sender: UIButton) {
         // setup action sheet
         let alert: UIAlertController = UIAlertController(title: "Add Photo", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
