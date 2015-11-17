@@ -57,10 +57,7 @@ class SessionTableViewController: UITableViewController {
                         if error == nil {
                             if let user = object as? User {
                                 self.sessions = user.getOngoingTutorSessions()
-                                print(self.sessions.count)
                                 self.tableView.reloadData()
-                            } else {
-                                print("22")
                             }
                         } else {
                             print("Error retrieving user sessions")
