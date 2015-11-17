@@ -21,7 +21,7 @@ class Review : PFObject, PFSubclassing {
     }
     
     class func parseClassName() -> String {
-        return "Session"
+        return "Review"
     }
     
     @NSManaged var text: String
