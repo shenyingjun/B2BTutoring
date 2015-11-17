@@ -17,6 +17,7 @@ class SessionTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem?.enabled = false
         loadData(Source.Tutee)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,12 +34,15 @@ class SessionTableViewController: UITableViewController {
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch sessionSegmentedControl.selectedSegmentIndex {
         case 0:
+            self.navigationItem.rightBarButtonItem?.enabled = false
             loadData(Source.Tutee)
             break
         case 1:
+            self.navigationItem.rightBarButtonItem?.enabled = true
             loadData(Source.Tutor)
             break
         case 2:
+            self.navigationItem.rightBarButtonItem?.enabled = false
             loadData(Source.Follow)
             break
         default:
@@ -88,7 +92,6 @@ class SessionTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-        cell.tutorImageView.image = UIImage(named:"starwar")
         cell.titleLabel.text = sessions[indexPath.row].title
         cell.categoryLabel.text = sessions[indexPath.row].category
         cell.tagLabel.text = sessions[indexPath.row].tags
@@ -96,8 +99,20 @@ class SessionTableViewController: UITableViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         cell.timeLabel.text = dateFormatter.stringFromDate(sessions[indexPath.row].starts)
-        cell.capacityLabel.text = "2/10"
-        cell.ratingLabel.text = "☆4.7"
+        cell.capacityLabel.text = String(sessions[indexPath.row].capacity)
+        /*
+        User.objectWithoutDataWithObjectId(sessions[indexPath.row].tutor.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+                    cell.tutorImageView.image = UIImage(named:user.profileImage)
+                    cell.ratingLabel.text = String(user.rating)
+                }
+            } else {
+                print("Error retrieving user sessions")
+            }
+        }
+        */
         
         return cell
     }

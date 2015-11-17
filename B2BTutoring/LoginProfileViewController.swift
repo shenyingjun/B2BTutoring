@@ -44,12 +44,15 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         self.presentViewController(alert, animated: true, completion: nil)
         
         let user = User()
-        user.username = "myPhoneNumber"
+        user.username = "Peter"
         user.password = "myPassword"
         user.lastName = "lastname"
         user.firstName = "firstname"
         user.phone = "1231231231"
         user.intro = "this is my intro"
+        //user.profileImage = "starwar"
+        //user.backgroundImage = "darth_vader"
+        user.rating = 5.0
         
         user.tutorSessions = [Session]()
         let query = PFQuery(className: Session.parseClassName())
