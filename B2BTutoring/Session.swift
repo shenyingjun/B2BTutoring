@@ -27,10 +27,10 @@ class Session : PFObject, PFSubclassing {
     @NSManaged var descrip : String
     @NSManaged var starts: NSDate
     @NSManaged var ends: NSDate
+    @NSManaged var capacity: Int
     
-    //here change in the future
-    @NSManaged var tutor: String
-    @NSManaged var tutee: String
+    @NSManaged var tutor: User
+    @NSManaged var tutee: [User]
     @NSManaged var category: String
     @NSManaged var tags: String?
     // @NSManaged public var icon: PFFile!
