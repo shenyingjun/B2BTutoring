@@ -13,6 +13,7 @@ class SearchTableViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var sessions = [Session]()
+    var filter : Filter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +37,30 @@ class SearchTableViewController: UITableViewController {
                 }
         }
     }
+    
+    func doSearch(filter: Filter) {
+        let baseQuery = Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
+        baseQuery.whereKey("category", equalTo: filter.category)
+        baseQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                self.sessions.removeAll()
+                print("Successfully retrieved with filter")
+                if let objects = objects as [PFObject]! {
+                    for object in objects {
+                        if let session = object as? Session {
+                            self.sessions.append(session)
+                        }
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 
     @IBAction func filter(sender: UIBarButtonItem) {
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,12 +92,11 @@ class SearchTableViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func cancelFilter(segue: UIStoryboardSegue) {
-        print("cancel filter")
-    }
-    
-    @IBAction func applyFilter(segue: UIStoryboardSegue) {
-        print("apply filter")
+    @IBAction func exitFilter(segue: UIStoryboardSegue) {
+        if let myFilter = self.filter {
+            print(myFilter.rating)
+            doSearch(myFilter)
+        }
     }
     
     /*
