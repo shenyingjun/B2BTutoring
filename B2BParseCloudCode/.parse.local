@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "B2BTutoring": {
+      "applicationId": "LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr"
+    },
+    "_default": {
+      "link": "B2BTutoring"
+    }
+  }
+}

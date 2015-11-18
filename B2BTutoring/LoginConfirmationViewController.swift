@@ -7,21 +7,32 @@
 //
 
 import UIKit
+import Parse
 
 class LoginConfirmationViewController: UIViewController {
-    
-    @IBOutlet weak var display: UILabel!
-    
-    @IBAction func appendDigit(sender: UIButton) {
-        enteredCode += sender.currentTitle!
-        if enteredCode.characters.count == 4 {
-            print("Entered Code = " + enteredCode)
-            // segue to LoginProfileViewController
-            performSegueWithIdentifier("Show Create Profile", sender: self)
-        }
+    var phoneNumber: String?
+    var verificationCode: String?
 
+    @IBOutlet weak var message: UILabel!
+
+    @IBOutlet weak var display: UILabel!
+
+    @IBAction func appendDigit(sender: UIButton) {
+        if enteredCode.characters.count < 4 {
+            enteredCode += sender.currentTitle!
+        }
     }
-    
+
+    @IBAction func confirmCode(sender: UIButton) {
+        if enteredCode.characters.count == 4 {
+            if enteredCode == verificationCode! {
+                performSegueWithIdentifier("Show Create Profile", sender: self)
+            } else {
+                animateOnError()
+            }
+        }
+    }
+
     @IBAction func deleteDigit(sender: UIButton) {
         if enteredCode.characters.count > 0 {
             display.text = String(enteredCode.characters.dropLast())
@@ -30,14 +41,26 @@ class LoginConfirmationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        // compute verification code
+        verificationCode = String(UInt((arc4random()) + 10000) % 10000)
+        print("Computed verification code: " + verificationCode!)
+
+        // send verification code
+        print("Phone number to verify: " + phoneNumber!)
+        PFCloud.callFunctionInBackground("sendVerificationCode", withParameters: ["number": phoneNumber!, "verificationCode": verificationCode!]) {
+            (response, error) in
+            if (error != nil) {
+                // TODO: handle error
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     var enteredCode: String {
         get {
             return display.text!
@@ -46,15 +69,34 @@ class LoginConfirmationViewController: UIViewController {
             display.text = newValue
         }
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func animateOnError() {
+        // shake label to indicate error
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(0.07)
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 3
+        animation.autoreverses = true
+        animation.fromValue = NSValue(CGPoint: CGPointMake(display.center.x - 10, display.center.y))
+        animation.toValue = NSValue(CGPoint: CGPointMake(display.center.x + 10, display.center.y))
+        CATransaction.setCompletionBlock { () -> Void in
+            self.enteredCode = ""  // clear label
+            self.message.text = "*PLEASE ENTER THE CORRECT CODE*"
+        }
+        display.layer.addAnimation(animation, forKey: "position")
+        CATransaction.commit()
     }
-    */
+
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Show Create Profile" {
+            if let destinationViewController = segue.destinationViewController as? LoginProfileViewController {
+                destinationViewController.phoneNumber = phoneNumber
+            }
+        }
+    }
+
 
 }

@@ -44,11 +44,14 @@
 		7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D04261BE3550700285761 /* SessionTableViewCell.swift */; };
 		7E5D042A1BE3591300285761 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D04291BE3591300285761 /* ProfileTableViewController.swift */; };
 		7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */; };
-		7E5D042E1BE3598700285761 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D042D1BE3598700285761 /* Profile.swift */; };
 		7E5D04301BE35F3C00285761 /* sessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5D042F1BE35F3C00285761 /* sessionCell.xib */; };
 		7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */; };
 		7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */; };
 		7EB7F0341BE3F13700CCDAB4 /* TutorSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */; };
+		7EF7C0F21BFC4A180060EE4C /* LoginOrSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */; };
+		7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */; };
+		7EF7C0F51BFC4A250060EE4C /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */; };
+		7EF7C0FB1BFC4F4D0060EE4C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */; };
 		7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */; };
 		7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */; };
 		7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A41BDF393D00D644A9 /* HoshiTextField.swift */; };
@@ -106,11 +109,14 @@
 		7E5D04261BE3550700285761 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		7E5D04291BE3591300285761 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
-		7E5D042D1BE3598700285761 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		7E5D042F1BE35F3C00285761 /* sessionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sessionCell.xib; sourceTree = "<group>"; };
 		7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberButtonView.swift; sourceTree = "<group>"; };
 		7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeSession.swift; sourceTree = "<group>"; };
 		7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSession.swift; sourceTree = "<group>"; };
+		7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrSignUpViewController.swift; sourceTree = "<group>"; };
+		7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileContViewController.swift; sourceTree = "<group>"; };
+		7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
+		7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileViewController.swift; sourceTree = "<group>"; };
 		7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		7EFEB6A41BDF393D00D644A9 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -219,6 +225,8 @@
 		7E4BEC9C1BE1A68C00D74DEB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */,
+				7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */,
 				7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */,
 				7E5D04291BE3591300285761 /* ProfileTableViewController.swift */,
 				7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */,
@@ -238,6 +246,7 @@
 		7E4BEC9D1BE1A6AC00D74DEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */,
 				7E5D04251BE3550700285761 /* InfoTableViewCell.swift */,
 				7E5D04261BE3550700285761 /* SessionTableViewCell.swift */,
 				7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */,
@@ -254,10 +263,10 @@
 				026043F41BFA8F87000A9BFF /* Date.swift */,
 				02AE3FDB1BFA7EF9003156F0 /* User.swift */,
 				02AE3FDD1BFA7F5F003156F0 /* Session.swift */,
-				7E5D042D1BE3598700285761 /* Profile.swift */,
 				7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */,
 				7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */,
 				3929C7CA1BFABB580081992E /* Review.swift */,
+				7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -330,7 +339,7 @@
 				TargetAttributes = {
 					7E2C70BE1BDDA834000F7F0F = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 927Q3U4Q94;
+						DevelopmentTeam = 4DC67968G8;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -444,6 +453,7 @@
 				3992E0FE1BFC15E4005F2C00 /* Query.swift in Sources */,
 				3992E0FB1BFBF2FD005F2C00 /* EditProfileViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
+				7EF7C0F51BFC4A250060EE4C /* CategoryPickerView.swift in Sources */,
 				3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */,
 				7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */,
 				3992E0FF1BFC15E4005F2C00 /* Search.swift in Sources */,
@@ -455,8 +465,10 @@
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
 				3929C7CB1BFABB580081992E /* Review.swift in Sources */,
 				026043F51BFA8F87000A9BFF /* Date.swift in Sources */,
-				7E5D042E1BE3598700285761 /* Profile.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
+				7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */,
+				7EF7C0F21BFC4A180060EE4C /* LoginOrSignUpViewController.swift in Sources */,
+				7EF7C0FB1BFC4F4D0060EE4C /* Profile.swift in Sources */,
 				7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */,
 				7EB7F0341BE3F13700CCDAB4 /* TutorSession.swift in Sources */,
 			);
