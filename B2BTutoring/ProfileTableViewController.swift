@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileTableViewController: UITableViewController {
     
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileSegmentedControl: UISegmentedControl!
     
@@ -20,7 +22,8 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = profile.info[0].value
-
+        self.tableView.tableHeaderView = self.headerView
+        self.navigationItem.rightBarButtonItem?.enabled = true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,21 +38,23 @@ class ProfileTableViewController: UITableViewController {
 
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch profileSegmentedControl.selectedSegmentIndex {
-        case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell") as! InfoTableViewCell
-            self.tableView.rowHeight = cell.bounds.height
-            break
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
-            self.tableView.rowHeight = cell.bounds.height
+            self.headerView.frame = CGRectMake(0,0,0,0)
+            self.headerView.hidden = true
+            self.tableView.tableHeaderView = self.headerView
+            self.navigationItem.rightBarButtonItem?.enabled = false
             break
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
-            self.tableView.rowHeight = cell.bounds.height
+            self.headerView.frame = CGRectMake(0,0,0,0)
+            self.headerView.hidden = true
+            self.tableView.tableHeaderView = self.headerView
+            self.navigationItem.rightBarButtonItem?.enabled = false
             break
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
-            self.tableView.rowHeight = cell.bounds.height
+            self.headerView.frame = CGRectMake(0,0,600,260)
+            self.headerView.hidden = false
+            self.tableView.tableHeaderView = self.headerView
+            self.navigationItem.rightBarButtonItem?.enabled = true
             break
         }
         self.tableView.reloadData()
@@ -58,7 +63,17 @@ class ProfileTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        switch profileSegmentedControl.selectedSegmentIndex {
+        case 0:
+            return 1
+        case 1:
+            return 2
+        case 2:
+            return 1
+        default:
+            return 0
+        }
+        
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +82,12 @@ class ProfileTableViewController: UITableViewController {
         case 0:
             return profile.info.count-1
         case 1:
-            return tuteeSession.info.count
+            if section == 0 {
+                return 4
+            }
+            else {
+                return tuteeSession.info.count
+            }
         case 2:
             return tutorSession.info.count
         default:
@@ -86,18 +106,33 @@ class ProfileTableViewController: UITableViewController {
             
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-            let entry = tuteeSession.info[indexPath.row]
-            cell.tutorImageView.image = UIImage(named:entry.image)
-            cell.titleLabel.text = entry.title
-            cell.categoryLabel.text = entry.category
-            cell.tagLabel.text = entry.tag
-            cell.locationLabel.text = entry.location
-            cell.timeLabel.text = entry.time
-            cell.capacityLabel.text = entry.capacity
-            cell.ratingLabel.text = entry.rating
-            
-            return cell
+            if indexPath.section == 0 {
+                if indexPath.row == 3 {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("MoreTableViewCell", forIndexPath: indexPath)
+                    return cell
+                }
+                else {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
+                    cell.tuteeImageView.image = UIImage(named:"stormtrooper")
+                    cell.ratingLabel.text = "★ 4.1"
+                    cell.dateLabel.text = "Jun.14.2031"
+                    cell.reviewTextLabel.text = "Share on Facebook (226)  Tweet (774)  Share (18)  Pin (1) The hearts reign of terror as the only emoji-based reaction to a tweet may be coming to an end. Twitter user _Ninji noticed the ability to select multiple emoji from the heart, including the frown, the grimace, the party nois"
+                    return cell
+                }
+            }
+            else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
+                let entry = tuteeSession.info[indexPath.row]
+                cell.tutorImageView.image = UIImage(named:entry.image)
+                cell.titleLabel.text = entry.title
+                cell.categoryLabel.text = entry.category
+                cell.tagLabel.text = entry.tag
+                cell.locationLabel.text = entry.location
+                cell.timeLabel.text = entry.time
+                cell.capacityLabel.text = entry.capacity
+                cell.ratingLabel.text = entry.rating
+                return cell
+            }
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
             let entry = tutorSession.info[indexPath.row]
@@ -115,6 +150,59 @@ class ProfileTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell", forIndexPath: indexPath) as! InfoTableViewCell
             
             return cell
+        }
+    }
+        
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch profileSegmentedControl.selectedSegmentIndex {
+        case 1:
+            if section == 0 {
+                return "Review"
+            }
+            else {
+                return "History"
+            }
+        case 2:
+            return "History"
+        default:
+            return nil
+        }
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel!.font = UIFont(name: "Avenir-Heavy", size: 15)!
+        header.textLabel!.textColor = UIColor.lightGrayColor()
+
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch profileSegmentedControl.selectedSegmentIndex {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell") as! InfoTableViewCell
+            return cell.bounds.height
+        case 1:
+            if indexPath.section == 0 {
+                if (indexPath.row == 3) {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("MoreTableViewCell")
+                    return cell!.bounds.height
+                }
+                else {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell") as! ReviewTableViewCell
+                    return cell.bounds.height
+                }
+                
+            }
+            else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
+                return cell.bounds.height
+            }
+        case 2:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
+            return cell.bounds.height
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
+            return cell.bounds.height
         }
     }
 
@@ -160,6 +248,9 @@ class ProfileTableViewController: UITableViewController {
         if segue.identifier == "sessionInfo" {
             let dstController = segue.destinationViewController as! SessionInfoViewController;
             //dstController.xxx = xxx
+        }
+        else if segue.identifier == "reviewInfo" {
+            let dstController = segue.destinationViewController as! ReviewTableViewController;
         }
     }
 

@@ -12,6 +12,9 @@
 		02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDD1BFA7F5F003156F0 /* Session.swift */; };
 		390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */; };
 		390937FC1BEC0B59008043B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390937FB1BEC0B59008043B4 /* MapKit.framework */; };
+		3929C7CB1BFABB580081992E /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7CA1BFABB580081992E /* Review.swift */; };
+		3929C7CD1BFABE630081992E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */; };
+		3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
 		7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */; };
 		7E2C70C81BDDA834000F7F0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C70C61BDDA834000F7F0F /* Main.storyboard */; };
@@ -64,6 +67,9 @@
 		1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionInfoViewController.swift; sourceTree = "<group>"; };
 		390937FB1BEC0B59008043B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3929C7CA1BFABB580081992E /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		479FD915146CC99E76693270 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.release.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
 		7E2C70BF1BDDA834000F7F0F /* B2BTutoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B2BTutoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 				7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */,
 				7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */,
 				390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */,
+				3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -224,6 +231,7 @@
 				7E5D04251BE3550700285761 /* InfoTableViewCell.swift */,
 				7E5D04261BE3550700285761 /* SessionTableViewCell.swift */,
 				7EB0581E1BDDE5F100342F29 /* NumberButtonView.swift */,
+				3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 				7E5D042D1BE3598700285761 /* Profile.swift */,
 				7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */,
 				7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */,
+				3929C7CA1BFABB580081992E /* Review.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -309,7 +318,7 @@
 				TargetAttributes = {
 					7E2C70BE1BDDA834000F7F0F = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 4DC67968G8;
+						DevelopmentTeam = 927Q3U4Q94;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -410,6 +419,7 @@
 				7E5D04271BE3550700285761 /* InfoTableViewCell.swift in Sources */,
 				7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */,
 				7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */,
+				3929C7CD1BFABE630081992E /* ReviewTableViewCell.swift in Sources */,
 				7E5D042A1BE3591300285761 /* ProfileTableViewController.swift in Sources */,
 				390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */,
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
@@ -419,6 +429,7 @@
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
+				3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */,
 				7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */,
 				02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */,
 				7EFEB6B41BDF393D00D644A9 /* MadokaTextField.swift in Sources */,
@@ -426,6 +437,7 @@
 				7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */,
 				7EFEB6B61BDF393D00D644A9 /* TextFieldsEffects.swift in Sources */,
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
+				3929C7CB1BFABB580081992E /* Review.swift in Sources */,
 				026043F51BFA8F87000A9BFF /* Date.swift in Sources */,
 				7E5D042E1BE3598700285761 /* Profile.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
@@ -542,7 +554,7 @@
 			baseConfigurationReference = 10570C705A72F66E008AD80B /* Pods-B2BTutoring.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,7 +575,7 @@
 			baseConfigurationReference = 479FD915146CC99E76693270 /* Pods-B2BTutoring.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
