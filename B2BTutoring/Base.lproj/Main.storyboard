@@ -1013,7 +1013,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Bap-Mm-8gb">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bap-Mm-8gb" id="60a-OB-KuU">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1066,7 +1066,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cof-V1-5Cp">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cof-V1-5Cp" id="q1Z-qj-pyD">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1099,24 +1099,29 @@
             </objects>
             <point key="canvasLocation" x="2133" y="1530"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Profile View Controller-->
         <scene sceneID="hjA-jH-tTx">
             <objects>
-                <viewController id="pKB-qC-LGx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="03F-vn-ZNc"/>
-                        <viewControllerLayoutGuide type="bottom" id="pu7-xL-ocb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cjm-eb-pkw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                <viewController id="pKB-qC-LGx" customClass="EditProfileViewController" customModule="B2BTutoring" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="u5U-pt-UME">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="51o-Pd-yKh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="HaB-yj-MkK" kind="unwind" unwindAction="exitSessionCreation:" id="9Mp-wp-VcR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="mpL-sa-uc4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="editProfile:" destination="pKB-qC-LGx" id="Jc9-8D-pKn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPl-RE-han" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HaB-yj-MkK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2962" y="1482"/>
+            <point key="canvasLocation" x="2945" y="3226"/>
         </scene>
         <!--Profile-->
         <scene sceneID="zDP-3J-14j">
@@ -1205,7 +1210,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="Gvl-hR-4Wl" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvl-hR-4Wl" id="ViH-Zy-v8Q">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
@@ -1465,6 +1470,12 @@
                                         <constraint firstAttribute="height" constant="100" id="Fft-9e-bHa"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="darth_vader"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="50"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaV-Sq-ZPC">
                                     <rect key="frame" x="0.0" y="222" width="600" height="30"/>
@@ -1551,20 +1562,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="Mlk-0X-7il">
-                                            <rect key="frame" x="8" y="8" width="70" height="70"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="G8E-Z0-W7I"/>
-                                                <constraint firstAttribute="width" constant="70" id="XLB-H1-wtq"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="35"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdN-M1-KYy">
                                             <rect key="frame" x="96" y="8" width="32" height="20"/>
                                             <animations/>
@@ -1668,6 +1665,20 @@
                                             <color key="textColor" red="0.98624199629999998" green="0.77968657019999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="Mlk-0X-7il">
+                                            <rect key="frame" x="8" y="8" width="70" height="70"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="G8E-Z0-W7I"/>
+                                                <constraint firstAttribute="width" constant="70" id="XLB-H1-wtq"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="35"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
@@ -1755,6 +1766,12 @@
                                                 <constraint firstAttribute="width" constant="40" id="5Wf-ib-Imq"/>
                                                 <constraint firstAttribute="height" constant="40" id="FMV-Jt-vkp"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6e-Kp-qnK">
                                             <rect key="frame" x="8" y="53" width="584" height="62"/>
@@ -1824,7 +1841,7 @@ I LOVE IT</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.25121228449999999" green="0.90501077590000001" blue="0.72925646550000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.01176470588" green="0.78823529410000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1861,7 +1878,7 @@ I LOVE IT</string>
                         <barButtonItem key="rightBarButtonItem" image="edit" id="iTa-26-ddh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="pKB-qC-LGx" kind="show" id="SHN-re-CKL"/>
+                                <segue destination="qDX-Fc-bHO" kind="presentation" id="jGB-J5-HIu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1902,6 +1919,12 @@ I LOVE IT</string>
                                                 <constraint firstAttribute="height" constant="40" id="Fxl-an-xzZ"/>
                                                 <constraint firstAttribute="width" constant="40" id="fUL-Dr-Jzy"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-y1-Od1">
                                             <rect key="frame" x="8" y="53" width="584" height="62"/>
@@ -1968,7 +1991,7 @@ I LOVE IT</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFH-8r-B8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2133" y="3211"/>
+            <point key="canvasLocation" x="3757" y="3211"/>
         </scene>
         <!--Session Info View Controller-->
         <scene sceneID="nzh-9X-RXB">
@@ -2029,6 +2052,12 @@ I LOVE IT</string>
                                             <constraint firstAttribute="height" constant="50" id="h0u-K9-xhu"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="darth_vader"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Death Vedar" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-r9-eux">
                                         <rect key="frame" x="15" y="352" width="285" height="25"/>
@@ -2091,6 +2120,28 @@ Blah</string>
                                             </mask>
                                         </variation>
                                     </label>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5EM-qy-NdZ">
+                                        <rect key="frame" x="15" y="549" width="570" height="285"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5EM-qy-NdZ" secondAttribute="height" multiplier="2:1" id="28j-gR-M4N"/>
+                                        </constraints>
+                                    </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wr4-ZE-m9j">
+                                        <rect key="frame" x="15" y="879" width="570" height="40"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.01176470588" green="0.78823529410000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="aRP-R2-muO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Join">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeSessionStatus:" destination="izc-dw-cJc" eventType="touchUpInside" id="sWm-SR-PYB"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boelter 3400" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVx-QB-CXj">
                                         <rect key="frame" x="15" y="834" width="570" height="25"/>
                                         <animations/>
@@ -2107,28 +2158,6 @@ Blah</string>
                                             </mask>
                                         </variation>
                                     </label>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5EM-qy-NdZ">
-                                        <rect key="frame" x="15" y="549" width="570" height="285"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="5EM-qy-NdZ" secondAttribute="height" multiplier="2:1" id="28j-gR-M4N"/>
-                                        </constraints>
-                                    </mapView>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wr4-ZE-m9j">
-                                        <rect key="frame" x="15" y="879" width="570" height="40"/>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.25121228448275862" green="0.90501077586206813" blue="0.72925646551724133" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="aRP-R2-muO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                        <state key="normal" title="Join">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeSessionStatus:" destination="izc-dw-cJc" eventType="touchUpInside" id="sWm-SR-PYB"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <animations/>
                                 <constraints>
@@ -2267,7 +2296,27 @@ Blah</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Og8-kp-Qaf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2928" y="2450.5"/>
+            <point key="canvasLocation" x="4552" y="2450.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fhM-ag-fLT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qDX-Fc-bHO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f7V-Ud-YHM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="barTintColor" red="0.01176470588" green="0.78823529410000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pKB-qC-LGx" kind="relationship" relationship="rootViewController" id="dGv-2n-HWr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cN6-lb-4fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2133" y="3226"/>
         </scene>
     </scenes>
     <resources>

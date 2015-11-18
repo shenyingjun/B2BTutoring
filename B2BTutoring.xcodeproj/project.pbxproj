@@ -15,6 +15,7 @@
 		3929C7CB1BFABB580081992E /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7CA1BFABB580081992E /* Review.swift */; };
 		3929C7CD1BFABE630081992E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */; };
 		3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */; };
+		3992E0FB1BFBF2FD005F2C00 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E0FA1BFBF2FD005F2C00 /* EditProfileViewController.swift */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
 		7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */; };
 		7E2C70C81BDDA834000F7F0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C70C61BDDA834000F7F0F /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		3929C7CA1BFABB580081992E /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
+		3992E0FA1BFBF2FD005F2C00 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		479FD915146CC99E76693270 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.release.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
 		7E2C70BF1BDDA834000F7F0F /* B2BTutoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B2BTutoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */,
 				390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */,
 				3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */,
+				3992E0FA1BFBF2FD005F2C00 /* EditProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
+				3992E0FB1BFBF2FD005F2C00 /* EditProfileViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
 				3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */,
 				7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */,
