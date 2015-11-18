@@ -394,13 +394,14 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="51o-Pd-yKh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="HaB-yj-MkK" kind="unwind" unwindAction="exitSessionCreation:" id="9Mp-wp-VcR"/>
+                                <segue destination="HaB-yj-MkK" kind="unwind" unwindAction="cancelEditProfile:" id="qed-bc-tEZ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="mpL-sa-uc4">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="editProfile:" destination="pKB-qC-LGx" id="Jc9-8D-pKn"/>
+                                <segue destination="HaB-yj-MkK" kind="unwind" unwindAction="completeEditProfile:" id="LeE-bo-XjG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -465,14 +466,22 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="ra2-0j-S0J">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="0bl-lX-oc6">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="qJx-cP-ctn" kind="unwind" unwindAction="exitSessionCreation:" id="dCm-O8-GMu"/>
+                                <segue destination="qJx-cP-ctn" kind="unwind" unwindAction="cancelFilter:" id="5qe-T5-rHU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Gut-kQ-0G0">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="qJx-cP-ctn" kind="unwind" unwindAction="applyFilter:" id="PAv-TK-3Ed"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89y-Mb-qKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qJx-cP-ctn" userLabel="Exit" sceneMemberID="exit"/>
@@ -1632,11 +1641,14 @@ Blah</string>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="NIR-Gk-Ymx">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="urv-xf-9K1" kind="unwind" unwindAction="exitSessionCreation:" id="Pia-Bi-bmB"/>
+                                <segue destination="urv-xf-9K1" kind="unwind" unwindAction="cancelPostReview:" id="O5i-2L-hGk"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Post" id="B9p-eh-8Z1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="urv-xf-9K1" kind="unwind" unwindAction="completePostReview:" id="icK-8a-Td9"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
