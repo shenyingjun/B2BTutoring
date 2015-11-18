@@ -19,6 +19,14 @@ class ProfileTableViewController: UITableViewController {
     let tuteeSession = TuteeSession()
     let tutorSession = TutorSession()
     
+    @IBAction func cancelEditProfile(segue: UIStoryboardSegue) {
+        print("cancel edit")
+    }
+    
+    @IBAction func completeEditProfile(segue: UIStoryboardSegue) {
+        print("complete edit")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = profile.info[0].value

@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Parse.setApplicationId("PT4rhrQXDVdv4oqQ4lQj5v82x7So29cvItDTw9bn",
 //            clientKey: "6FjsxnKVwgIZL6CEUgM9gaj1JQEYzf0Uyjvfh6GO")
         
-        Parse.setApplicationId("LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr",
-            clientKey: "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG")
+        Parse.setApplicationId("PT4rhrQXDVdv4oqQ4lQj5v82x7So29cvItDTw9bn",
+            clientKey: "6FjsxnKVwgIZL6CEUgM9gaj1JQEYzf0Uyjvfh6GO")
         
         return true
     }
