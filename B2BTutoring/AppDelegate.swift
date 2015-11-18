@@ -26,8 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Parse.setApplicationId("PT4rhrQXDVdv4oqQ4lQj5v82x7So29cvItDTw9bn",
 //            clientKey: "6FjsxnKVwgIZL6CEUgM9gaj1JQEYzf0Uyjvfh6GO")
         
-        Parse.setApplicationId("PT4rhrQXDVdv4oqQ4lQj5v82x7So29cvItDTw9bn",
-            clientKey: "6FjsxnKVwgIZL6CEUgM9gaj1JQEYzf0Uyjvfh6GO")
+        //Just use clair's parse database. It contains the updated class
+        Parse.setApplicationId("LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr",
+            clientKey: "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG")
         
         return true
     }

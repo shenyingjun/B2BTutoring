@@ -70,11 +70,6 @@ class CreateSessionViewController: FormViewController {
             cell.accessoryView?.frame = CGRectMake(0, 0, 34, 34)
         }
         
-        TextAreaRow.defaultCellUpdate = { cell, row in
-            cell.textLabel?.font = font
-            cell.detailTextLabel?.font = font
-        }
-        
         form =
             
             TextRow("Title").cellSetup {

@@ -118,6 +118,7 @@ class SessionTableViewController: UITableViewController {
     }
 
     @IBAction func exitSessionCreation(segue: UIStoryboardSegue) {
+        sessionSegmentedControl.selectedSegmentIndex = 1
         loadData(Source.Tutor)
         print("Exit session creation.")
     }
