@@ -19,6 +19,7 @@
 		3992E0FE1BFC15E4005F2C00 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E0FC1BFC15E4005F2C00 /* Query.swift */; };
 		3992E0FF1BFC15E4005F2C00 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E0FD1BFC15E4005F2C00 /* Search.swift */; };
 		3992E1011BFC32ED005F2C00 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E1001BFC32ED005F2C00 /* FilterViewController.swift */; };
+		3992E1031BFC5903005F2C00 /* PostReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E1021BFC5903005F2C00 /* PostReviewViewController.swift */; };
 		7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */; };
 		7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */; };
 		7E2C70C81BDDA834000F7F0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C70C61BDDA834000F7F0F /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		3992E0FC1BFC15E4005F2C00 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		3992E0FD1BFC15E4005F2C00 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		3992E1001BFC32ED005F2C00 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		3992E1021BFC5903005F2C00 /* PostReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReviewViewController.swift; sourceTree = "<group>"; };
 		479FD915146CC99E76693270 /* Pods-B2BTutoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.release.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.release.xcconfig"; sourceTree = "<group>"; };
 		7E2C70BF1BDDA834000F7F0F /* B2BTutoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B2BTutoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2C70C21BDDA834000F7F0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */,
 				3992E0FA1BFBF2FD005F2C00 /* EditProfileViewController.swift */,
 				3992E1001BFC32ED005F2C00 /* FilterViewController.swift */,
+				3992E1021BFC5903005F2C00 /* PostReviewViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */,
 				7EFEB6B41BDF393D00D644A9 /* MadokaTextField.swift in Sources */,
 				7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */,
+				3992E1031BFC5903005F2C00 /* PostReviewViewController.swift in Sources */,
 				7E2C70C51BDDA834000F7F0F /* LaunchViewController.swift in Sources */,
 				7EFEB6B61BDF393D00D644A9 /* TextFieldsEffects.swift in Sources */,
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,

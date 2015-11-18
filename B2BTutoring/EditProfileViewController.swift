@@ -74,11 +74,6 @@ class EditProfileViewController: FormViewController {
             cell.detailTextLabel?.font = font
         }
         
-        TextAreaRow.defaultCellUpdate = { cell, row in
-            cell.textLabel?.font = font
-            cell.detailTextLabel?.font = font
-        }
-        
         form =
             
             Section("Basic")
