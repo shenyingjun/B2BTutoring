@@ -23,18 +23,16 @@ class User : PFUser {
         }
     }
     
-    @NSManaged var lastName: String
-    @NSManaged var firstName: String
-    @NSManaged var phone: String
-    @NSManaged var gender: String
-    @NSManaged var intro: String
+    @NSManaged var firstname: String
+    @NSManaged var lastname: String
+    @NSManaged var intro: String?
     @NSManaged var rating: Double
     @NSManaged var profileImage: PFFile
-    @NSManaged var backgroundImage: PFFile
+    @NSManaged var backgroundImage: PFFile?
     @NSManaged var tutorSessions: [Session]?
     @NSManaged var tuteeSessions: [Session]?
     @NSManaged var followSessions: [Session]?
-    @NSManaged var interest: [String:String]?
+    @NSManaged var interests: [String:String]
     
     private func retrieveSession(s: Session) -> Session? {
         var mySession: Session
@@ -103,4 +101,5 @@ class User : PFUser {
         }
         return passedSessions
     }
+
 }
