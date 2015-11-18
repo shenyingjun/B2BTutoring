@@ -30,6 +30,14 @@ class SessionInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cancelPostReview(segue: UIStoryboardSegue) {
+        print("cancel PostReview")
+    }
+    
+    @IBAction func completePostReview(segue: UIStoryboardSegue) {
+        print("complete PostReview")
+    }
+    
     @IBAction func changeSessionStatus(sender: UIButton) {
         //join, quit or follow a session
     }
