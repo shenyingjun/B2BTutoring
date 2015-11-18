@@ -2932,6 +2932,7 @@ Blah</string>
                         <segue destination="2Ye-hT-cOf" kind="show" identifier="Show Sign Up" animates="NO" id="gdd-31-nHQ">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="WnA-Ve-DhA" kind="show" identifier="Show Home After Login" id="MDL-ZU-zgf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsZ-Fk-RH4" sceneMemberID="firstResponder"/>
@@ -3298,9 +3299,9 @@ Blah</string>
         <image name="stormtrooper" width="458" height="458"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="29u-Xj-qtK"/>
+        <segue reference="MDL-ZU-zgf"/>
+        <segue reference="b59-gW-SK9"/>
         <segue reference="gdd-31-nHQ"/>
-        <segue reference="UtY-n2-fVq"/>
         <segue reference="Z0I-zz-8oE"/>
     </inferredMetricsTieBreakers>
 </document>
