@@ -100,19 +100,19 @@ class SessionTableViewController: UITableViewController {
         dateFormatter.dateFormat = "dd-MM-yyyy"
         cell.timeLabel.text = dateFormatter.stringFromDate(sessions[indexPath.row].starts)
         cell.capacityLabel.text = String(sessions[indexPath.row].capacity)
-        /*
+        
         User.objectWithoutDataWithObjectId(sessions[indexPath.row].tutor.objectId).fetchInBackgroundWithBlock {
             (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 if let user = object as? User {
-                    cell.tutorImageView.image = UIImage(named:user.profileImage)
+                    //cell.tutorImageView.image = UIImage(named:user.profileImage)
                     cell.ratingLabel.text = String(user.rating)
                 }
             } else {
                 print("Error retrieving user sessions")
             }
         }
-        */
+
         
         return cell
     }

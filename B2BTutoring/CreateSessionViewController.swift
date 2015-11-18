@@ -214,6 +214,7 @@ class CreateSessionViewController: FormViewController {
             session.ends = values["Ends"] as! NSDate
             let c = values["Category"] as! Category
             session.category =  c.description
+            
             session.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
@@ -222,7 +223,7 @@ class CreateSessionViewController: FormViewController {
                             (object: PFObject?, error: NSError?) -> Void in
                             if error == nil {
                                 if let user = object as? User {
-                                    user.tutorSessions?.append(session)
+                                    user.tutorSessions.append(session)
                                     user.saveInBackgroundWithBlock {
                                         (succeeded: Bool, error: NSError?) -> Void in
                                         if (succeeded) {

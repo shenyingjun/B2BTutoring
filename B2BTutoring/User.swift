@@ -29,9 +29,9 @@ class User : PFUser {
     @NSManaged var rating: Double
     @NSManaged var profileImage: PFFile
     @NSManaged var backgroundImage: PFFile?
-    @NSManaged var tutorSessions: [Session]?
-    @NSManaged var tuteeSessions: [Session]?
-    @NSManaged var followSessions: [Session]?
+    @NSManaged var tutorSessions: [Session]
+    @NSManaged var tuteeSessions: [Session]
+    @NSManaged var followSessions: [Session]
     @NSManaged var interests: [String:String]
     
     private func retrieveSession(s: Session) -> Session? {
@@ -47,13 +47,10 @@ class User : PFUser {
     
     func getOngoingTutorSessions() -> [Session] {
         var ongoingSessions = [Session]()
-        if self.tutorSessions != nil {
-            print(self.tutorSessions!)
-            for session in self.tutorSessions! {
-                if let mySession = retrieveSession(session) {
-                    if !mySession.expired() {
-                        ongoingSessions.append(mySession)
-                    }
+        for session in self.tutorSessions {
+            if let mySession = retrieveSession(session) {
+                if !mySession.expired() {
+                    ongoingSessions.append(mySession)
                 }
             }
         }
@@ -62,12 +59,10 @@ class User : PFUser {
     
     func getOngoingTuteeSessions() -> [Session] {
         var ongoingSessions = [Session]()
-        if self.tuteeSessions != nil {
-            for session in self.tuteeSessions! {
-                if let mySession = retrieveSession(session) {
-                    if !mySession.expired() {
-                        ongoingSessions.append(mySession)
-                    }
+        for session in self.tuteeSessions {
+            if let mySession = retrieveSession(session) {
+                if !mySession.expired() {
+                    ongoingSessions.append(mySession)
                 }
             }
         }
@@ -76,12 +71,10 @@ class User : PFUser {
     
     func getPassedTutorSessions() -> [Session] {
         var passedSessions = [Session]()
-        if self.tutorSessions != nil {
-            for session in self.tutorSessions! {
-                if let mySession = retrieveSession(session) {
-                    if mySession.expired() {
-                        passedSessions.append(mySession)
-                    }
+        for session in self.tutorSessions {
+            if let mySession = retrieveSession(session) {
+                if mySession.expired() {
+                    passedSessions.append(mySession)
                 }
             }
         }
@@ -90,12 +83,10 @@ class User : PFUser {
     
     func getPassedTuteeSessions() -> [Session] {
         var passedSessions = [Session]()
-        if self.tuteeSessions != nil {
-            for session in self.tuteeSessions! {
-                if let mySession = retrieveSession(session) {
-                    if mySession.expired() {
-                        passedSessions.append(mySession)
-                    }
+        for session in self.tuteeSessions {
+            if let mySession = retrieveSession(session) {
+                if mySession.expired() {
+                    passedSessions.append(mySession)
                 }
             }
         }
