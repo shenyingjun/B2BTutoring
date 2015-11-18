@@ -70,6 +70,14 @@ class SearchTableViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func cancelFilter(segue: UIStoryboardSegue) {
+        print("cancel filter")
+    }
+    
+    @IBAction func applyFilter(segue: UIStoryboardSegue) {
+        print("apply filter")
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
