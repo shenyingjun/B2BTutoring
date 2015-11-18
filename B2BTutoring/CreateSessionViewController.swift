@@ -48,6 +48,11 @@ class CreateSessionViewController: FormViewController {
             cell.textField.font = font
         }
         
+        IntRow.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.textField.font = font
+        }
+        
         DateTimeInlineRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = font
             cell.detailTextLabel?.font = font
@@ -56,6 +61,13 @@ class CreateSessionViewController: FormViewController {
         PickerInlineRow<Category>.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = font
             cell.detailTextLabel?.font = font
+        }
+        
+        ImageRow.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.detailTextLabel?.font = font
+            cell.accessoryView?.layer.cornerRadius = 17
+            cell.accessoryView?.frame = CGRectMake(0, 0, 34, 34)
         }
         
         TextAreaRow.defaultCellUpdate = { cell, row in
@@ -86,6 +98,10 @@ class CreateSessionViewController: FormViewController {
             }
             
             <<< TextRow("Tags").cellSetup {
+                $0.cell.textField.placeholder = $0.row.tag
+            }
+            
+            <<< IntRow("Capacity").cellSetup {
                 $0.cell.textField.placeholder = $0.row.tag
             }
             
@@ -140,7 +156,13 @@ class CreateSessionViewController: FormViewController {
                 }
         
             form +++=
-            
+                
+            ImageRow("BackgroundImage"){
+                $0.title = "Background Image"
+            }
+        
+            form +++=
+        
             TextAreaRow("Description") {
                 $0.placeholder = "Description"
                 $0.cell.textView.font = font

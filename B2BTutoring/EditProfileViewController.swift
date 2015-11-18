@@ -42,6 +42,11 @@ class EditProfileViewController: FormViewController {
     private func initializeForm() {
         let font = UIFont(name: "Avenir-Medium", size: 16.0)
         
+        TextRow.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.textField.font = font
+        }
+        
         NameRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = font
             cell.textField.font = font
@@ -62,6 +67,16 @@ class EditProfileViewController: FormViewController {
             cell.detailTextLabel?.font = font
             cell.accessoryView?.layer.cornerRadius = 17
             cell.accessoryView?.frame = CGRectMake(0, 0, 34, 34)
+        }
+        
+        PickerInlineRow<Category>.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.detailTextLabel?.font = font
+        }
+        
+        TextAreaRow.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.detailTextLabel?.font = font
         }
         
         form =
@@ -100,6 +115,7 @@ class EditProfileViewController: FormViewController {
             
             <<< TextRow("TagOne"){
                 $0.title = "Tag"
+                $0.cell.textField.placeholder = "one"
             }
             
             <<< PickerInlineRow<Category>("CategoryOne") { (row : PickerInlineRow<Category>) -> Void in
@@ -112,6 +128,7 @@ class EditProfileViewController: FormViewController {
             
             <<< TextRow("TagTwo"){
                 $0.title = "Tag"
+                $0.cell.textField.placeholder = "two"
             }
             
             <<< PickerInlineRow<Category>("CategoryTwo") { (row : PickerInlineRow<Category>) -> Void in
@@ -124,6 +141,7 @@ class EditProfileViewController: FormViewController {
             
             <<< TextRow("TagThree"){
                 $0.title = "Tag"
+                $0.cell.textField.placeholder = "three"
             }
             
             <<< PickerInlineRow<Category>("CategoryThree") { (row : PickerInlineRow<Category>) -> Void in

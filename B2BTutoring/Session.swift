@@ -27,7 +27,9 @@ class Session : PFObject, PFSubclassing {
     @NSManaged var descrip : String
     @NSManaged var starts: NSDate
     @NSManaged var ends: NSDate
+    @NSManaged var currentEnrollment: Int
     @NSManaged var capacity: Int
+    @NSManaged var backgroundImage: PFFile
     
     @NSManaged var tutor: User
     @NSManaged var tutee: [User]
