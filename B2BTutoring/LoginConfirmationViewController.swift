@@ -19,14 +19,13 @@ class LoginConfirmationViewController: UIViewController {
 
     @IBAction func appendDigit(sender: UIButton) {
         if enteredCode.characters.count < 4 {
-          enteredCode += sender.currentTitle!
+            enteredCode += sender.currentTitle!
         }
     }
 
     @IBAction func confirmCode(sender: UIButton) {
         if enteredCode.characters.count == 4 {
             if enteredCode == verificationCode! {
-                handleLogin(enteredCode)
                 performSegueWithIdentifier("Show Create Profile", sender: self)
             } else {
                 animateOnError()
@@ -71,16 +70,6 @@ class LoginConfirmationViewController: UIViewController {
         }
     }
 
-    func handleLogin(enteredCode: String) {
-        let query = PFUser.query()?.whereKey("phoneNumber", equalTo: phoneNumber!)
-        query?.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
-            if object != nil {  // user already exists
-                // login
-
-            }
-        }
-    }
-
     func animateOnError() {
         // shake label to indicate error
         CATransaction.begin()
@@ -93,20 +82,21 @@ class LoginConfirmationViewController: UIViewController {
         animation.toValue = NSValue(CGPoint: CGPointMake(display.center.x + 10, display.center.y))
         CATransaction.setCompletionBlock { () -> Void in
             self.enteredCode = ""  // clear label
-            self.message.text = "PLEASE ENTER THE CORRECT CODE"
+            self.message.text = "*PLEASE ENTER THE CORRECT CODE*"
         }
         display.layer.addAnimation(animation, forKey: "position")
         CATransaction.commit()
     }
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "Show Create Profile" {
+            if let destinationViewController = segue.destinationViewController as? LoginProfileViewController {
+                destinationViewController.phoneNumber = phoneNumber
+            }
+        }
     }
-    */
+
 
 }

@@ -1,9 +1,9 @@
 //
-//  Profile.swift
+//  User.swift
 //  B2BTutoring
 //
-//  Created by yingjun on 15/10/29.
-//  Copyright © 2015年 Team 1. All rights reserved.
+//  Created by Reggie Huang on 11/16/15.
+//  Copyright © 2015 Team 1. All rights reserved.
 //
 
 import Foundation
@@ -25,28 +25,77 @@ class User : PFUser {
     
     @NSManaged var lastName: String
     @NSManaged var firstName: String
-    @NSManaged var phone: String
-    @NSManaged var intro: String
+    @NSManaged var intro: String?
+    @NSManaged var rating: Double
+    @NSManaged var profileImage: PFFile
+    @NSManaged var backgroundImage: PFFile?
     @NSManaged var tutorSessions: [Session]?
+    @NSManaged var tuteeSessions: [Session]?
+    @NSManaged var followSessions: [Session]?
+    @NSManaged var interests: [String:String]
+    
+    private func retrieveSession(s: Session) -> Session? {
+        var mySession: Session
+        do {
+            try mySession = s.fetch()
+            return mySession
+        } catch {
+            print("Error retrieving session")
+            return nil
+        }
+    }
     
     func getOngoingTutorSessions() -> [Session] {
         var ongoingSessions = [Session]()
         if self.tutorSessions != nil {
+            print(self.tutorSessions!)
             for session in self.tutorSessions! {
-                if !session.expired() {
-                    ongoingSessions.append(session)
+                if let mySession = retrieveSession(session) {
+                    if !mySession.expired() {
+                        ongoingSessions.append(mySession)
+                    }
                 }
             }
         }
         return ongoingSessions
     }
-
+    
+    func getOngoingTuteeSessions() -> [Session] {
+        var ongoingSessions = [Session]()
+        if self.tuteeSessions != nil {
+            for session in self.tuteeSessions! {
+                if let mySession = retrieveSession(session) {
+                    if !mySession.expired() {
+                        ongoingSessions.append(mySession)
+                    }
+                }
+            }
+        }
+        return ongoingSessions
+    }
+    
     func getPassedTutorSessions() -> [Session] {
         var passedSessions = [Session]()
         if self.tutorSessions != nil {
             for session in self.tutorSessions! {
-                if session.expired() {
-                    passedSessions.append(session)
+                if let mySession = retrieveSession(session) {
+                    if mySession.expired() {
+                        passedSessions.append(mySession)
+                    }
+                }
+            }
+        }
+        return passedSessions
+    }
+    
+    func getPassedTuteeSessions() -> [Session] {
+        var passedSessions = [Session]()
+        if self.tuteeSessions != nil {
+            for session in self.tuteeSessions! {
+                if let mySession = retrieveSession(session) {
+                    if mySession.expired() {
+                        passedSessions.append(mySession)
+                    }
                 }
             }
         }

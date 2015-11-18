@@ -11,7 +11,8 @@ import Eureka
 import Parse
 
 class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    var phoneNumber: String?
+    
     @IBOutlet weak var message: UILabel!
 
     // text field
@@ -47,71 +48,15 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
     // profile picture
     @IBOutlet weak var photoButton: UIButton!
     var photo: UIImage!
-
-    // confirm & create user
-    @IBAction func createUser(sender: UIButton) {
-        // Q: existing user?
+    
+    @IBAction func showProfileCont(sender: UIButton) {
         if firstname.text == "" || lastname.text == "" || email.text == "" || password.text == "" || photo == nil {
-            message.text = "PLEASE FILL OUT ALL FIELDS"
+            message.text = "*PLEASE FILL OUT ALL FIELDS*"
         } else {
-
+            performSegueWithIdentifier("Show Profile Cont", sender: self)
         }
     }
-
-    func signUp() {
-
-    }
-
-    func saveProfile() {
-        let user = User()
-        user.username = "myPhoneNumber"
-        user.password = "myPassword"
-        user.lastName = "lastname"
-        user.firstName = "firstname"
-        user.phone = "1231231231"
-        user.intro = "this is my intro"
-
-        user.tutorSessions = [Session]()
-        let query = PFQuery(className: Session.parseClassName())
-        query.whereKey("tutor", equalTo:"Mary")
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                print("Success on retrieving \(objects!.count)")
-                if let objects = objects as [PFObject]! {
-                    for object in objects {
-                        if let object = object as? Session {
-                            user.tutorSessions!.append(object)
-                        }
-                    }
-                }
-
-                let currentSessions = user.getOngoingTutorSessions()
-                for session in currentSessions {
-                    print(session.tutor + " " + session.tutee)
-                }
-
-                user.signUpInBackgroundWithBlock {
-                    (succeeded: Bool, error: NSError?) -> Void in
-                    if succeeded {
-                        print("succeeded")
-                        let currentUser = User.currentUser()
-                        if (currentUser != nil) {
-                            print(currentUser!.intro)
-                        } else {
-                            print("current user is nil")
-                        }
-                    } else {
-                        print("error")
-                    }
-                }
-            } else {
-                print("Error: \(error!)")
-            }
-        }
-
-    }
-
+    
     // photo picker
     @IBAction func addPhoto(sender: UIButton) {
         // setup action sheet
@@ -202,20 +147,21 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         firstResponder = nil
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "Show Profile Cont" {
+            if let destinationViewController = segue.destinationViewController as? LoginProfileContViewController {
+                destinationViewController.phoneNumber = phoneNumber!
+                destinationViewController.firstname = firstname.text!
+                destinationViewController.lastname = lastname.text!
+                destinationViewController.email = email.text!
+                destinationViewController.password = password.text!
+                destinationViewController.photo = photo
+            }
+        }
+
     }
-    */
 
 }

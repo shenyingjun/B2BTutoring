@@ -13,6 +13,8 @@ class LoginPhoneNumberViewController: UIViewController {
     @IBOutlet weak var message: UILabel!
 
     @IBOutlet weak var display: UILabel!
+    
+    var storedPhoneNumber: String = ""
 
     @IBAction func appendDigit(sender: UIButton) {
         if enteredDigits.characters.count < 10 {
@@ -28,9 +30,24 @@ class LoginPhoneNumberViewController: UIViewController {
 
     @IBAction func confirmNumber(sender: UIButton) {
         if enteredDigits.characters.count == 10 {
-            performSegueWithIdentifier("Show Confirmation", sender: self)
+            storedPhoneNumber = "+1" + enteredDigits
+            // look for existing user
+            let query = PFUser.query()?.whereKey("username", equalTo: storedPhoneNumber)
+            query?.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+                if object != nil {  // user already exists
+                    let alertController = UIAlertController(title: "B2BTutoring", message:
+                        "User already exists", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.performSegueWithIdentifier("Show Confirmation", sender: self)
+                    })
+                }
+            }
         } else {
-            animateOnError()
+            animateOnError("*PLEASE ENTER A VALID PHONE NUMBER*")
         }
     }
 
@@ -64,7 +81,7 @@ class LoginPhoneNumberViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func animateOnError() {
+    func animateOnError(errorMessage: String) {
         // shake label to indicate error
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.07)
@@ -76,7 +93,7 @@ class LoginPhoneNumberViewController: UIViewController {
         animation.toValue = NSValue(CGPoint: CGPointMake(display.center.x + 10, display.center.y))
         CATransaction.setCompletionBlock { () -> Void in
             self.enteredDigits = ""  // clear label
-            self.message.text = "PLEASE ENTER A VALID PHONE NUMBER"
+            self.message.text = errorMessage
         }
         display.layer.addAnimation(animation, forKey: "position")
         CATransaction.commit()
@@ -86,7 +103,7 @@ class LoginPhoneNumberViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Show Confirmation" {
             if let destinationViewController = segue.destinationViewController as? LoginConfirmationViewController {
-                destinationViewController.phoneNumber = "+1" + enteredDigits
+                destinationViewController.phoneNumber = storedPhoneNumber
             }
         }
     }
