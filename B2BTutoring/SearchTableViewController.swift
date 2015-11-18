@@ -10,7 +10,28 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
     
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 340, 20))
+    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 240, 20))
+    
+    var sessions = [Session]()
+    
+    func doSearch() {
+        Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
+            .findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                self.sessions.removeAll()
+                print("Successfully retrieved")
+                if let objects = objects as [PFObject]! {
+                    for object in objects {
+                        if let session = object as? Session {
+                            self.sessions.append(session)
+                        }
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +40,7 @@ class SearchTableViewController: UITableViewController {
         searchBar.placeholder = "Search"
         let leftNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("doSearch"))
         
         let nibName = UINib(nibName: "sessionCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "cell")
@@ -45,17 +67,19 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.sessions.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SessionTableViewCell
         cell.tutorImageView.image = UIImage(named:"starwar")
-        cell.titleLabel.text = "Introductory Jazz Guitar"
-        cell.categoryLabel.text = "Music"
-        cell.tagLabel.text = "#guitar #jazz"
-        cell.locationLabel.text = "0.5m"
-        cell.timeLabel.text = "June 12, 3pm"
+        cell.titleLabel.text = self.sessions[indexPath.row].title
+        cell.categoryLabel.text = self.sessions[indexPath.row].category
+        cell.tagLabel.text = self.sessions[indexPath.row].tags
+        cell.locationLabel.text = self.sessions[indexPath.row].location
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        cell.timeLabel.text = dateFormatter.stringFromDate(sessions[indexPath.row].starts)
         cell.capacityLabel.text = "2/10"
         cell.ratingLabel.text = "☆4.7"
         
