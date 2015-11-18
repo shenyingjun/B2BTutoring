@@ -10,51 +10,35 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
     
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 240, 20))
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var sessions = [Session]()
-    
-    func doSearch() {
-        Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
-            .findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                self.sessions.removeAll()
-                print("Successfully retrieved")
-                if let objects = objects as [PFObject]! {
-                    for object in objects {
-                        if let session = object as? Session {
-                            self.sessions.append(session)
-                        }
-                    }
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // embed search bar inside navbar
-        searchBar.placeholder = "Search"
-        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("doSearch"))
-        
-        let nibName = UINib(nibName: "sessionCell", bundle:nil)
-        self.tableView.registerNib(nibName, forCellReuseIdentifier: "cell")
-        
-        let cellPrototype = tableView.dequeueReusableCellWithIdentifier("cell")
-        self.tableView.rowHeight = (cellPrototype?.bounds.height)!
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    @IBAction func search(sender: UIBarButtonItem) {
+        Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
+            .findObjectsInBackgroundWithBlock {
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    self.sessions.removeAll()
+                    print("Successfully retrieved")
+                    if let objects = objects as [PFObject]! {
+                        for object in objects {
+                            if let session = object as? Session {
+                                self.sessions.append(session)
+                            }
+                        }
+                        self.tableView.reloadData()
+                    }
+                }
+        }
+    }
+
+    @IBAction func filter(sender: UIBarButtonItem) {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -71,7 +55,7 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SessionTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
         cell.tutorImageView.image = UIImage(named:"starwar")
         cell.titleLabel.text = self.sessions[indexPath.row].title
         cell.categoryLabel.text = self.sessions[indexPath.row].category
@@ -130,5 +114,10 @@ class SearchTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
+        return cell.bounds.height
+    }
 
 }

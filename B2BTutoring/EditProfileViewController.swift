@@ -1,19 +1,19 @@
 //
-//  CreateSessionViewController.swift
+//  EditProfileViewController.swift
 //  B2BTutoring
 //
-//  Created by Claire Zhang on 10/29/15.
-//  Copyright © 2015 Team 1. All rights reserved.
+//  Created by yingjun on 15/11/17.
+//  Copyright © 2015年 Team 1. All rights reserved.
 //
 
 import UIKit
 import Eureka
 
-class CreateSessionViewController: FormViewController {
+class EditProfileViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initializeForm()
     }
 
@@ -38,7 +38,6 @@ class CreateSessionViewController: FormViewController {
         
         static let allValues = [Art, Cars_and_motorcycles, Cooking, Design, DIY_and_crafts, Film, Health, Music, Photography, Sports]
     }
-
     
     private func initializeForm() {
         let font = UIFont(name: "Avenir-Medium", size: 16.0)
@@ -48,17 +47,17 @@ class CreateSessionViewController: FormViewController {
             cell.textField.font = font
         }
         
-        IntRow.defaultCellUpdate = { cell, row in
+        NameRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = font
             cell.textField.font = font
         }
         
-        DateTimeInlineRow.defaultCellUpdate = { cell, row in
+        EmailRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = font
             cell.detailTextLabel?.font = font
         }
-    
-        PickerInlineRow<Category>.defaultCellUpdate = { cell, row in
+        
+        PasswordRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = font
             cell.detailTextLabel?.font = font
         }
@@ -70,6 +69,11 @@ class CreateSessionViewController: FormViewController {
             cell.accessoryView?.frame = CGRectMake(0, 0, 34, 34)
         }
         
+        PickerInlineRow<Category>.defaultCellUpdate = { cell, row in
+            cell.textLabel?.font = font
+            cell.detailTextLabel?.font = font
+        }
+        
         TextAreaRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.font = font
             cell.detailTextLabel?.font = font
@@ -77,99 +81,86 @@ class CreateSessionViewController: FormViewController {
         
         form =
             
-            TextRow("Title").cellSetup {
-                $0.cell.textField.placeholder = $0.row.tag
-            }
-            
-            <<< TextRow("Location").cellSetup {
-                $0.cell.textField.placeholder = $0.row.tag
+            Section("Basic")
+        
+            <<< NameRow("First"){
+                $0.title =  "First Name"
+                $0.cell.textField.placeholder = "Leo"
             }
         
-//            <<< PickerRow<Category>("Category") { (row : PickerRow<Category>) -> Void in
-//                row.options = Category.allValues
-//                row.title = "Category"
-//                row.value = row.options[0]
-//            }
+            <<< NameRow("Last"){
+                $0.title =  "Last Name"
+                $0.cell.textField.placeholder = "Luo"
+            }
+
+            <<< EmailRow("Email"){
+                $0.title =  "Email"
+                $0.cell.textField.placeholder = "leoluo@gmail.com"
+            }
             
-            <<< PickerInlineRow<Category>("Category") { (row : PickerInlineRow<Category>) -> Void in
-                row.title = row.tag
+            <<< PasswordRow("Password"){
+                $0.title =  "Password"
+            }
+        
+            +++ Section("Image")
+                
+            <<< ImageRow("Profile"){
+                $0.title = "Profile"
+            }
+            <<< ImageRow("Background"){
+                $0.title = "Backgorund"
+            }
+            
+            +++ Section("Interest 1")
+            
+            <<< TextRow("TagOne"){
+                $0.title = "Tag"
+                $0.cell.textField.placeholder = "one"
+            }
+            
+            <<< PickerInlineRow<Category>("CategoryOne") { (row : PickerInlineRow<Category>) -> Void in
+                row.title = "Category"
                 row.options = Category.allValues
                 row.value = row.options[0]
             }
             
-            <<< TextRow("Tags").cellSetup {
-                $0.cell.textField.placeholder = $0.row.tag
+            +++ Section("Interest 2")
+            
+            <<< TextRow("TagTwo"){
+                $0.title = "Tag"
+                $0.cell.textField.placeholder = "two"
             }
             
-            <<< IntRow("Capacity").cellSetup {
-                $0.cell.textField.placeholder = $0.row.tag
+            <<< PickerInlineRow<Category>("CategoryTwo") { (row : PickerInlineRow<Category>) -> Void in
+                row.title = "Category"
+                row.options = Category.allValues
+                row.value = row.options[0]
             }
             
-            +++
+            +++ Section("Interest 3")
             
-            DateTimeInlineRow("Starts") {
-                $0.title = $0.tag
-                $0.value = NSDate().dateByAddingTimeInterval(60*60*24)
-                }
-                .onChange { [weak self] row in
-                    let endRow: DateTimeInlineRow! = self?.form.rowByTag("Ends")
-                    if row.value?.compare(endRow.value!) == .OrderedDescending {
-                        endRow.value = NSDate(timeInterval: 60*60*24, sinceDate: row.value!)
-                        endRow.cell!.backgroundColor = .whiteColor()
-                        endRow.updateCell()
-                    }
-                }
-                .onExpandInlineRow { cell, row, inlineRow in
-                    inlineRow.cellUpdate { [weak self] cell, dateRow in
-                        cell.datePicker.datePickerMode = .DateAndTime
-                    }
-                    let color = cell.detailTextLabel?.textColor
-                    row.onCollapseInlineRow { cell, _, _ in
-                        cell.detailTextLabel?.textColor = color
-                    }
-                    cell.detailTextLabel?.textColor = cell.tintColor
+            <<< TextRow("TagThree"){
+                $0.title = "Tag"
+                $0.cell.textField.placeholder = "three"
             }
             
-            <<< DateTimeInlineRow("Ends"){
-                $0.title = $0.tag
-                $0.value = NSDate().dateByAddingTimeInterval(60*60*25)
-                }
-                .onChange { [weak self] row in
-                    let startRow: DateTimeInlineRow! = self?.form.rowByTag("Starts")
-                    if row.value?.compare(startRow.value!) == .OrderedAscending {
-                        row.cell!.backgroundColor = .redColor()
-                    }
-                    else{
-                        row.cell!.backgroundColor = .whiteColor()
-                    }
-                    row.updateCell()
-                }
-                .onExpandInlineRow { cell, row, inlineRow in
-                    inlineRow.cellUpdate { [weak self] cell, dateRow in
-                        cell.datePicker.datePickerMode = .DateAndTime
-                    }
-                    let color = cell.detailTextLabel?.textColor
-                    row.onCollapseInlineRow { cell, _, _ in
-                        cell.detailTextLabel?.textColor = color
-                    }
-                    cell.detailTextLabel?.textColor = cell.tintColor
-                }
-        
-            form +++=
-                
-            ImageRow("BackgroundImage"){
-                $0.title = "Background Image"
+            <<< PickerInlineRow<Category>("CategoryThree") { (row : PickerInlineRow<Category>) -> Void in
+                row.title = "Category"
+                row.options = Category.allValues
+                row.value = row.options[0]
             }
-        
-            form +++=
-        
-            TextAreaRow("Description") {
-                $0.placeholder = "Description"
+
+            +++ Section("Intro")
+            
+            <<< TextAreaRow("Intro") {
+                $0.placeholder = "I am Leo!!!!!!!"
                 $0.cell.textView.font = font
             }
     }
     
+
     func validate(fields: [String: Any?]) -> String? {
+        /*
         if fields["Title"] as? String == nil {
             return "Title can't be empty!"
         }
@@ -193,6 +184,7 @@ class CreateSessionViewController: FormViewController {
         } else {
             return "Ends date can't be empty!"
         }
+        */
         return nil
     }
     
@@ -206,12 +198,13 @@ class CreateSessionViewController: FormViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    @IBAction func createSession(sender: UIBarButtonItem) {
+    @IBAction func editProfile(sender: UIBarButtonItem) {
         let session = Session()
         let values = self.form.values()
         let errorMsg = validate(values)
         if errorMsg == nil {
-            session.title = values["Title"] as! String
+            /*
+            user.title = values["Title"] as! String
             session.location = values["Location"] as! String
             session.tags = values["Tags"] as? String
             session.descrip = values["Description"] as! String
@@ -246,6 +239,7 @@ class CreateSessionViewController: FormViewController {
                     self.createAlert("Unable to create session due to server error.", unwind: true)
                 }
             }
+            */
         } else {
             createAlert(errorMsg!, unwind: false)
         }
