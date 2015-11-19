@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Toucan
 
 class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
@@ -189,9 +190,10 @@ class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, 
             user.interests[category3.text!] = hashtag3.text!
         }
 
-        let data = UIImageJPEGRepresentation(photo, 0.5)
-        user.profileImage = PFFile(name: "profile.jpg", data: data!)!
-        user.backgroundImage = nil
+        let profileImage = Toucan(image: photo).resize(CGSize(width: 600, height: 600), fitMode: Toucan.Resize.FitMode.Crop).image
+        let profileThumbnail = Toucan(image: photo).resize(CGSize(width: 120, height: 120), fitMode: Toucan.Resize.FitMode.Crop).image
+        let profileImageData = UIImageJPEGRepresentation(profileImage, 0.8)
+        let profileThumbnailData = UIImageJPEGRepresentation(profileThumbnail, 0.8)
         
         // Run a spinner to show a task in progress
         let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
@@ -210,26 +212,31 @@ class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, 
                 
                 self.presentViewController(alertController, animated: true, completion: nil)
             } else {
-                let alertController = UIAlertController(title: "B2BTutoring", message:
-                    "Signed Up!", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.performSegueWithIdentifier("Show Home After Signup", sender: self)
+                // upload profile image and thumbnail
+                user.profileImage = PFFile(name: "profile.jpg", data: profileImageData!)!
+                user.profileThumbnail = PFFile(name: "profileThumbnail.jpg", data: profileThumbnailData!)!
+                user.saveInBackgroundWithBlock({
+                    (success: Bool, error: NSError?) -> Void in
+                    
+                    if error == nil {
+                        //take user home
+                        print("data uploaded")
+                        self.performSegueWithIdentifier("Show Home After Signup", sender: self)
+                    } else {
+                        print(error)
+                    }
                 })
             }
         })
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidDisappear(animated: Bool) {
+        firstResponder?.resignFirstResponder()
     }
-    */
+    
+    //MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+         //firstResponder?.resignFirstResponder()
+    }
 
 }

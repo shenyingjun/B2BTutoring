@@ -42,8 +42,8 @@ class LoginConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // compute verification code
-        verificationCode = String(UInt((arc4random()) + 10000) % 10000)
+        // compute 4-digit verification code
+        verificationCode = String(format: "%04d", UInt((arc4random())) % 10000)
         print("Computed verification code: " + verificationCode!)
 
         // send verification code

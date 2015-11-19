@@ -24,6 +24,7 @@ class Session : PFObject, PFSubclassing {
     
     @NSManaged var title: String
     @NSManaged var location: String
+    @NSManaged var locationGeoPoint:PFGeoPoint
     @NSManaged var descrip : String
     @NSManaged var starts: NSDate
     @NSManaged var ends: NSDate
@@ -33,10 +34,9 @@ class Session : PFObject, PFSubclassing {
     @NSManaged var backgroundImage: PFFile
     
     @NSManaged var tutor: User
-    @NSManaged var tutee: [User]
+    @NSManaged var tutees: [User]
     @NSManaged var category: String
     @NSManaged var tags: String?
-    // @NSManaged public var icon: PFFile!
     
     func expired() -> Bool{
         
@@ -44,5 +44,9 @@ class Session : PFObject, PFSubclassing {
             return true
         }
         return false
+    }
+    
+    func isFull() -> Bool {
+        return self.capacity == self.currentEnrollment
     }
 }

@@ -53,6 +53,7 @@
 		7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */; };
 		7EF7C0F51BFC4A250060EE4C /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */; };
 		7EF7C0FB1BFC4F4D0060EE4C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */; };
+		7EF7C10C1BFD250B0060EE4C /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C10B1BFD250B0060EE4C /* Toucan.swift */; };
 		7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */; };
 		7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */; };
 		7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A41BDF393D00D644A9 /* HoshiTextField.swift */; };
@@ -119,6 +120,8 @@
 		7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileContViewController.swift; sourceTree = "<group>"; };
 		7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
 		7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		7EF7C10A1BFD250B0060EE4C /* Toucan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toucan.h; sourceTree = "<group>"; };
+		7EF7C10B1BFD250B0060EE4C /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileViewController.swift; sourceTree = "<group>"; };
 		7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		7EFEB6A41BDF393D00D644A9 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 		7E2C70D41BDDA848000F7F0F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7EF7C1091BFD24FC0060EE4C /* Toucan */,
 				7EFEB6A21BDF393D00D644A9 /* TextFieldEffects */,
 				7E2C70CE1BDDA834000F7F0F /* Info.plist */,
 				7E2C70CB1BDDA834000F7F0F /* LaunchScreen.storyboard */,
@@ -279,6 +283,15 @@
 			children = (
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		7EF7C1091BFD24FC0060EE4C /* Toucan */ = {
+			isa = PBXGroup;
+			children = (
+				7EF7C10A1BFD250B0060EE4C /* Toucan.h */,
+				7EF7C10B1BFD250B0060EE4C /* Toucan.swift */,
+			);
+			name = Toucan;
 			sourceTree = "<group>";
 		};
 		7EFEB6A21BDF393D00D644A9 /* TextFieldEffects */ = {
@@ -469,6 +482,7 @@
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
 				3929C7CB1BFABB580081992E /* Review.swift in Sources */,
 				026043F51BFA8F87000A9BFF /* Date.swift in Sources */,
+				7EF7C10C1BFD250B0060EE4C /* Toucan.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
 				7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */,
 				7EF7C0F21BFC4A180060EE4C /* LoginOrSignUpViewController.swift in Sources */,

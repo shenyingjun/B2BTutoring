@@ -8,7 +8,10 @@
 
 import UIKit
 
-class SessionTableViewController: UITableViewController {
+class SessionTableViewController: UITableViewController, CLLocationManagerDelegate {
+    // user location
+    var locationManager = CLLocationManager()
+    
     @IBOutlet weak var sessionSegmentedControl: UISegmentedControl!
     var sessions = [Session]()
     enum Source {
@@ -24,6 +27,19 @@ class SessionTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            //locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,24 +111,80 @@ class SessionTableViewController: UITableViewController {
         cell.titleLabel.text = sessions[indexPath.row].title
         cell.categoryLabel.text = sessions[indexPath.row].category
         cell.tagLabel.text = sessions[indexPath.row].tags
-        cell.locationLabel.text = sessions[indexPath.row].location
+        cell.tutorImageView.image = nil
+        let sessionGeoPoint = sessions[indexPath.row].locationGeoPoint
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                let userLocation = geoPoint
+                cell.locationLabel.text = NSString(format: "%.1fmi", (userLocation?.distanceInMilesTo(sessionGeoPoint))!) as String
+            } else {
+                print(error)
+            }
+        }
+        
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
         cell.timeLabel.text = dateFormatter.stringFromDate(sessions[indexPath.row].starts)
-        cell.capacityLabel.text = String(sessions[indexPath.row].capacity)
+        cell.capacityLabel.text = String(sessions[indexPath.row].tutees.count) + "/" + String(sessions[indexPath.row].capacity)
         
         User.objectWithoutDataWithObjectId(sessions[indexPath.row].tutor.objectId).fetchInBackgroundWithBlock {
             (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 if let user = object as? User {
-                    //cell.tutorImageView.image = UIImage(named:user.profileImage)
-                    cell.ratingLabel.text = String(user.rating)
+                    user.profileThumbnail?.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error: NSError?) -> Void in
+                        if imageData != nil {
+                            cell.tutorImageView.image = UIImage(data: imageData!)
+                        } else {
+                            print(error)
+                        }
+                    })
+                    cell.ratingLabel.text = "★ " + String(user.rating)
                 }
             } else {
                 print("Error retrieving user sessions")
             }
         }
-
+        
+        // tutee labels
+        let maxDisplayTuteeCount = 3
+        let displayTuteeCount = min(sessions[indexPath.row].tutees.count, maxDisplayTuteeCount)
+        
+        // TODO: remove placeholder
+        
+        // draw at most 3 labels
+        for var i = 0; i < displayTuteeCount; i++ {
+            let x = CGFloat(272 - 38 * i)
+            let y = CGFloat(78)
+            let size = CGFloat(30)
+            let tuteeView = UIImageView.init(frame: CGRectMake(x, y, size, size))
+            tuteeView.layer.cornerRadius = size / 2
+            tuteeView.layer.masksToBounds = true
+            User.objectWithoutDataWithObjectId(sessions[indexPath.row].tutees[i].objectId).fetchInBackgroundWithBlock({
+                (object: PFObject?, error: NSError?) -> Void in
+                if let tutee = object as? User {
+                    tutee.profileThumbnail?.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error: NSError?) -> Void in
+                        if imageData != nil {
+                            tuteeView.image = UIImage(data: imageData!)
+                            cell.contentView.addSubview(tuteeView)
+                        } else {
+                            print(error)
+                        }
+                    })
+                }
+            })
+        }
+        
+        // display ...
+        if sessions[indexPath.row].tutees.count > maxDisplayTuteeCount {
+            let x = CGFloat(272 - 38 * 3 + 10)
+            let y = CGFloat(88)
+            let size = CGFloat(20)
+            let dotLabel = UILabel.init(frame: CGRectMake(x, y, size, size))
+            dotLabel.text = "..."
+            cell.contentView.addSubview(dotLabel)
+        }
         
         return cell
     }

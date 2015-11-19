@@ -208,12 +208,28 @@ class CreateSessionViewController: FormViewController {
         if errorMsg == nil {
             session.title = values["Title"] as! String
             session.location = values["Location"] as! String
+            
+            // store session location
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(session.location, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                if let placemark = placemarks![0] as CLPlacemark? {
+                    session.locationGeoPoint = PFGeoPoint(location: placemark.location)
+                    print("lat: \(session.locationGeoPoint.latitude), lon: \(session.locationGeoPoint.longitude)")
+                }
+            })
+            
             session.tags = values["Tags"] as? String
             session.descrip = values["Description"] as! String
             session.starts = values["Starts"] as! NSDate
             session.ends = values["Ends"] as! NSDate
             let c = values["Category"] as! Category
-            session.category =  c.description
+            session.category = c.description
+            session.capacity = values["Capacity"] as! Int
+            session.currentEnrollment = 0
+            session.tutor = User.currentUser()!
+            for _ in 1...4 {
+                session.tutees.append(User.currentUser()!)
+            }
             
             session.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
@@ -242,6 +258,8 @@ class CreateSessionViewController: FormViewController {
                     self.createAlert("Unable to create session due to server error.", unwind: true)
                 }
             }
+            
+            
         } else {
             createAlert(errorMsg!, unwind: false)
         }

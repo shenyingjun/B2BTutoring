@@ -27,8 +27,10 @@ class User : PFUser {
     @NSManaged var lastname: String
     @NSManaged var intro: String?
     @NSManaged var rating: Double
-    @NSManaged var profileImage: PFFile
+    @NSManaged var profileImage: PFFile?
+    @NSManaged var profileThumbnail: PFFile?
     @NSManaged var backgroundImage: PFFile?
+    @NSManaged var backgroundThumbnail: PFFile?
     @NSManaged var tutorSessions: [Session]
     @NSManaged var tuteeSessions: [Session]
     @NSManaged var followSessions: [Session]
