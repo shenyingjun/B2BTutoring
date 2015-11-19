@@ -180,14 +180,17 @@ class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, 
         user.lastname = lastname
         user.intro = introduction.text
         user.rating = 5.0
-        if category1.text != nil && hashtag1.text != nil {
+        if category1.text != "" && hashtag1.text != "" {
             user.interests[category1.text!] = hashtag1.text!
+            print("In 1")
         }
-        if category2.text != nil && hashtag2.text != nil {
+        if category2.text != "" && hashtag2.text != "" {
             user.interests[category2.text!] = hashtag2.text!
+            print("In 2")
         }
-        if category3.text != nil && hashtag3.text != nil {
+        if category3.text != "" && hashtag3.text != "" {
             user.interests[category3.text!] = hashtag3.text!
+            print("In 3")
         }
 
         let profileImage = Toucan(image: photo).resize(CGSize(width: 600, height: 600), fitMode: Toucan.Resize.FitMode.Crop).image
