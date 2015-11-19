@@ -143,8 +143,6 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         topConstraint.constant = 0
         bottomConstraint.constant = 0
         view.layoutIfNeeded()
-        firstResponder?.resignFirstResponder()
-        firstResponder = nil
     }
 
     

@@ -167,8 +167,6 @@ class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, 
         topConstraint.constant = 0
         bottomConstraint.constant = 0
         view.layoutIfNeeded()
-        firstResponder?.resignFirstResponder()
-        firstResponder = nil
     }
 
     // MARK: - Sign Up
