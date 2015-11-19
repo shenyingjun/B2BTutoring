@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cww-SS-xGp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cww-SS-xGp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -88,7 +88,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="yo5-Qo-IBS">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,7 +96,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="Tc5-tb-mOY" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tc5-tb-mOY" id="Iy8-b2-dnx">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
@@ -353,7 +353,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cof-V1-5Cp">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cof-V1-5Cp" id="q1Z-qj-pyD">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -401,7 +401,6 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="editProfile:" destination="pKB-qC-LGx" id="Jc9-8D-pKn"/>
-                                <segue destination="HaB-yj-MkK" kind="unwind" unwindAction="completeEditProfile:" id="LeE-bo-XjG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -534,7 +533,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="Gvl-hR-4Wl" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvl-hR-4Wl" id="ViH-Zy-v8Q">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
@@ -756,7 +755,7 @@
                         <barButtonItem key="rightBarButtonItem" image="add_session" id="EIO-8l-OBd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="A39-yp-DKD" kind="presentation" id="m8w-DU-v1p"/>
+                                <segue destination="A39-yp-DKD" kind="presentation" identifier="" id="m8w-DU-v1p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -778,7 +777,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" verticalCompressionResistancePriority="1" id="CBs-Iw-xcL">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="260"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-XJ-qAR">
@@ -801,12 +800,12 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaV-Sq-ZPC">
-                                    <rect key="frame" x="0.0" y="222" width="600" height="30"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaV-Sq-ZPC">
+                                    <rect key="frame" x="0.0" y="212" width="600" height="33"/>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="9eG-ck-3Ma"/>
-                                        <constraint firstAttribute="width" secondItem="JaV-Sq-ZPC" secondAttribute="height" multiplier="20:1" id="Avi-va-BQw"/>
+                                        <constraint firstAttribute="width" secondItem="JaV-Sq-ZPC" secondAttribute="height" multiplier="18:1" id="Avi-va-BQw"/>
                                         <constraint firstAttribute="width" constant="600" id="Dpc-F3-Vlb"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Gur-mi-FNG"/>
                                     </constraints>
@@ -831,7 +830,7 @@
                                 <constraint firstItem="YPQ-XJ-qAR" firstAttribute="width" secondItem="CBs-Iw-xcL" secondAttribute="width" id="MbU-Xe-fJu"/>
                                 <constraint firstItem="JaV-Sq-ZPC" firstAttribute="centerX" secondItem="CBs-Iw-xcL" secondAttribute="centerX" id="R0x-SH-sdq"/>
                                 <constraint firstAttribute="bottom" secondItem="pv6-aR-omW" secondAttribute="bottom" constant="50" id="UxQ-gs-P7Y"/>
-                                <constraint firstAttribute="bottom" secondItem="JaV-Sq-ZPC" secondAttribute="bottom" constant="8" id="Y9M-bv-kcw"/>
+                                <constraint firstAttribute="bottom" secondItem="JaV-Sq-ZPC" secondAttribute="bottom" constant="15" id="Y9M-bv-kcw"/>
                                 <constraint firstAttribute="bottom" secondItem="YPQ-XJ-qAR" secondAttribute="bottom" constant="100" id="YPq-rq-06W"/>
                                 <constraint firstItem="JaV-Sq-ZPC" firstAttribute="width" secondItem="CBs-Iw-xcL" secondAttribute="height" multiplier="30:13" id="Ym7-w4-5kr"/>
                                 <constraint firstItem="YPQ-XJ-qAR" firstAttribute="centerX" secondItem="CBs-Iw-xcL" secondAttribute="centerX" id="gTG-I3-xWe"/>
@@ -844,7 +843,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="44" id="y5d-R1-QaY" customClass="InfoTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="288" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="352" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y5d-R1-QaY" id="GIN-dE-zaq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -880,7 +879,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="wie-aw-X4g" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="332" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="396" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wie-aw-X4g" id="PR5-WJ-kyI">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
@@ -1077,7 +1076,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="lcH-Tu-Py9" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="452" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="516" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcH-Tu-Py9" id="ocQ-Uk-ffB">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
@@ -1154,7 +1153,7 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreTableViewCell" textLabel="yFH-9a-3kx" style="IBUITableViewCellStyleDefault" id="iP1-Tj-DLk">
-                                <rect key="frame" x="0.0" y="572" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="636" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iP1-Tj-DLk" id="DJF-eF-7SR">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1202,7 +1201,7 @@ I LOVE IT</string>
                         <barButtonItem key="rightBarButtonItem" image="edit" id="iTa-26-ddh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="qDX-Fc-bHO" kind="presentation" id="jGB-J5-HIu"/>
+                                <segue destination="qDX-Fc-bHO" kind="presentation" identifier="editProfile" id="jGB-J5-HIu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1224,13 +1223,13 @@ I LOVE IT</string>
             <objects>
                 <tableViewController id="ph5-Z6-VAt" customClass="ReviewTableViewController" customModule="B2BTutoring" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="s2u-cy-SBz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="vCp-Cx-hNw" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vCp-Cx-hNw" id="zpj-Kb-a61">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
@@ -1974,7 +1973,7 @@ Blah</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENTER YOUR PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egj-2B-XxV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER YOUR PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egj-2B-XxV">
                                 <rect key="frame" x="208" y="101" width="184" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -2342,7 +2341,7 @@ Blah</string>
                                     <action selector="deleteDigit:" destination="QgW-lh-9hk" eventType="touchUpInside" id="Yqq-1v-3ag"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENTER THE VERIFICATION CODE WE JUST SENT YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B9-CE-yRs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER THE VERIFICATION CODE WE JUST SENT YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B9-CE-yRs">
                                 <rect key="frame" x="138" y="101" width="324" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -2548,7 +2547,7 @@ Blah</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CREATE YOUR PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0z-mt-eso">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE YOUR PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0z-mt-eso">
                                         <rect key="frame" x="228" y="81" width="145" height="21"/>
                                         <animations/>
                                         <constraints>
@@ -2956,7 +2955,7 @@ Blah</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="New here? Sign up to beome a member!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eju-j9-8dc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New here? Sign up to beome a member!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eju-j9-8dc">
                                 <rect key="frame" x="182" y="447" width="238" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -3426,9 +3425,9 @@ Blah</string>
         <image name="stormtrooper" width="458" height="458"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4vY-Tt-wrH"/>
-        <segue reference="UtY-n2-fVq"/>
+        <segue reference="29u-Xj-qtK"/>
         <segue reference="gdd-31-nHQ"/>
+        <segue reference="UtY-n2-fVq"/>
         <segue reference="Z0I-zz-8oE"/>
     </inferredMetricsTieBreakers>
 </document>
