@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		026043F51BFA8F87000A9BFF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043F41BFA8F87000A9BFF /* Date.swift */; };
+		027146721BFC62DB0043E6DE /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027146711BFC62DB0043E6DE /* Filter.swift */; };
+		027146761BFC6FD00043E6DE /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027146751BFC6FD00043E6DE /* Common.swift */; };
 		02AE3FDC1BFA7EF9003156F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDB1BFA7EF9003156F0 /* User.swift */; };
 		02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDD1BFA7F5F003156F0 /* Session.swift */; };
 		390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */; };
@@ -52,8 +54,7 @@
 		7EF7C0F21BFC4A180060EE4C /* LoginOrSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */; };
 		7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */; };
 		7EF7C0F51BFC4A250060EE4C /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */; };
-		7EF7C0FB1BFC4F4D0060EE4C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */; };
-		7EF7C10C1BFD250B0060EE4C /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C10B1BFD250B0060EE4C /* Toucan.swift */; };
+		7EF7C10F1BFD9DCE0060EE4C /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C10E1BFD9DCE0060EE4C /* Toucan.swift */; };
 		7EFEB6A11BDF302000D644A9 /* LoginProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */; };
 		7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */; };
 		7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEB6A41BDF393D00D644A9 /* HoshiTextField.swift */; };
@@ -69,6 +70,8 @@
 
 /* Begin PBXFileReference section */
 		026043F41BFA8F87000A9BFF /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		027146711BFC62DB0043E6DE /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		027146751BFC6FD00043E6DE /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		02AE3FDB1BFA7EF9003156F0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		02AE3FDD1BFA7F5F003156F0 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		02AE3FDF1BFA7FBA003156F0 /* B2B-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "B2B-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -119,9 +122,8 @@
 		7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrSignUpViewController.swift; sourceTree = "<group>"; };
 		7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileContViewController.swift; sourceTree = "<group>"; };
 		7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
-		7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		7EF7C10A1BFD250B0060EE4C /* Toucan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toucan.h; sourceTree = "<group>"; };
-		7EF7C10B1BFD250B0060EE4C /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
+		7EF7C10D1BFD9DCE0060EE4C /* Toucan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toucan.h; sourceTree = "<group>"; };
+		7EF7C10E1BFD9DCE0060EE4C /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileViewController.swift; sourceTree = "<group>"; };
 		7EFEB6A31BDF393D00D644A9 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		7EFEB6A41BDF393D00D644A9 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		7E4BEC9E1BE1A6BD00D74DEB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				027146751BFC6FD00043E6DE /* Common.swift */,
 				3992E0FC1BFC15E4005F2C00 /* Query.swift */,
 				3992E0FD1BFC15E4005F2C00 /* Search.swift */,
 				026043F41BFA8F87000A9BFF /* Date.swift */,
@@ -273,7 +276,7 @@
 				7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */,
 				7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */,
 				3929C7CA1BFABB580081992E /* Review.swift */,
-				7EF7C0FA1BFC4F4D0060EE4C /* Profile.swift */,
+				027146711BFC62DB0043E6DE /* Filter.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -288,8 +291,8 @@
 		7EF7C1091BFD24FC0060EE4C /* Toucan */ = {
 			isa = PBXGroup;
 			children = (
-				7EF7C10A1BFD250B0060EE4C /* Toucan.h */,
-				7EF7C10B1BFD250B0060EE4C /* Toucan.swift */,
+				7EF7C10D1BFD9DCE0060EE4C /* Toucan.h */,
+				7EF7C10E1BFD9DCE0060EE4C /* Toucan.swift */,
 			);
 			name = Toucan;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF7C10F1BFD9DCE0060EE4C /* Toucan.swift in Sources */,
 				02AE3FDC1BFA7EF9003156F0 /* User.swift in Sources */,
 				7E2C70F31BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift in Sources */,
 				7EFEB6B21BDF393D00D644A9 /* JiroTextField.swift in Sources */,
@@ -457,8 +461,10 @@
 				7EB0581F1BDDE5F100342F29 /* NumberButtonView.swift in Sources */,
 				7EFEB6AE1BDF393D00D644A9 /* AkiraTextField.swift in Sources */,
 				3929C7CD1BFABE630081992E /* ReviewTableViewCell.swift in Sources */,
+				027146761BFC6FD00043E6DE /* Common.swift in Sources */,
 				7E5D042A1BE3591300285761 /* ProfileTableViewController.swift in Sources */,
 				390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */,
+				027146721BFC62DB0043E6DE /* Filter.swift in Sources */,
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
 				7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */,
 				7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */,
@@ -482,11 +488,9 @@
 				7EFEB6B71BDF393D00D644A9 /* YokoTextField.swift in Sources */,
 				3929C7CB1BFABB580081992E /* Review.swift in Sources */,
 				026043F51BFA8F87000A9BFF /* Date.swift in Sources */,
-				7EF7C10C1BFD250B0060EE4C /* Toucan.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
 				7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */,
 				7EF7C0F21BFC4A180060EE4C /* LoginOrSignUpViewController.swift in Sources */,
-				7EF7C0FB1BFC4F4D0060EE4C /* Profile.swift in Sources */,
 				7E2C70C31BDDA834000F7F0F /* AppDelegate.swift in Sources */,
 				7EB7F0341BE3F13700CCDAB4 /* TutorSession.swift in Sources */,
 			);

@@ -8,6 +8,16 @@
 
 import UIKit
 
+class Entry {
+    let key : String
+    let value : String
+    init(k : String, v : String) {
+        self.key = k;
+        self.value = v;
+    }
+}
+
+
 class ProfileTableViewController: UITableViewController {
     
     @IBOutlet weak var headerView: UIView!
@@ -15,21 +25,32 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileSegmentedControl: UISegmentedControl!
     
-    let profile = Profile()
+    //let profile = Profile()
+    var name:[String] = []
+    var info:[Entry] = []
+    var interest:[Entry] = []
+    
     let tuteeSession = TuteeSession()
     let tutorSession = TutorSession()
-    
+    /*
     @IBAction func cancelEditProfile(segue: UIStoryboardSegue) {
         print("cancel edit")
     }
+    */
     
     @IBAction func completeEditProfile(segue: UIStoryboardSegue) {
         print("complete edit")
+        fetchData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = profile.info[0].value
+        //nameLabel.text = profile.info[0].value
+        self.fetchData()
+        
         self.tableView.tableHeaderView = self.headerView
         self.navigationItem.rightBarButtonItem?.enabled = true
         // Uncomment the following line to preserve selection between presentations
@@ -37,6 +58,46 @@ class ProfileTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func fetchData() {
+        if let currentUser = User.currentUser() {
+            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock() {
+                (object: PFObject?, error: NSError?) -> Void in
+                if error == nil {
+                    if let user = object as? User {
+                        self.nameLabel.text = user.firstname + " " + user.lastname
+                        self.name.removeAll()
+                        self.name.append(user.firstname)
+                        self.name.append(user.lastname)
+                        
+                        self.info.removeAll()
+                        
+                        if let email = user.email {
+                            self.info.append(Entry(k: "Email:", v: email))
+                        }
+                        
+                        if let phone = user.username {
+                            self.info.append(Entry(k: "Phone", v: phone))
+                        }
+                        
+                        if let intro = user.intro {
+                            self.info.append(Entry(k: "Intro", v: intro))
+                        }
+                        
+                        self.interest.removeAll()
+                        
+                        for (myKey, myVal) in user.interests {
+                            self.interest.append(Entry(k: myKey, v: myVal))
+                        }
+                        self.tableView.reloadData()
+                        
+                    }
+                } else {
+                    print("Error loading user info")
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,10 +134,17 @@ class ProfileTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         switch profileSegmentedControl.selectedSegmentIndex {
         case 0:
-            return 1
-        case 1:
-            return 2
+            var count:Int = 1
+            if (self.info.count > 2) {
+                count++
+            }
+            if (self.interest.count > 0) {
+                count++
+            }
+            return count
         case 2:
+            return 2
+        case 1:
             return 1
         default:
             return 0
@@ -88,15 +156,29 @@ class ProfileTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         switch profileSegmentedControl.selectedSegmentIndex {
         case 0:
-            return profile.info.count-1
-        case 1:
+            switch section {
+            case 0:
+                return self.info.count-1
+            case 1:
+                if (self.interest.count > 0) {
+                    return self.interest.count
+                }
+                else {
+                    return 1
+                }
+            case 2:
+                return 1
+            default:
+                return 0
+            }
+        case 2:
             if section == 0 {
                 return 4
             }
             else {
                 return tuteeSession.info.count
             }
-        case 2:
+        case 1:
             return tutorSession.info.count
         default:
             return 0
@@ -108,12 +190,28 @@ class ProfileTableViewController: UITableViewController {
         switch profileSegmentedControl.selectedSegmentIndex {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell", forIndexPath: indexPath) as! InfoTableViewCell
-            let entry = profile.info[indexPath.row+1]
+            var entry: Entry
+            switch indexPath.section{
+            case 0:
+                entry = self.info[indexPath.row]
+                break
+            case 1:
+                if (self.interest.count > 0) {
+                    entry = self.interest[indexPath.row]
+                }
+                else {
+                    entry = self.info[info.count-1]
+                }
+                break
+            default:
+                entry = self.info[info.count-1]
+                break
+            }
             cell.keyLabel.text = entry.key
             cell.valueLabel.text = entry.value
             
             return cell
-        case 1:
+        case 2:
             if indexPath.section == 0 {
                 if indexPath.row == 3 {
                     let cell = tableView.dequeueReusableCellWithIdentifier("MoreTableViewCell", forIndexPath: indexPath)
@@ -141,7 +239,7 @@ class ProfileTableViewController: UITableViewController {
                 cell.ratingLabel.text = entry.rating
                 return cell
             }
-        case 2:
+        case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
             let entry = tutorSession.info[indexPath.row]
             cell.tutorImageView.image = UIImage(named:entry.image)
@@ -163,14 +261,28 @@ class ProfileTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch profileSegmentedControl.selectedSegmentIndex {
-        case 1:
+        case 0:
+            switch section{
+            case 0:
+                return "Basic"
+            case 1:
+                if (interest.count > 0) {
+                    return "Interest"
+                }
+                else {
+                    return "Review"
+                }
+            default:
+                return "Review"
+            }
+        case 2:
             if section == 0 {
                 return "Review"
             }
             else {
                 return "History"
             }
-        case 2:
+        case 1:
             return "History"
         default:
             return nil
@@ -189,7 +301,7 @@ class ProfileTableViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell") as! InfoTableViewCell
             return cell.bounds.height
-        case 1:
+        case 2:
             if indexPath.section == 0 {
                 if (indexPath.row == 3) {
                     let cell = tableView.dequeueReusableCellWithIdentifier("MoreTableViewCell")
@@ -205,7 +317,7 @@ class ProfileTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
                 return cell.bounds.height
             }
-        case 2:
+        case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
             return cell.bounds.height
         default:
@@ -252,7 +364,14 @@ class ProfileTableViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "sessionInfo" {
+        if segue.identifier == "editProfile" {
+            let dstController = (segue.destinationViewController as! UINavigationController).viewControllers.first as! EditProfileViewController
+            
+            dstController.name = self.name
+            dstController.info = self.info
+            dstController.interest = self.interest
+        }
+        else if segue.identifier == "sessionInfo" {
             let dstController = segue.destinationViewController as! SessionInfoViewController;
             //dstController.xxx = xxx
         }
