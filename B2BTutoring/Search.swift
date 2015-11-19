@@ -28,5 +28,15 @@ class Search {
         return PFQuery.orQueryWithSubqueries(queries)
     }
     
+    class func getInterestPFQuery(name: String, interests: [String]) -> PFQuery {
+        var queries = [PFQuery]()
+        for interest in interests {
+            let subQuery = PFQuery(className: name)
+            subQuery.whereKey("category", equalTo: interest)
+            queries.append(subQuery)
+        }
+        return PFQuery.orQueryWithSubqueries(queries)
+    }
+    
 }
 

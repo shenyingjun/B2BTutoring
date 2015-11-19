@@ -30,5 +30,18 @@ class SessionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func initCell(session: Session) -> Void {
+        self.tutorImageView.image = UIImage(named:"starwar")
+        self.titleLabel.text = session.title
+        self.categoryLabel.text = session.category
+        self.tagLabel.text = session.tags
+        self.locationLabel.text = session.location
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        self.timeLabel.text = dateFormatter.stringFromDate(session.starts)
+        self.capacityLabel.text = "2/10"
+        self.ratingLabel.text = "☆4.7"
+    }
 
 }

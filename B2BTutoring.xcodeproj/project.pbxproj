@@ -10,6 +10,7 @@
 		026043F51BFA8F87000A9BFF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043F41BFA8F87000A9BFF /* Date.swift */; };
 		027146721BFC62DB0043E6DE /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027146711BFC62DB0043E6DE /* Filter.swift */; };
 		027146761BFC6FD00043E6DE /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027146751BFC6FD00043E6DE /* Common.swift */; };
+		027146781BFDAD090043E6DE /* ExploreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027146771BFDAD090043E6DE /* ExploreTableViewController.swift */; };
 		02AE3FDC1BFA7EF9003156F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDB1BFA7EF9003156F0 /* User.swift */; };
 		02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDD1BFA7F5F003156F0 /* Session.swift */; };
 		390937C01BEACEA8008043B4 /* SessionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390937BF1BEACEA8008043B4 /* SessionInfoViewController.swift */; };
@@ -18,7 +19,6 @@
 		3929C7CD1BFABE630081992E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */; };
 		3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */; };
 		3992E0FB1BFBF2FD005F2C00 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E0FA1BFBF2FD005F2C00 /* EditProfileViewController.swift */; };
-		3992E0FE1BFC15E4005F2C00 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E0FC1BFC15E4005F2C00 /* Query.swift */; };
 		3992E0FF1BFC15E4005F2C00 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E0FD1BFC15E4005F2C00 /* Search.swift */; };
 		3992E1011BFC32ED005F2C00 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E1001BFC32ED005F2C00 /* FilterViewController.swift */; };
 		3992E1031BFC5903005F2C00 /* PostReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992E1021BFC5903005F2C00 /* PostReviewViewController.swift */; };
@@ -72,6 +72,7 @@
 		026043F41BFA8F87000A9BFF /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		027146711BFC62DB0043E6DE /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		027146751BFC6FD00043E6DE /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		027146771BFDAD090043E6DE /* ExploreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreTableViewController.swift; sourceTree = "<group>"; };
 		02AE3FDB1BFA7EF9003156F0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		02AE3FDD1BFA7F5F003156F0 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		02AE3FDF1BFA7FBA003156F0 /* B2B-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "B2B-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		3992E0FA1BFBF2FD005F2C00 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		3992E0FC1BFC15E4005F2C00 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		3992E0FD1BFC15E4005F2C00 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		3992E1001BFC32ED005F2C00 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		3992E1021BFC5903005F2C00 /* PostReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReviewViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +233,7 @@
 		7E4BEC9C1BE1A68C00D74DEB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				027146771BFDAD090043E6DE /* ExploreTableViewController.swift */,
 				7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */,
 				7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */,
 				7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */,
@@ -268,7 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				027146751BFC6FD00043E6DE /* Common.swift */,
-				3992E0FC1BFC15E4005F2C00 /* Query.swift */,
 				3992E0FD1BFC15E4005F2C00 /* Search.swift */,
 				026043F41BFA8F87000A9BFF /* Date.swift */,
 				02AE3FDB1BFA7EF9003156F0 /* User.swift */,
@@ -472,10 +472,10 @@
 				3992E1011BFC32ED005F2C00 /* FilterViewController.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
-				3992E0FE1BFC15E4005F2C00 /* Query.swift in Sources */,
 				3992E0FB1BFBF2FD005F2C00 /* EditProfileViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
 				7EF7C0F51BFC4A250060EE4C /* CategoryPickerView.swift in Sources */,
+				027146781BFDAD090043E6DE /* ExploreTableViewController.swift in Sources */,
 				3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */,
 				7E5D04281BE3550700285761 /* SessionTableViewCell.swift in Sources */,
 				3992E0FF1BFC15E4005F2C00 /* Search.swift in Sources */,

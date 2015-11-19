@@ -57,9 +57,6 @@ class SearchTableViewController: UITableViewController {
             }
         }
     }
-
-    @IBAction func filter(sender: UIBarButtonItem) {
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -78,17 +75,7 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-        cell.tutorImageView.image = UIImage(named:"starwar")
-        cell.titleLabel.text = self.sessions[indexPath.row].title
-        cell.categoryLabel.text = self.sessions[indexPath.row].category
-        cell.tagLabel.text = self.sessions[indexPath.row].tags
-        cell.locationLabel.text = self.sessions[indexPath.row].location
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        cell.timeLabel.text = dateFormatter.stringFromDate(sessions[indexPath.row].starts)
-        cell.capacityLabel.text = "2/10"
-        cell.ratingLabel.text = "☆4.7"
-        
+        cell.initCell(self.sessions[indexPath.row])
         return cell
     }
     
