@@ -394,7 +394,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="51o-Pd-yKh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="HaB-yj-MkK" kind="unwind" unwindAction="cancelEditProfile:" id="qed-bc-tEZ"/>
+                                <segue destination="HaB-yj-MkK" kind="unwind" identifier="unwindToProfileTab" unwindAction="completeEditProfile:" id="qed-bc-tEZ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="mpL-sa-uc4">

@@ -209,7 +209,7 @@ class EditProfileViewController: FormViewController {
     }
     
     func alertHandler(alert: UIAlertAction!) -> Void {
-        //performSegueWithIdentifier("unwindToProfileTab", sender: self)
+        performSegueWithIdentifier("unwindToProfileTab", sender: self)
     }
     
     func createAlert(message: String, unwind: Bool) -> Void {
