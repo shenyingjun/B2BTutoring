@@ -32,13 +32,15 @@ class ProfileTableViewController: UITableViewController {
     
     let tuteeSession = TuteeSession()
     let tutorSession = TutorSession()
-    
+    /*
     @IBAction func cancelEditProfile(segue: UIStoryboardSegue) {
         print("cancel edit")
     }
+    */
     
     @IBAction func completeEditProfile(segue: UIStoryboardSegue) {
         print("complete edit")
+        fetchData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -80,7 +82,7 @@ class ProfileTableViewController: UITableViewController {
                         }
                         
                         if let intro = user.intro {
-                            self.info.append(Entry(k: "Info", v: intro))
+                            self.info.append(Entry(k: "Intro", v: intro))
                         }
                         
                         self.interest.removeAll()
