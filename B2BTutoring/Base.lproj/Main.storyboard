@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cww-SS-xGp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cww-SS-xGp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -310,6 +310,7 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSv-VB-wnB">
                                             <rect key="frame" x="96" y="8" width="32" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Cii-hC-CxU"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="hXa-WV-tPu"/>
@@ -325,6 +326,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfz-Ab-Iyw">
                                             <rect key="frame" x="96" y="31" width="60" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="INb-1r-tFb"/>
                                             </constraints>
@@ -334,6 +336,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFj-UI-C0d">
                                             <rect key="frame" x="503" y="8" width="55" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="F2L-JP-KK5"/>
                                             </constraints>
@@ -343,6 +346,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Capacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uE-JV-clW">
                                             <rect key="frame" x="502" y="81" width="56" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="MPe-s3-MzG"/>
                                             </constraints>
@@ -352,6 +356,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaD-33-9ms">
                                             <rect key="frame" x="96" y="54" width="23" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="71z-d2-82r"/>
                                             </constraints>
@@ -361,6 +366,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12f-XT-t9G">
                                             <rect key="frame" x="526" y="31" width="32" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="dgM-yP-pbQ"/>
                                             </constraints>
@@ -370,6 +376,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="★ 4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAd-sy-DbJ">
                                             <rect key="frame" x="25" y="81" width="37" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="701-qo-HfB"/>
                                             </constraints>
@@ -379,6 +386,7 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="fxo-BS-Sy6">
                                             <rect key="frame" x="8" y="8" width="70" height="70"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="1VP-Ug-ndo"/>
                                                 <constraint firstAttribute="height" constant="70" id="ssr-5v-66N"/>
@@ -391,6 +399,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="JAd-sy-DbJ" firstAttribute="leading" secondItem="5CG-sm-37c" secondAttribute="leadingMargin" constant="17" id="010-IT-j1X"/>
                                         <constraint firstAttribute="topMargin" secondItem="fxo-BS-Sy6" secondAttribute="top" id="3yW-Ee-txj"/>
@@ -418,13 +427,14 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="xIg-dj-PhO"/>
                                             <exclude reference="lo6-yj-hHR"/>
                                             <exclude reference="xAo-x9-XKo"/>
+                                            <exclude reference="xIg-dj-PhO"/>
                                             <exclude reference="Jad-KU-E1o"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="capacityLabel" destination="0uE-JV-clW" id="SGT-3S-Ud8"/>
                                     <outlet property="categoryLabel" destination="Sfz-Ab-Iyw" id="Ehw-au-ByT"/>
@@ -812,7 +822,16 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-XJ-qAR">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="YPQ-XJ-qAR" secondAttribute="height" multiplier="15:4" id="Udl-VY-B2A"/>
+                                        <constraint firstAttribute="width" secondItem="YPQ-XJ-qAR" secondAttribute="height" multiplier="16:9" id="nsf-C8-D7n"/>
+                                    </constraints>
                                     <state key="normal" backgroundImage="starwar"/>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="nsf-C8-D7n"/>
+                                        </mask>
+                                    </variation>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pv6-aR-omW">
                                     <rect key="frame" x="250" y="110" width="100" height="100"/>
@@ -821,7 +840,6 @@
                                         <constraint firstAttribute="width" constant="100" id="4fB-74-aMK"/>
                                         <constraint firstAttribute="height" constant="100" id="Fft-9e-bHa"/>
                                     </constraints>
-                                    <state key="normal" backgroundImage="darth_vader"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                             <integer key="value" value="50"/>
@@ -1186,6 +1204,7 @@ I LOVE IT</string>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="backgroundImageButton" destination="YPQ-XJ-qAR" id="tTp-fe-DMb"/>
                         <outlet property="headerView" destination="CBs-Iw-xcL" id="tGc-AZ-LbK"/>
                         <outlet property="nameLabel" destination="JaV-Sq-ZPC" id="rwV-lo-4zM"/>
                         <outlet property="profileImageButton" destination="pv6-aR-omW" id="1Kh-mN-yYY"/>
@@ -1951,7 +1970,7 @@ Blah</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENTER YOUR PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egj-2B-XxV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER YOUR PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egj-2B-XxV">
                                 <rect key="frame" x="208" y="101" width="184" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -2319,7 +2338,7 @@ Blah</string>
                                     <action selector="deleteDigit:" destination="QgW-lh-9hk" eventType="touchUpInside" id="Yqq-1v-3ag"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENTER THE VERIFICATION CODE WE JUST SENT YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B9-CE-yRs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER THE VERIFICATION CODE WE JUST SENT YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B9-CE-yRs">
                                 <rect key="frame" x="138" y="101" width="324" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -2525,7 +2544,7 @@ Blah</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CREATE YOUR PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0z-mt-eso">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE YOUR PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0z-mt-eso">
                                         <rect key="frame" x="228" y="81" width="145" height="21"/>
                                         <animations/>
                                         <constraints>
@@ -2933,7 +2952,7 @@ Blah</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="New here? Sign up to beome a member!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eju-j9-8dc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New here? Sign up to beome a member!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eju-j9-8dc">
                                 <rect key="frame" x="182" y="447" width="238" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -3402,9 +3421,9 @@ Blah</string>
         <image name="starwar" width="1280" height="773"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UtY-n2-fVq"/>
-        <segue reference="gdd-31-nHQ"/>
         <segue reference="29u-Xj-qtK"/>
-        <segue reference="2Dv-fK-a2O"/>
+        <segue reference="gdd-31-nHQ"/>
+        <segue reference="UtY-n2-fVq"/>
+        <segue reference="Z0I-zz-8oE"/>
     </inferredMetricsTieBreakers>
 </document>

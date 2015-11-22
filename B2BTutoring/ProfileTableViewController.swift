@@ -23,12 +23,15 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var backgroundImageButton: UIButton!
     @IBOutlet weak var profileSegmentedControl: UISegmentedControl!
     
     //let profile = Profile()
     var name:[String] = []
     var info:[Entry] = []
     var interest:[Entry] = []
+    var tutorImage:UIImage!
+    var backgroundImage:UIImage!
     
     let tuteeSession = TuteeSession()
     let tutorSession = TutorSession()
@@ -90,6 +93,27 @@ class ProfileTableViewController: UITableViewController {
                         for (myKey, myVal) in user.interests {
                             self.interest.append(Entry(k: myKey, v: myVal))
                         }
+                        
+                        user.profileThumbnail?.getDataInBackgroundWithBlock({
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if imageData != nil {
+                                self.tutorImage = UIImage(data: imageData!)
+                                self.profileImageButton.setBackgroundImage(self.tutorImage, forState: .Normal)
+                            } else {
+                                print(error)
+                            }
+                        })
+                        
+                        user.backgroundThumbnail?.getDataInBackgroundWithBlock({
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if imageData != nil {
+                                self.backgroundImage = UIImage(data: imageData!)
+                                self.backgroundImageButton.setBackgroundImage(self.backgroundImage, forState: .Normal)
+                            } else {
+                                print(error)
+                            }
+                        })
+
                         self.tableView.reloadData()
                         
                     }
@@ -370,6 +394,8 @@ class ProfileTableViewController: UITableViewController {
             dstController.name = self.name
             dstController.info = self.info
             dstController.interest = self.interest
+            dstController.tutorImage = self.tutorImage
+            dstController.backgroundImage = self.backgroundImage
         }
         else if segue.identifier == "sessionInfo" {
             let dstController = segue.destinationViewController as! SessionInfoViewController;
