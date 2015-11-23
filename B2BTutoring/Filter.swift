@@ -11,7 +11,7 @@ class Filter {
     var category : String
     var starts : NSDate
     var ends : NSDate
-    var distance : Float?
+    var distance : Double?
     var firstname : String?
     var lastname : String?
     var rating : Double?
@@ -25,7 +25,7 @@ class Filter {
         self.firstname = values["First"] as? String
         self.lastname = values["Last"] as? String
         if let dist = values["Distance"] as? Float {
-            self.distance = dist
+            self.distance = Double(dist)
         } else {
             self.distance = nil
         }
@@ -43,6 +43,5 @@ class Filter {
         } else {
             self.showOpen = false
         }
-        print(self.showOpen)
     }
 }

@@ -18,6 +18,16 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func sortAndShowLoadedSessions() {
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+            self.sessions.sortInPlace({ $0.getSortingScore(geoPoint) > $1.getSortingScore(geoPoint)})
+            self.tableView.reloadData()
+            if error != nil {
+                print(error)
+            }
+        }
+    }
 
     @IBAction func search(sender: UIBarButtonItem) {
         Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
@@ -32,19 +42,14 @@ class SearchTableViewController: UITableViewController {
                                 self.sessions.append(session)
                             }
                         }
-                        self.tableView.reloadData()
+                        self.sortAndShowLoadedSessions()
                     }
                 }
         }
     }
     
-    func doSearch(filter: Filter) {
-        let baseQuery = Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
-        baseQuery.whereKey("category", equalTo: filter.category)
-        if let user = User.currentUser() {
-            baseQuery.whereKey("tutor", notEqualTo: user)
-        }
-        baseQuery.findObjectsInBackgroundWithBlock {
+    func doSearch(query: PFQuery, filter: Filter) {
+        query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.sessions.removeAll()
@@ -65,19 +70,33 @@ class SearchTableViewController: UITableViewController {
                                     if (filter.lastname != nil && tutor.lastname != filter.lastname)
                                         || (filter.firstname != nil && tutor.firstname != filter.firstname)
                                         || (filter.rating != nil && tutor.rating < filter.rating) {
-                                        continue
+                                            continue
                                     }
                                 } catch {
                                     print("error getting tutor info")
                                 }
                             }
                             
-                            // TODO(reggie): Geolocation
                             self.sessions.append(session)
                         }
                     }
-                    self.tableView.reloadData()
+                    self.sortAndShowLoadedSessions()
                 }
+            }
+        }
+    }
+    
+    func doSearch(filter: Filter) {
+        let baseQuery = Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
+        baseQuery.whereKey("category", equalTo: filter.category)
+        if let distance = filter.distance {
+            PFGeoPoint.geoPointForCurrentLocationInBackground { (currentGeoPoint:PFGeoPoint?, error: NSError?) -> Void in
+                if currentGeoPoint != nil {
+                    baseQuery.whereKey("locationGeoPoint", nearGeoPoint: currentGeoPoint!, withinMiles: distance)
+                } else {
+                    print("Failed to get current location")
+                }
+                self.doSearch(baseQuery, filter: filter)
             }
         }
     }

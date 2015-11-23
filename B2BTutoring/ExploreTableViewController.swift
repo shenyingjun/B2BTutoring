@@ -28,13 +28,23 @@ class ExploreTableViewController: UITableViewController {
         }
     }
     
+    func sortAndShowLoadedSessions() {
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+            self.sessions.sortInPlace({ $0.getSortingScore(geoPoint) > $1.getSortingScore(geoPoint)})
+            self.tableView.reloadData()
+            if error != nil {
+                print(error)
+            }
+        }
+    }
+    
     func loadDataForInterest() {
         if let currentUser = User.currentUser() {
             User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock {
                 (object: PFObject?, error: NSError?) -> Void in
                 if error == nil {
                     if let user = object as? User {
-                        Search.getInterestPFQuery(Session.parseClassName(), interests: Array(user.interests.keys))
+                        Search.getInterestPFQuery(Session.parseClassName(), interests: user.interests)
                             .findObjectsInBackgroundWithBlock {
                                 (objects: [PFObject]?, error: NSError?) -> Void in
                                 if error == nil {
@@ -43,10 +53,12 @@ class ExploreTableViewController: UITableViewController {
                                     if let objects = objects as [PFObject]! {
                                         for object in objects {
                                             if let session = object as? Session {
-                                                self.sessions.append(session)
+                                                if !session.expired() {
+                                                    self.sessions.append(session)
+                                                }
                                             }
                                         }
-                                        self.tableView.reloadData()
+                                        self.sortAndShowLoadedSessions()
                                     }
                                 }
                         }
@@ -62,6 +74,9 @@ class ExploreTableViewController: UITableViewController {
     
     func loadDataForPopular() {
         let query = PFQuery(className: Session.parseClassName())
+        if let currentUser = User.currentUser() {
+            query.whereKey("tutor", notEqualTo: currentUser)
+        }
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -70,15 +85,17 @@ class ExploreTableViewController: UITableViewController {
                 if let objects = objects as [PFObject]! {
                     for object in objects {
                         if let session = object as? Session {
-                            self.sessions.append(session)
+                            if !session.expired() {
+                                self.sessions.append(session)
+                            }
                         }
                     }
-                    self.tableView.reloadData()
+                    self.sortAndShowLoadedSessions()
                 }
             }
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataForInterest()
