@@ -13,6 +13,8 @@ class EditProfileViewController: FormViewController {
     var name:[String] = []
     var info:[Entry] = []
     var interest:[Entry] = []
+    var tutorImage:UIImage!
+    var backgroundImage:UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,12 +104,17 @@ class EditProfileViewController: FormViewController {
             }
         
             +++ Section("Image")
-                
+            
             <<< ImageRow("Profile"){
                 $0.title = "Profile"
+                $0.value = self.tutorImage
             }
+            
             <<< ImageRow("Background"){
                 $0.title = "Backgorund"
+                if (self.backgroundImage != nil) {
+                    $0.value = self.backgroundImage
+                }
             }
             
             +++ Section("Interest 1")
@@ -197,10 +204,11 @@ class EditProfileViewController: FormViewController {
         if fields["Intro"] as? String == nil {
             return "Intro can't be empty!"
         }
-        /*
+        
         if fields["Profile"] as? UIImage == nil {
             return "Profile can't be empty!"
         }
+        /*
         if fields["Background"] as? UIImage == nil {
             return "Background can't be empty!"
         }
@@ -219,8 +227,18 @@ class EditProfileViewController: FormViewController {
     }
     
     @IBAction func editProfile(sender: UIBarButtonItem) {
-        // let session = Session()
         let values = self.form.values()
+        
+        let newTutorImage = Toucan(image: (values["Profile"] as! UIImage)).resize(CGSize(width: 600, height: 600), fitMode: Toucan.Resize.FitMode.Crop).image
+        let newTutorThumbnail = Toucan(image: (values["Profile"] as! UIImage)).resize(CGSize(width: 120, height: 120), fitMode: Toucan.Resize.FitMode.Crop).image
+        let newTutorImageData = UIImageJPEGRepresentation(newTutorImage, 0.8)
+        let newTutorThumbnailData = UIImageJPEGRepresentation(newTutorThumbnail, 0.8)
+        
+        let newBackgroundImage = Toucan(image: (values["Background"] as! UIImage)).resize(CGSize(width: 600, height: 600), fitMode: Toucan.Resize.FitMode.Crop).image
+        let newBackgroundThumbnail = Toucan(image: (values["Background"] as! UIImage)).resize(CGSize(width: 120, height: 120), fitMode: Toucan.Resize.FitMode.Crop).image
+        let newBackgroundImageData = UIImageJPEGRepresentation(newBackgroundImage, 0.8)
+        let newBackgroundThumbnailData = UIImageJPEGRepresentation(newBackgroundThumbnail, 0.8)
+
         let errorMsg = validate(values)
         if errorMsg == nil {
             if let currentUser = User.currentUser() {
@@ -257,12 +275,18 @@ class EditProfileViewController: FormViewController {
                                 new_interest[k] = v
                             }
                             user.interests = new_interest
-                            /*
-                            let profile = UIImageJPEGRepresentation(values["Profile"] as! UIImage, 0.5)
-                            user.profileImage = PFFile(name: "profile.jpg", data: profile!)!
-                            let background = UIImageJPEGRepresentation(values["Background"] as! UIImage, 0.5)
-                            user.backgroundImage = PFFile(name: "background.jpg", data: background!)!
-                            */
+                            
+                            if (!(values["Profile"] as! UIImage).isEqual(self.tutorImage)) {
+                                user.profileImage = PFFile(name: "profile.jpg", data: newTutorImageData!)!
+                                user.profileThumbnail = PFFile(name: "profileThumbnail.jpg", data: newTutorThumbnailData!)!
+                            }
+                            
+                            if (!(values["Background"] as! UIImage).isEqual(self.backgroundImage)) {
+                                user.backgroundImage = PFFile(name: "background.jpg", data: newBackgroundImageData!)!
+                                user.backgroundThumbnail = PFFile(name: "backgroundThumbnail.jpg", data: newBackgroundThumbnailData!)!
+                            }
+
+                            
                             user.saveInBackgroundWithBlock {
                                 (succeeded: Bool, error: NSError?) -> Void in
                                 if (succeeded) {

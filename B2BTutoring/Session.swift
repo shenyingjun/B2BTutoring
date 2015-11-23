@@ -40,7 +40,7 @@ class Session : PFObject, PFSubclassing {
     
     func expired() -> Bool{
         
-        if self.starts.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+        if self.ends.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return true
         }
         return false

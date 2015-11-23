@@ -9,6 +9,7 @@
 import UIKit
 
 class ReviewTableViewController: UITableViewController {
+    var reviews:[Review] = [Review]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +33,12 @@ class ReviewTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.reviews.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
-        cell.tuteeImageView.image = UIImage(named:"stormtrooper")
-        cell.ratingLabel.text = "★ 4.1"
-        cell.dateLabel.text = "Jun.14.2031"
-        cell.reviewTextLabel.text = "Share on Facebook (226)  Tweet (774)  Share (18)  Pin (1) The hearts reign of terror as the only emoji-based reaction to a tweet may be coming to an end. Twitter user _Ninji noticed the ability to select multiple emoji from the heart, including the frown, the grimace, the party nois"
+        cell.initCell(self.reviews[indexPath.row])
         return cell
     }
 
