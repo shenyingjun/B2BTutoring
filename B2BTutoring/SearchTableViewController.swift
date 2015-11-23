@@ -41,6 +41,9 @@ class SearchTableViewController: UITableViewController {
     func doSearch(filter: Filter) {
         let baseQuery = Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
         baseQuery.whereKey("category", equalTo: filter.category)
+        if let user = User.currentUser() {
+            baseQuery.whereKey("tutor", notEqualTo: user)
+        }
         baseQuery.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -49,6 +52,27 @@ class SearchTableViewController: UITableViewController {
                 if let objects = objects as [PFObject]! {
                     for object in objects {
                         if let session = object as? Session {
+                            if session.starts.compare(filter.starts) != NSComparisonResult.OrderedDescending
+                                || session.ends.compare(filter.ends) != NSComparisonResult.OrderedAscending
+                                || (filter.showOpen && session.expired()) {
+                                    continue
+                            }
+                            
+                            if filter.lastname != nil || filter.firstname != nil || filter.rating != nil {
+                                let tutor = session.tutor
+                                do {
+                                    try tutor.fetch()
+                                    if (filter.lastname != nil && tutor.lastname != filter.lastname)
+                                        || (filter.firstname != nil && tutor.firstname != filter.firstname)
+                                        || (filter.rating != nil && tutor.rating < filter.rating) {
+                                        continue
+                                    }
+                                } catch {
+                                    print("error getting tutor info")
+                                }
+                            }
+                            
+                            // TODO(reggie): Geolocation
                             self.sessions.append(session)
                         }
                     }
@@ -81,7 +105,6 @@ class SearchTableViewController: UITableViewController {
     
     @IBAction func exitFilter(segue: UIStoryboardSegue) {
         if let myFilter = self.filter {
-            print(myFilter.rating)
             doSearch(myFilter)
         }
     }

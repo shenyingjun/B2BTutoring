@@ -14,7 +14,7 @@ class Filter {
     var distance : Float?
     var firstname : String?
     var lastname : String?
-    var rating : Float?
+    var rating : Double?
     var showOpen: Bool
     
     init(values: [String : Any?]) {
@@ -30,14 +30,19 @@ class Filter {
             self.distance = nil
         }
         if let rating = values["Rating"] as? Float {
-            self.rating = rating
+            self.rating = Double(rating)
         } else {
             self.rating = nil
         }
-        if values["Open"] != nil {
-            self.showOpen = true
+        if let isOpen = values["Open"] {
+            if isOpen == nil {
+                self.showOpen = false
+            } else {
+                self.showOpen = true
+            }
         } else {
             self.showOpen = false
         }
+        print(self.showOpen)
     }
 }
