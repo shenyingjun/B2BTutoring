@@ -444,6 +444,7 @@
                                     <outlet property="timeLabel" destination="12f-XT-t9G" id="Yav-04-g5b"/>
                                     <outlet property="titleLabel" destination="tSv-VB-wnB" id="TwX-gA-Yo5"/>
                                     <outlet property="tutorImageView" destination="fxo-BS-Sy6" id="7DC-Hs-jFS"/>
+                                    <segue destination="izc-dw-cJc" kind="show" id="rHb-8o-Jaj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -889,7 +890,7 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="44" id="y5d-R1-QaY" customClass="InfoTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="44" id="y5d-R1-QaY" customClass="InfoTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="352" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y5d-R1-QaY" id="GIN-dE-zaq">
@@ -1068,10 +1069,10 @@
                                     <outlet property="timeLabel" destination="f39-qI-BIn" id="KLZ-co-GuQ"/>
                                     <outlet property="titleLabel" destination="vdN-M1-KYy" id="poe-T3-hMU"/>
                                     <outlet property="tutorImageView" destination="Mlk-0X-7il" id="pWx-nX-WYr"/>
-                                    <segue destination="izc-dw-cJc" kind="show" identifier="sessionInfo" id="Z0I-zz-8oE"/>
+                                    <segue destination="izc-dw-cJc" kind="show" identifier="sessionInfo" id="iDX-Mq-M2k"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="lcH-Tu-Py9" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="lcH-Tu-Py9" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="516" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcH-Tu-Py9" id="ocQ-Uk-ffB">
@@ -1225,7 +1226,7 @@ I LOVE IT</string>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="vCp-Cx-hNw" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="vCp-Cx-hNw" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vCp-Cx-hNw" id="zpj-Kb-a61">
@@ -3424,6 +3425,6 @@ Blah</string>
         <segue reference="29u-Xj-qtK"/>
         <segue reference="gdd-31-nHQ"/>
         <segue reference="UtY-n2-fVq"/>
-        <segue reference="Z0I-zz-8oE"/>
+        <segue reference="iDX-Mq-M2k"/>
     </inferredMetricsTieBreakers>
 </document>
