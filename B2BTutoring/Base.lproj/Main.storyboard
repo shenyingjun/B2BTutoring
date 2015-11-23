@@ -1637,13 +1637,13 @@ Blah</string>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="NIR-Gk-Ymx">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="urv-xf-9K1" kind="unwind" unwindAction="cancelPostReview:" id="O5i-2L-hGk"/>
+                                <segue destination="urv-xf-9K1" kind="unwind" identifier="unwindToSessionInfo" unwindAction="completePostReview:" id="OzT-Ek-VzO"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Post" id="B9p-eh-8Z1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="urv-xf-9K1" kind="unwind" unwindAction="completePostReview:" id="icK-8a-Td9"/>
+                                <action selector="postReview:" destination="wbW-yc-nXj" id="2ST-mI-PIM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
