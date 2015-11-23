@@ -28,5 +28,20 @@ class Review : PFObject, PFSubclassing {
     @NSManaged var tutee: User
     @NSManaged var rating: Int
     @NSManaged var date: NSDate
+    
+    private func retrieveTutee(u: User) -> User? {
+        var myTutee: User
+        do {
+            try myTutee = u.fetch()
+            return myTutee
+        } catch {
+            print("Error retrieving session")
+            return nil
+        }
+    }
+    
+    func getTutee() -> User {
+        return retrieveTutee(self.tutee)!
+    }
 
 }

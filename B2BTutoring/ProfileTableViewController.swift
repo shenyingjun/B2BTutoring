@@ -44,7 +44,11 @@ class ProfileTableViewController: UITableViewController {
     
     @IBAction func completeEditProfile(segue: UIStoryboardSegue) {
         print("complete edit")
-        fetchData()
+    }
+    
+    @IBAction func completePostReview(segue: UIStoryboardSegue) {
+        print("complete PostReview")
+        self.fetchData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -52,7 +56,6 @@ class ProfileTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //nameLabel.text = profile.info[0].value
         self.fetchData()
         
         self.tableView.tableHeaderView = self.headerView
@@ -204,7 +207,7 @@ class ProfileTableViewController: UITableViewController {
         case 2:
             if section == 0 {
                 let count:Int = self.reviews.count
-                if (count < 3) {
+                if (count <= 3) {
                     return count
                 }
                 return 4
@@ -255,7 +258,18 @@ class ProfileTableViewController: UITableViewController {
                     let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
                     
                     let rev:Review = self.reviews[indexPath.row]
-                    //cell.tuteeImageView.image = UIImage(named:"stormtrooper")
+                    
+                    let tutee = rev.getTutee()
+                    
+                    tutee.profileThumbnail?.getDataInBackgroundWithBlock({
+                        (imageData: NSData?, error: NSError?) -> Void in
+                        if imageData != nil {
+                            cell.tuteeImageView.image = UIImage(data: imageData!)
+                        } else {
+                            print(error)
+                        }
+                    })
+                    
                     cell.ratingLabel.text = "★ " + String(rev.rating)
                     
                     let dateFormatter = NSDateFormatter()
@@ -557,6 +571,7 @@ class ProfileTableViewController: UITableViewController {
         }
         else if segue.identifier == "reviewInfo" {
             let dstController = segue.destinationViewController as! ReviewTableViewController;
+            dstController.reviews = self.reviews
         }
     }
     
