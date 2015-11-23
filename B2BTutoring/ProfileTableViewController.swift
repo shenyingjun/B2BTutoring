@@ -44,6 +44,7 @@ class ProfileTableViewController: UITableViewController {
     
     @IBAction func completeEditProfile(segue: UIStoryboardSegue) {
         print("complete edit")
+        self.fetchData()
     }
     
     @IBAction func completePostReview(segue: UIStoryboardSegue) {
