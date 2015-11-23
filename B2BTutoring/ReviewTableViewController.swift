@@ -38,28 +38,7 @@ class ReviewTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
-        
-        let rev:Review = self.reviews[indexPath.row]
-        
-        let tutee = rev.getTutee()
-        
-        tutee.profileThumbnail?.getDataInBackgroundWithBlock({
-            (imageData: NSData?, error: NSError?) -> Void in
-            if imageData != nil {
-                cell.tuteeImageView.image = UIImage(data: imageData!)
-            } else {
-                print(error)
-            }
-        })
-        
-        cell.ratingLabel.text = "★ " + String(rev.rating)
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-        cell.dateLabel.text = dateFormatter.stringFromDate(rev.date)
-        
-        cell.reviewTextLabel.text = rev.text
-        
+        cell.initCell(self.reviews[indexPath.row])
         return cell
     }
 
