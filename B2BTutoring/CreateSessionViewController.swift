@@ -104,7 +104,7 @@ class CreateSessionViewController: FormViewController {
             
             DateTimeInlineRow("Starts") {
                 $0.title = $0.tag
-                $0.value = NSDate().dateByAddingTimeInterval(60*60*24)
+                $0.value = NSDate()
                 }
                 .onChange { [weak self] row in
                     let endRow: DateTimeInlineRow! = self?.form.rowByTag("Ends")
@@ -127,7 +127,7 @@ class CreateSessionViewController: FormViewController {
             
             <<< DateTimeInlineRow("Ends"){
                 $0.title = $0.tag
-                $0.value = NSDate().dateByAddingTimeInterval(60*60*25)
+                $0.value = NSDate()
                 }
                 .onChange { [weak self] row in
                     let startRow: DateTimeInlineRow! = self?.form.rowByTag("Starts")
