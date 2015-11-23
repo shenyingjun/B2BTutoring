@@ -269,6 +269,7 @@ class ProfileTableViewController: UITableViewController {
                         cell.textLabel?.font = font
                         cell.textLabel?.text = "No Reviews"
                         cell.textLabel?.textAlignment = NSTextAlignment.Center
+                        cell.selectionStyle = UITableViewCellSelectionStyle.None
                         return cell
                     }
                     let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
@@ -282,6 +283,7 @@ class ProfileTableViewController: UITableViewController {
                     cell.textLabel?.font = font
                     cell.textLabel?.text = "No History as a Tutor"
                     cell.textLabel?.textAlignment = NSTextAlignment.Center
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                     return cell
                 }
                 let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
@@ -294,6 +296,7 @@ class ProfileTableViewController: UITableViewController {
                 cell.textLabel?.font = font
                 cell.textLabel?.text = "No History as a Tutee"
                 cell.textLabel?.textAlignment = NSTextAlignment.Center
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell
             }
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
