@@ -50,9 +50,6 @@ class ProfileTableViewController: UITableViewController {
         print("complete PostReview")
         self.fetchData()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
