@@ -206,16 +206,24 @@ class ProfileTableViewController: UITableViewController {
             }
         case 2:
             if section == 0 {
-                let count:Int = self.reviews.count
-                if (count <= 3) {
-                    return count
+                if (self.reviews.count == 0) {
+                    return 1
+                }
+                if (self.reviews.count <= 3) {
+                    return self.reviews.count
                 }
                 return 4
             }
             else {
+                if (self.tutorSession.count == 0) {
+                    return 1
+                }
                 return self.tutorSession.count
             }
         case 1:
+            if (self.tuteeSession.count == 0) {
+                return 1
+            }
             return self.tuteeSession.count
         default:
             return 0
@@ -224,6 +232,7 @@ class ProfileTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let font = UIFont(name: "Avenir-Medium", size: 16.0)
         switch profileSegmentedControl.selectedSegmentIndex {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell", forIndexPath: indexPath) as! InfoTableViewCell
@@ -255,17 +264,38 @@ class ProfileTableViewController: UITableViewController {
                     return cell
                 }
                 else {
+                    if (self.reviews.count == 0) {
+                        let cell = UITableViewCell()
+                        cell.textLabel?.font = font
+                        cell.textLabel?.text = "No Reviews"
+                        cell.textLabel?.textAlignment = NSTextAlignment.Center
+                        return cell
+                    }
                     let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
                     cell.initCell(self.reviews[indexPath.row])
                     return cell
                 }
             }
             else {
+                if (self.tutorSession.count == 0) {
+                    let cell = UITableViewCell()
+                    cell.textLabel?.font = font
+                    cell.textLabel?.text = "No History as a Tutor"
+                    cell.textLabel?.textAlignment = NSTextAlignment.Center
+                    return cell
+                }
                 let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
                 cell.initCell(self.tutorSession[indexPath.row])
                 return cell
             }
         case 1:
+            if (self.tuteeSession.count == 0) {
+                let cell = UITableViewCell()
+                cell.textLabel?.font = font
+                cell.textLabel?.text = "No History as a Tutee"
+                cell.textLabel?.textAlignment = NSTextAlignment.Center
+                return cell
+            }
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
             cell.initCell(self.tuteeSession[indexPath.row])
             return cell
