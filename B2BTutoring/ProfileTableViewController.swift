@@ -32,9 +32,10 @@ class ProfileTableViewController: UITableViewController {
     var interest:[Entry] = []
     var tutorImage:UIImage!
     var backgroundImage:UIImage!
+    var reviews:[Review] = [Review]()
     
-    let tuteeSession = TuteeSession()
-    let tutorSession = TutorSession()
+    var tuteeSession = [Session]()
+    var tutorSession = [Session]()
     /*
     @IBAction func cancelEditProfile(segue: UIStoryboardSegue) {
         print("cancel edit")
@@ -113,6 +114,11 @@ class ProfileTableViewController: UITableViewController {
                                 print(error)
                             }
                         })
+                        
+                        self.reviews = user.getReviews()
+                        
+                        self.tuteeSession = user.getPassedTuteeSessions()
+                        self.tutorSession = user.getPassedTutorSessions()
 
                         self.tableView.reloadData()
                         
@@ -197,13 +203,17 @@ class ProfileTableViewController: UITableViewController {
             }
         case 2:
             if section == 0 {
+                let count:Int = self.reviews.count
+                if (count < 3) {
+                    return count
+                }
                 return 4
             }
             else {
-                return tuteeSession.info.count
+                return self.tutorSession.count
             }
         case 1:
-            return tutorSession.info.count
+            return self.tuteeSession.count
         default:
             return 0
         }
@@ -243,37 +253,181 @@ class ProfileTableViewController: UITableViewController {
                 }
                 else {
                     let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
-                    cell.tuteeImageView.image = UIImage(named:"stormtrooper")
-                    cell.ratingLabel.text = "★ 4.1"
-                    cell.dateLabel.text = "Jun.14.2031"
-                    cell.reviewTextLabel.text = "Share on Facebook (226)  Tweet (774)  Share (18)  Pin (1) The hearts reign of terror as the only emoji-based reaction to a tweet may be coming to an end. Twitter user _Ninji noticed the ability to select multiple emoji from the heart, including the frown, the grimace, the party nois"
+                    
+                    let rev:Review = self.reviews[indexPath.row]
+                    //cell.tuteeImageView.image = UIImage(named:"stormtrooper")
+                    cell.ratingLabel.text = "★ " + String(rev.rating)
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+                    cell.dateLabel.text = dateFormatter.stringFromDate(rev.date)
+                    
+                    cell.reviewTextLabel.text = rev.text
+
                     return cell
                 }
             }
             else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-                let entry = tuteeSession.info[indexPath.row]
-                cell.tutorImageView.image = UIImage(named:entry.image)
-                cell.titleLabel.text = entry.title
-                cell.categoryLabel.text = entry.category
-                cell.tagLabel.text = entry.tag
-                cell.locationLabel.text = entry.location
-                cell.timeLabel.text = entry.time
-                cell.capacityLabel.text = entry.capacity
-                cell.ratingLabel.text = entry.rating
+                cell.titleLabel.text = tutorSession[indexPath.row].title
+                cell.categoryLabel.text = tutorSession[indexPath.row].category
+                cell.tagLabel.text = tutorSession[indexPath.row].tags
+                cell.tutorImageView.image = nil
+                let sessionGeoPoint = tutorSession[indexPath.row].locationGeoPoint
+                PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+                    if error == nil {
+                        let userLocation = geoPoint
+                        cell.locationLabel.text = NSString(format: "%.1fmi", (userLocation?.distanceInMilesTo(sessionGeoPoint))!) as String
+                    } else {
+                        print(error)
+                    }
+                }
+                
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+                cell.timeLabel.text = dateFormatter.stringFromDate(tutorSession[indexPath.row].starts)
+                cell.capacityLabel.text = String(tutorSession[indexPath.row].tutees.count) + "/" + String(tutorSession[indexPath.row].capacity)
+                
+                User.objectWithoutDataWithObjectId(tutorSession[indexPath.row].tutor.objectId).fetchInBackgroundWithBlock {
+                    (object: PFObject?, error: NSError?) -> Void in
+                    if error == nil {
+                        if let user = object as? User {
+                            user.profileThumbnail?.getDataInBackgroundWithBlock({
+                                (imageData: NSData?, error: NSError?) -> Void in
+                                if imageData != nil {
+                                    cell.tutorImageView.image = UIImage(data: imageData!)
+                                } else {
+                                    print(error)
+                                }
+                            })
+                            cell.ratingLabel.text = "★ " + String(user.rating)
+                        }
+                    } else {
+                        print("Error retrieving user sessions")
+                    }
+                }
+                
+                // tutee labels
+                let maxDisplayTuteeCount = 3
+                let displayTuteeCount = min(tutorSession[indexPath.row].tutees.count, maxDisplayTuteeCount)
+                
+                // TODO: remove placeholder
+                
+                // draw at most 3 labels
+                for var i = 0; i < displayTuteeCount; i++ {
+                    let x = CGFloat(272 - 38 * i)
+                    let y = CGFloat(78)
+                    let size = CGFloat(30)
+                    let tuteeView = UIImageView.init(frame: CGRectMake(x, y, size, size))
+                    tuteeView.layer.cornerRadius = size / 2
+                    tuteeView.layer.masksToBounds = true
+                    User.objectWithoutDataWithObjectId(tutorSession[indexPath.row].tutees[i].objectId).fetchInBackgroundWithBlock({
+                        (object: PFObject?, error: NSError?) -> Void in
+                        if let tutee = object as? User {
+                            tutee.profileThumbnail?.getDataInBackgroundWithBlock({
+                                (imageData: NSData?, error: NSError?) -> Void in
+                                if imageData != nil {
+                                    tuteeView.image = UIImage(data: imageData!)
+                                    cell.contentView.addSubview(tuteeView)
+                                } else {
+                                    print(error)
+                                }
+                            })
+                        }
+                    })
+                }
+                
+                // display ...
+                if tutorSession[indexPath.row].tutees.count > maxDisplayTuteeCount {
+                    let x = CGFloat(272 - 38 * 3 + 10)
+                    let y = CGFloat(88)
+                    let size = CGFloat(20)
+                    let dotLabel = UILabel.init(frame: CGRectMake(x, y, size, size))
+                    dotLabel.text = "..."
+                    cell.contentView.addSubview(dotLabel)
+                }
+                
                 return cell
             }
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-            let entry = tutorSession.info[indexPath.row]
-            cell.tutorImageView.image = UIImage(named:entry.image)
-            cell.titleLabel.text = entry.title
-            cell.categoryLabel.text = entry.category
-            cell.tagLabel.text = entry.tag
-            cell.locationLabel.text = entry.location
-            cell.timeLabel.text = entry.time
-            cell.capacityLabel.text = entry.capacity
-            cell.ratingLabel.text = entry.rating
+            cell.titleLabel.text = tuteeSession[indexPath.row].title
+            cell.categoryLabel.text = tuteeSession[indexPath.row].category
+            cell.tagLabel.text = tuteeSession[indexPath.row].tags
+            cell.tutorImageView.image = nil
+            let sessionGeoPoint = tuteeSession[indexPath.row].locationGeoPoint
+            PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+                if error == nil {
+                    let userLocation = geoPoint
+                    cell.locationLabel.text = NSString(format: "%.1fmi", (userLocation?.distanceInMilesTo(sessionGeoPoint))!) as String
+                } else {
+                    print(error)
+                }
+            }
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+            cell.timeLabel.text = dateFormatter.stringFromDate(tuteeSession[indexPath.row].starts)
+            cell.capacityLabel.text = String(tuteeSession[indexPath.row].tutees.count) + "/" + String(tuteeSession[indexPath.row].capacity)
+            
+            User.objectWithoutDataWithObjectId(tuteeSession[indexPath.row].tutor.objectId).fetchInBackgroundWithBlock {
+                (object: PFObject?, error: NSError?) -> Void in
+                if error == nil {
+                    if let user = object as? User {
+                        user.profileThumbnail?.getDataInBackgroundWithBlock({
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if imageData != nil {
+                                cell.tutorImageView.image = UIImage(data: imageData!)
+                            } else {
+                                print(error)
+                            }
+                        })
+                        cell.ratingLabel.text = "★ " + String(user.rating)
+                    }
+                } else {
+                    print("Error retrieving user sessions")
+                }
+            }
+            
+            // tutee labels
+            let maxDisplayTuteeCount = 3
+            let displayTuteeCount = min(tuteeSession[indexPath.row].tutees.count, maxDisplayTuteeCount)
+            
+            // TODO: remove placeholder
+            
+            // draw at most 3 labels
+            for var i = 0; i < displayTuteeCount; i++ {
+                let x = CGFloat(272 - 38 * i)
+                let y = CGFloat(78)
+                let size = CGFloat(30)
+                let tuteeView = UIImageView.init(frame: CGRectMake(x, y, size, size))
+                tuteeView.layer.cornerRadius = size / 2
+                tuteeView.layer.masksToBounds = true
+                User.objectWithoutDataWithObjectId(tuteeSession[indexPath.row].tutees[i].objectId).fetchInBackgroundWithBlock({
+                    (object: PFObject?, error: NSError?) -> Void in
+                    if let tutee = object as? User {
+                        tutee.profileThumbnail?.getDataInBackgroundWithBlock({
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if imageData != nil {
+                                tuteeView.image = UIImage(data: imageData!)
+                                cell.contentView.addSubview(tuteeView)
+                            } else {
+                                print(error)
+                            }
+                        })
+                    }
+                })
+            }
+            
+            // display ...
+            if tuteeSession[indexPath.row].tutees.count > maxDisplayTuteeCount {
+                let x = CGFloat(272 - 38 * 3 + 10)
+                let y = CGFloat(88)
+                let size = CGFloat(20)
+                let dotLabel = UILabel.init(frame: CGRectMake(x, y, size, size))
+                dotLabel.text = "..."
+                cell.contentView.addSubview(dotLabel)
+            }
             
             return cell
         default:

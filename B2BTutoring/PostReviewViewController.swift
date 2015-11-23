@@ -76,6 +76,60 @@ class PostReviewViewController: FormViewController {
         return nil
     }
     
+    func alertHandler(alert: UIAlertAction!) -> Void {
+        performSegueWithIdentifier("unwindToSessionInfo", sender: self)
+    }
+    
+    func createAlert(message: String, unwind: Bool) -> Void {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: unwind ? alertHandler : nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func postReview(sender: UIBarButtonItem) {
+        let review = Review()
+        let values = self.form.values()
+        let errorMsg = validate(values)
+        if errorMsg == nil {
+            review.text = values["Review"] as! String
+            review.rating = values["Rating"] as! Int
+            review.date = NSDate()
+            review.tutee = User.currentUser()!
+            
+            review.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    if let currentUser = User.currentUser() {
+                        User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock {
+                            (object: PFObject?, error: NSError?) -> Void in
+                            if error == nil {
+                                if let user = object as? User {
+                                    user.reviews.append(review)
+                                    //user.rating.append(review.rating)
+                                    user.saveInBackgroundWithBlock {
+                                        (succeeded: Bool, error: NSError?) -> Void in
+                                        if (succeeded) {
+                                            self.createAlert("Successfully posted review!", unwind: true)
+                                        } else {
+                                            print("Error updating user")
+                                        }
+                                    }
+                                }
+                            } else {
+                                print("Error retrieving user sessions")
+                            }
+                        }
+                    }
+                } else {
+                    self.createAlert("Unable to post review due to server error.", unwind: true)
+                }
+            }
+            
+            
+        } else {
+            createAlert(errorMsg!, unwind: false)
+        }
+    }
     /*
     // MARK: - Navigation
 
