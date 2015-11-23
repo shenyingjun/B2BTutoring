@@ -234,8 +234,8 @@ class EditProfileViewController: FormViewController {
         let newTutorImageData = UIImageJPEGRepresentation(newTutorImage, 0.8)
         let newTutorThumbnailData = UIImageJPEGRepresentation(newTutorThumbnail, 0.8)
         
-        let newBackgroundImage = Toucan(image: (values["Background"] as! UIImage)).resize(CGSize(width: 600, height: 600), fitMode: Toucan.Resize.FitMode.Crop).image
-        let newBackgroundThumbnail = Toucan(image: (values["Background"] as! UIImage)).resize(CGSize(width: 120, height: 120), fitMode: Toucan.Resize.FitMode.Crop).image
+        let newBackgroundImage = Toucan(image: (values["Background"] as! UIImage)).resize(CGSize(width: 600, height: 160), fitMode: Toucan.Resize.FitMode.Crop).image
+        let newBackgroundThumbnail = Toucan(image: (values["Background"] as! UIImage)).resize(CGSize(width: 300, height: 80), fitMode: Toucan.Resize.FitMode.Crop).image
         let newBackgroundImageData = UIImageJPEGRepresentation(newBackgroundImage, 0.8)
         let newBackgroundThumbnailData = UIImageJPEGRepresentation(newBackgroundThumbnail, 0.8)
 
