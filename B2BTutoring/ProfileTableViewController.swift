@@ -44,14 +44,12 @@ class ProfileTableViewController: UITableViewController {
     
     @IBAction func completeEditProfile(segue: UIStoryboardSegue) {
         print("complete edit")
+        self.fetchData()
     }
     
     @IBAction func completePostReview(segue: UIStoryboardSegue) {
         print("complete PostReview")
         self.fetchData()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
     }
 
     override func viewDidLoad() {
