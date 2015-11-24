@@ -40,7 +40,7 @@ class Session : PFObject, PFSubclassing {
     
     func expired() -> Bool{
         
-        if self.starts.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+        if self.ends.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return true
         }
         return false
@@ -48,5 +48,26 @@ class Session : PFObject, PFSubclassing {
     
     func isFull() -> Bool {
         return self.capacity == self.currentEnrollment
+    }
+    
+    func getSortingScore(currentLocation : PFGeoPoint?) -> Double {
+        var score : Double
+        do {
+            let tutor = try self.tutor.fetch()
+            if currentLocation != nil {
+                let geoScore = currentLocation!.distanceInMilesTo(self.locationGeoPoint)
+                score = 1 / geoScore * tutor.rating / 5
+            } else {
+                score = tutor.rating / 5
+            }
+        } catch {
+            if currentLocation != nil {
+                let geoScore = currentLocation!.distanceInMilesTo(self.locationGeoPoint)
+                score = 1 / geoScore
+            } else {
+                score = 0
+            }
+        }
+        return score
     }
 }

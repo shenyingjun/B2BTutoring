@@ -23,15 +23,21 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var backgroundImageButton: UIButton!
     @IBOutlet weak var profileSegmentedControl: UISegmentedControl!
     
     //let profile = Profile()
     var name:[String] = []
     var info:[Entry] = []
     var interest:[Entry] = []
+    var tutorImage:UIImage!
+    var backgroundImage:UIImage!
+    var reviews:[Review] = [Review]()
     
-    let tuteeSession = TuteeSession()
-    let tutorSession = TutorSession()
+    var tuteeSession = [Session]()
+    var tutorSession = [Session]()
+    
+    var currentSession: Session!
     /*
     @IBAction func cancelEditProfile(segue: UIStoryboardSegue) {
         print("cancel edit")
@@ -40,15 +46,16 @@ class ProfileTableViewController: UITableViewController {
     
     @IBAction func completeEditProfile(segue: UIStoryboardSegue) {
         print("complete edit")
-        fetchData()
+        self.fetchData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    @IBAction func completePostReview(segue: UIStoryboardSegue) {
+        print("complete PostReview")
+        self.fetchData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //nameLabel.text = profile.info[0].value
         self.fetchData()
         
         self.tableView.tableHeaderView = self.headerView
@@ -72,17 +79,11 @@ class ProfileTableViewController: UITableViewController {
                         self.name.append(user.lastname)
                         
                         self.info.removeAll()
+                        self.info.append(Entry(k: "Email:", v: user.email!))
+                        self.info.append(Entry(k: "Phone", v: user.username!))
                         
-                        if let email = user.email {
-                            self.info.append(Entry(k: "Email:", v: email))
-                        }
-                        
-                        if let phone = user.username {
-                            self.info.append(Entry(k: "Phone", v: phone))
-                        }
-                        
-                        if let intro = user.intro {
-                            self.info.append(Entry(k: "Intro", v: intro))
+                        if (user.intro != "") {
+                            self.info.append(Entry(k: "Intro", v: user.intro))
                         }
                         
                         self.interest.removeAll()
@@ -90,6 +91,32 @@ class ProfileTableViewController: UITableViewController {
                         for (myKey, myVal) in user.interests {
                             self.interest.append(Entry(k: myKey, v: myVal))
                         }
+                        
+                        user.profileThumbnail?.getDataInBackgroundWithBlock({
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if imageData != nil {
+                                self.tutorImage = UIImage(data: imageData!)
+                                self.profileImageButton.setBackgroundImage(self.tutorImage, forState: .Normal)
+                            } else {
+                                print(error)
+                            }
+                        })
+                        
+                        user.backgroundThumbnail?.getDataInBackgroundWithBlock({
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if imageData != nil {
+                                self.backgroundImage = UIImage(data: imageData!)
+                                self.backgroundImageButton.setBackgroundImage(self.backgroundImage, forState: .Normal)
+                            } else {
+                                print(error)
+                            }
+                        })
+                        
+                        self.reviews = user.getReviews()
+                        
+                        self.tuteeSession = user.getPassedTuteeSessions()
+                        self.tutorSession = user.getPassedTutorSessions()
+
                         self.tableView.reloadData()
                         
                     }
@@ -173,13 +200,25 @@ class ProfileTableViewController: UITableViewController {
             }
         case 2:
             if section == 0 {
+                if (self.reviews.count == 0) {
+                    return 1
+                }
+                if (self.reviews.count <= 3) {
+                    return self.reviews.count
+                }
                 return 4
             }
             else {
-                return tuteeSession.info.count
+                if (self.tutorSession.count == 0) {
+                    return 1
+                }
+                return self.tutorSession.count
             }
         case 1:
-            return tutorSession.info.count
+            if (self.tuteeSession.count == 0) {
+                return 1
+            }
+            return self.tuteeSession.count
         default:
             return 0
         }
@@ -187,6 +226,7 @@ class ProfileTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let font = UIFont(name: "Avenir-Medium", size: 16.0)
         switch profileSegmentedControl.selectedSegmentIndex {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell", forIndexPath: indexPath) as! InfoTableViewCell
@@ -218,43 +258,46 @@ class ProfileTableViewController: UITableViewController {
                     return cell
                 }
                 else {
+                    if (self.reviews.count == 0) {
+                        let cell = UITableViewCell()
+                        cell.textLabel?.font = font
+                        cell.textLabel?.text = "No Reviews"
+                        cell.textLabel?.textAlignment = NSTextAlignment.Center
+                        cell.selectionStyle = UITableViewCellSelectionStyle.None
+                        return cell
+                    }
                     let cell = tableView.dequeueReusableCellWithIdentifier("ReviewTableViewCell", forIndexPath: indexPath) as! ReviewTableViewCell
-                    cell.tuteeImageView.image = UIImage(named:"stormtrooper")
-                    cell.ratingLabel.text = "★ 4.1"
-                    cell.dateLabel.text = "Jun.14.2031"
-                    cell.reviewTextLabel.text = "Share on Facebook (226)  Tweet (774)  Share (18)  Pin (1) The hearts reign of terror as the only emoji-based reaction to a tweet may be coming to an end. Twitter user _Ninji noticed the ability to select multiple emoji from the heart, including the frown, the grimace, the party nois"
+                    cell.initCell(self.reviews[indexPath.row])
                     return cell
                 }
             }
             else {
+                if (self.tutorSession.count == 0) {
+                    let cell = UITableViewCell()
+                    cell.textLabel?.font = font
+                    cell.textLabel?.text = "No History as a Tutor"
+                    cell.textLabel?.textAlignment = NSTextAlignment.Center
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
+                    return cell
+                }
                 let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-                let entry = tuteeSession.info[indexPath.row]
-                cell.tutorImageView.image = UIImage(named:entry.image)
-                cell.titleLabel.text = entry.title
-                cell.categoryLabel.text = entry.category
-                cell.tagLabel.text = entry.tag
-                cell.locationLabel.text = entry.location
-                cell.timeLabel.text = entry.time
-                cell.capacityLabel.text = entry.capacity
-                cell.ratingLabel.text = entry.rating
+                cell.initCell(self.tutorSession[indexPath.row])
                 return cell
             }
         case 1:
+            if (self.tuteeSession.count == 0) {
+                let cell = UITableViewCell()
+                cell.textLabel?.font = font
+                cell.textLabel?.text = "No History as a Tutee"
+                cell.textLabel?.textAlignment = NSTextAlignment.Center
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                return cell
+            }
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-            let entry = tutorSession.info[indexPath.row]
-            cell.tutorImageView.image = UIImage(named:entry.image)
-            cell.titleLabel.text = entry.title
-            cell.categoryLabel.text = entry.category
-            cell.tagLabel.text = entry.tag
-            cell.locationLabel.text = entry.location
-            cell.timeLabel.text = entry.time
-            cell.capacityLabel.text = entry.capacity
-            cell.ratingLabel.text = entry.rating
-            
+            cell.initCell(self.tuteeSession[indexPath.row])
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("InfoTableViewCell", forIndexPath: indexPath) as! InfoTableViewCell
-            
             return cell
         }
     }
@@ -326,6 +369,16 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if profileSegmentedControl.selectedSegmentIndex == 1 {
+            currentSession = tuteeSession[indexPath.row]
+            performSegueWithIdentifier("Show Session Detail", sender: self)
+        } else if profileSegmentedControl.selectedSegmentIndex == 2 && indexPath.section == 1 {
+            currentSession = tutorSession[indexPath.row]
+            performSegueWithIdentifier("Show Session Detail", sender: self)
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -370,16 +423,16 @@ class ProfileTableViewController: UITableViewController {
             dstController.name = self.name
             dstController.info = self.info
             dstController.interest = self.interest
-        }
-        else if segue.identifier == "sessionInfo" {
-            let dstController = segue.destinationViewController as! SessionInfoViewController;
-            //dstController.xxx = xxx
+            dstController.tutorImage = self.tutorImage
+            dstController.backgroundImage = self.backgroundImage
         }
         else if segue.identifier == "reviewInfo" {
             let dstController = segue.destinationViewController as! ReviewTableViewController;
+            dstController.reviews = self.reviews
         }
         else if segue.identifier == "Show Session Detail" {
-            
+            let dstController = segue.destinationViewController as! SessionDetailTableViewController;
+            dstController.session = currentSession
         }
     }
     

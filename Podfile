@@ -6,7 +6,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'B2BTutoring' do
-    pod 'Eureka', '~> 1.0'
+    pod 'Eureka', '~> 1.2'
     pod 'ChameleonFramework/Swift'
 end
 

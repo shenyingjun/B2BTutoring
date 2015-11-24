@@ -9,11 +9,9 @@
 import UIKit
 import Eureka
 
-class CreateSessionViewController: FormViewController {
-
+class CreateSessionViewController: FormViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initializeForm()
     }
 
@@ -76,8 +74,16 @@ class CreateSessionViewController: FormViewController {
                 $0.cell.textField.placeholder = $0.row.tag
             }
             
-            <<< TextRow("Location").cellSetup {
-                $0.cell.textField.placeholder = $0.row.tag
+            <<< LocationRow("Location") {
+                $0.title = $0.tag
+                PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+                    if error == nil {
+                        let userLocation = CLLocation(latitude: geoPoint!.latitude, longitude: geoPoint!.longitude)
+                        self.form.setValues(["Location" : userLocation])
+                    } else {
+                        print(error)
+                    }
+                }
             }
         
 //            <<< PickerRow<Category>("Category") { (row : PickerRow<Category>) -> Void in
@@ -104,7 +110,7 @@ class CreateSessionViewController: FormViewController {
             
             DateTimeInlineRow("Starts") {
                 $0.title = $0.tag
-                $0.value = NSDate().dateByAddingTimeInterval(60*60*24)
+                $0.value = NSDate()
                 }
                 .onChange { [weak self] row in
                     let endRow: DateTimeInlineRow! = self?.form.rowByTag("Ends")
@@ -127,7 +133,7 @@ class CreateSessionViewController: FormViewController {
             
             <<< DateTimeInlineRow("Ends"){
                 $0.title = $0.tag
-                $0.value = NSDate().dateByAddingTimeInterval(60*60*25)
+                $0.value = NSDate()
                 }
                 .onChange { [weak self] row in
                     let startRow: DateTimeInlineRow! = self?.form.rowByTag("Starts")
@@ -168,7 +174,7 @@ class CreateSessionViewController: FormViewController {
         if fields["Title"] as? String == nil {
             return "Title can't be empty!"
         }
-        if fields["Location"] as? String == nil {
+        if fields["Location"] as? CLLocation == nil {
             return "Location can't be empty!"
         }
         if fields["Description"] as? String == nil {
@@ -207,15 +213,29 @@ class CreateSessionViewController: FormViewController {
         let errorMsg = validate(values)
         if errorMsg == nil {
             session.title = values["Title"] as! String
-            session.location = values["Location"] as! String
             
+            let location = values["Location"] as! CLLocation
+            session.locationGeoPoint = PFGeoPoint(location: location)
             // store session location
             let geocoder = CLGeocoder()
-            geocoder.geocodeAddressString(session.location, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
-                if let placemark = placemarks![0] as CLPlacemark? {
-                    session.locationGeoPoint = PFGeoPoint(location: placemark.location)
-                    print("lat: \(session.locationGeoPoint.latitude), lon: \(session.locationGeoPoint.longitude)")
+            geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+                if error == nil && placemarks!.count > 0 {
+                    let address = placemarks![0] as CLPlacemark
+                    session.location = ""
+                    if let subThoroughfare = address.subThoroughfare {
+                        session.location = session.location + subThoroughfare + " "
+                    }
+                    if let thoroughfare = address.thoroughfare {
+                        session.location = session.location + thoroughfare + ", "
+                    }
+                    if let locality = address.locality {
+                        session.location = session.location + locality
+                    }
+                    if let postalCode = address.postalCode {
+                        session.location = session.location + ", " + postalCode
+                    }
                 }
+                
             })
             
             session.tags = values["Tags"] as? String

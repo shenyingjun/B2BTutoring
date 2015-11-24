@@ -25,8 +25,26 @@ class Search {
             queryTags.whereKey("tags", containsString: token)
             queries.append(queryTags)
         }
-        return PFQuery.orQueryWithSubqueries(queries)
+        let finalQuery = PFQuery.orQueryWithSubqueries(queries)
+        if let currentUser = User.currentUser() {
+            finalQuery.whereKey("tutor", notEqualTo: currentUser)
+        }
+        return finalQuery
     }
     
+    class func getInterestPFQuery(name: String, interests: [String : String]) -> PFQuery {
+        var queries = [PFQuery]()
+        for (interest, tag) in interests {
+            let subQuery = PFQuery(className: name)
+            subQuery.whereKey("category", equalTo: interest)
+            subQuery.whereKey("tags", equalTo: tag)
+            queries.append(subQuery)
+        }
+        let finalQuery = PFQuery.orQueryWithSubqueries(queries)
+        if let currentUser = User.currentUser() {
+            finalQuery.whereKey("tutor", notEqualTo: currentUser)
+        }
+        return finalQuery
+    }
 }
 

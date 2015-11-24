@@ -11,10 +11,10 @@ class Filter {
     var category : String
     var starts : NSDate
     var ends : NSDate
-    var distance : Float?
+    var distance : Double?
     var firstname : String?
     var lastname : String?
-    var rating : Float?
+    var rating : Double?
     var showOpen: Bool
     
     init(values: [String : Any?]) {
@@ -25,17 +25,21 @@ class Filter {
         self.firstname = values["First"] as? String
         self.lastname = values["Last"] as? String
         if let dist = values["Distance"] as? Float {
-            self.distance = dist
+            self.distance = Double(dist)
         } else {
             self.distance = nil
         }
         if let rating = values["Rating"] as? Float {
-            self.rating = rating
+            self.rating = Double(rating)
         } else {
             self.rating = nil
         }
-        if values["Open"] != nil {
-            self.showOpen = true
+        if let isOpen = values["Open"] {
+            if isOpen == nil {
+                self.showOpen = false
+            } else {
+                self.showOpen = true
+            }
         } else {
             self.showOpen = false
         }

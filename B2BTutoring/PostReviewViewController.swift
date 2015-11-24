@@ -48,34 +48,66 @@ class PostReviewViewController: FormViewController {
     
     
     func validate(fields: [String: Any?]) -> String? {
-        /*
-        if fields["Title"] as? String == nil {
-        return "Title can't be empty!"
+        if fields["Review"] as? String == nil {
+            return "Review can't be empty!"
         }
-        if fields["Location"] as? String == nil {
-        return "Location can't be empty!"
-        }
-        if fields["Description"] as? String == nil {
-        return "Description can't be empty!"
-        }
-        if let start_date = fields["Starts"] as? NSDate {
-        if start_date.compare(NSDate()) == .OrderedAscending {
-        return "Starts date must be in the future!"
-        }
-        } else {
-        return "Starts date can't be empty!"
-        }
-        if let end_date = fields["Ends"] as? NSDate {
-        if end_date.compare(NSDate()) == .OrderedAscending {
-        return "Ends date must be in the future!"
-        }
-        } else {
-        return "Ends date can't be empty!"
-        }
-        */
         return nil
     }
     
+    func alertHandler(alert: UIAlertAction!) -> Void {
+        performSegueWithIdentifier("unwindToSessionInfo", sender: self)
+    }
+    
+    func createAlert(message: String, unwind: Bool) -> Void {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: unwind ? alertHandler : nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func postReview(sender: UIBarButtonItem) {
+        let review = Review()
+        let values = self.form.values()
+        let errorMsg = validate(values)
+        if errorMsg == nil {
+            review.text = values["Review"] as! String
+            review.rating = values["Rating"] as! Int
+            review.date = NSDate()
+            review.tutee = User.currentUser()!
+            
+            review.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    if let currentUser = User.currentUser() {
+                        User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock {
+                            (object: PFObject?, error: NSError?) -> Void in
+                            if error == nil {
+                                if let user = object as? User {
+                                    user.reviews.append(review)
+                                    //user.rating.append(review.rating)
+                                    user.saveInBackgroundWithBlock {
+                                        (succeeded: Bool, error: NSError?) -> Void in
+                                        if (succeeded) {
+                                            self.createAlert("Successfully posted review!", unwind: true)
+                                        } else {
+                                            print("Error updating user")
+                                        }
+                                    }
+                                }
+                            } else {
+                                print("Error retrieving user sessions")
+                            }
+                        }
+                    }
+                } else {
+                    self.createAlert("Unable to post review due to server error.", unwind: true)
+                }
+            }
+            
+            
+        } else {
+            createAlert(errorMsg!, unwind: false)
+        }
+    }
     /*
     // MARK: - Navigation
 

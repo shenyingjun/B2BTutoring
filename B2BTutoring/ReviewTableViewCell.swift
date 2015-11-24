@@ -24,5 +24,25 @@ class ReviewTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func initCell(review: Review) -> Void {
+        let tutee = review.getTutee()
+        
+        tutee.profileThumbnail?.getDataInBackgroundWithBlock({
+            (imageData: NSData?, error: NSError?) -> Void in
+            if imageData != nil {
+                self.tuteeImageView.image = UIImage(data: imageData!)
+            } else {
+                print(error)
+            }
+        })
+        
+        self.ratingLabel.text = "★ " + String(review.rating)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+        self.dateLabel.text = dateFormatter.stringFromDate(review.date)
+        
+        self.reviewTextLabel.text = review.text
+    }
 }

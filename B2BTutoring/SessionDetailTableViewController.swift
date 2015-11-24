@@ -85,6 +85,7 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
                 // move to init cell
                 // controller shouldn't know about this
                 cell.title.text = session.title
+                cell.profile.setBackgroundImage(UIImage(), forState: .Normal)
                 
                 User.objectWithoutDataWithObjectId(session.tutor.objectId).fetchInBackgroundWithBlock {
                     (object: PFObject?, error: NSError?) -> Void in

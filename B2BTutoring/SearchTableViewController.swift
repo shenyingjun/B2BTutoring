@@ -14,9 +14,20 @@ class SearchTableViewController: UITableViewController {
     
     var sessions = [Session]()
     var filter : Filter?
+    var currentSession: Session!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func sortAndShowLoadedSessions() {
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+            self.sessions.sortInPlace({ $0.getSortingScore(geoPoint) > $1.getSortingScore(geoPoint)})
+            self.tableView.reloadData()
+            if error != nil {
+                print(error)
+            }
+        }
     }
 
     @IBAction func search(sender: UIBarButtonItem) {
@@ -32,16 +43,14 @@ class SearchTableViewController: UITableViewController {
                                 self.sessions.append(session)
                             }
                         }
-                        self.tableView.reloadData()
+                        self.sortAndShowLoadedSessions()
                     }
                 }
         }
     }
     
-    func doSearch(filter: Filter) {
-        let baseQuery = Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
-        baseQuery.whereKey("category", equalTo: filter.category)
-        baseQuery.findObjectsInBackgroundWithBlock {
+    func doSearch(query: PFQuery, filter: Filter) {
+        query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.sessions.removeAll()
@@ -49,16 +58,48 @@ class SearchTableViewController: UITableViewController {
                 if let objects = objects as [PFObject]! {
                     for object in objects {
                         if let session = object as? Session {
+                            if session.starts.compare(filter.starts) != NSComparisonResult.OrderedDescending
+                                || session.ends.compare(filter.ends) != NSComparisonResult.OrderedAscending
+                                || (filter.showOpen && session.expired()) {
+                                    continue
+                            }
+                            
+                            if filter.lastname != nil || filter.firstname != nil || filter.rating != nil {
+                                let tutor = session.tutor
+                                do {
+                                    try tutor.fetch()
+                                    if (filter.lastname != nil && tutor.lastname != filter.lastname)
+                                        || (filter.firstname != nil && tutor.firstname != filter.firstname)
+                                        || (filter.rating != nil && tutor.rating < filter.rating) {
+                                            continue
+                                    }
+                                } catch {
+                                    print("error getting tutor info")
+                                }
+                            }
+                            
                             self.sessions.append(session)
                         }
                     }
-                    self.tableView.reloadData()
+                    self.sortAndShowLoadedSessions()
                 }
             }
         }
     }
-
-    @IBAction func filter(sender: UIBarButtonItem) {
+    
+    func doSearch(filter: Filter) {
+        let baseQuery = Search.getPFQueryByString(Session.parseClassName(), searchString: searchBar.text)
+        baseQuery.whereKey("category", equalTo: filter.category)
+        if let distance = filter.distance {
+            PFGeoPoint.geoPointForCurrentLocationInBackground { (currentGeoPoint:PFGeoPoint?, error: NSError?) -> Void in
+                if currentGeoPoint != nil {
+                    baseQuery.whereKey("locationGeoPoint", nearGeoPoint: currentGeoPoint!, withinMiles: distance)
+                } else {
+                    print("Failed to get current location")
+                }
+                self.doSearch(baseQuery, filter: filter)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,25 +119,19 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-        cell.tutorImageView.image = UIImage(named:"starwar")
-        cell.titleLabel.text = self.sessions[indexPath.row].title
-        cell.categoryLabel.text = self.sessions[indexPath.row].category
-        cell.tagLabel.text = self.sessions[indexPath.row].tags
-        cell.locationLabel.text = self.sessions[indexPath.row].location
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        cell.timeLabel.text = dateFormatter.stringFromDate(sessions[indexPath.row].starts)
-        cell.capacityLabel.text = "2/10"
-        cell.ratingLabel.text = "☆4.7"
-        
+        cell.initCell(self.sessions[indexPath.row])
         return cell
     }
     
     @IBAction func exitFilter(segue: UIStoryboardSegue) {
         if let myFilter = self.filter {
-            print(myFilter.rating)
             doSearch(myFilter)
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        currentSession = sessions[indexPath.row]
+        performSegueWithIdentifier("Show Session Detail", sender: self)
     }
     
     /*
@@ -147,6 +182,13 @@ class SearchTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
         return cell.bounds.height
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Show Session Detail" {
+            let dstController = segue.destinationViewController as! SessionDetailTableViewController;
+            dstController.session = currentSession
+        }
     }
 
 }
