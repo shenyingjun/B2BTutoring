@@ -126,7 +126,7 @@ public class _DateInlineRow: _DateInlineFieldRow {
 }
 
 public class _DateTimeInlineRow: _DateInlineFieldRow {
-    
+
     public typealias InlineRow = DateTimePickerRow
     public var onPresentInlineRow : (DateTimePickerRow -> Void)?
     
@@ -326,7 +326,7 @@ public class _PickerInlineRow<T where T: Equatable> : Row<T, LabelCellOf<T>>{
     public typealias InlineRow = PickerRow<T>
     public var onPresentInlineRow : (PickerRow<T> -> Void)?
     public var options = [T]()
-    
+
     required public init(tag: String?) {
         super.init(tag: tag)
     }
@@ -429,7 +429,7 @@ public class AreaRow<T: Equatable, Cell: CellType where Cell: BaseCell, Cell: Ar
             }
         }
     }
-    
+
 }
 
 public class OptionsRow<T: Equatable, Cell: CellType where Cell: BaseCell, Cell.Value == T> : Row<T, Cell> {
@@ -459,7 +459,7 @@ public class _ActionSheetRow<T: Equatable>: OptionsRow<T, AlertSelectorCell<T>>,
                 $0.dismissViewControllerAnimated(true, completion: nil)
                 self.cell?.formViewController()?.tableView?.reloadData()
             })
-    }()
+        }()
     
     public required init(tag: String?) {
         super.init(tag: tag)
@@ -494,8 +494,8 @@ public class _AlertRow<T: Equatable>: OptionsRow<T, AlertSelectorCell<T>>, Prese
             }
         )
         
-    }()
-    
+        }()
+        
     public required init(tag: String?) {
         super.init(tag: tag)
     }

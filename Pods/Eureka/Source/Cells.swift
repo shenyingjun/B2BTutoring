@@ -84,7 +84,7 @@ public protocol InputTypeInitiable {
 }
 
 extension Int: InputTypeInitiable {
-    
+
     public init?(string stringValue: String){
         self.init(stringValue, radix: 10)
     }
@@ -114,7 +114,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
         textLabel?.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
         return textLabel
     }
-    
+
     private var dynamicConstraints = [NSLayoutConstraint]()
     
     public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -131,7 +131,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
         selectionStyle = .None
         contentView.addSubview(titleLabel!)
         contentView.addSubview(textField)
-        
+
         titleLabel?.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.Old.union(.New), context: nil)
         imageView?.addObserver(self, forKeyPath: "image", options: NSKeyValueObservingOptions.Old.union(.New), context: nil)
         textField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
@@ -179,6 +179,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if let obj = object, let keyPathValue = keyPath, let changeType = change?[NSKeyValueChangeKindKey] where ((obj === titleLabel && keyPathValue == "text") || (obj === imageView && keyPathValue == "image")) && changeType.unsignedLongValue == NSKeyValueChange.Setting.rawValue {
             contentView.setNeedsUpdateConstraints()
+            contentView.updateConstraintsIfNeeded()
         }
     }
     
@@ -191,8 +192,8 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
         dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-11-[textField]-11-|", options: .AlignAllBaseline, metrics: nil, views: ["textField": textField])
         
         if let label = titleLabel, let text = label.text where !text.isEmpty {
-            dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-11-[titleLabel]-11-|", options: .AlignAllBaseline, metrics: nil, views: ["titleLabel": label])
-            dynamicConstraints.append(NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: textField, attribute: .CenterY, multiplier: 1, constant: 0))
+                dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-11-[titleLabel]-11-|", options: .AlignAllBaseline, metrics: nil, views: ["titleLabel": label])
+                dynamicConstraints.append(NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: textField, attribute: .CenterY, multiplier: 1, constant: 0))
         }
         if let imageView = imageView, let _ = imageView.image {
             views["imageView"] = imageView
@@ -256,7 +257,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
     public func textFieldDidBeginEditing(textField: UITextField) {
         formViewController()?.beginEditing(self)
         if let fieldRowConformance = (row as? FieldRowConformance), let _ = fieldRowConformance.formatter where !fieldRowConformance.useFormatterDuringInput {
-            textField.text = row.displayValueFor?(row.value)
+                textField.text = row.displayValueFor?(row.value)
         }
     }
     
@@ -319,7 +320,7 @@ public class NameCell : _FieldCell<String>, CellType {
         super.setup()
         textField.autocorrectionType = .No
         textField.autocapitalizationType = .Words
-        textField.keyboardType = .NamePhonePad
+        textField.keyboardType = .ASCIICapable
     }
 }
 
@@ -377,11 +378,11 @@ public class URLCell : _FieldCell<NSURL>, CellType {
 }
 
 public class TwitterCell : _FieldCell<String>, CellType {
-    
+
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
+
     public override func setup() {
         super.setup()
         textField.autocorrectionType = .No
@@ -405,11 +406,11 @@ public class AccountCell : _FieldCell<String>, CellType {
 }
 
 public class ZipCodeCell : _FieldCell<String>, CellType {
-    
+
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
+
     public override func update() {
         super.update()
         textField.autocorrectionType = .No
@@ -562,7 +563,7 @@ public class DatePickerCell : Cell<NSDate>, CellType {
         case is TimePickerRow:
             return .Time
         case is DateTimePickerRow:
-            return .DateAndTime
+           return .DateAndTime
         case is CountDownPickerRow:
             return .CountDownTimer
         default:
@@ -767,7 +768,7 @@ public class CheckCell : Cell<Bool>, CellType {
             tintColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
         }
     }
-    
+
     public override func setup() {
         super.setup()
         accessoryType =  .Checkmark
@@ -847,7 +848,7 @@ public class SegmentedCell<T: Equatable> : Cell<T>, CellType {
     public override func update() {
         super.update()
         detailTextLabel?.text = nil
-        
+
         updateSegmentedControl()
         segmentedControl.selectedSegmentIndex = selectedIndex() ?? UISegmentedControlNoSegment
         segmentedControl.enabled = !row.isDisabled
@@ -905,7 +906,7 @@ public class AlertSelectorCell<T: Equatable> : Cell<T>, CellType {
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
+
     public override func update() {
         super.update()
         accessoryType = .None
