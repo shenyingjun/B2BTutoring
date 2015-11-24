@@ -1061,9 +1061,9 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
     
     lazy var pinView: UIImageView = { [unowned self] in
         let v = UIImageView(frame: CGRectMake(0, 0, 50, 50))
-        v.image = UIImage(named: "map_pin", inBundle: NSBundle(forClass: MapViewController.self), compatibleWithTraitCollection: nil)
+        v.image = UIImage(named: "map_pin")
         v.image = v.image?.imageWithRenderingMode(.AlwaysTemplate)
-        v.tintColor = self.view.tintColor
+        v.tintColor = UIColor(red: CGFloat(3/255.0), green: CGFloat(201/255.0), blue: CGFloat(169/255.0), alpha: 1.0)
         v.backgroundColor = .clearColor()
         v.clipsToBounds = true
         v.contentMode = .ScaleAspectFit
