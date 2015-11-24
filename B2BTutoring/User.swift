@@ -25,7 +25,7 @@ class User : PFUser {
     
     @NSManaged var firstname: String
     @NSManaged var lastname: String
-    @NSManaged var intro: String?
+    @NSManaged var intro: String
     @NSManaged var rating: Double
     @NSManaged var profileImage: PFFile?
     @NSManaged var profileThumbnail: PFFile?
