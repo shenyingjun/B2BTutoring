@@ -9,8 +9,12 @@
 import UIKit
 
 class SessionTableViewController: UITableViewController, CLLocationManagerDelegate {
+    
     // user location
     var locationManager = CLLocationManager()
+
+    // detail segue
+    var currentSession: Session!
     
     @IBOutlet weak var sessionSegmentedControl: UISegmentedControl!
     var sessions = [Session]()
@@ -140,6 +144,7 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
                         }
                     })
                     cell.ratingLabel.text = "★ " + String(user.rating)
+                    
                 }
             } else {
                 print("Error retrieving user sessions")
@@ -195,6 +200,12 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
         print("Exit session creation.")
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        currentSession = sessions[indexPath.row]
+        print(currentSession.title)
+        performSegueWithIdentifier("Show Session Detail", sender: self)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -234,8 +245,9 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "sessionInfo" {
-            let dstController = segue.destinationViewController as! SessionInfoViewController;
+        if segue.identifier == "Show Session Detail" {
+            let dstController = segue.destinationViewController as! SessionDetailTableViewController;
+            dstController.session = currentSession
             //dstController.xxx = xxx
         }
     }

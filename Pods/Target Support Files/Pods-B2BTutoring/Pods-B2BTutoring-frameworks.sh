@@ -84,8 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-B2BTutoring/ChameleonFramework.framework"
   install_framework "Pods-B2BTutoring/Eureka.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-B2BTutoring/ChameleonFramework.framework"
   install_framework "Pods-B2BTutoring/Eureka.framework"
 fi

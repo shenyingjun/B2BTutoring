@@ -47,6 +47,8 @@ class User : PFUser {
         }
     }
     
+    
+    
     func getOngoingTutorSessions() -> [Session] {
         var ongoingSessions = [Session]()
         for session in self.tutorSessions {

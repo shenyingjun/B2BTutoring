@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B95BD24D9772ADF709F42416'
+               BlueprintIdentifier = '35B20F11B67B4B0EBAEA71C3'
                BlueprintName = 'Pods-B2BTutoring'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_B2BTutoring.framework'>

@@ -1,10 +1,15 @@
 PODS:
+  - ChameleonFramework/Default (2.0.4)
+  - ChameleonFramework/Swift (2.0.4):
+    - ChameleonFramework/Default
   - Eureka (1.1.0)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift
   - Eureka (~> 1.0)
 
 SPEC CHECKSUMS:
+  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   Eureka: 9b198a9f4098a1e75df31dde502105bc0b7e305b
 
 COCOAPODS: 0.39.0

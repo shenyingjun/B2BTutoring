@@ -378,6 +378,9 @@ class ProfileTableViewController: UITableViewController {
         else if segue.identifier == "reviewInfo" {
             let dstController = segue.destinationViewController as! ReviewTableViewController;
         }
+        else if segue.identifier == "Show Session Detail" {
+            
+        }
     }
     
 }
