@@ -9,11 +9,25 @@
 import UIKit
 import Eureka
 
-class CreateSessionViewController: FormViewController {
+class CreateSessionViewController: FormViewController, CLLocationManagerDelegate {
+    var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            //locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
+        }
+        
         initializeForm()
     }
 
@@ -76,8 +90,17 @@ class CreateSessionViewController: FormViewController {
                 $0.cell.textField.placeholder = $0.row.tag
             }
             
-            <<< TextRow("Location").cellSetup {
-                $0.cell.textField.placeholder = $0.row.tag
+            <<< LocationRow("Location") {
+                $0.title = $0.tag
+                var userLocation = CLLocation(latitude: -34.91, longitude: -56.1646)
+                PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
+                    if error == nil {
+                        userLocation = CLLocation(latitude: geoPoint!.latitude, longitude: geoPoint!.longitude)
+                    } else {
+                        print(error)
+                    }
+                }
+                $0.value = userLocation
             }
         
 //            <<< PickerRow<Category>("Category") { (row : PickerRow<Category>) -> Void in
