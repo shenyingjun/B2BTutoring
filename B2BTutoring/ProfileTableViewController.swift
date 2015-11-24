@@ -77,17 +77,11 @@ class ProfileTableViewController: UITableViewController {
                         self.name.append(user.lastname)
                         
                         self.info.removeAll()
+                        self.info.append(Entry(k: "Email:", v: user.email!))
+                        self.info.append(Entry(k: "Phone", v: user.username!))
                         
-                        if let email = user.email {
-                            self.info.append(Entry(k: "Email:", v: email))
-                        }
-                        
-                        if let phone = user.username {
-                            self.info.append(Entry(k: "Phone", v: phone))
-                        }
-                        
-                        if let intro = user.intro {
-                            self.info.append(Entry(k: "Intro", v: intro))
+                        if (user.intro != "") {
+                            self.info.append(Entry(k: "Intro", v: user.intro))
                         }
                         
                         self.interest.removeAll()

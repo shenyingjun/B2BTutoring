@@ -178,7 +178,7 @@ class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, 
         user.email = email
         user.firstname = firstname
         user.lastname = lastname
-        user.intro = introduction.text
+        user.intro = introduction.text!
         user.rating = 5.0
         if category1.text != "" && hashtag1.text != "" {
             user.interests[category1.text!] = hashtag1.text!
