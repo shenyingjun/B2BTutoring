@@ -420,7 +420,7 @@
 				TargetAttributes = {
 					7E2C70BE1BDDA834000F7F0F = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 4DC67968G8;
+						DevelopmentTeam = Y8L34TBW3R;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -787,6 +787,7 @@
 				F4CD78A91BFEC51F0057F61C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

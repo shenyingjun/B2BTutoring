@@ -96,11 +96,11 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
                 PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
                     if error == nil {
                         userLocation = CLLocation(latitude: geoPoint!.latitude, longitude: geoPoint!.longitude)
+                        self.form.setValues(["Location" : userLocation])
                     } else {
                         print(error)
                     }
                 }
-                $0.value = userLocation
             }
         
 //            <<< PickerRow<Category>("Category") { (row : PickerRow<Category>) -> Void in
