@@ -60,7 +60,7 @@
         <scene sceneID="N4V-jx-tnR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pGh-xw-IJ1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="search" id="D58-vo-5Jo"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search_fix" id="D58-vo-5Jo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M0j-Wh-DWs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -273,7 +273,7 @@
         <scene sceneID="p27-jq-3L3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LgP-As-P9g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" image="explore" id="HcA-d1-XtR"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="explore_fix" id="HcA-d1-XtR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z7B-Xu-Ten">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3269,8 +3269,8 @@ I LOVE IT</string>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="XfF-fa-tQc"/>
                                             <exclude reference="MPL-Ps-Nfk"/>
+                                            <exclude reference="XfF-fa-tQc"/>
                                             <exclude reference="b4y-0G-2M2"/>
                                             <exclude reference="edq-ul-hOO"/>
                                             <exclude reference="idk-sM-jh8"/>
@@ -3401,10 +3401,10 @@ I LOVE IT</string>
         <image name="category" width="25" height="25"/>
         <image name="darth_vader" width="628" height="628"/>
         <image name="edit" width="25" height="25"/>
-        <image name="explore" width="25" height="25"/>
+        <image name="explore_fix" width="25" height="25"/>
         <image name="group" width="25" height="25"/>
         <image name="profile" width="25" height="25"/>
-        <image name="search" width="25" height="25"/>
+        <image name="search_fix" width="25" height="25"/>
         <image name="sessions" width="25" height="25"/>
         <image name="starwar" width="1280" height="773"/>
     </resources>
