@@ -10,24 +10,8 @@ import UIKit
 import Eureka
 
 class CreateSessionViewController: FormViewController, CLLocationManagerDelegate {
-    var locationManager = CLLocationManager()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            //locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-            locationManager.startUpdatingLocation()
-        }
-        
         initializeForm()
     }
 
@@ -92,10 +76,9 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
             
             <<< LocationRow("Location") {
                 $0.title = $0.tag
-                var userLocation = CLLocation(latitude: -34.91, longitude: -56.1646)
                 PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint:PFGeoPoint?, error: NSError?) -> Void in
                     if error == nil {
-                        userLocation = CLLocation(latitude: geoPoint!.latitude, longitude: geoPoint!.longitude)
+                        let userLocation = CLLocation(latitude: geoPoint!.latitude, longitude: geoPoint!.longitude)
                         self.form.setValues(["Location" : userLocation])
                     } else {
                         print(error)
@@ -191,7 +174,7 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
         if fields["Title"] as? String == nil {
             return "Title can't be empty!"
         }
-        if fields["Location"] as? String == nil {
+        if fields["Location"] as? CLLocation == nil {
             return "Location can't be empty!"
         }
         if fields["Description"] as? String == nil {
@@ -230,15 +213,29 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
         let errorMsg = validate(values)
         if errorMsg == nil {
             session.title = values["Title"] as! String
-            session.location = values["Location"] as! String
             
+            let location = values["Location"] as! CLLocation
+            session.locationGeoPoint = PFGeoPoint(location: location)
             // store session location
             let geocoder = CLGeocoder()
-            geocoder.geocodeAddressString(session.location, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
-                if let placemark = placemarks![0] as CLPlacemark? {
-                    session.locationGeoPoint = PFGeoPoint(location: placemark.location)
-                    print("lat: \(session.locationGeoPoint.latitude), lon: \(session.locationGeoPoint.longitude)")
+            geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+                if error == nil && placemarks!.count > 0 {
+                    let address = placemarks![0] as CLPlacemark
+                    session.location = ""
+                    if let subThoroughfare = address.subThoroughfare {
+                        session.location = session.location + subThoroughfare + " "
+                    }
+                    if let thoroughfare = address.thoroughfare {
+                        session.location = session.location + thoroughfare + ", "
+                    }
+                    if let locality = address.locality {
+                        session.location = session.location + locality
+                    }
+                    if let postalCode = address.postalCode {
+                        session.location = session.location + ", " + postalCode
+                    }
                 }
+                
             })
             
             session.tags = values["Tags"] as? String
