@@ -34,10 +34,9 @@ class SessionTest: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
     }
     
-    func Comparison() {
+    func testComparison() {
         
         var test = Session()
         test.title = constantTitle
@@ -66,6 +65,77 @@ class SessionTest: XCTestCase {
         
         test.starts = NSDate(timeIntervalSinceNow: 11)
         XCTAssertNotEqual(constantStartTime, test.starts, "they should be different")
+        XCTAssert(true, "Pass")
+        
     }
+    
+    
+    func testMutationTest(){
+        var test = Session()
+        
+        test.title = constantTitle
+        test.descrip = constantDescription
+        test.location = constantLocation
+        test.starts = constantStartTime
+        test.ends = constantEndTime
+        test.currentEnrollment = constantEnrollment
+        test.capacity = constantCapacity
+        test.category = constantCategory
+        
+        test.title = "S"
+        XCTAssertNotEqual(constantTitle, test.title, "they should be different")
+        
+        test.descrip = "i am different now"
+        XCTAssertNotEqual(constantDescription, test.descrip, "they should be different")
+        
+        test.starts = NSDate(timeIntervalSinceNow: 11)
+        XCTAssertNotEqual(constantStartTime, test.starts, "they should be different")
+        XCTAssert(true, "Pass")
+        
+    }
+    
+    
+    func testExpireTest(){
+        var test = Session()
+        
+        test.title = constantTitle
+        test.descrip = constantDescription
+        test.location = constantLocation
+        test.starts = constantStartTime
+        test.ends = constantEndTime
+        test.currentEnrollment = constantEnrollment
+        test.capacity = constantCapacity
+        test.category = constantCategory
+        XCTAssertFalse(test.expired(),"date has not expired!")
+        
+        test.ends = Date.parse("2014-05-20")
+        XCTAssertTrue(test.expired(),"date has expired!")
+        
+        test.ends = NSDate(timeIntervalSinceNow: 0)
+        XCTAssertTrue(test.expired(),"date has expired!")
+        XCTAssert(true, "Pass")
+    }
+    
+    func testCapacityTest(){
+        var test = Session()
+        
+        test.title = constantTitle
+        test.descrip = constantDescription
+        test.location = constantLocation
+        test.starts = constantStartTime
+        test.ends = constantEndTime
+        test.currentEnrollment = constantEnrollment
+        test.capacity = constantCapacity
+        test.category = constantCategory
+        XCTAssertTrue(test.isFull(),"current session is full")
+        test.capacity = 2
+        
+        XCTAssertFalse(test.isFull(),"current session is not full")
+        
+        test.currentEnrollment = 3
+        XCTAssertTrue(test.isFull(),"current session is over capacity")
+        XCTAssert(true, "Pass")
+    }
+    
     
 }
