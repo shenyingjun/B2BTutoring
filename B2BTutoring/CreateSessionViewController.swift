@@ -245,12 +245,8 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
             let c = values["Category"] as! Category
             session.category = c.description
             session.capacity = values["Capacity"] as! Int
-            session.currentEnrollment = 0
             session.tutor = User.currentUser()!
-            for _ in 1...4 {
-                session.tutees.append(User.currentUser()!)
-            }
-            
+
             session.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {

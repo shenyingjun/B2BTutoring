@@ -58,6 +58,45 @@ class User : PFUser {
             return nil
         }
     }
+    
+    func joinSession(session: Session) {
+        session.addTutee(self)
+        tuteeSessions.append(session)
+    }
+    
+    func followSession(session: Session) {
+        session.addFollower(self)
+        followSessions.append(session)
+    }
+    
+    func quitSession(session: Session) {
+        session.removeTutee(self)
+        for s in tuteeSessions {
+            if s.objectId == session.objectId {
+                tuteeSessions.removeAtIndex(tuteeSessions.indexOf(s)!)
+            }
+        }
+    }
+    
+    func unfollowSession(session: Session) {
+        session.removeFollower(self)
+        for s in followSessions {
+            if s.objectId == session.objectId {
+                followSessions.removeAtIndex(followSessions.indexOf(s)!)
+            }
+        }
+    }
+    
+    // only empty sessions can be canceled
+    func cancelSession(session: Session) {
+        if session.tutees.count == 0 {
+            for s in tutorSessions {
+                if s.objectId == session.objectId {
+                    tutorSessions.removeAtIndex(tutorSessions.indexOf(s)!)
+                }
+            }
+        }
+    }
 
     func getReviews() -> [Review] {
         var allReviews = [Review]()
@@ -68,8 +107,6 @@ class User : PFUser {
         }
         return allReviews
     }
-    
-    
     
     func getOngoingTutorSessions() -> [Session] {
         var ongoingSessions = [Session]()
@@ -86,6 +123,18 @@ class User : PFUser {
     func getOngoingTuteeSessions() -> [Session] {
         var ongoingSessions = [Session]()
         for session in self.tuteeSessions {
+            if let mySession = retrieveSession(session) {
+                if !mySession.expired() {
+                    ongoingSessions.append(mySession)
+                }
+            }
+        }
+        return ongoingSessions
+    }
+    
+    func getOngoingFollowSessions() -> [Session] {
+        var ongoingSessions = [Session]()
+        for session in self.followSessions {
             if let mySession = retrieveSession(session) {
                 if !mySession.expired() {
                     ongoingSessions.append(mySession)

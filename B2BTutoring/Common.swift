@@ -23,4 +23,7 @@ class Common {
         
         static let allValues = [Art, Cars_and_motorcycles, Cooking, Design, DIY_and_crafts, Film, Health, Music, Photography, Sports]
     }
+    
 }
+
+let themeColor = UIColor(red: CGFloat(3/255.0), green: CGFloat(201/255.0), blue: CGFloat(169/255.0), alpha: 1.0)

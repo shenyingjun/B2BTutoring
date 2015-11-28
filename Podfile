@@ -8,5 +8,5 @@ use_frameworks!
 target 'B2BTutoring' do
     pod 'Eureka', '~> 1.2'
     pod 'ChameleonFramework/Swift'
+    pod 'SWTableViewCell', '~> 0.3.7'
 end
-

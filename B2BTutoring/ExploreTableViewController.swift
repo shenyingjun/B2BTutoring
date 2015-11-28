@@ -14,6 +14,7 @@ class ExploreTableViewController: UITableViewController {
     
     var sessions = [Session]()
     var currentSession: Session!
+    var currentIndexPath: NSIndexPath!
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch exploreSegment.selectedSegmentIndex {
@@ -102,6 +103,13 @@ class ExploreTableViewController: UITableViewController {
         loadDataForInterest()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if currentIndexPath != nil {
+            self.tableView.reloadRowsAtIndexPaths([currentIndexPath], withRowAnimation: .None)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -125,6 +133,7 @@ class ExploreTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentSession = sessions[indexPath.row]
+        currentIndexPath = indexPath
         performSegueWithIdentifier("Show Session Detail", sender: self)
     }
     
@@ -141,6 +150,7 @@ class ExploreTableViewController: UITableViewController {
         if segue.identifier == "Show Session Detail" {
             let dstController = segue.destinationViewController as! SessionDetailTableViewController;
             dstController.session = currentSession
+            dstController.operation = currentSession.isFull() ? .Follow : .Join
         }
     }
     

@@ -188,6 +188,7 @@ class SearchTableViewController: UITableViewController {
         if segue.identifier == "Show Session Detail" {
             let dstController = segue.destinationViewController as! SessionDetailTableViewController;
             dstController.session = currentSession
+            dstController.operation = currentSession.isFull() ? .Follow : .Join
         }
     }
 

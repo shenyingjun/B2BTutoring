@@ -145,6 +145,10 @@ class LoginProfileViewController: UIViewController, UITextFieldDelegate, UIAlert
         view.layoutIfNeeded()
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        firstResponder?.resignFirstResponder()
+    }
     
     // MARK: - Navigation
     

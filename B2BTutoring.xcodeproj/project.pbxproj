@@ -289,17 +289,9 @@
 		7E4BEC9C1BE1A68C00D74DEB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7EFF6B521C0913AE00C43032 /* Home */,
+				7EFF6B511C09136E00C43032 /* Login */,
 				7E3F97F11C0437A5009A2107 /* SessionDetailTableViewController.swift */,
-				027146771BFDAD090043E6DE /* ExploreTableViewController.swift */,
-				7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */,
-				7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */,
-				7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */,
-				7E5D04291BE3591300285761 /* ProfileTableViewController.swift */,
-				7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */,
-				7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */,
-				7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */,
-				7E2C70F21BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift */,
-				7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */,
 				7E4BECAA1BE30E6900D74DEB /* CreateSessionViewController.swift */,
 				3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */,
 				3992E0FA1BFBF2FD005F2C00 /* EditProfileViewController.swift */,
@@ -369,6 +361,30 @@
 				7EFEB6AD1BDF393D00D644A9 /* YokoTextField.swift */,
 			);
 			path = TextFieldEffects;
+			sourceTree = "<group>";
+		};
+		7EFF6B511C09136E00C43032 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */,
+				7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */,
+				7E4BECA71BE1DADF00D74DEB /* LoginConfirmationViewController.swift */,
+				7E2C70C41BDDA834000F7F0F /* LaunchViewController.swift */,
+				7EFEB6A01BDF302000D644A9 /* LoginProfileViewController.swift */,
+				7E2C70F21BDDBD80000F7F0F /* LoginPhoneNumberViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		7EFF6B521C0913AE00C43032 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				027146771BFDAD090043E6DE /* ExploreTableViewController.swift */,
+				7E5D042B1BE3596E00285761 /* SessionTableViewController.swift */,
+				7E5D04291BE3591300285761 /* ProfileTableViewController.swift */,
+				7E4BECA11BE1AC6900D74DEB /* SearchTableViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		A65A8EF21064A2AF531B1129 /* Pods */ = {

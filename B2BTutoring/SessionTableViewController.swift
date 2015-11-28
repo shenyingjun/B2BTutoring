@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import ChameleonFramework
+import SWTableViewCell
 
-class SessionTableViewController: UITableViewController, CLLocationManagerDelegate {
+class SessionTableViewController: UITableViewController, CLLocationManagerDelegate, SWTableViewCellDelegate {
 
     // user location
     var locationManager = CLLocationManager()
 
     // detail segue
     var currentSession: Session!
+    var currentIndexPath: NSIndexPath!
 
     @IBOutlet weak var sessionSegmentedControl: UISegmentedControl!
     var sessions = [Session]()
@@ -45,6 +48,22 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
             locationManager.startUpdatingLocation()
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if currentIndexPath != nil {
+            switch sessionSegmentedControl.selectedSegmentIndex {
+            case 0:
+                loadData(.Tutee)
+            case 1:
+                loadData(.Tutor)
+            case 2:
+                loadData(.Follow)
+            default:
+                break
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,32 +92,24 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
     // MARK: - Table view data source
 
     func loadData(forTutor: Source) -> Void {
-        switch forTutor {
-            case Source.Tutor:
-                if let currentUser = User.currentUser() {
-                    User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock {
-                        (object: PFObject?, error: NSError?) -> Void in
-                        if error == nil {
-                            if let user = object as? User {
-                                self.sessions = user.getOngoingTutorSessions()
-                                self.tableView.reloadData()
-                            }
-                        } else {
-                            print("Error retrieving user sessions")
+        if let currentUser = User.currentUser() {
+            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+                if error == nil {
+                    if let user = object as? User {
+                        switch forTutor {
+                        case .Tutor:
+                            self.sessions = user.getOngoingTutorSessions()
+                        case .Tutee:
+                            self.sessions = user.getOngoingTuteeSessions()
+                        case .Follow:
+                            self.sessions = user.getOngoingFollowSessions()
                         }
+                        self.tableView.reloadData()
                     }
                 } else {
                     print("no current user")
                 }
-                break
-            case Source.Tutee:
-                self.sessions = [Session]()
-                self.tableView.reloadData()
-                break
-            case Source.Follow:
-                self.sessions = [Session]()
-                self.tableView.reloadData()
-                break
+            })
         }
     }
 
@@ -111,8 +122,15 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
         cell.initCell(self.sessions[indexPath.row])
+        
+        //cell.leftUtilityButtons
+        let leftButtons: NSMutableArray = NSMutableArray()
+        leftButtons.sw_addUtilityButtonWithColor(UIColor.flatGrayColor(), icon: UIImage(named: "message"))
+        cell.leftUtilityButtons = leftButtons as [AnyObject]
+        cell.delegate = self
+        
         return cell
     }
 
@@ -124,44 +142,17 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentSession = sessions[indexPath.row]
+        currentIndexPath = indexPath
         performSegueWithIdentifier("Show Session Detail", sender: self)
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    // MARK: - Swipe
+    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerLeftUtilityButtonWithIndex index: Int) {
+        if index == 0 {
+            print("SUCCESS!")
         }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -169,6 +160,13 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
         if segue.identifier == "Show Session Detail" {
             let dstController = segue.destinationViewController as! SessionDetailTableViewController;
             dstController.session = currentSession
+            if currentSession.isTutee(User.currentUser()!) {
+                dstController.operation = .Quit
+            } else if currentSession.isFollower(User.currentUser()!) {
+                dstController.operation = .Unfollow
+            } else {
+                dstController.operation = .Cancel
+            }
         }
     }
 

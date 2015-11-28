@@ -622,7 +622,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="Gvl-hR-4Wl" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="Gvl-hR-4Wl" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvl-hR-4Wl" id="ViH-Zy-v8Q">
@@ -1097,7 +1097,7 @@
                                             <string key="text">This class is amazing.
 I LOVE IT</string>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June.12.2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOT-6q-0Jr">
@@ -1107,7 +1107,7 @@ I LOVE IT</string>
                                                 <constraint firstAttribute="height" constant="20" id="sjE-MI-e1D"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="★ 4.7" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHh-wd-VXb">
@@ -1252,7 +1252,7 @@ I LOVE IT</string>
                                             <string key="text">This class is amazing.
 I LOVE IT</string>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June.12.2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQe-g3-xDK">
@@ -1262,7 +1262,7 @@ I LOVE IT</string>
                                                 <constraint firstAttribute="height" constant="20" id="Fcc-YZ-MLC"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="★ 4.7" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5q9-bP-4gN">
@@ -3108,7 +3108,7 @@ I LOVE IT</string>
             <objects>
                 <tableViewController id="VqS-Bv-UVD" customClass="SessionDetailTableViewController" customModule="B2BTutoring" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="200" sectionHeaderHeight="18" sectionFooterHeight="18" id="6k3-C3-WTV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -3269,8 +3269,8 @@ I LOVE IT</string>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="XfF-fa-tQc"/>
                                             <exclude reference="MPL-Ps-Nfk"/>
+                                            <exclude reference="XfF-fa-tQc"/>
                                             <exclude reference="b4y-0G-2M2"/>
                                             <exclude reference="edq-ul-hOO"/>
                                             <exclude reference="idk-sM-jh8"/>
@@ -3347,7 +3347,7 @@ I LOVE IT</string>
                                     <outlet property="map" destination="vDZ-Uh-gaJ" id="tit-HZ-Xpd"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionButtonCell" rowHeight="40" id="502-g2-MSu" customClass="SessionDetailButtonTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionButtonCell" rowHeight="40" id="502-g2-MSu" customClass="SessionDetailButtonTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="649.5" width="600" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="502-g2-MSu" id="t4M-mv-DvR">
@@ -3380,7 +3380,7 @@ I LOVE IT</string>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="action" destination="bOa-al-bqO" id="wW4-4M-lT9"/>
+                                    <outlet property="action" destination="bOa-al-bqO" id="5BB-LO-7vz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -3412,6 +3412,6 @@ I LOVE IT</string>
         <segue reference="29u-Xj-qtK"/>
         <segue reference="gdd-31-nHQ"/>
         <segue reference="UtY-n2-fVq"/>
-        <segue reference="Gae-qT-t4m"/>
+        <segue reference="Wya-Wb-Crr"/>
     </inferredMetricsTieBreakers>
 </document>

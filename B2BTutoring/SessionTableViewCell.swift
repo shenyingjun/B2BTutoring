@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SWTableViewCell
 
-class SessionTableViewCell: UITableViewCell {
+class SessionTableViewCell: SWTableViewCell {
 
     @IBOutlet weak var tutorImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,7 +19,9 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-
+    
+    var tuteeViews = [UIImageView]()
+    var dotLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +35,14 @@ class SessionTableViewCell: UITableViewCell {
     }
     
     func initCell(session: Session) -> Void {
+        for tuteeView in tuteeViews {
+            tuteeView.removeFromSuperview()
+        }
+        tuteeViews = [UIImageView]()
+        if dotLabel != nil {
+            dotLabel.removeFromSuperview()
+        }
+        
         self.titleLabel.text = session.title
         self.categoryLabel.text = session.category
         self.tagLabel.text = session.tags
@@ -74,8 +85,6 @@ class SessionTableViewCell: UITableViewCell {
         let maxDisplayTuteeCount = 3
         let displayTuteeCount = min(session.tutees.count, maxDisplayTuteeCount)
         
-        // TODO: remove placeholder
-        
         // draw at most 3 labels
         for var i = 0; i < displayTuteeCount; i++ {
             let x = CGFloat(272 - 38 * i)
@@ -92,6 +101,7 @@ class SessionTableViewCell: UITableViewCell {
                         if imageData != nil {
                             tuteeView.image = UIImage(data: imageData!)
                             self.contentView.addSubview(tuteeView)
+                            self.tuteeViews.append(tuteeView)
                         } else {
                             print(error)
                         }
@@ -105,7 +115,7 @@ class SessionTableViewCell: UITableViewCell {
             let x = CGFloat(272 - 38 * 3 + 10)
             let y = CGFloat(88)
             let size = CGFloat(20)
-            let dotLabel = UILabel.init(frame: CGRectMake(x, y, size, size))
+            dotLabel = UILabel.init(frame: CGRectMake(x, y, size, size))
             dotLabel.text = "..."
             self.contentView.addSubview(dotLabel)
         }

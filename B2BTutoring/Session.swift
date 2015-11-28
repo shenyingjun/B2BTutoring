@@ -29,12 +29,13 @@ class Session : PFObject, PFSubclassing {
     @NSManaged var starts: NSDate
     @NSManaged var ends: NSDate
 
-    @NSManaged var currentEnrollment: Int
+    @NSManaged var currentEnrollment: Int  // not used
     @NSManaged var capacity: Int
     @NSManaged var backgroundImage: PFFile
     
     @NSManaged var tutor: User
     @NSManaged var tutees: [User]
+    @NSManaged var followers: [User]
     @NSManaged var category: String
     @NSManaged var tags: String?
     
@@ -47,7 +48,51 @@ class Session : PFObject, PFSubclassing {
     }
     
     func isFull() -> Bool {
-        return self.capacity == self.currentEnrollment
+        return self.capacity == self.tutees.count
+    }
+    
+    func addTutee(tutee: User) {
+        if !isFull() {
+            tutees.append(tutee)
+        }
+    }
+    
+    func addFollower(follower: User) {
+        followers.append(follower)
+    }
+    
+    func removeTutee(tutee: User) {
+        for t in tutees {
+            if t.objectId == tutee.objectId {
+                tutees.removeAtIndex(tutees.indexOf(t)!)
+            }
+        }
+    }
+    
+    func removeFollower(follower: User) {
+        for f in followers {
+            if f.objectId == follower.objectId {
+                followers.removeAtIndex(followers.indexOf(f)!)
+            }
+        }
+    }
+    
+    func isTutee(user: User) -> Bool {
+        for t in tutees {
+            if t.objectId == user.objectId {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isFollower(user: User) -> Bool {
+        for f in followers {
+            if f.objectId == user.objectId {
+                return true
+            }
+        }
+        return false
     }
     
     func getSortingScore(currentLocation : PFGeoPoint?) -> Double {

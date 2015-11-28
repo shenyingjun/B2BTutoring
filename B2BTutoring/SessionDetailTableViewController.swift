@@ -10,10 +10,19 @@ import UIKit
 import ChameleonFramework
 import MapKit
 
+enum SessionOperation {
+    case Join
+    case Follow
+    case Quit
+    case Unfollow
+    case Cancel
+    case None
+}
+
 class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate {
     
     var session: Session!
-    //var tutorThumbnail: UIImage!
+    var operation: SessionOperation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +38,7 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 4
+        return operation == .None ? 3 : 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -161,7 +169,45 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
                 cell.map.delegate = self
                 return cell
             }
-        
+        case 3:
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SessionButtonCell", forIndexPath: indexPath) as! SessionDetailButtonTableViewCell
+                
+                switch operation! {
+                case .Join:
+                    if session.isTutee(User.currentUser()!) {
+                        cell.action.setTitle("Joined", forState: .Normal)
+                        cell.action.userInteractionEnabled = false
+                    } else {
+                        cell.action.setTitle("Join", forState: .Normal)
+                        cell.action.addTarget(self, action: "joinSession", forControlEvents: .TouchUpInside)
+                    }
+                case .Follow:
+                    if session.isTutee(User.currentUser()!) {
+                        cell.action.setTitle("Joined", forState: .Normal)
+                        cell.action.userInteractionEnabled = false
+                    } else if session.isFollower(User.currentUser()!) {
+                        cell.action.setTitle("Followed", forState: .Normal)
+                        cell.action.userInteractionEnabled = false
+                    } else {
+                        cell.action.setTitle("Follow", forState: .Normal)
+                        cell.action.addTarget(self, action: "followSession", forControlEvents: .TouchUpInside)
+                    }
+                case .Quit:
+                    cell.action.setTitle("Quit", forState: .Normal)
+                    cell.action.addTarget(self, action: "quitSession", forControlEvents: .TouchUpInside)
+                case .Unfollow:
+                    cell.action.setTitle("Unfollow", forState: .Normal)
+                    cell.action.addTarget(self, action: "quitSession", forControlEvents: .TouchUpInside)
+                case .Cancel:
+                    cell.action.setTitle("Cancel", forState: .Normal)
+                    cell.action.addTarget(self, action: "cancelSession", forControlEvents: .TouchUpInside)
+                case .None: break
+                    
+                }
+                
+                return cell
+            }
         default: break
         }
 
@@ -208,9 +254,85 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
         }
         return height
     }
-
-    // MARK: - Join
-    func joinSession(user: User, session: Session) {
+    
+    func performSessionOp(op: User -> Void) {
+        if let currentUser = User.currentUser() {
+            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+                if error == nil {
+                    if let user = object as? User {
+                        op(user)
+                    }
+                } else {
+                    self.createAlert("Oops! Something went wrong.", reload: false)
+                }
+            })
+        }
+    }
+    
+    func joinSession() {
+        performSessionOp { (user: User) -> Void in
+            user.joinSession(self.session)
+            self.saveUserAndSession(user, session: self.session, successMessage: "Successfully joined session!")
+        }
+    }
+    
+    func followSession() {
+        performSessionOp { (user: User) -> Void in
+            user.followSession(self.session)
+            self.saveUserAndSession(user, session: self.session, successMessage: "Succesfully followed session!")
+        }
+    }
+    
+    func quitSession() {
+        performSessionOp { (user: User) -> Void in
+            user.quitSession(self.session)
+            self.saveUserAndSession(user, session: self.session, successMessage: "Successfully quit session!")
+        }
+    }
+    
+    func unfollowSession() {
+        performSessionOp { (user: User) -> Void in
+            user.unfollowSession(self.session)
+            self.saveUserAndSession(user, session: self.session, successMessage: "Successfully unfollowed session!")
+        }
+    }
+    
+    func cancelSession() {
+        if session.tutees.count == 0 {
+            performSessionOp { (user: User) -> Void in
+                user.cancelSession(self.session)
+                self.saveUserAndSession(user, session: self.session, successMessage: "Successfully canceled session!")
+            }
+        } else {
+            createAlert("Unable to cancel session with tutees!", reload: false)
+        }
+    }
+    
+    func alertHandler(alert: UIAlertAction!) -> Void {
+        self.tableView.reloadData()
+    }
+    
+    func createAlert(message: String, reload: Bool) -> Void {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: reload ? alertHandler : nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func saveUserAndSession(user: User, session: Session, successMessage: String) {
+        user.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            let errorMessage = "Oops! Something went wrong."
+            if success {
+                session.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        self.createAlert(successMessage, reload: true)
+                    } else {
+                        self.createAlert(errorMessage, reload: false)
+                    }
+                })
+            } else {
+                self.createAlert(errorMessage, reload: false)
+            }
+        }
     }
     
     // MARK: - MKMapViewDelegate
@@ -226,7 +348,7 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
     }
 
 }

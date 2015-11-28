@@ -3,13 +3,16 @@ PODS:
   - ChameleonFramework/Swift (2.0.4):
     - ChameleonFramework/Default
   - Eureka (1.2.0)
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
   - Eureka (~> 1.2)
+  - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   Eureka: aa7059d2a30e1b206a581f0aabfcf903ece6beae
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
 COCOAPODS: 0.39.0
