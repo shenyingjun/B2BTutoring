@@ -87,7 +87,7 @@ class SessionTableViewCell: SWTableViewCell {
         
         // draw at most 3 labels
         for var i = 0; i < displayTuteeCount; i++ {
-            let x = CGFloat(272 - 38 * i)
+            let x = CGFloat(266 - 38 * i)
             let y = CGFloat(78)
             let size = CGFloat(30)
             let tuteeView = UIImageView.init(frame: CGRectMake(x, y, size, size))
@@ -112,7 +112,7 @@ class SessionTableViewCell: SWTableViewCell {
         
         // display ...
         if session.tutees.count > maxDisplayTuteeCount {
-            let x = CGFloat(272 - 38 * 3 + 10)
+            let x = CGFloat(266 - 38 * 3 + 10)
             let y = CGFloat(88)
             let size = CGFloat(20)
             dotLabel = UILabel.init(frame: CGRectMake(x, y, size, size))

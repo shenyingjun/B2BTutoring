@@ -348,6 +348,10 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
+        if segue.identifier == "Show Tutees" {
+            let dstController = segue.destinationViewController as! TuteesCollectionViewController;
+            dstController.tutees = session.tutees
+        }
         
     }
 
