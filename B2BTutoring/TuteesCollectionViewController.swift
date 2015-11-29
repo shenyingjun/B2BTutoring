@@ -13,6 +13,7 @@ private let reuseIdentifier = "TuteeCollectionCell"
 class TuteesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var tutees: [User]!
+    var currentIndexPath: NSIndexPath!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,7 @@ class TuteesCollectionViewController: UICollectionViewController, UICollectionVi
             }
         }
     
+        cell.userInteractionEnabled = true
         return cell
     }
 
@@ -90,6 +92,12 @@ class TuteesCollectionViewController: UICollectionViewController, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return CGFloat(10.0)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        currentIndexPath = indexPath
+        print(currentIndexPath)
+        performSegueWithIdentifier("Show Tutee Profile", sender: self)
     }
     
     // MARK: UICollectionViewDelegate
@@ -122,5 +130,11 @@ class TuteesCollectionViewController: UICollectionViewController, UICollectionVi
     
     }
     */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Show Tutee Profile" {
+            let dstController = segue.destinationViewController as! ProfileTableViewController
+            dstController.user = tutees[currentIndexPath.row]
+        }
+    }
 
 }

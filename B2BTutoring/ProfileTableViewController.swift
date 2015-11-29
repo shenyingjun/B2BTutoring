@@ -26,6 +26,9 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var backgroundImageButton: UIButton!
     @IBOutlet weak var profileSegmentedControl: UISegmentedControl!
     
+    // who's profile?
+    var user: User!
+    
     //let profile = Profile()
     var name:[String] = []
     var info:[Entry] = []
@@ -56,6 +59,10 @@ class ProfileTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if user != nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
         self.fetchData()
         
         self.tableView.tableHeaderView = self.headerView
@@ -67,8 +74,17 @@ class ProfileTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        user = nil
+    }
+    
     func fetchData() {
-        if let currentUser = User.currentUser() {
+        if user == nil {
+            user = User.currentUser()
+        }
+        
+        if let currentUser = user {
             User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock() {
                 (object: PFObject?, error: NSError?) -> Void in
                 if error == nil {

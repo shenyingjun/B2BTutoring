@@ -816,7 +816,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" verticalCompressionResistancePriority="1" id="CBs-Iw-xcL">
-                            <rect key="frame" x="0.0" y="64" width="600" height="260"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-XJ-qAR">
@@ -890,7 +890,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="44" id="y5d-R1-QaY" customClass="InfoTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="352" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="288" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y5d-R1-QaY" id="GIN-dE-zaq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -926,7 +926,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="wie-aw-X4g" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="396" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="332" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wie-aw-X4g" id="PR5-WJ-kyI">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="119.5"/>
@@ -1071,7 +1071,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="lcH-Tu-Py9" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="516" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="452" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcH-Tu-Py9" id="ocQ-Uk-ffB">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -1148,7 +1148,7 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreTableViewCell" textLabel="yFH-9a-3kx" style="IBUITableViewCellStyleDefault" id="iP1-Tj-DLk">
-                                <rect key="frame" x="0.0" y="636" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="572" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iP1-Tj-DLk" id="DJF-eF-7SR">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1213,7 +1213,7 @@ I LOVE IT</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="130-nh-180" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2133" y="2266"/>
+            <point key="canvasLocation" x="2133" y="2302"/>
         </scene>
         <!--Review Table View Controller-->
         <scene sceneID="9Tw-m5-oPs">
@@ -1226,7 +1226,7 @@ I LOVE IT</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="vCp-Cx-hNw" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vCp-Cx-hNw" id="zpj-Kb-a61">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -3100,7 +3100,7 @@ I LOVE IT</string>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TuteeCollectionCell" id="gaE-E1-Dk6" customClass="TuteeCollectionViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="80" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
@@ -3162,10 +3162,13 @@ I LOVE IT</string>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="bXC-pY-OwF"/>
+                    <connections>
+                        <segue destination="b02-8N-2sq" kind="show" identifier="Show Tutee Profile" id="6pu-ZY-RoS"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Urc-yT-hKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3596" y="1564"/>
+            <point key="canvasLocation" x="3596" y="1589"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oql-F2-SQ0">
@@ -3185,7 +3188,7 @@ I LOVE IT</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ff6-s6-vs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2928" y="2266"/>
+            <point key="canvasLocation" x="2928" y="2308"/>
         </scene>
         <!--Session Detail Table View Controller-->
         <scene sceneID="QOF-Cw-EUr">
@@ -3196,8 +3199,8 @@ I LOVE IT</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionTitleCell" rowHeight="133" id="0mk-SD-8V2" customClass="SessionDetailTitleTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="133"/>
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionTitleCell" rowHeight="133" id="0mk-SD-8V2" customClass="SessionDetailTitleTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="133"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0mk-SD-8V2" id="UJE-UB-V9K">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="132.5"/>
@@ -3236,6 +3239,9 @@ I LOVE IT</string>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="b02-8N-2sq" kind="show" identifier="Show Tutor Profile" id="z2m-ZU-QIu"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -3254,7 +3260,7 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionTuteesCell" rowHeight="50" id="uTm-BT-wtI" customClass="SessionDetailTuteesTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="246.5" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="182.5" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uTm-BT-wtI" id="kBh-4j-vZG">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
@@ -3307,7 +3313,7 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionBasicCell" rowHeight="50" id="PeD-US-eJR" customClass="SessionDetailBasicTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="296.5" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="232.5" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="PeD-US-eJR" id="tSm-FJ-OPA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
@@ -3371,7 +3377,7 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionTextCell" rowHeight="103" id="zk6-hF-xwm" customClass="SessionDetailTextTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="346.5" width="600" height="103"/>
+                                <rect key="frame" x="0.0" y="282.5" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="zk6-hF-xwm" id="dDS-fB-TSW">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="102.5"/>
@@ -3413,7 +3419,7 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionMapCell" rowHeight="200" id="JEg-zy-E5Z" customClass="SessionDetailMapTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="449.5" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="385.5" width="600" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JEg-zy-E5Z" id="D07-R0-Ieq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
@@ -3435,7 +3441,7 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionButtonCell" rowHeight="40" id="502-g2-MSu" customClass="SessionDetailButtonTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="649.5" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="585.5" width="600" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="502-g2-MSu" id="t4M-mv-DvR">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="39.5"/>
@@ -3499,6 +3505,7 @@ I LOVE IT</string>
         <segue reference="29u-Xj-qtK"/>
         <segue reference="gdd-31-nHQ"/>
         <segue reference="UtY-n2-fVq"/>
+        <segue reference="6pu-ZY-RoS"/>
         <segue reference="Gae-qT-t4m"/>
     </inferredMetricsTieBreakers>
 </document>

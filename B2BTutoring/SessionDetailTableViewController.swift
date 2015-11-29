@@ -349,8 +349,11 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "Show Tutees" {
-            let dstController = segue.destinationViewController as! TuteesCollectionViewController;
+            let dstController = segue.destinationViewController as! TuteesCollectionViewController
             dstController.tutees = session.tutees
+        } else if segue.identifier == "Show Tutor Profile" {
+            let dstController = segue.destinationViewController as! ProfileTableViewController
+            dstController.user = session.tutor
         }
         
     }
