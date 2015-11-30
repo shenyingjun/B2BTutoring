@@ -83,10 +83,26 @@
 		F4CD78AE1BFEC56D0057F61C /* testProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CD78AD1BFEC56D0057F61C /* testProfile.swift */; };
 		F4CD78B01BFEC5C30057F61C /* testSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CD78AF1BFEC5C30057F61C /* testSearch.swift */; };
 		F4CD78B21BFEC5F30057F61C /* testSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CD78B11BFEC5F30057F61C /* testSignUp.swift */; };
+		F4EC90451C0CCECF006B8F43 /* B2BTutoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC90441C0CCECF006B8F43 /* B2BTutoringTests.swift */; };
+		F4EC904D1C0CD16A006B8F43 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC904C1C0CD16A006B8F43 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		F4CD78A61BFEC51F0057F61C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E2C70B71BDDA834000F7F0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E2C70BE1BDDA834000F7F0F;
+			remoteInfo = B2BTutoring;
+		};
+		F4EC90391C0CCE1A006B8F43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E2C70B71BDDA834000F7F0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E2C70BE1BDDA834000F7F0F;
+			remoteInfo = B2BTutoring;
+		};
+		F4EC90471C0CCECF006B8F43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E2C70B71BDDA834000F7F0F /* Project object */;
 			proxyType = 1;
@@ -181,6 +197,11 @@
 		F4CD78AD1BFEC56D0057F61C /* testProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testProfile.swift; sourceTree = "<group>"; };
 		F4CD78AF1BFEC5C30057F61C /* testSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testSearch.swift; sourceTree = "<group>"; };
 		F4CD78B11BFEC5F30057F61C /* testSignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testSignUp.swift; sourceTree = "<group>"; };
+		F4EC90341C0CCE1A006B8F43 /* B2BTutoringTests unit.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "B2BTutoringTests unit.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4EC90421C0CCECF006B8F43 /* B2BTutoringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = B2BTutoringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4EC90441C0CCECF006B8F43 /* B2BTutoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B2BTutoringTests.swift; sourceTree = "<group>"; };
+		F4EC90461C0CCECF006B8F43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4EC904C1C0CD16A006B8F43 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +233,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F4EC90311C0CCE1A006B8F43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4EC903F1C0CCECF006B8F43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -220,6 +255,7 @@
 			children = (
 				7E2C70C11BDDA834000F7F0F /* B2BTutoring */,
 				F4CD78A21BFEC51F0057F61C /* B2BTutoringUITests */,
+				F4EC90431C0CCECF006B8F43 /* B2BTutoringTests */,
 				7E2C70C01BDDA834000F7F0F /* Products */,
 				7E2C70D41BDDA848000F7F0F /* Resources */,
 				7E2C70D91BDDA8FB000F7F0F /* Frameworks */,
@@ -233,6 +269,8 @@
 			children = (
 				7E2C70BF1BDDA834000F7F0F /* B2BTutoring.app */,
 				F4CD78A11BFEC51F0057F61C /* B2BTutoringUITests.xctest */,
+				F4EC90341C0CCE1A006B8F43 /* B2BTutoringTests unit.xctest */,
+				F4EC90421C0CCECF006B8F43 /* B2BTutoringTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -435,6 +473,16 @@
 			path = B2BTutoringUITests;
 			sourceTree = "<group>";
 		};
+		F4EC90431C0CCECF006B8F43 /* B2BTutoringTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4EC90441C0CCECF006B8F43 /* B2BTutoringTests.swift */,
+				F4EC904C1C0CD16A006B8F43 /* UserModel.swift */,
+				F4EC90461C0CCECF006B8F43 /* Info.plist */,
+			);
+			path = B2BTutoringTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -476,6 +524,42 @@
 			productReference = F4CD78A11BFEC51F0057F61C /* B2BTutoringUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		F4EC90331C0CCE1A006B8F43 /* B2BTutoringTests unit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4EC903D1C0CCE1A006B8F43 /* Build configuration list for PBXNativeTarget "B2BTutoringTests unit" */;
+			buildPhases = (
+				F4EC90301C0CCE1A006B8F43 /* Sources */,
+				F4EC90311C0CCE1A006B8F43 /* Frameworks */,
+				F4EC90321C0CCE1A006B8F43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4EC903A1C0CCE1A006B8F43 /* PBXTargetDependency */,
+			);
+			name = "B2BTutoringTests unit";
+			productName = "B2BTutoringTests unit";
+			productReference = F4EC90341C0CCE1A006B8F43 /* B2BTutoringTests unit.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4EC90411C0CCECF006B8F43 /* B2BTutoringTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4EC90491C0CCECF006B8F43 /* Build configuration list for PBXNativeTarget "B2BTutoringTests" */;
+			buildPhases = (
+				F4EC903E1C0CCECF006B8F43 /* Sources */,
+				F4EC903F1C0CCECF006B8F43 /* Frameworks */,
+				F4EC90401C0CCECF006B8F43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4EC90481C0CCECF006B8F43 /* PBXTargetDependency */,
+			);
+			name = B2BTutoringTests;
+			productName = B2BTutoringTests;
+			productReference = F4EC90421C0CCECF006B8F43 /* B2BTutoringTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -499,6 +583,14 @@
 						CreatedOnToolsVersion = 7.1.1;
 						TestTargetID = 7E2C70BE1BDDA834000F7F0F;
 					};
+					F4EC90331C0CCE1A006B8F43 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 7E2C70BE1BDDA834000F7F0F;
+					};
+					F4EC90411C0CCECF006B8F43 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 7E2C70BE1BDDA834000F7F0F;
+					};
 				};
 			};
 			buildConfigurationList = 7E2C70BA1BDDA834000F7F0F /* Build configuration list for PBXProject "B2BTutoring" */;
@@ -516,6 +608,8 @@
 			targets = (
 				7E2C70BE1BDDA834000F7F0F /* B2BTutoring */,
 				F4CD78A01BFEC51F0057F61C /* B2BTutoringUITests */,
+				F4EC90331C0CCE1A006B8F43 /* B2BTutoringTests unit */,
+				F4EC90411C0CCECF006B8F43 /* B2BTutoringTests */,
 			);
 		};
 /* End PBXProject section */
@@ -533,6 +627,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F4CD789F1BFEC51F0057F61C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4EC90321C0CCE1A006B8F43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4EC90401C0CCECF006B8F43 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -662,6 +770,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F4EC90301C0CCE1A006B8F43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4EC903E1C0CCECF006B8F43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4EC904D1C0CD16A006B8F43 /* UserModel.swift in Sources */,
+				F4EC90451C0CCECF006B8F43 /* B2BTutoringTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -669,6 +793,16 @@
 			isa = PBXTargetDependency;
 			target = 7E2C70BE1BDDA834000F7F0F /* B2BTutoring */;
 			targetProxy = F4CD78A61BFEC51F0057F61C /* PBXContainerItemProxy */;
+		};
+		F4EC903A1C0CCE1A006B8F43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E2C70BE1BDDA834000F7F0F /* B2BTutoring */;
+			targetProxy = F4EC90391C0CCE1A006B8F43 /* PBXContainerItemProxy */;
+		};
+		F4EC90481C0CCECF006B8F43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E2C70BE1BDDA834000F7F0F /* B2BTutoring */;
+			targetProxy = F4EC90471C0CCECF006B8F43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -839,6 +973,60 @@
 			};
 			name = Release;
 		};
+		F4EC903B1C0CCE1A006B8F43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "B2BTutoringTests unit/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "none.B2BTutoringTests-unit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B2BTutoring.app/B2BTutoring";
+			};
+			name = Debug;
+		};
+		F4EC903C1C0CCE1A006B8F43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "B2BTutoringTests unit/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "none.B2BTutoringTests-unit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B2BTutoring.app/B2BTutoring";
+			};
+			name = Release;
+		};
+		F4EC904A1C0CCECF006B8F43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
+				INFOPLIST_FILE = B2BTutoringTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = none.B2BTutoringTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B2BTutoring.app/B2BTutoring";
+			};
+			name = Debug;
+		};
+		F4EC904B1C0CCECF006B8F43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
+				INFOPLIST_FILE = B2BTutoringTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = none.B2BTutoringTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B2BTutoring.app/B2BTutoring";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -868,6 +1056,23 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F4EC903D1C0CCE1A006B8F43 /* Build configuration list for PBXNativeTarget "B2BTutoringTests unit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4EC903B1C0CCE1A006B8F43 /* Debug */,
+				F4EC903C1C0CCE1A006B8F43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4EC90491C0CCECF006B8F43 /* Build configuration list for PBXNativeTarget "B2BTutoringTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4EC904A1C0CCECF006B8F43 /* Debug */,
+				F4EC904B1C0CCECF006B8F43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
