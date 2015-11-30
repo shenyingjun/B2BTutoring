@@ -85,7 +85,8 @@ class ProfileTableViewController: UITableViewController {
         }
         
         if let currentUser = user {
-            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock() {
+            print(currentUser.objectId)
+            PFUser.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock() {
                 (object: PFObject?, error: NSError?) -> Void in
                 if error == nil {
                     if let user = object as? User {

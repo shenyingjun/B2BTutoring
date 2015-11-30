@@ -8,27 +8,28 @@
 
 import UIKit
 import Parse
+import Atlas
 import Bolts
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var layerClient: LYRClient!
+    
+    let LayerAppIDString: NSURL! = NSURL(string: "layer:///apps/staging/8c6f05a8-9679-11e5-b325-3f4617001ad6")
+    let ParseAppIDString: String = "LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr"
+    let ParseClientKeyString: String = "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        setupParse()
+        setupLayer()
+        
+        Layer.layerClient = layerClient
         
         // White status bar
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
-        // Initialize Parse.
-//        Parse.setApplicationId("PT4rhrQXDVdv4oqQ4lQj5v82x7So29cvItDTw9bn",
-//            clientKey: "6FjsxnKVwgIZL6CEUgM9gaj1JQEYzf0Uyjvfh6GO")
-        
-        //Just use clair's parse database. It contains the updated class
-        Parse.setApplicationId("LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr",
-            clientKey: "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG")
         
         return true
     }
@@ -53,6 +54,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func setupParse() {
+        // Enable Parse local data store for user persistence
+        Parse.enableLocalDatastore()
+        User.registerSubclass()
+        Session.registerSubclass()
+        Review.registerSubclass()
+        Parse.setApplicationId(ParseAppIDString, clientKey: ParseClientKeyString)
+        User.enableAutomaticUser()
+        
+        // Set default ACLs
+        let defaultACL: PFACL = PFACL()
+        defaultACL.setPublicReadAccess(true)
+        defaultACL.setPublicWriteAccess(true)
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+    }
+    
+    func setupLayer() {
+        layerClient = LYRClient(appID: LayerAppIDString)
+        layerClient.autodownloadMIMETypes = NSSet(objects: ATLMIMETypeImagePNG, ATLMIMETypeImageJPEG, ATLMIMETypeImageJPEGPreview, ATLMIMETypeImageGIF, ATLMIMETypeImageGIFPreview, ATLMIMETypeLocation) as Set<NSObject>
     }
 
 

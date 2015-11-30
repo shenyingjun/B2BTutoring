@@ -10,6 +10,9 @@ import UIKit
 import Eureka
 
 class CreateSessionViewController: FormViewController, CLLocationManagerDelegate {
+    
+    var conversation: LYRConversation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeForm()
@@ -247,6 +250,19 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
             session.capacity = values["Capacity"] as! Int
             session.tutor = User.currentUser()!
 
+            do {
+                self.conversation = try Layer.layerClient.newConversationWithParticipants([User.currentUser()!.objectId!], options: [LYRConversationOptionsDistinctByParticipantsKey: false])
+                print("Conversation was created: \(self.conversation)")
+                
+                let message = try Layer.layerClient.newMessageWithParts([LYRMessagePart(text: "Welcome to " + session.title + "!")], options: nil)
+                try self.conversation?.sendMessage(message)
+                
+                session.conversationId = self.conversation?.identifier.absoluteString
+                
+            } catch let error {
+                print("Conversation error: \(error)")
+            }
+            
             session.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
@@ -274,8 +290,6 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
                     self.createAlert("Unable to create session due to server error.", unwind: true)
                 }
             }
-            
-            
         } else {
             createAlert(errorMsg!, unwind: false)
         }

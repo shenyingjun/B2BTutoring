@@ -9,4 +9,6 @@ target 'B2BTutoring' do
     pod 'Eureka', '~> 1.2'
     pod 'ChameleonFramework/Swift'
     pod 'SWTableViewCell', '~> 0.3.7'
+    pod 'Atlas', '~> 1.0.14'
+    pod 'SVProgressHUD', '~> 1.1.3'
 end

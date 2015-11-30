@@ -12,5 +12,8 @@
 #import <Parse/PFObject+Subclass.h>
 #import <Parse/Parse.h>
 #import <SWTableViewCell/SWTableViewCell.h>
+#import <Atlas/Atlas.h>
+#import <LayerKit/LayerKit.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #endif /* B2B_Bridging_Header_h */

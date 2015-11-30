@@ -95,6 +95,7 @@ class User : PFUser {
                     tutorSessions.removeAtIndex(tutorSessions.indexOf(s)!)
                 }
             }
+            //session.deleteEventually()
         }
     }
 

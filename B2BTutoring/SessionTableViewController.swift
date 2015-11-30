@@ -18,6 +18,9 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
     // detail segue
     var currentSession: Session!
     var currentIndexPath: NSIndexPath!
+    
+    var conversations: NSOrderedSet?
+    var conversation: LYRConversation?
 
     @IBOutlet weak var sessionSegmentedControl: UISegmentedControl!
     var sessions = [Session]()
@@ -93,8 +96,9 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
 
     func loadData(forTutor: Source) -> Void {
         if let currentUser = User.currentUser() {
-            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchIfNeededInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
                 if error == nil {
+                    print(object)
                     if let user = object as? User {
                         switch forTutor {
                         case .Tutor:
@@ -110,6 +114,27 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
                     print("no current user")
                 }
             })
+            
+            /*
+            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+                if error == nil {
+                    print(object)
+                    if let user = object as? User {
+                        switch forTutor {
+                        case .Tutor:
+                            self.sessions = user.getOngoingTutorSessions()
+                        case .Tutee:
+                            self.sessions = user.getOngoingTuteeSessions()
+                        case .Follow:
+                            self.sessions = user.getOngoingFollowSessions()
+                        }
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    print("no current user")
+                }
+            })
+*/
         }
     }
 
@@ -149,7 +174,48 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
     // MARK: - Swipe
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerLeftUtilityButtonWithIndex index: Int) {
         if index == 0 {
-            print("SUCCESS!")
+            // find conversation
+            let session = sessions[(self.tableView.indexPathForCell(cell)?.row)!]
+            
+            let tutorId = session.tutor.objectId! as String
+            let tuteeSet = NSMutableSet(array: [tutorId])
+            for tutee in session.tutees {
+                tuteeSet.addObject(tutee.objectId!)
+            }
+            
+            let url = NSURL(string: session.conversationId!)
+            let layerQuery = LYRQuery(queryableClass: LYRConversation.self)
+            layerQuery.predicate = LYRPredicate(property: "identifier", predicateOperator: LYRPredicateOperator.IsEqualTo, value: url)
+            
+            do {
+                let conversation = try Layer.layerClient.executeQuery(layerQuery).firstObject as! LYRConversation;
+                
+                //let existingParticipants: NSSet = conversation.participants
+                for tutee in session.tutees {
+                    try conversation.addParticipants([tutee.objectId!])
+                }
+                
+                presentControllerWithConversation(conversation)
+                
+            } catch let error {
+                print("Error fetching conversation: \(error)")
+            }
+        }
+    }
+    
+    func presentControllerWithConversation(conversation: LYRConversation) {
+        let shouldShowAddressBar: Bool = false
+        let conversationViewController: ConversationViewController = ConversationViewController(layerClient: Layer.layerClient)
+        conversationViewController.displaysAddressBar = shouldShowAddressBar
+        conversationViewController.conversation = conversation
+        
+        if self.navigationController!.topViewController == self {
+            self.navigationController!.pushViewController(conversationViewController, animated: true)
+        } else {
+            var viewControllers = self.navigationController!.viewControllers
+            let listViewControllerIndex: Int = self.navigationController!.viewControllers.indexOf(self)!
+            viewControllers[listViewControllerIndex + 1 ..< viewControllers.count] = [conversationViewController]
+            self.navigationController!.setViewControllers(viewControllers, animated: true)
         }
     }
     

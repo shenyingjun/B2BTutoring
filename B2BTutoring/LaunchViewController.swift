@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 import Parse
 
 class LaunchViewController: UIViewController {
@@ -17,10 +18,16 @@ class LaunchViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if PFUser.currentUser() == nil {
+        
+        
+        if User.currentUser()?.objectId == nil {
             performSegueWithIdentifier("Show Welcome", sender: nil)
         } else {
-            performSegueWithIdentifier("Show Home", sender: nil)
+            print(User.currentUser())
+            Layer.loginLayer() {
+                SVProgressHUD.dismiss()
+                self.performSegueWithIdentifier("Show Home", sender: nil)
+            }
         }
 
     }

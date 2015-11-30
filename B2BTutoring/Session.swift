@@ -39,8 +39,9 @@ class Session : PFObject, PFSubclassing {
     @NSManaged var category: String
     @NSManaged var tags: String?
     
+    @NSManaged var conversationId: String?
+    
     func expired() -> Bool{
-        
         if self.ends.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return true
         }

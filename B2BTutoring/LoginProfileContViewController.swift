@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Toucan
+import SVProgressHUD
 
 class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
@@ -221,19 +221,16 @@ class LoginProfileContViewController: UIViewController, UIPickerViewDataSource, 
                     if error == nil {
                         //take user home
                         print("data uploaded")
-                        self.performSegueWithIdentifier("Show Home After Signup", sender: self)
+                        Layer.loginLayer() {
+                            SVProgressHUD.dismiss()
+                            self.performSegueWithIdentifier("Show Home After Signup", sender: self)
+                        }
                     } else {
                         print(error)
                     }
                 })
             }
         })
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        //firstResponder?.resignFirstResponder()
-        //self.view.endEditing(true)
     }
     
     //MARK: - Navigation

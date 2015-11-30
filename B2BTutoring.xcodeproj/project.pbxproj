@@ -59,6 +59,10 @@
 		7EB3257C1C0ABC3E00131255 /* TuteeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3257B1C0ABC3E00131255 /* TuteeCollectionViewCell.swift */; };
 		7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */; };
 		7EB7F0341BE3F13700CCDAB4 /* TutorSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */; };
+		7EEA42261C0AFE280052D336 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA42251C0AFE280052D336 /* Layer.swift */; };
+		7EEA42281C0B03340052D336 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA42271C0B03340052D336 /* ConversationViewController.swift */; };
+		7EEA422B1C0B05390052D336 /* PFUser+ATLParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA422A1C0B05390052D336 /* PFUser+ATLParticipant.swift */; };
+		7EEA422F1C0B900D0052D336 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA422E1C0B900D0052D336 /* UserManager.swift */; };
 		7EF7C0F21BFC4A180060EE4C /* LoginOrSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */; };
 		7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */; };
 		7EF7C0F51BFC4A250060EE4C /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */; };
@@ -150,6 +154,10 @@
 		7EB3257B1C0ABC3E00131255 /* TuteeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7EB7F0311BE3F13700CCDAB4 /* TuteeSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeSession.swift; sourceTree = "<group>"; };
 		7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSession.swift; sourceTree = "<group>"; };
+		7EEA42251C0AFE280052D336 /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		7EEA42271C0B03340052D336 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		7EEA422A1C0B05390052D336 /* PFUser+ATLParticipant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+ATLParticipant.swift"; sourceTree = "<group>"; };
+		7EEA422E1C0B900D0052D336 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		7EF7C0F01BFC4A180060EE4C /* LoginOrSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrSignUpViewController.swift; sourceTree = "<group>"; };
 		7EF7C0F11BFC4A180060EE4C /* LoginProfileContViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProfileContViewController.swift; sourceTree = "<group>"; };
 		7EF7C0F41BFC4A250060EE4C /* CategoryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
@@ -233,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				02AE3FDF1BFA7FBA003156F0 /* B2B-Bridging-Header.h */,
+				7EEA42291C0B05070052D336 /* Extensions */,
 				7E4BEC9E1BE1A6BD00D74DEB /* Models */,
 				7E4BEC9D1BE1A6AC00D74DEB /* Views */,
 				7E4BEC9C1BE1A68C00D74DEB /* Controllers */,
@@ -302,6 +311,7 @@
 				3992E1001BFC32ED005F2C00 /* FilterViewController.swift */,
 				3992E1021BFC5903005F2C00 /* PostReviewViewController.swift */,
 				7EB325791C0ABB0C00131255 /* TuteesCollectionViewController.swift */,
+				7EEA42271C0B03340052D336 /* ConversationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +333,7 @@
 		7E4BEC9E1BE1A6BD00D74DEB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7EEA422E1C0B900D0052D336 /* UserManager.swift */,
 				027146751BFC6FD00043E6DE /* Common.swift */,
 				3992E0FD1BFC15E4005F2C00 /* Search.swift */,
 				026043F41BFA8F87000A9BFF /* Date.swift */,
@@ -332,6 +343,7 @@
 				7EB7F0321BE3F13700CCDAB4 /* TutorSession.swift */,
 				3929C7CA1BFABB580081992E /* Review.swift */,
 				027146711BFC62DB0043E6DE /* Filter.swift */,
+				7EEA42251C0AFE280052D336 /* Layer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -339,6 +351,14 @@
 		7EB058411BDEFD6700342F29 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		7EEA42291C0B05070052D336 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7EEA422A1C0B05390052D336 /* PFUser+ATLParticipant.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -591,10 +611,12 @@
 				027146721BFC62DB0043E6DE /* Filter.swift in Sources */,
 				7E4BECA81BE1DADF00D74DEB /* LoginConfirmationViewController.swift in Sources */,
 				7E5D042C1BE3596E00285761 /* SessionTableViewController.swift in Sources */,
+				7EEA42261C0AFE280052D336 /* Layer.swift in Sources */,
 				7EB7F0331BE3F13700CCDAB4 /* TuteeSession.swift in Sources */,
 				7EFEB6AF1BDF393D00D644A9 /* HoshiTextField.swift in Sources */,
 				3992E1011BFC32ED005F2C00 /* FilterViewController.swift in Sources */,
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
+				7EEA422B1C0B05390052D336 /* PFUser+ATLParticipant.swift in Sources */,
 				7E3F97FB1C0437BE009A2107 /* SessionDetailButtonTableViewCell.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
 				3992E0FB1BFBF2FD005F2C00 /* EditProfileViewController.swift in Sources */,
@@ -617,7 +639,9 @@
 				3929C7CB1BFABB580081992E /* Review.swift in Sources */,
 				7E3F97F21C0437A5009A2107 /* SessionDetailTableViewController.swift in Sources */,
 				7E3F97FE1C0437BE009A2107 /* SessionDetailTitleTableViewCell.swift in Sources */,
+				7EEA42281C0B03340052D336 /* ConversationViewController.swift in Sources */,
 				026043F51BFA8F87000A9BFF /* Date.swift in Sources */,
+				7EEA422F1C0B900D0052D336 /* UserManager.swift in Sources */,
 				7EFEB6B11BDF393D00D644A9 /* IsaoTextField.swift in Sources */,
 				7EF7C0F31BFC4A180060EE4C /* LoginProfileContViewController.swift in Sources */,
 				7EF7C0F21BFC4A180060EE4C /* LoginOrSignUpViewController.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LoginOrSignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -41,7 +42,13 @@ class LoginOrSignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        firstResponder!.resignFirstResponder()
+        firstResponder = nil
+        return true
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        firstResponder!.resignFirstResponder()
         firstResponder = nil
         return true
     }
@@ -67,9 +74,11 @@ class LoginOrSignUpViewController: UIViewController, UITextFieldDelegate {
                 spinner.stopAnimating()
                 
                 if user != nil {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    Layer.loginLayer() {
+                        SVProgressHUD.dismiss()
+                        self.firstResponder?.resignFirstResponder()
                         self.performSegueWithIdentifier("Show Home After Login", sender: self)
-                    })
+                    }
                 } else {
                     self.message.text = "*Incorrect phone number and password combination*"
                     self.phoneNumber.text = ""

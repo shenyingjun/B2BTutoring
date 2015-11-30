@@ -301,7 +301,22 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
         if session.tutees.count == 0 {
             performSessionOp { (user: User) -> Void in
                 user.cancelSession(self.session)
-                self.saveUserAndSession(user, session: self.session, successMessage: "Successfully canceled session!")
+                
+                user.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                    let errorMessage = "Oops! Something went wrong."
+                    if success {
+                        self.session.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                            if success {
+                                self.createAlert("Successfully canceled session", reload: false)
+                            } else {
+                                self.createAlert(errorMessage, reload: false)
+                            }
+                        })
+                    } else {
+                        self.createAlert(errorMessage, reload: false)
+                    }
+                }
+                //self.saveUserAndSession(user, session: self.session, successMessage: "Successfully canceled session!")
             }
         } else {
             createAlert("Unable to cancel session with tutees!", reload: false)

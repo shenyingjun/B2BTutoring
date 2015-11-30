@@ -84,12 +84,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-B2BTutoring/Atlas.framework"
   install_framework "Pods-B2BTutoring/ChameleonFramework.framework"
   install_framework "Pods-B2BTutoring/Eureka.framework"
+  install_framework "${PODS_ROOT}/LayerKit/LayerKit.framework"
+  install_framework "Pods-B2BTutoring/SVProgressHUD.framework"
   install_framework "Pods-B2BTutoring/SWTableViewCell.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-B2BTutoring/Atlas.framework"
   install_framework "Pods-B2BTutoring/ChameleonFramework.framework"
   install_framework "Pods-B2BTutoring/Eureka.framework"
+  install_framework "${PODS_ROOT}/LayerKit/LayerKit.framework"
+  install_framework "Pods-B2BTutoring/SVProgressHUD.framework"
   install_framework "Pods-B2BTutoring/SWTableViewCell.framework"
 fi
