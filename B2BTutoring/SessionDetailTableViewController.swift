@@ -16,6 +16,7 @@ enum SessionOperation {
     case Quit
     case Unfollow
     case Cancel
+    case Review
     case None
 }
 
@@ -202,6 +203,15 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
                 case .Cancel:
                     cell.action.setTitle("Cancel", forState: .Normal)
                     cell.action.addTarget(self, action: "cancelSession", forControlEvents: .TouchUpInside)
+                case .Review:
+                    if session.isReviewedTutee(User.currentUser()!) {
+                        cell.action.setTitle("Reviewed", forState: .Normal)
+                        cell.action.userInteractionEnabled = false
+                    } else {
+                        cell.action.setTitle("Review", forState: .Normal)
+                        cell.action.addTarget(self, action: "postReview", forControlEvents: .TouchUpInside)
+
+                    }
                 case .None: break
                     
                 }
@@ -323,6 +333,10 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
         }
     }
     
+    func postReview() {
+        performSegueWithIdentifier("Show Post Review", sender: self)
+    }
+    
     func alertHandler(alert: UIAlertAction!) -> Void {
         self.tableView.reloadData()
     }
@@ -369,6 +383,9 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
         } else if segue.identifier == "Show Tutor Profile" {
             let dstController = segue.destinationViewController as! ProfileTableViewController
             dstController.user = session.tutor
+        } else if segue.identifier == "Show Post Review" {
+            let dstController = (segue.destinationViewController as! UINavigationController).viewControllers.first as! PostReviewViewController
+            dstController.session = session
         }
         
     }

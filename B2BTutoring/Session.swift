@@ -39,6 +39,8 @@ class Session : PFObject, PFSubclassing {
     @NSManaged var category: String
     @NSManaged var tags: String?
     
+    @NSManaged var reviewedTutees: [User]
+    
     @NSManaged var conversationId: String?
     
     func expired() -> Bool{
@@ -90,6 +92,15 @@ class Session : PFObject, PFSubclassing {
     func isFollower(user: User) -> Bool {
         for f in followers {
             if f.objectId == user.objectId {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isReviewedTutee(user: User) -> Bool {
+        for t in reviewedTutees {
+            if t.objectId == user.objectId {
                 return true
             }
         }

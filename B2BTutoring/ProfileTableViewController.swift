@@ -129,12 +129,23 @@ class ProfileTableViewController: UITableViewController {
                             }
                         })
                         
-                        self.reviews = user.getReviews()
                         
-                        self.tuteeSession = user.getPassedTuteeSessions()
-                        self.tutorSession = user.getPassedTutorSessions()
+                        let query = PFQuery(className: "Review").whereKey("tutorId", equalTo: user.objectId!)
+                        query.findObjectsInBackgroundWithBlock { (reviews: [PFObject]?, error: NSError?) -> Void in
+                            var myReviews = [Review]()
+                            for r in reviews! {
+                                let review = r as! Review
+                                myReviews.append(review)
+                                
+                            }
+                            self.reviews = myReviews
+                            self.tuteeSession = user.getPassedTuteeSessions()
+                            self.tutorSession = user.getPassedTutorSessions()
+                            
+                            self.tableView.reloadData()
 
-                        self.tableView.reloadData()
+                        }
+
                         
                     }
                 } else {
@@ -150,6 +161,7 @@ class ProfileTableViewController: UITableViewController {
     }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
+        self.fetchData()
         switch profileSegmentedControl.selectedSegmentIndex {
         case 1:
             self.headerView.frame = CGRectMake(0,0,0,0)
@@ -450,6 +462,7 @@ class ProfileTableViewController: UITableViewController {
         else if segue.identifier == "Show Session Detail" {
             let dstController = segue.destinationViewController as! SessionDetailTableViewController;
             dstController.session = currentSession
+            dstController.operation = profileSegmentedControl.selectedSegmentIndex == 1 ? .Review : .None
         }
     }
     

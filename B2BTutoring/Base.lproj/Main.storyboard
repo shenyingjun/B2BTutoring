@@ -1311,7 +1311,7 @@ I LOVE IT</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFH-8r-B8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3741" y="3231"/>
+            <point key="canvasLocation" x="3759" y="3326"/>
         </scene>
         <!--Post Review View Controller-->
         <scene sceneID="8Sx-W3-Je1">
@@ -1345,7 +1345,7 @@ I LOVE IT</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHx-EE-Gfr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="urv-xf-9K1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3596" y="2266"/>
+            <point key="canvasLocation" x="3734" y="2418"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fhM-ag-fLT">
@@ -3088,7 +3088,7 @@ I LOVE IT</string>
             <objects>
                 <collectionViewController id="VgU-tW-aCX" customClass="TuteesCollectionViewController" customModule="B2BTutoring" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="itW-gZ-n1x">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.01176470588" green="0.78823529410000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -3173,6 +3173,7 @@ I LOVE IT</string>
         <!--Navigation Controller-->
         <scene sceneID="oql-F2-SQ0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ff6-s6-vs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VqG-8w-HhS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Za-BA-kTi">
@@ -3186,9 +3187,8 @@ I LOVE IT</string>
                         <segue destination="wbW-yc-nXj" kind="relationship" relationship="rootViewController" id="QuQ-gH-kQx"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ff6-s6-vs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2928" y="2308"/>
+            <point key="canvasLocation" x="3024" y="2413"/>
         </scene>
         <!--Session Detail Table View Controller-->
         <scene sceneID="QOF-Cw-EUr">
@@ -3483,10 +3483,13 @@ I LOVE IT</string>
                             <outlet property="delegate" destination="VqS-Bv-UVD" id="pOk-cO-8zs"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="VqG-8w-HhS" kind="show" identifier="Show Post Review" id="ddh-YQ-yzK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfS-28-n87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2928" y="1530"/>
+            <point key="canvasLocation" x="2928" y="1602"/>
         </scene>
     </scenes>
     <resources>
@@ -3505,7 +3508,7 @@ I LOVE IT</string>
         <segue reference="29u-Xj-qtK"/>
         <segue reference="gdd-31-nHQ"/>
         <segue reference="UtY-n2-fVq"/>
-        <segue reference="6pu-ZY-RoS"/>
+        <segue reference="z2m-ZU-QIu"/>
         <segue reference="Gae-qT-t4m"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -28,6 +28,7 @@ class Review : PFObject, PFSubclassing {
     @NSManaged var tutee: User
     @NSManaged var rating: Int
     @NSManaged var date: NSDate
+    @NSManaged var tutorId: String
     
     private func retrieveTutee(u: User) -> User? {
         var myTutee: User
@@ -40,8 +41,34 @@ class Review : PFObject, PFSubclassing {
         }
     }
     
+    private static func retrieveRieview(r: Review) -> Review? {
+        var myReview: Review
+        do {
+            try myReview = r.fetch()
+            return myReview
+        } catch {
+            print("Error retrieving review")
+            return nil
+        }
+    }
+    
     func getTutee() -> User {
         return retrieveTutee(self.tutee)!
+    }
+    
+    static func getReviewsForUser(user: User) -> [Review] {
+        var allReviews = [Review]()
+        let query = PFQuery(className: "Review").whereKey("tutorId", equalTo: user.objectId!)
+        query.findObjectsInBackgroundWithBlock { (reviews: [PFObject]?, error: NSError?) -> Void in
+            for r in reviews! {
+                let review = r as! Review
+                let myReview = retrieveRieview(review)
+                allReviews.append(myReview!)
+            }
+            //return allReviews
+        }
+ 
+        return allReviews
     }
 
 }

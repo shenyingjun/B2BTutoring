@@ -34,19 +34,7 @@ class User : PFUser {
     @NSManaged var tutorSessions: [Session]
     @NSManaged var tuteeSessions: [Session]
     @NSManaged var followSessions: [Session]
-    @NSManaged var reviews: [Review]
     @NSManaged var interests: [String:String]
-    
-    private func retrieveRieview(r: Review) -> Review? {
-        var myReview: Review
-        do {
-            try myReview = r.fetch()
-            return myReview
-        } catch {
-            print("Error retrieving review")
-            return nil
-        }
-    }
     
     private func retrieveSession(s: Session) -> Session? {
         var mySession: Session
@@ -97,16 +85,6 @@ class User : PFUser {
             }
             //session.deleteEventually()
         }
-    }
-
-    func getReviews() -> [Review] {
-        var allReviews = [Review]()
-        for review in self.reviews {
-            if let myReview = retrieveRieview(review) {
-                allReviews.append(myReview)
-            }
-        }
-        return allReviews
     }
     
     func getOngoingTutorSessions() -> [Session] {

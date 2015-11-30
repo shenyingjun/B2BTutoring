@@ -11,6 +11,8 @@ import Eureka
 
 class PostReviewViewController: FormViewController {
 
+    var session: Session?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeForm()
@@ -73,29 +75,18 @@ class PostReviewViewController: FormViewController {
             review.rating = values["Rating"] as! Int
             review.date = NSDate()
             review.tutee = User.currentUser()!
+            review.tutorId = (session?.tutor.objectId)!
+            session?.reviewedTutees.append(User.currentUser()!)
             
             review.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
-                    if let currentUser = User.currentUser() {
-                        User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock {
-                            (object: PFObject?, error: NSError?) -> Void in
-                            if error == nil {
-                                if let user = object as? User {
-                                    user.reviews.append(review)
-                                    //user.rating.append(review.rating)
-                                    user.saveInBackgroundWithBlock {
-                                        (succeeded: Bool, error: NSError?) -> Void in
-                                        if (succeeded) {
-                                            self.createAlert("Successfully posted review!", unwind: true)
-                                        } else {
-                                            print("Error updating user")
-                                        }
-                                    }
-                                }
-                            } else {
-                                print("Error retrieving user sessions")
-                            }
+                    self.session?.saveInBackgroundWithBlock {
+                        (succeeded: Bool, error: NSError?) -> Void in
+                        if (succeeded) {
+                            self.createAlert("Successfully posted review!", unwind: true)
+                        } else {
+                            print("Error updating session")
                         }
                     }
                 } else {
