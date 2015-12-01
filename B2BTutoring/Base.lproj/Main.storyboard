@@ -467,6 +467,12 @@
                             </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="AaY-Cs-jCo">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="doRefresh:" destination="JfE-Nc-jNm" eventType="valueChanged" id="lnX-bC-NFr"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="exploreSegment" destination="MPs-zP-tal" id="XdE-1i-d8C"/>
                         <segue destination="VqS-Bv-UVD" kind="show" identifier="Show Session Detail" id="BMz-sg-rNz"/>
@@ -797,6 +803,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="SJT-vi-7Pa">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="doRefresh:" destination="PWV-Az-HWn" eventType="valueChanged" id="bi9-cK-bOP"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="sessionSegmentedControl" destination="hyh-87-Hdn" id="zXw-yh-e5E"/>
                         <segue destination="VqS-Bv-UVD" kind="show" identifier="Show Session Detail" id="Wya-Wb-Crr"/>
@@ -1202,6 +1214,12 @@ I LOVE IT</string>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kGj-v0-H5p">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="doRefresh:" destination="b02-8N-2sq" eventType="valueChanged" id="m2R-BI-1a7"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="backgroundImageButton" destination="YPQ-XJ-qAR" id="tTp-fe-DMb"/>
                         <outlet property="headerView" destination="CBs-Iw-xcL" id="tGc-AZ-LbK"/>
@@ -1220,7 +1238,7 @@ I LOVE IT</string>
             <objects>
                 <tableViewController id="ph5-Z6-VAt" customClass="ReviewTableViewController" customModule="B2BTutoring" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="s2u-cy-SBz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3173,7 +3191,6 @@ I LOVE IT</string>
         <!--Navigation Controller-->
         <scene sceneID="oql-F2-SQ0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ff6-s6-vs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VqG-8w-HhS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Za-BA-kTi">
@@ -3187,6 +3204,7 @@ I LOVE IT</string>
                         <segue destination="wbW-yc-nXj" kind="relationship" relationship="rootViewController" id="QuQ-gH-kQx"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ff6-s6-vs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3024" y="2413"/>
         </scene>
@@ -3195,7 +3213,7 @@ I LOVE IT</string>
             <objects>
                 <tableViewController id="VqS-Bv-UVD" customClass="SessionDetailTableViewController" customModule="B2BTutoring" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="200" sectionHeaderHeight="18" sectionFooterHeight="18" id="6k3-C3-WTV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -3489,7 +3507,7 @@ I LOVE IT</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfS-28-n87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2928" y="1602"/>
+            <point key="canvasLocation" x="2928" y="1530"/>
         </scene>
     </scenes>
     <resources>
@@ -3505,10 +3523,10 @@ I LOVE IT</string>
         <image name="starwar" width="1280" height="773"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="z2m-ZU-QIu"/>
+        <segue reference="Gae-qT-t4m"/>
         <segue reference="29u-Xj-qtK"/>
         <segue reference="gdd-31-nHQ"/>
         <segue reference="UtY-n2-fVq"/>
-        <segue reference="z2m-ZU-QIu"/>
-        <segue reference="Gae-qT-t4m"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -41,6 +41,13 @@ class ProfileTableViewController: UITableViewController {
     var tutorSession = [Session]()
     
     var currentSession: Session!
+    
+    
+    @IBAction func doRefresh(sender: UIRefreshControl) {
+        self.fetchData()
+        sender.endRefreshing()
+    }
+    
     /*
     @IBAction func cancelEditProfile(segue: UIStoryboardSegue) {
         print("cancel edit")
@@ -462,7 +469,12 @@ class ProfileTableViewController: UITableViewController {
         else if segue.identifier == "Show Session Detail" {
             let dstController = segue.destinationViewController as! SessionDetailTableViewController;
             dstController.session = currentSession
-            dstController.operation = profileSegmentedControl.selectedSegmentIndex == 1 ? .Review : .None
+            if profileSegmentedControl.selectedSegmentIndex == 1 {
+                dstController.operation = SessionOperation.Review
+            } else {
+                dstController.operation = SessionOperation.None
+            }
+            print("\(dstController.operation)")
         }
     }
     

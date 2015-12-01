@@ -786,6 +786,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = B2BTutoring/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucla.cs130.B2BTutoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -807,6 +808,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = B2BTutoring/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucla.cs130.B2BTutoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";

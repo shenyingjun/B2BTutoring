@@ -16,6 +16,21 @@ class ExploreTableViewController: UITableViewController {
     var currentSession: Session!
     var currentIndexPath: NSIndexPath!
     
+    @IBAction func doRefresh(sender: UIRefreshControl) {
+        switch exploreSegment.selectedSegmentIndex {
+        case 0:
+            loadDataForInterest()
+            break
+        case 1:
+            loadDataForPopular()
+            break
+        default:
+            //TODO: avoid error
+            break
+        }
+        sender.endRefreshing()
+    }
+    
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch exploreSegment.selectedSegmentIndex {
         case 0:
