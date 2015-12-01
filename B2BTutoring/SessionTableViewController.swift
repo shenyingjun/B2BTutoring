@@ -164,6 +164,12 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
         loadData(Source.Tutor)
         print("Exit session creation.")
     }
+    
+    @IBAction func exitDetailedView(segue: UIStoryboardSegue) {
+        sessionSegmentedControl.selectedSegmentIndex = 0
+        loadData(Source.Tutee)
+        print("Exit session detail view.")
+    }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentSession = sessions[indexPath.row]

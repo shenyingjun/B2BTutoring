@@ -199,7 +199,7 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
                     cell.action.addTarget(self, action: "quitSession", forControlEvents: .TouchUpInside)
                 case .Unfollow:
                     cell.action.setTitle("Unfollow", forState: .Normal)
-                    cell.action.addTarget(self, action: "quitSession", forControlEvents: .TouchUpInside)
+                    cell.action.addTarget(self, action: "unfollowSession", forControlEvents: .TouchUpInside)
                 case .Cancel:
                     cell.action.setTitle("Cancel", forState: .Normal)
                     cell.action.addTarget(self, action: "cancelSession", forControlEvents: .TouchUpInside)
@@ -298,6 +298,7 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
             user.quitSession(self.session)
             self.saveUserAndSession(user, session: self.session, successMessage: "Successfully quit session!")
         }
+
     }
     
     func unfollowSession() {
@@ -339,6 +340,8 @@ class SessionDetailTableViewController: UITableViewController, MKMapViewDelegate
     
     func alertHandler(alert: UIAlertAction!) -> Void {
         self.tableView.reloadData()
+        performSegueWithIdentifier("UnwindtoSession", sender: self)
+
     }
     
     func createAlert(message: String, reload: Bool) -> Void {
