@@ -1,15 +1,5 @@
-//
-//  B2BTutoringTests.swift
-//  B2BTutoringTests
-//
-//  Created by 罗阅 on 11/30/15.
-//  Copyright © 2015 Team 1. All rights reserved.
-//
-
+import UIKit
 import XCTest
-
-
-
 @testable import B2BTutoring
 
 class SessionTest: XCTestCase {
@@ -146,5 +136,6 @@ class SessionTest: XCTestCase {
         XCTAssertTrue(test.isFull(),"current session is over capacity")
         XCTAssert(true, "Pass")
     }
+    
     
 }
