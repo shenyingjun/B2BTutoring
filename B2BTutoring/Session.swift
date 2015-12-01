@@ -42,6 +42,7 @@ class Session : PFObject, PFSubclassing {
     @NSManaged var reviewedTutees: [User]
     
     @NSManaged var conversationId: String?
+    @NSManaged var conversationUsers: [User]
     
     func expired() -> Bool{
         if self.ends.compare(NSDate()) == NSComparisonResult.OrderedAscending {
@@ -101,6 +102,15 @@ class Session : PFObject, PFSubclassing {
     func isReviewedTutee(user: User) -> Bool {
         for t in reviewedTutees {
             if t.objectId == user.objectId {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isConversationUsers(user: User) -> Bool {
+        for u in conversationUsers {
+            if u.objectId == user.objectId {
                 return true
             }
         }

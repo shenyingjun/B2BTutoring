@@ -40,7 +40,9 @@ class SearchTableViewController: UITableViewController {
                     if let objects = objects as [PFObject]! {
                         for object in objects {
                             if let session = object as? Session {
-                                self.sessions.append(session)
+                                if !session.expired() {
+                                    self.sessions.append(session)
+                                }
                             }
                         }
                         self.sortAndShowLoadedSessions()
@@ -60,7 +62,8 @@ class SearchTableViewController: UITableViewController {
                         if let session = object as? Session {
                             if session.starts.compare(filter.starts) != NSComparisonResult.OrderedDescending
                                 || session.ends.compare(filter.ends) != NSComparisonResult.OrderedAscending
-                                || (filter.showOpen && session.expired()) {
+                                || (filter.showOpen && session.tutees.count == session.capacity)
+                                || session.expired() {
                                     continue
                             }
                             
@@ -97,9 +100,9 @@ class SearchTableViewController: UITableViewController {
                 } else {
                     print("Failed to get current location")
                 }
-                self.doSearch(baseQuery, filter: filter)
             }
         }
+        self.doSearch(baseQuery, filter: filter)
     }
     
     override func didReceiveMemoryWarning() {

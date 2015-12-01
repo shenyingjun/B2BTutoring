@@ -1,4 +1,5 @@
 //
+
 //  SessionTableViewController.swift
 //  B2BTutoring
 //
@@ -21,6 +22,20 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
     
     var conversations: NSOrderedSet?
     var conversation: LYRConversation?
+
+    @IBAction func doRefresh(sender: UIRefreshControl) {
+        switch sessionSegmentedControl.selectedSegmentIndex {
+        case 0:
+            loadData(.Tutee)
+        case 1:
+            loadData(.Tutor)
+        case 2:
+            loadData(.Follow)
+        default:
+            break
+        }
+        sender.endRefreshing()
+    }
 
     @IBOutlet weak var sessionSegmentedControl: UISegmentedControl!
     var sessions = [Session]()
@@ -114,27 +129,6 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
                     print("no current user")
                 }
             })
-            
-            /*
-            User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
-                if error == nil {
-                    print(object)
-                    if let user = object as? User {
-                        switch forTutor {
-                        case .Tutor:
-                            self.sessions = user.getOngoingTutorSessions()
-                        case .Tutee:
-                            self.sessions = user.getOngoingTuteeSessions()
-                        case .Follow:
-                            self.sessions = user.getOngoingFollowSessions()
-                        }
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    print("no current user")
-                }
-            })
-*/
         }
     }
 
@@ -148,13 +142,33 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell") as! SessionTableViewCell
-        cell.initCell(self.sessions[indexPath.row])
+        let session = self.sessions[indexPath.row]
+        cell.initCell(session)
         
-        //cell.leftUtilityButtons
-        let leftButtons: NSMutableArray = NSMutableArray()
-        leftButtons.sw_addUtilityButtonWithColor(UIColor.flatGrayColor(), icon: UIImage(named: "message"))
-        cell.leftUtilityButtons = leftButtons as [AnyObject]
-        cell.delegate = self
+        switch sessionSegmentedControl.selectedSegmentIndex {
+        case 0:
+            if !session.isConversationUsers(User.currentUser()!) {
+                let leftButtons: NSMutableArray = NSMutableArray()
+                leftButtons.sw_addUtilityButtonWithColor(UIColor.flatWatermelonColor(), icon: UIImage(named: "message"))
+                cell.leftUtilityButtons = leftButtons as [AnyObject]
+                cell.delegate = self
+            } else {
+                let leftButtons: NSMutableArray = NSMutableArray()
+                leftButtons.sw_addUtilityButtonWithColor(UIColor.flatGrayColor(), icon: UIImage(named: "message"))
+                cell.leftUtilityButtons = leftButtons as [AnyObject]
+                cell.delegate = self
+            }
+        case 1:
+            //cell.leftUtilityButtons
+            let leftButtons: NSMutableArray = NSMutableArray()
+            leftButtons.sw_addUtilityButtonWithColor(UIColor.flatGrayColor(), icon: UIImage(named: "message"))
+            cell.leftUtilityButtons = leftButtons as [AnyObject]
+            cell.delegate = self
+        case 2:
+            break
+        default:
+            break
+        }
         
         return cell
     }
@@ -189,22 +203,29 @@ class SessionTableViewController: UITableViewController, CLLocationManagerDelega
                 tuteeSet.addObject(tutee.objectId!)
             }
             
-            let url = NSURL(string: session.conversationId!)
-            let layerQuery = LYRQuery(queryableClass: LYRConversation.self)
-            layerQuery.predicate = LYRPredicate(property: "identifier", predicateOperator: LYRPredicateOperator.IsEqualTo, value: url)
-            
-            do {
-                let conversation = try Layer.layerClient.executeQuery(layerQuery).firstObject as! LYRConversation;
+            if sessionSegmentedControl.selectedSegmentIndex == 0 && !session.isConversationUsers(User.currentUser()!) {
+                return
+            } else {
+                let url = NSURL(string: session.conversationId!)
+                let layerQuery = LYRQuery(queryableClass: LYRConversation.self)
+                layerQuery.predicate = LYRPredicate(property: "identifier", predicateOperator: LYRPredicateOperator.IsEqualTo, value: url)
                 
-                //let existingParticipants: NSSet = conversation.participants
-                for tutee in session.tutees {
-                    try conversation.addParticipants([tutee.objectId!])
+                do {
+                    let conversation = try Layer.layerClient.executeQuery(layerQuery).firstObject as! LYRConversation;
+                    
+                    //let existingParticipants: NSSet = conversation.participants
+                    for tutee in session.tutees {
+                        try conversation.addParticipants([tutee.objectId!])
+                    }
+                    
+                    session.conversationUsers = session.tutees
+                    session.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                        self.presentControllerWithConversation(conversation)
+                    })
+                    
+                } catch let error {
+                    print("Error fetching conversation: \(error)")
                 }
-                
-                presentControllerWithConversation(conversation)
-                
-            } catch let error {
-                print("Error fetching conversation: \(error)")
             }
         }
     }
