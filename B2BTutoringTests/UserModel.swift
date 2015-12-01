@@ -24,13 +24,13 @@ class UserTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-
     
     
     
-    let user1 = User.currentUser()!
+    
+    let user1 = User()
     func testgetOngoingTutorSessions() {
-
+        
         // -----------------
         var session1 = Session()
         session1.title = "soccer"
@@ -51,31 +51,45 @@ class UserTest: XCTestCase {
         
         var mysessions = [Session]()
         
-//        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
-  //      (object: PFObject?, error: NSError?) -> Void in
-    //    if error == nil {
-      //  if let user = object as? User {
+        //        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+        //      (object: PFObject?, error: NSError?) -> Void in
+        //    if error == nil {
+        //  if let user = object as? User {
         
         user1.tutorSessions.append(session1)
         user1.saveInBackgroundWithBlock {
-        (succeeded: Bool, error: NSError?) -> Void in}
+            (succeeded: Bool, error: NSError?) -> Void in}
         
         
         XCTAssertEqual(user1.getOngoingTutorSessions(),[], "it should not have any ongoing sessions yet")
         
         mysessions.append(session2)
         user1.tutorSessions.append(session2)
-        user1.saveInBackgroundWithBlock {
+                User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+              (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+          if let user = object as? User {
+        user.saveInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in}
-        
-        XCTAssertEqual(user1.getOngoingTutorSessions(),mysessions, "it should have some sessions")
+              XCTAssertEqual(user.getOngoingTutorSessions(),mysessions, "it should have some sessions")
+            
+                }}}
+      
         
         mysessions.append(session3)
         user1.tutorSessions.append(session3)
-        user1.saveInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in}
+        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+                    user.saveInBackgroundWithBlock {
+                        (succeeded: Bool, error: NSError?) -> Void in}
+                    XCTAssertEqual(user.getOngoingTutorSessions(),mysessions, "it should have some sessions")
+
+                    
+                }}}
         
-        XCTAssertEqual(user1.getOngoingTutorSessions(),mysessions, "it should have some sessions")
+        
         // ---------
         
         
@@ -86,46 +100,53 @@ class UserTest: XCTestCase {
     
     
     func testgetOngoingTuteeSessions(){
-    
-    user1.firstname = "Frank"
-    
-    var session1 = Session()
-    session1.title = "soccer"
-    session1.ends = Date.parse("2014-05-20")
-    
-    
-    var session2 = Session()
-    session2.title = "swim"
-    session2.ends = Date.parse("2016-05-20")
-    
-    var session3 = Session()
-    session3.title = "card"
-    session3.ends = Date.parse("2016-05-20")
-    
-    XCTAssertEqual(user1.getOngoingTuteeSessions(),[], "it should not have any sessions yet")
-    
-    var mysessions = [Session]()
-    mysessions.append(session1)
+        
+        user1.firstname = "Frank"
+        
+        var session1 = Session()
+        session1.title = "soccer"
+        session1.ends = Date.parse("2014-05-20")
+        
+        
+        var session2 = Session()
+        session2.title = "swim"
+        session2.ends = Date.parse("2016-05-20")
+        
+        var session3 = Session()
+        session3.title = "card"
+        session3.ends = Date.parse("2016-05-20")
+        
+        XCTAssertEqual(user1.getOngoingTuteeSessions(),[], "it should not have any sessions yet")
+        
+        var mysessions = [Session]()
+        mysessions.append(session1)
         user1.tuteeSessions.append(session1)
         user1.saveInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in}
-    
-    XCTAssertEqual(user1.getOngoingTuteeSessions(),[], "it should not have any ongoing sessions yet")
-    
-    mysessions.append(session2)
+        
+        XCTAssertEqual(user1.getOngoingTuteeSessions(),[], "it should not have any ongoing sessions yet")
+        
+        mysessions.append(session2)
         user1.tuteeSessions.append(session2)
-        user1.saveInBackgroundWithBlock {
+        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+        user.saveInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in}
-    XCTAssertEqual(user1.getOngoingTuteeSessions(),mysessions, "it should have some sessions")
-    
-    mysessions.append(session3)
+                    XCTAssertEqual(user.getOngoingTuteeSessions(),mysessions, "it should have some sessions")}}}
+        
+        mysessions.append(session3)
         user1.tuteeSessions.append(session3)
-        user1.saveInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in}
-    
-    XCTAssertEqual(user1.getOngoingTuteeSessions(),mysessions, "it should have some sessions")
-         XCTAssert(true, "Pass")
-
+        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+                    user.saveInBackgroundWithBlock {
+                        (succeeded: Bool, error: NSError?) -> Void in}
+                    XCTAssertEqual(user.getOngoingTuteeSessions(),mysessions, "it should have some sessions")}}}
+        XCTAssert(true, "Pass")
+        
     }
     
     func testgetPassedTutorSessions(){
@@ -156,19 +177,24 @@ class UserTest: XCTestCase {
         //  if let user = object as? User {
         
         user1.tutorSessions.append(session1)
-        user1.saveInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in}
+        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+                    user.saveInBackgroundWithBlock {
+                        (succeeded: Bool, error: NSError?) -> Void in}
+                    XCTAssertEqual(user.getPassedTutorSessions(),mysessions, "it should have some sessions")}}}
         
         
-        XCTAssertEqual(user1.getPassedTutorSessions(),mysessions, "it should have passed sessions ")
-        
-       
         user1.tutorSessions.append(session2)
-        user1.saveInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in}
+        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+                    user.saveInBackgroundWithBlock {
+                        (succeeded: Bool, error: NSError?) -> Void in}
+                    XCTAssertEqual(user.getPassedTutorSessions(),mysessions, "it should have some sessions")}}}
         
-        XCTAssertEqual(user1.getPassedTutorSessions(),mysessions, "it should have some sessions")
-
         
         
         XCTAssert(true, "Pass")
@@ -186,28 +212,35 @@ class UserTest: XCTestCase {
         session2.title = "swim"
         session2.ends = Date.parse("2016-05-20")
         
- 
+        
         
         XCTAssertEqual(user1.getPassedTuteeSessions(),[], "it should not have any sessions yet")
         
         var mysessions = [Session]()
         mysessions.append(session1)
         user1.tuteeSessions.append(session1)
-        user1.saveInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in}
+        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+                    user.saveInBackgroundWithBlock {
+                        (succeeded: Bool, error: NSError?) -> Void in}
+                    XCTAssertEqual(user.getPassedTuteeSessions(),mysessions, "it should have some sessions")}}}
         
-        XCTAssertEqual(user1.getPassedTuteeSessions(),mysessions, "it should have passed sessions ")
         
-      
         user1.tuteeSessions.append(session2)
-        user1.saveInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in}
-        XCTAssertEqual(user1.getPassedTuteeSessions(),mysessions, "it should have some sessions")
+        User.objectWithoutDataWithObjectId(user1.objectId).fetchInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                if let user = object as? User {
+                    user.saveInBackgroundWithBlock {
+                        (succeeded: Bool, error: NSError?) -> Void in}
+                    XCTAssertEqual(user.getPassedTuteeSessions(),mysessions, "it should have some sessions")}}}
         
-         XCTAssert(true, "Pass")
+        XCTAssert(true, "Pass")
         
     }
     
     
-
+    
 }
