@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cww-SS-xGp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cww-SS-xGp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -98,7 +98,7 @@
                                 <rect key="frame" x="0.0" y="136" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tc5-tb-mOY" id="Iy8-b2-dnx">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5x-Mt-2sQ">
@@ -304,7 +304,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="96o-kf-yKk" id="5CG-sm-37c">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSv-VB-wnB">
@@ -469,6 +469,7 @@
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="AaY-Cs-jCo">
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <connections>
                             <action selector="doRefresh:" destination="JfE-Nc-jNm" eventType="valueChanged" id="lnX-bC-NFr"/>
                         </connections>
@@ -632,7 +633,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvl-hR-4Wl" id="ViH-Zy-v8Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="hcg-8U-mOm">
@@ -805,6 +806,7 @@
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="SJT-vi-7Pa">
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <connections>
                             <action selector="doRefresh:" destination="PWV-Az-HWn" eventType="valueChanged" id="bi9-cK-bOP"/>
                         </connections>
@@ -828,7 +830,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" verticalCompressionResistancePriority="1" id="CBs-Iw-xcL">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="260"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-XJ-qAR">
@@ -902,10 +904,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="44" id="y5d-R1-QaY" customClass="InfoTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="288" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="352" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y5d-R1-QaY" id="GIN-dE-zaq">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hja-ng-GAT">
@@ -938,10 +940,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="120" id="wie-aw-X4g" customClass="SessionTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="332" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="396" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wie-aw-X4g" id="PR5-WJ-kyI">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdN-M1-KYy">
@@ -1083,10 +1085,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="lcH-Tu-Py9" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="452" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="516" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcH-Tu-Py9" id="ocQ-Uk-ffB">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="H1E-Kh-4xk">
@@ -1160,14 +1162,14 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreTableViewCell" textLabel="yFH-9a-3kx" style="IBUITableViewCellStyleDefault" id="iP1-Tj-DLk">
-                                <rect key="frame" x="0.0" y="572" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="636" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iP1-Tj-DLk" id="DJF-eF-7SR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="More" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yFH-9a-3kx">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1191,6 +1193,11 @@ I LOVE IT</string>
                     </tableView>
                     <navigationItem key="navigationItem" id="gdr-FW-IGS">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="0rA-sI-QeV">
+                            <connections>
+                                <segue destination="Ohq-og-35G" kind="unwind" unwindAction="logOutApp:" id="VgG-ce-OPf"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="NUb-V8-UuR">
                             <rect key="frame" x="180" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1216,6 +1223,7 @@ I LOVE IT</string>
                     <size key="freeformSize" width="600" height="800"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kGj-v0-H5p">
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <connections>
                             <action selector="doRefresh:" destination="b02-8N-2sq" eventType="valueChanged" id="m2R-BI-1a7"/>
                         </connections>
@@ -1230,6 +1238,7 @@ I LOVE IT</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="130-nh-180" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ohq-og-35G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2133" y="2302"/>
         </scene>
@@ -1238,16 +1247,16 @@ I LOVE IT</string>
             <objects>
                 <tableViewController id="ph5-Z6-VAt" customClass="ReviewTableViewController" customModule="B2BTutoring" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="s2u-cy-SBz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReviewTableViewCell" rowHeight="120" id="vCp-Cx-hNw" customClass="ReviewTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vCp-Cx-hNw" id="zpj-Kb-a61">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="6W5-Dn-VzB">
@@ -1682,7 +1691,7 @@ I LOVE IT</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENTER YOUR PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egj-2B-XxV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER YOUR PHONE NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egj-2B-XxV">
                                 <rect key="frame" x="208" y="101" width="184" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -2050,7 +2059,7 @@ I LOVE IT</string>
                                     <action selector="deleteDigit:" destination="QgW-lh-9hk" eventType="touchUpInside" id="Yqq-1v-3ag"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENTER THE VERIFICATION CODE WE JUST SENT YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B9-CE-yRs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER THE VERIFICATION CODE WE JUST SENT YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B9-CE-yRs">
                                 <rect key="frame" x="138" y="101" width="324" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -2256,7 +2265,7 @@ I LOVE IT</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CREATE YOUR PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0z-mt-eso">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE YOUR PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0z-mt-eso">
                                         <rect key="frame" x="228" y="81" width="145" height="21"/>
                                         <animations/>
                                         <constraints>
@@ -3108,6 +3117,7 @@ I LOVE IT</string>
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="itW-gZ-n1x">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.01176470588" green="0.78823529410000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Adx-Pw-8lM">
@@ -3126,6 +3136,7 @@ I LOVE IT</string>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darth_vader" translatesAutoresizingMaskIntoConstraints="NO" id="Wii-BS-vGD">
                                             <rect key="frame" x="10" y="8" width="60" height="60"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="EOS-4S-YJI"/>
                                                 <constraint firstAttribute="width" constant="60" id="kEt-GM-Q72"/>
@@ -3137,8 +3148,9 @@ I LOVE IT</string>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Darth Vader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63O-0m-H6b">
-                                            <rect key="frame" x="6.5" y="75.5" width="66" height="16.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Darth Vader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63O-0m-H6b">
+                                            <rect key="frame" x="7" y="76" width="66" height="16"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="800" id="U6i-bo-5bd"/>
                                             </constraints>
@@ -3152,8 +3164,10 @@ I LOVE IT</string>
                                             </variation>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <animations/>
                                 <constraints>
                                     <constraint firstItem="63O-0m-H6b" firstAttribute="top" secondItem="gaE-E1-Dk6" secondAttribute="top" constant="-299" id="GX8-c1-SEB"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="63O-0m-H6b" secondAttribute="bottom" id="SNh-9F-JKo"/>
@@ -3215,17 +3229,19 @@ I LOVE IT</string>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="200" sectionHeaderHeight="18" sectionFooterHeight="18" id="6k3-C3-WTV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionTitleCell" rowHeight="133" id="0mk-SD-8V2" customClass="SessionDetailTitleTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="133"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="133"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0mk-SD-8V2" id="UJE-UB-V9K">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="132.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introductory Jazz Guitar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-L5-PXu">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Introductory Jazz Guitar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-L5-PXu">
                                             <rect key="frame" x="213" y="8" width="176" height="22"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="SMf-vG-0uZ"/>
                                             </constraints>
@@ -3240,12 +3256,14 @@ I LOVE IT</string>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Darth Vader ★ 4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A65-7D-2ds">
                                             <rect key="frame" x="241" y="106" width="118" height="20"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                             <color key="textColor" red="0.1707773507" green="0.30895513299999999" blue="0.37797331810000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwp-CW-7bL">
                                             <rect key="frame" x="270" y="38" width="60" height="60"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="9s5-Sc-uoO"/>
                                                 <constraint firstAttribute="width" constant="60" id="nFS-NO-exH"/>
@@ -3262,6 +3280,7 @@ I LOVE IT</string>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="bwp-CW-7bL" firstAttribute="centerX" secondItem="A65-7D-2ds" secondAttribute="centerX" id="QNS-eA-brM"/>
                                         <constraint firstItem="A65-7D-2ds" firstAttribute="top" secondItem="bwp-CW-7bL" secondAttribute="bottom" constant="8" symbolic="YES" id="bkk-5o-x07"/>
@@ -3271,6 +3290,7 @@ I LOVE IT</string>
                                         <constraint firstItem="A65-7D-2ds" firstAttribute="centerX" secondItem="UJE-UB-V9K" secondAttribute="centerX" id="xbV-NN-GmY"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="name" destination="A65-7D-2ds" id="uhm-ld-6jg"/>
                                     <outlet property="profile" destination="bwp-CW-7bL" id="r6Z-2E-maX"/>
@@ -3278,20 +3298,22 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionTuteesCell" rowHeight="50" id="uTm-BT-wtI" customClass="SessionDetailTuteesTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="182.5" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="247" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uTm-BT-wtI" id="kBh-4j-vZG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="Xkh-Uj-DK6">
                                             <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="3SA-Kk-1tu"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 out of 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXd-df-YbP">
-                                            <rect key="frame" x="36" y="15" width="68.5" height="20"/>
+                                            <rect key="frame" x="36" y="15" width="69" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="jNU-ql-wv0"/>
                                             </constraints>
@@ -3301,6 +3323,7 @@ I LOVE IT</string>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbK-ng-Nq9">
                                             <rect key="frame" x="469" y="10" width="123" height="29"/>
+                                            <animations/>
                                             <color key="backgroundColor" red="0.01176470588" green="0.78823529410000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="123" id="Ugw-DJ-YDD"/>
@@ -3314,6 +3337,7 @@ I LOVE IT</string>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="Xkh-Uj-DK6" firstAttribute="centerY" secondItem="jbK-ng-Nq9" secondAttribute="centerY" id="6N1-sO-evp"/>
                                         <constraint firstItem="Xkh-Uj-DK6" firstAttribute="bottom" secondItem="dXd-df-YbP" secondAttribute="bottom" id="P5H-Ib-RYc"/>
@@ -3325,20 +3349,22 @@ I LOVE IT</string>
                                         <constraint firstItem="Xkh-Uj-DK6" firstAttribute="centerY" secondItem="kBh-4j-vZG" secondAttribute="centerY" id="vf9-Z8-JlQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="enrollment" destination="dXd-df-YbP" id="vQw-qD-tfd"/>
                                     <outlet property="showTutees" destination="jbK-ng-Nq9" id="7Db-ea-ZeD"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionBasicCell" rowHeight="50" id="PeD-US-eJR" customClass="SessionDetailBasicTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="232.5" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="297" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="PeD-US-eJR" id="tSm-FJ-OPA">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRC-oo-WKR">
-                                            <rect key="frame" x="36" y="15" width="36.5" height="20"/>
+                                            <rect key="frame" x="36" y="15" width="37" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="KFD-Cn-ke2"/>
                                             </constraints>
@@ -3348,12 +3374,14 @@ I LOVE IT</string>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category" translatesAutoresizingMaskIntoConstraints="NO" id="Wil-yY-lZz">
                                             <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="4Yc-N1-VYd"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#jazz #guitar " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRF-7V-W7o">
-                                            <rect key="frame" x="509.5" y="14" width="82.5" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="#jazz #guitar " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRF-7V-W7o">
+                                            <rect key="frame" x="510" y="14" width="82" height="20"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="Hqf-zh-OwE"/>
                                             </constraints>
@@ -3362,6 +3390,7 @@ I LOVE IT</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="Wil-yY-lZz" firstAttribute="top" secondItem="tSm-FJ-OPA" secondAttribute="topMargin" constant="7" id="46t-SR-gHI"/>
                                         <constraint firstItem="Wil-yY-lZz" firstAttribute="leading" secondItem="tSm-FJ-OPA" secondAttribute="leadingMargin" id="6Ma-Xe-BNs"/>
@@ -3388,6 +3417,7 @@ I LOVE IT</string>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="icon" destination="Wil-yY-lZz" id="Enn-kq-0ge"/>
                                     <outlet property="leftLabel" destination="MRC-oo-WKR" id="zze-hf-ydO"/>
@@ -3395,14 +3425,15 @@ I LOVE IT</string>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionTextCell" rowHeight="103" id="zk6-hF-xwm" customClass="SessionDetailTextTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="282.5" width="600" height="103"/>
+                                <rect key="frame" x="0.0" y="347" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="zk6-hF-xwm" id="dDS-fB-TSW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="102.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJq-sP-50i">
-                                            <rect key="frame" x="8" y="13" width="584" height="57.5"/>
+                                            <rect key="frame" x="8" y="13" width="584" height="58"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="584" id="ZN3-2K-2v5"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="ciQ-FE-8t8"/>
@@ -3420,6 +3451,7 @@ I LOVE IT</string>
                                             </variation>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="SJq-sP-50i" firstAttribute="top" secondItem="dDS-fB-TSW" secondAttribute="topMargin" constant="5" id="40c-bW-LCf"/>
                                         <constraint firstItem="SJq-sP-50i" firstAttribute="trailing" secondItem="dDS-fB-TSW" secondAttribute="trailingMargin" id="6de-tS-NRT"/>
@@ -3432,21 +3464,24 @@ I LOVE IT</string>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="label" destination="SJq-sP-50i" id="YIn-Qc-ZpP"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionMapCell" rowHeight="200" id="JEg-zy-E5Z" customClass="SessionDetailMapTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="385.5" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="450" width="600" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JEg-zy-E5Z" id="D07-R0-Ieq">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vDZ-Uh-gaJ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                            <animations/>
                                         </mapView>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="vDZ-Uh-gaJ" firstAttribute="leading" secondItem="D07-R0-Ieq" secondAttribute="leadingMargin" constant="-8" id="0Az-3N-gHt"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="vDZ-Uh-gaJ" secondAttribute="trailing" constant="-8" id="62m-pe-2XK"/>
@@ -3454,19 +3489,21 @@ I LOVE IT</string>
                                         <constraint firstItem="vDZ-Uh-gaJ" firstAttribute="top" secondItem="D07-R0-Ieq" secondAttribute="topMargin" constant="-8" id="WTJ-vX-sxc"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="map" destination="vDZ-Uh-gaJ" id="tit-HZ-Xpd"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionButtonCell" rowHeight="40" id="502-g2-MSu" customClass="SessionDetailButtonTableViewCell" customModule="B2BTutoring" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="585.5" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="650" width="600" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="502-g2-MSu" id="t4M-mv-DvR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="39.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOa-al-bqO">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                                            <animations/>
                                             <color key="backgroundColor" red="0.01176470588" green="0.78823529410000004" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="600" id="UXQ-Jc-M5N"/>
@@ -3478,6 +3515,7 @@ I LOVE IT</string>
                                             </state>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="bOa-al-bqO" firstAttribute="leading" secondItem="t4M-mv-DvR" secondAttribute="leading" id="Dfn-Nv-oeT"/>
                                         <constraint firstItem="bOa-al-bqO" firstAttribute="top" secondItem="t4M-mv-DvR" secondAttribute="top" id="Pj9-PR-rRv"/>
@@ -3490,6 +3528,7 @@ I LOVE IT</string>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="action" destination="bOa-al-bqO" id="5BB-LO-7vz"/>
                                 </connections>
@@ -3525,10 +3564,10 @@ I LOVE IT</string>
         <image name="starwar" width="1280" height="773"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gdd-31-nHQ"/>
+        <segue reference="b59-gW-SK9"/>
+        <segue reference="29u-Xj-qtK"/>
         <segue reference="z2m-ZU-QIu"/>
         <segue reference="Gae-qT-t4m"/>
-        <segue reference="29u-Xj-qtK"/>
-        <segue reference="gdd-31-nHQ"/>
-        <segue reference="UtY-n2-fVq"/>
     </inferredMetricsTieBreakers>
 </document>

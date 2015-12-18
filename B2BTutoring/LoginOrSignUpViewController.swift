@@ -10,6 +10,11 @@ import UIKit
 import SVProgressHUD
 
 class LoginOrSignUpViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBAction func logOutApp(segue: UIStoryboardSegue) {
+        print("logout")
+        PFUser.logOut()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,11 +79,10 @@ class LoginOrSignUpViewController: UIViewController, UITextFieldDelegate {
                 spinner.stopAnimating()
                 
                 if user != nil {
-                    Layer.loginLayer() {
+                    //Layer.loginLayer()
                         SVProgressHUD.dismiss()
                         self.firstResponder?.resignFirstResponder()
                         self.performSegueWithIdentifier("Show Home After Login", sender: self)
-                    }
                 } else {
                     self.message.text = "*Incorrect phone number and password combination*"
                     self.phoneNumber.text = ""

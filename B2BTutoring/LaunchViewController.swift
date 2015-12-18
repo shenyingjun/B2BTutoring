@@ -24,10 +24,9 @@ class LaunchViewController: UIViewController {
             performSegueWithIdentifier("Show Welcome", sender: nil)
         } else {
             print(User.currentUser())
-            Layer.loginLayer() {
-                SVProgressHUD.dismiss()
-                self.performSegueWithIdentifier("Show Home", sender: nil)
-            }
+            //Layer.loginLayer()
+            SVProgressHUD.dismiss()
+            self.performSegueWithIdentifier("Show Home", sender: nil)
         }
 
     }

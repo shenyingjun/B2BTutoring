@@ -18,9 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var layerClient: LYRClient!
     
+    
     let LayerAppIDString: NSURL! = NSURL(string: "layer:///apps/staging/8c6f05a8-9679-11e5-b325-3f4617001ad6")
-    let ParseAppIDString: String = "LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr"
-    let ParseClientKeyString: String = "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG"
+    //let ParseAppIDString: String = "LkLnpCvNTSBebXcglqtpzRfgRLmOCfcJInnHVXDr"
+    //let ParseClientKeyString: String = "BPfphsMDhWCnCncd1H9vvMMvDPR766AOpLGw6KYG"
+    let ParseAppIDString: String = "vqYjQvbFXwpGmjaxbp0piQm2gCXbsclw7mL48oKq"
+    let ParseClientKeyString: String = "QB0WcWAZnv9Kl5aQXUOhY4Q8Wu2bicanE9flVxF4"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         setupParse()

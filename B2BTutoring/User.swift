@@ -46,6 +46,11 @@ class User : PFUser {
             return nil
         }
     }
+    /*
+    func logout(){
+        logOut();
+    }
+*/
     
     func joinSession(session: Session) {
         session.addTutee(self)

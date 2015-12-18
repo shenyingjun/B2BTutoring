@@ -39,6 +39,28 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
         
         static let allValues = [Art, Cars_and_motorcycles, Cooking, Design, DIY_and_crafts, Film, Health, Music, Photography, Sports]
     }
+    
+    private func generateSuggestion(Description:String) -> String {
+        let query = PFQuery(className: Tag.parseClassName())
+        let descriptionList = Description.componentsSeparatedByString(" ")
+        
+        var suggestion = [String]()
+        query.whereKey("text", containedIn: descriptionList)
+        do {
+            let objects = try query.findObjects() as [PFObject]
+        
+            for object in objects {
+                if let tag = object as? Tag {
+                    print(tag.text)
+                    suggestion.append(tag.text)
+                }
+            }
+        }
+        catch {
+            
+        }
+        return suggestion.joinWithSeparator(" ")
+    }
 
     
     private func initializeForm() {
@@ -105,6 +127,8 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
                 $0.cell.textField.placeholder = $0.row.tag
             }
             
+
+            
             <<< IntRow("Capacity").cellSetup {
                 $0.cell.textField.placeholder = $0.row.tag
             }
@@ -170,7 +194,22 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
             TextAreaRow("Description") {
                 $0.placeholder = "Description"
                 $0.cell.textView.font = font
-            }
+                }.onChange { [weak self] row in
+                    let tagRow: TextRow! = self?.form.rowByTag("Tags")
+
+                    if row.value != nil {
+                        var suggestedTag = self?.generateSuggestion(row.value!)
+                        if (suggestedTag != nil) {
+                            if tagRow.value != nil {
+                                tagRow.value = tagRow.value! + " " + suggestedTag!
+                            }
+                            else {
+                                tagRow.value = suggestedTag!
+                            }
+                            tagRow.updateCell()
+                        }
+                    }
+        }
     }
     
     func validate(fields: [String: Any?]) -> String? {
@@ -197,6 +236,15 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
         } else {
             return "Ends date can't be empty!"
         }
+        /*
+        if fields["Tags"] as? String == nil{
+            return "Tags can't be empty!"
+            if fields["Description"] as? String != nil {
+                self.form. = generateSuggestion(fields["Description"])
+                return "Tags can't be empty! Generating tags based on description"
+            }
+        }
+        */
         return nil
     }
     
@@ -211,6 +259,7 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
     }
     
     @IBAction func createSession(sender: UIBarButtonItem) {
+        var tagList = [String]()
         let session = Session()
         let values = self.form.values()
         let errorMsg = validate(values)
@@ -240,6 +289,10 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
                 }
                 
             })
+            tagList = (values["Tags"] as? String)!.componentsSeparatedByString(" ")
+            print((values["Tags"] as? String))
+            print(tagList)
+            
             
             session.tags = values["Tags"] as? String
             session.descrip = values["Description"] as! String
@@ -266,6 +319,14 @@ class CreateSessionViewController: FormViewController, CLLocationManagerDelegate
             session.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
+                    for txt in tagList {
+                        print(txt)
+                        var tag = Tag()
+                        tag.text = txt
+                        print(tag.text)
+                        tag.saveInBackground()
+                    }
+                    
                     if let currentUser = User.currentUser() {
                         User.objectWithoutDataWithObjectId(currentUser.objectId).fetchInBackgroundWithBlock {
                             (object: PFObject?, error: NSError?) -> Void in

@@ -64,6 +64,11 @@ class ProfileTableViewController: UITableViewController {
         self.fetchData()
     }
 
+    @IBAction func logOut(sender: UIBarButtonItem) {
+        PFUser.logOut()
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if user != nil {

@@ -14,6 +14,7 @@
 		02AE3FDC1BFA7EF9003156F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDB1BFA7EF9003156F0 /* User.swift */; };
 		02AE3FDE1BFA7F5F003156F0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE3FDD1BFA7F5F003156F0 /* Session.swift */; };
 		390937FC1BEC0B59008043B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390937FB1BEC0B59008043B4 /* MapKit.framework */; };
+		3929AD481C24A2D00048C51E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929AD471C24A2D00048C51E /* Tag.swift */; };
 		3929C7CB1BFABB580081992E /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7CA1BFABB580081992E /* Review.swift */; };
 		3929C7CD1BFABE630081992E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */; };
 		3929C7D11BFAF3090081992E /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */; };
@@ -122,6 +123,7 @@
 		10570C705A72F66E008AD80B /* Pods-B2BTutoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B2BTutoring.debug.xcconfig"; path = "Pods/Target Support Files/Pods-B2BTutoring/Pods-B2BTutoring.debug.xcconfig"; sourceTree = "<group>"; };
 		1CC91E4F30D159C033A5BBD7 /* Pods_B2BTutoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B2BTutoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		390937FB1BEC0B59008043B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3929AD471C24A2D00048C51E /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		3929C7CA1BFABB580081992E /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		3929C7CC1BFABE630081992E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		3929C7D01BFAF3090081992E /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				3929C7CA1BFABB580081992E /* Review.swift */,
 				027146711BFC62DB0043E6DE /* Filter.swift */,
 				7EEA42251C0AFE280052D336 /* Layer.swift */,
+				3929AD471C24A2D00048C51E /* Tag.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				7EFEB6B51BDF393D00D644A9 /* MinoruTextField.swift in Sources */,
 				7EEA422B1C0B05390052D336 /* PFUser+ATLParticipant.swift in Sources */,
 				7E3F97FB1C0437BE009A2107 /* SessionDetailButtonTableViewCell.swift in Sources */,
+				3929AD481C24A2D00048C51E /* Tag.swift in Sources */,
 				7E4BECAB1BE30E6900D74DEB /* CreateSessionViewController.swift in Sources */,
 				3992E0FB1BFBF2FD005F2C00 /* EditProfileViewController.swift in Sources */,
 				7E4BECA21BE1AC6900D74DEB /* SearchTableViewController.swift in Sources */,
@@ -1075,6 +1079,7 @@
 				F4EC904B1C0CCECF006B8F43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
